@@ -28,7 +28,7 @@ via the [`maps`](https://cran.r-project.org/web/packages/maps/index.html) packag
 
 ```{r eval=FALSE}
 df <- list_locations(
-  bbox = list(6.291990,32.823129,37.932615,45.181129),
+  bbox = list(6.291990, 32.823129, 37.932615, 45.181129),
   parameters_id = 2,
   limit = 1000
 )

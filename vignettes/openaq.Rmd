@@ -25,7 +25,9 @@ OpenAQ documentation site at [docs.openaq.org](https://docs.openaq.org).
 
 ### API Key
 
-An API key is required for using the OpenAQ API. Register for an account at [https://explore.openaq.org/register](https://explore.openaq.org/register) to get an API key.
+An API key is required for using the OpenAQ API. Register for an account at
+[https://explore.openaq.org/register](https://explore.openaq.org/register) to
+get an API key.
 
 <aside style="padding: 16px; margin:16px; background-color: #fbdcda; border-inline-start-color: #dd443c; border-inline-start-style: solid; border-inline-start-width: 4px;"> 
 <span style="color:#8a0f3a; margin:0; padding: 6px;">Important</span>
@@ -40,13 +42,13 @@ system environment variable. The package also provides a helper function called
 `set_api_key()` to set this value. 
 
 ```{r eval=FALSE}
-set_api_key('my-super-secret-openaq-key-1234')
+set_api_key("my-super-secret-openaq-key-1234")
 ```
 
 Alternatively, the API key can be set on individual resource function calls e.g.
 
 ```{r eval=FALSE}
-list_locations(api_key="my-super-secret-openaq-key-1234")
+list_locations(api_key = "my-super-secret-openaq-key-1234")
 ```
 
 Setting the API key at an individual function level will always take precedent
@@ -54,7 +56,7 @@ over an API key set at the environment variable level e.g.
 
 ```{r eval=FALSE}
 set_api_key("my-super-secret-openaq-key-1234")
-list_locations(api_key="this-is-my-alternate-api-key") # This key will override the previous one, for this call only.
+list_locations(api_key = "this-is-my-alternate-api-key")
 ```
 
 ### Rate limits
@@ -75,9 +77,9 @@ frame:
 
 ```{r eval=FALSE}
 locations <- list_locations(
-    limit=1000, 
-    parameters_id=2, 
-    providers_id=166
+  limit = 1000,
+  parameters_id = 2,
+  providers_id = 166
 )
 print(locations$x_ratelimit_remaining)
 
@@ -106,15 +108,15 @@ Examples:
 
 ```{r eval=FALSE}
 list_locations(
-    limit=1000, 
-    page=1
+  limit = 1000,
+  page = 1
 )
 ```
 
 ```{r eval=FALSE}
 list_locations(
-    limit=1000, 
-    page=2
+  limit = 1000,
+  page = 2
 )
 ```
 
@@ -128,20 +130,20 @@ with the `as_data_frame` function parameter.
 
 ```{r eval=FALSE}
 list_locations(
-    limit=1000, 
-    parameters_id=2, 
-    providers_id=166, 
-    as_data_frame=FALSE
+  limit = 1000,
+  parameters_id = 2,
+  providers_id = 166,
+  as_data_frame = FALSE
 )
 
 #> list()
 #> attr(,"meta")
 #> attr(,"meta")$name
 #> [1] "openaq-api"
-#> 
+#>
 #> attr(,"meta")$website
 #> [1] "/"
-#> 
+#>
 #> attr(,"meta")$page
 #> [1] 1
 #> ...
@@ -160,10 +162,10 @@ easy to use option.
 
 ```{r eval=FALSE}
 list_locations(
-    limit=1000, 
-    parameters_id=2, 
-    providers_id=166, 
-    rate_limit=TRUE
+  limit = 1000,
+  parameters_id = 2,
+  providers_id = 166,
+  rate_limit = TRUE
 )
 ```
 
@@ -180,10 +182,10 @@ the requestion would have been made.
 
 ```{r eval=FALSE}
 list_locations(
-    limit=1000, 
-    parameters_id=2, 
-    providers_id=166, 
-    dry_run=TRUE
+  limit = 1000,
+  parameters_id = 2,
+  providers_id = 166,
+  dry_run = TRUE
 )
 
 #> GET /v3/locations?providers_id=166&parameters_id=10&limit=1000&page=1 HTTP/1.1
@@ -192,7 +194,7 @@ list_locations(
 #> X-API-Key: <REDACTED>
 #> User-Agent: openaq-r
 #> Content-Type: application/json
-#> Accept: application/json 
+#> Accept: application/json
 ```
 
 This can be helpful when debugging to identify issues and compare the raw query
