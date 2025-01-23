@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   openaq: openaq.html
   plotting: plotting.html
-last_built: 2025-01-23T23:12Z
+last_built: 2025-01-23T23:17Z
 urls:
   reference: https://openaq.github.io/openaq-r/reference
   article: https://openaq.github.io/openaq-r/articles
