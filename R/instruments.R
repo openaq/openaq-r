@@ -1,0 +1,186 @@
+#' Get a single instrument from the instruments resource.
+#'
+#' @param instruments_id An integer.
+#' @param as_data_frame A logical for toggling whether to return results as
+#' data frame or list defaults to TRUE.
+#' @param dry_run A logical for toggling a dry run of the request, defaults to
+#' FALSE.
+#' @param rate_limit A logical for toggling automatic rate limiting based on
+#' rate limit headers, defaults to FALSE.
+#' @param api_key A valid OpenAQ API key string, defaults to NULL.
+#'
+#' @return A data frame or a list of the results.
+#'
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' instrument <- get_instrument(42)
+#' }
+#'
+get_instrument <- function(
+    instruments_id,
+    as_data_frame = TRUE,
+    dry_run = FALSE,
+    rate_limit = FALSE,
+    api_key = NULL) {
+  path <- paste("instruments", instruments_id, sep = "/")
+  data <- fetch(path,
+    dry_run = dry_run,
+    rate_limit = rate_limit,
+    api_key = api_key
+  )
+  if (isTRUE(dry_run)) {
+    return(data)
+  }
+  if (isTRUE(as_data_frame)) {
+    invisible(as.data.frame.openaq_instruments_list(structure(
+      data,
+      class = c("openaq_instruments_list", "list")
+    )))
+  } else {
+    invisible(structure(
+      data,
+      class = c("openaq_instruments_list", "list")
+    ))
+  }
+}
+
+#' Get a list of instruments from the instruments resource.
+#'
+#' @param order_by A string.
+#' @param sort_order A string.
+#' @param limit An integer.
+#' @param page An integer.
+#' @param as_data_frame A logical for toggling whether to return results as
+#' data frame or list defaults to TRUE.
+#' @param dry_run A logical for toggling a dry run of the request, defaults to
+#' FALSE.
+#' @param rate_limit A logical for toggling automatic rate limiting based on
+#' rate limit headers, defaults to FALSE.
+#' @param api_key A valid OpenAQ API key string, defaults to NULL.
+#'
+#' @return A data frame or a list of the results.
+#'
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' instruments <- list_instruments()
+#' }
+#'
+list_instruments <- function(
+    order_by = NULL,
+    sort_order = NULL,
+    limit = NULL,
+    page = NULL,
+    as_data_frame = TRUE,
+    dry_run = FALSE,
+    rate_limit = FALSE,
+    api_key = NULL) {
+  param_defs <- list(
+    order_by = list(default = NULL, validator = NULL),
+    sort_order = list(default = NULL, validator = validate_sort_order),
+    limit = list(default = 100, validator = validate_limit),
+    page = list(default = 1, validator = validate_page)
+  )
+
+  params_list <- extract_parameters(param_defs,
+    order_by = order_by,
+    sort_order = sort_order,
+    limit = limit,
+    page = page
+  )
+  path <- "instruments"
+  data <- fetch(path,
+    query_params = params_list,
+    dry_run = dry_run,
+    rate_limit = rate_limit,
+    api_key = api_key
+  )
+  if (isTRUE(dry_run)) {
+    return(data)
+  }
+  if (isTRUE(as_data_frame)) {
+    return(as.data.frame.openaq_instruments_list(structure(
+      data,
+      class = c("openaq_instruments_list", "list")
+    )))
+  } else {
+    return(structure(
+      data,
+      class = c("openaq_instruments_list", "list")
+    ))
+  }
+}
+
+#' Get a list of manufacturer instruments from the instruments resource.
+#'
+#' @param manufacturers_id An integer.
+#'
+#' @return A data frame or a list of the results.
+#'
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' instruments <- list_manufacturer_instruments(42)
+#' }
+#'
+list_manufacturer_instruments <- function(
+    manufacturers_id,
+    as_data_frame = TRUE,
+    dry_run = FALSE,
+    rate_limit = FALSE,
+    api_key = NULL) {
+  path <- paste("manufacturers", manufacturers_id, "instruments", sep = "/")
+  data <- fetch(path,
+    dry_run = dry_run,
+    rate_limit = rate_limit,
+    api_key = api_key
+  )
+  if (as_data_frame == TRUE) {
+    return(as.data.frame.openaq_instruments_list(structure(
+      data,
+      class = c("openaq_instruments_list", "list")
+    )))
+  } else {
+    return(structure(
+      data,
+      class = c("openaq_instruments_list", "list")
+    ))
+  }
+}
+
+
+#' Method for converting openaq_instruments_list to data frame.
+#'
+#' @param data A list of countries as returned from list_instruments
+#'
+#' @export as.data.frame.openaq_instruments_list
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' instruments <- list_instruments(as_data_frame = FALSE)
+#' openaq_instruments_list.as.data.frame(instruments)
+#' }
+as.data.frame.openaq_instruments_list <- function(data, ...) {
+  tbl <- do.call(rbind, lapply(data, function(x) {
+    data.frame(
+      id = x$id,
+      name = x$name,
+      is_monitor = x$isMonitor,
+      manufacturer_id = x$manufacturer$id,
+      manufacturer_name = x$manufacturer$name
+    )
+  }))
+  tbl$id <- as.numeric(tbl$id)
+  tbl$is_monitor <- as.logical(tbl$is_monitor)
+  tbl$manufacturer_id <- as.numeric(tbl$manufacturer_id)
+  tbl$manufacturer_name <- as.factor(tbl$manufacturer_name)
+  attr(tbl, "meta") <- attr(data, "meta")
+  return(structure(tbl,
+    class = c("openaq_instruments_data.frame", "data.frame")
+  ))
+}

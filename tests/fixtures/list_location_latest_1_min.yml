@@ -1,0 +1,34 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.openaq.org/v3/locations/1/latest?datetime_min=2025-01-16T00%3A00%3A00%2B0000
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      X-API-Key: <<<test_openaq_api_key>>>
+      User-Agent: openaq-r
+      Content-Type: application/json
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      message: OK
+    headers:
+      date: Fri, 17 Jan 2025 16:42:24 GMT
+      server: uvicorn
+      content-type: application/json
+      x-ratelimit-limit: '100'
+      x-ratelimit-remaining: '93'
+      x-ratelimit-used: '7'
+      x-ratelimit-reset: '59'
+      cache-control: public, max-age=900
+      content-encoding: gzip
+      vary: Accept-Encoding
+      Transfer-Encoding: chunked
+    body:
+      encoding: ''
+      file: no
+      string: '{"meta":{"name":"openaq-api","website":"/","page":1,"limit":100,"found":0},"results":[]}'
+  recorded_at: 2025-01-17 16:42:27 GMT
+  recorded_with: vcr/1.6.0, webmockr/1.0.0

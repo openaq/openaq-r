@@ -1,0 +1,15 @@
+url: https://openaq.github.io/openaq-r/
+template:
+  bootstrap: 5
+navbar:
+  structure:
+    right:
+    - search
+    - slack
+    - github
+  components:
+    slack:
+      icon: fa-slack
+      href: https://join.slack.com/t/openaq/shared_invite/zt-yzqlgsva-v6McumTjy2BZnegIK9XCVw
+      aria-label: Slack
+

@@ -1,0 +1,10 @@
+.github
+LICENSE.md
+scripts
+CONTRIBUTING.md
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+.venv_altdoc
+^altdoc$
+^\.github$

@@ -1,0 +1,59 @@
+name: "Bug Report"
+description: Report an issue or possible bug with the functionality of the openaq R package.
+title: "[Bug]: "
+labels: [
+  "bug", 
+  "pending review"
+]
+assignees: 
+- russbiggs
+
+body:
+  - type: textarea
+    id: version
+    attributes:
+      label: "Package version"
+      description: Please provide the version of the openaq R package you are using. | 
+      You can find the current version by running `Rscript -e "packageVersion('openaq')"` in a terminal |
+      or `packageVersion('openaq')` when in an R shell.
+    validations:
+      required: true
+  - type: textarea
+    id: os
+    attributes:
+      label: "Operating system"
+      description: Please provide the operating system of the machine you experienced the issue.
+      placeholder: OSX Sequoia, Windows 11 etc.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: "Expected Behavior"
+      description: Please describe what the expected behavior should be.
+      placeholder: I expected it to do . . .
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: "Current Behavior"
+      description: Please describe what the current behavior is.
+      placeholder: Instead, the package did . . . 
+    validations:
+      required: true
+  - type: textarea
+    id: additional
+    attributes:
+      label: "Additional Information"
+      description: Any additional information that may be relevant for the issue.
+    validations:
+      required: false
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/openaq/.github/blob/main/CODE_OF_CONDUCT.md). 
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true

@@ -1,0 +1,63 @@
+---
+title: "plotting"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{plotting}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(openaq)
+```
+
+The openaq package provides convenience functions to help plot data
+extending the `base::plot` function. 
+
+To visualize locations on a map, call the `plot` function after returning a data
+frame from the `list_locations` function call. A basic basemap with national
+boundaries is included based on the [Natural Earth dataset](https://www.naturalearthdata.com/)
+via the [`maps`](https://cran.r-project.org/web/packages/maps/index.html) package. 
+
+```{r eval=FALSE}
+df <- list_locations(
+  bbox = list(6.291990,32.823129,37.932615,45.181129),
+  parameters_id = 2,
+  limit = 1000
+)
+plot(df)
+```
+
+![](./images/map_plot.png)
+
+We can configure and customize the figure using standard `base::plot` parameters
+in this example coloring the points by provider and customizing the type of 
+marker used.
+
+```{r eval=FALSE}
+plot(df, col = df$providers_id, pch = 20)
+```
+
+![](./images/map_plot_2.png)
+
+
+The `list_sensor_measurements` provides a `base::plot` function to visualize the
+measurement values as a time series line chart.
+
+```{r eval=FALSE}
+df <- list_sensor_measurements(
+  3920,
+  datetime_from = as.POSIXct("2025-01-01 00:00", tz = "America/Denver"),
+  datetime_to = as.POSIXct("2025-01-15 23:00", tz = "America/Denver"),
+)
+plot(df)
+```
+
+![](./images/measurements_plot.png)
