@@ -127,8 +127,8 @@ as.data.frame.openaq_parameters_list <- function(data, ...) {
       id = x$id,
       name = x$name,
       units = x$units,
-      display_name = x$displayName,
-      description = x$description,
+      display_name = or(x$displayName, NA),
+      description = or(x$description, NA)
     )
   }))
   tbl$id <- as.numeric(tbl$id)
