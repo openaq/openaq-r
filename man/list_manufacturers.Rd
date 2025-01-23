@@ -2,7 +2,7 @@
 % Please edit documentation in R/manufacturers.R
 \name{list_manufacturers}
 \alias{list_manufacturers}
-\title{get a list of manufacturers from the manufacturers resource.}
+\title{Get a list of manufacturers from the manufacturers resource.}
 \usage{
 list_manufacturers(
   order_by = NULL,
@@ -36,10 +36,10 @@ rate limit headers, defaults to FALSE.}
 \item{api_key}{A valid OpenAQ API key string, defaults to NULL.}
 }
 \value{
-A data frame or list of results.
+A data frame or a list of the results.
 }
 \description{
-get a list of manufacturers from the manufacturers resource.
+Get a list of manufacturers from the manufacturers resource.
 }
 \examples{
 \dontrun{

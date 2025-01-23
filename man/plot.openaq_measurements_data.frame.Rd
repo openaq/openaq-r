@@ -7,7 +7,9 @@
 \method{plot}{openaq_measurements_data.frame}(df, ...)
 }
 \arguments{
-\item{df}{A measurements data frame.}
+\item{df}{A data frame of measurements results.}
+
+\item{...}{Other options to be passed on to base::plot().}
 }
 \description{
 Helper for plotting measurements

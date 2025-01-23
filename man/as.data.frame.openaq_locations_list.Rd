@@ -2,12 +2,17 @@
 % Please edit documentation in R/locations.R
 \name{as.data.frame.openaq_locations_list}
 \alias{as.data.frame.openaq_locations_list}
-\title{method for converting to data frame}
+\title{Method for converting to data frame}
 \usage{
 \method{as.data.frame}{openaq_locations_list}(data, ...)
 }
+\arguments{
+\item{data}{A list of locations as returned from list_locations.}
+
+\item{...}{Other options.}
+}
 \description{
-method for converting to data frame
+Method for converting to data frame
 }
 \examples{
 \dontrun{

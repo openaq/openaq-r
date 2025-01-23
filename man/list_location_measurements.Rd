@@ -2,7 +2,7 @@
 % Please edit documentation in R/measurements.R
 \name{list_location_measurements}
 \alias{list_location_measurements}
-\title{fetch a list of measurements by locations_id}
+\title{Get a list of measurements by locations_id.}
 \usage{
 list_location_measurements(
   locations_id,
@@ -23,6 +23,9 @@ list_location_measurements(
 }
 \arguments{
 \item{locations_id}{An integer representing an OpenAQ sensors_id.}
+
+\item{parameters_ids}{An integer or list of integers to filer measurements to
+a subset of parameters.}
 
 \item{data}{A string a data interval to return, defaults to "measurements".}
 
@@ -52,10 +55,10 @@ rate limit headers, defaults to FALSE.}
 \item{api_key}{A valid OpenAQ API key string, defaults to NULL.}
 }
 \value{
-A data frame.
+A data frame or a list of the results.
 }
 \description{
-fetch a list of measurements by locations_id
+Get a list of measurements by locations_id.
 }
 \examples{
 \dontrun{

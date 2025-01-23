@@ -2,7 +2,7 @@
 % Please edit documentation in R/parameters.R
 \name{list_parameters}
 \alias{list_parameters}
-\title{get a list of parameters from the parameters resource.}
+\title{Get a list of parameters from the parameters resource.}
 \usage{
 list_parameters(
   order_by = NULL,
@@ -36,10 +36,10 @@ rate limit headers, defaults to FALSE.}
 \item{api_key}{A valid OpenAQ API key string, defaults to NULL.}
 }
 \value{
-A data frame.
+A data frame or a list of the results.
 }
 \description{
-get a list of parameters from the parameters resource.
+Get a list of parameters from the parameters resource.
 }
 \examples{
 \dontrun{

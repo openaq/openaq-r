@@ -2,7 +2,7 @@
 % Please edit documentation in R/providers.R
 \name{list_providers}
 \alias{list_providers}
-\title{get a list of providers from the providers resource.}
+\title{Get a list of providers from the providers resource.}
 \usage{
 list_providers(
   order_by = NULL,
@@ -36,10 +36,10 @@ rate limit headers, defaults to FALSE.}
 \item{api_key}{A valid OpenAQ API key string, defaults to NULL.}
 }
 \value{
-A data frame.
+A data frame or a list of the results.
 }
 \description{
-get a list of providers from the providers resource.
+Get a list of providers from the providers resource.
 }
 \examples{
 \dontrun{

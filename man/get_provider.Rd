@@ -2,7 +2,7 @@
 % Please edit documentation in R/providers.R
 \name{get_provider}
 \alias{get_provider}
-\title{get a single provider from providers resource.}
+\title{Get a single provider from providers resource.}
 \usage{
 get_provider(
   providers_id,
@@ -27,10 +27,10 @@ rate limit headers, defaults to FALSE.}
 \item{api_key}{A valid OpenAQ API key string, defaults to NULL.}
 }
 \value{
-A data frame.
+A data frame or a list of the results.
 }
 \description{
-get a single provider from providers resource.
+Get a single provider from providers resource.
 }
 \examples{
 \dontrun{

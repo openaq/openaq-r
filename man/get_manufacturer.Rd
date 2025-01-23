@@ -2,7 +2,7 @@
 % Please edit documentation in R/manufacturers.R
 \name{get_manufacturer}
 \alias{get_manufacturer}
-\title{get a single manufacturer from the manufacturers resource.}
+\title{Get a single manufacturer from the manufacturers resource.}
 \usage{
 get_manufacturer(
   manufacturers_id,
@@ -27,10 +27,10 @@ rate limit headers, defaults to FALSE.}
 \item{api_key}{A valid OpenAQ API key string, defaults to NULL.}
 }
 \value{
-A data frame.
+A data frame or a list of the results.
 }
 \description{
-get a single manufacturer from the manufacturers resource.
+Get a single manufacturer from the manufacturers resource.
 }
 \examples{
 \dontrun{

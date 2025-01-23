@@ -2,7 +2,7 @@
 % Please edit documentation in R/owners.R
 \name{list_owners}
 \alias{list_owners}
-\title{get a list of owners from the owners resource.}
+\title{Get a list of owners from the owners resource.}
 \usage{
 list_owners(
   order_by = NULL,
@@ -36,10 +36,10 @@ rate limit headers, defaults to FALSE.}
 \item{api_key}{A valid OpenAQ API key string, defaults to NULL.}
 }
 \value{
-A data frame.
+A data frame or a list of the results.
 }
 \description{
-get a list of owners from the owners resource.
+Get a list of owners from the owners resource.
 }
 \examples{
 \dontrun{

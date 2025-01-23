@@ -7,7 +7,9 @@
 \method{as.data.frame}{openaq_instruments_list}(data, ...)
 }
 \arguments{
-\item{data}{A list of countries as returned from list_instruments}
+\item{data}{A list of countries as returned from list_instruments.}
+
+\item{...}{Other options.}
 }
 \description{
 Method for converting openaq_instruments_list to data frame.

@@ -2,7 +2,7 @@
 % Please edit documentation in R/instruments.R
 \name{list_instruments}
 \alias{list_instruments}
-\title{get a list of instruments from the instruments resource.}
+\title{Get a list of instruments from the instruments resource.}
 \usage{
 list_instruments(
   order_by = NULL,
@@ -36,10 +36,10 @@ rate limit headers, defaults to FALSE.}
 \item{api_key}{A valid OpenAQ API key string, defaults to NULL.}
 }
 \value{
-A data frame.
+A data frame or a list of the results.
 }
 \description{
-get a list of instruments from the instruments resource.
+Get a list of instruments from the instruments resource.
 }
 \examples{
 \dontrun{

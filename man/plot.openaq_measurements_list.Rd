@@ -6,6 +6,11 @@
 \usage{
 \method{plot}{openaq_measurements_list}(meas, ...)
 }
+\arguments{
+\item{meas}{A list of measurements results.}
+
+\item{...}{Other options to be passed on to base::plot().}
+}
 \description{
 Helper for plotting measurements from list
 }

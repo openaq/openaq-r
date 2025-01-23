@@ -2,12 +2,20 @@
 % Please edit documentation in R/locations.R
 \name{plot.openaq_locations_list}
 \alias{plot.openaq_locations_list}
-\title{Helper for plotting locations from list}
+\title{Helper for plotting locations from list.}
 \usage{
 \method{plot}{openaq_locations_list}(loc, database = "world", ...)
 }
+\arguments{
+\item{loc}{A list of locations results.}
+
+\item{database}{the maps package database of geographic boundaries to use,
+defaults to "world".}
+
+\item{...}{Other options passed on to base::plot().}
+}
 \description{
-Helper for plotting locations from list
+Helper for plotting locations from list.
 }
 \examples{
 \dontrun{

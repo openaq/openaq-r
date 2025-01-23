@@ -8,6 +8,8 @@
 }
 \arguments{
 \item{data}{A list of measurements as returned from list_sensor_measurements.}
+
+\item{...}{Other options.}
 }
 \description{
 Method for converting openaq_measurements_list to data frame.

@@ -8,6 +8,8 @@
 }
 \arguments{
 \item{data}{A list of countries as returned from list_countries}
+
+\item{...}{Other options}
 }
 \description{
 Method for converting openaq_countries_list to data frame.

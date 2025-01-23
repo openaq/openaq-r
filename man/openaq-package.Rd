@@ -6,12 +6,13 @@
 \alias{openaq-package}
 \title{openaq: OpenAQ API Client}
 \description{
-Allows access to the version 3 of the OpenAQ API \url{https://openaq.org/}.
+An R package for interacting with the OpenAQ API \url{https://openaq.org/}.
 }
 \seealso{
 Useful links:
 \itemize{
   \item \url{https://github.com/openaq/openaq-r}
+  \item \url{https://openaq.github.io/openaq-r/}
   \item Report bugs at \url{https://github.com/openaq/openaq-r/issues}
 }
 

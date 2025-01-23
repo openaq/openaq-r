@@ -2,7 +2,7 @@
 % Please edit documentation in R/instruments.R
 \name{list_manufacturer_instruments}
 \alias{list_manufacturer_instruments}
-\title{get a list of manufacturer instruments from the instruments resource.}
+\title{Get a list of manufacturer instruments from the instruments resource.}
 \usage{
 list_manufacturer_instruments(
   manufacturers_id,
@@ -14,12 +14,23 @@ list_manufacturer_instruments(
 }
 \arguments{
 \item{manufacturers_id}{An integer.}
+
+\item{as_data_frame}{A logical for toggling whether to return results as
+data frame or list defaults to TRUE.}
+
+\item{dry_run}{A logical for toggling a dry run of the request, defaults to
+FALSE.}
+
+\item{rate_limit}{A logical for toggling automatic rate limiting based on
+rate limit headers, defaults to FALSE.}
+
+\item{api_key}{A valid OpenAQ API key string, defaults to NULL.}
 }
 \value{
-A data frame.
+A data frame or a list of the results.
 }
 \description{
-get a list of manufacturer instruments from the instruments resource.
+Get a list of manufacturer instruments from the instruments resource.
 }
 \examples{
 \dontrun{

@@ -7,14 +7,16 @@
 \method{as.data.frame}{openaq_providers_list}(data, ...)
 }
 \arguments{
-\item{data}{A list of countries as returned from list_instruments}
+\item{data}{A list of countries as returned from list_providers.}
+
+\item{...}{Other options.}
 }
 \description{
 Method for converting openaq_providers_list to data frame.
 }
 \examples{
 \dontrun{
-instruments <- list_instruments()
-openaq_instruments_list.as.data.frame(instruments)
+providers <- list_providers(as_data_frame = FALSE)
+openaq_instruments_list.as.data.frame(providers)
 }
 }

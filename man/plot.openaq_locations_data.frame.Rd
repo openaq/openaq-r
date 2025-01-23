@@ -2,12 +2,20 @@
 % Please edit documentation in R/locations.R
 \name{plot.openaq_locations_data.frame}
 \alias{plot.openaq_locations_data.frame}
-\title{helper for plotting locations on map}
+\title{Helper for plotting locations on map.}
 \usage{
 \method{plot}{openaq_locations_data.frame}(loc, database = "world", ...)
 }
+\arguments{
+\item{loc}{A data frame of locations results.}
+
+\item{database}{the maps package database of geographic boundaries to use,
+defaults to "world".}
+
+\item{...}{Other options passed on to base::plot().}
+}
 \description{
-helper for plotting locations on map
+Helper for plotting locations on map.
 }
 \examples{
 \dontrun{

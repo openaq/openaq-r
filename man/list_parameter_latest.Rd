@@ -2,7 +2,7 @@
 % Please edit documentation in R/latest.R
 \name{list_parameter_latest}
 \alias{list_parameter_latest}
-\title{get latest measurements by parameters_id}
+\title{Get the latest measurements by parameters_id.}
 \usage{
 list_parameter_latest(
   parameters_id,
@@ -36,10 +36,10 @@ rate limit headers, defaults to FALSE.}
 \item{api_key}{A valid OpenAQ API key string, defaults to NULL.}
 }
 \value{
-A data frame.
+A data frame or a list of the results.
 }
 \description{
-get latest measurements by parameters_id
+Get the latest measurements by parameters_id.
 }
 \examples{
 \dontrun{

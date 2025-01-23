@@ -2,7 +2,7 @@
 % Please edit documentation in R/measurements.R
 \name{list_sensor_measurements}
 \alias{list_sensor_measurements}
-\title{fetch a list of measurements by sensors_id}
+\title{Get a list of measurements by sensors_id.}
 \usage{
 list_sensor_measurements(
   sensors_id,
@@ -51,10 +51,10 @@ rate limit headers, defaults to FALSE.}
 \item{api_key}{A valid OpenAQ API key string, defaults to NULL.}
 }
 \value{
-A data frame.
+A data frame or a list of the results.
 }
 \description{
-fetch a list of measurements by sensors_id
+Get a list of measurements by sensors_id.
 }
 \examples{
 \dontrun{

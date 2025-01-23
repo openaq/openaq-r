@@ -2,7 +2,7 @@
 % Please edit documentation in R/parameters.R
 \name{get_parameter}
 \alias{get_parameter}
-\title{get a single parameter from the parameters resource.}
+\title{Get a single parameter from the parameters resource.}
 \usage{
 get_parameter(
   parameters_id,
@@ -27,10 +27,10 @@ rate limit headers, defaults to FALSE.}
 \item{api_key}{A valid OpenAQ API key string, defaults to NULL.}
 }
 \value{
-A data frame.
+A data frame or a list of the results.
 }
 \description{
-get a single parameter from the parameters resource.
+Get a single parameter from the parameters resource.
 }
 \examples{
 \dontrun{

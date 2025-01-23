@@ -2,19 +2,21 @@
 % Please edit documentation in R/sensors.R
 \name{as.data.frame.openaq_sensors_list}
 \alias{as.data.frame.openaq_sensors_list}
-\title{Method for converting openaq_manufacturers_list to data frame.}
+\title{Method for converting openaq_sensors_list to data frame.}
 \usage{
 \method{as.data.frame}{openaq_sensors_list}(data, ...)
 }
 \arguments{
-\item{data}{A list of countries as returned from list_instruments}
+\item{data}{A list of sensors as returned from get_sensor}
+
+\item{...}{Other options.}
 }
 \description{
-Method for converting openaq_manufacturers_list to data frame.
+Method for converting openaq_sensors_list to data frame.
 }
 \examples{
 \dontrun{
-instruments <- list_instruments()
-openaq_instruments_list.as.data.frame(instruments)
+sensor <- get_sensor(as_frame_frame = FALSE)
+openaq_sensors_list.as.data.frame(sensor)
 }
 }

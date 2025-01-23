@@ -2,7 +2,7 @@
 % Please edit documentation in R/instruments.R
 \name{get_instrument}
 \alias{get_instrument}
-\title{get a single instrument from the instruments resource.}
+\title{Get a single instrument from the instruments resource.}
 \usage{
 get_instrument(
   instruments_id,
@@ -27,10 +27,10 @@ rate limit headers, defaults to FALSE.}
 \item{api_key}{A valid OpenAQ API key string, defaults to NULL.}
 }
 \value{
-A data frame.
+A data frame or a list of the results.
 }
 \description{
-get a single instrument from the instruments resource.
+Get a single instrument from the instruments resource.
 }
 \examples{
 \dontrun{
