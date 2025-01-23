@@ -363,7 +363,7 @@ test_that("validate_rollup handles valid inputs", {
 })
 
 test_that("validate_rollup handles invalid inputs", {
-  error_message <- "Invalid rollup Must be one of 'hourly','daily','monthly','yearly','hourofday','dayofweek','monthofyear'."
+  error_message <- "Invalid rollup Must be one of 'hourly','daily','monthly','yearly','hourofday','dayofweek','monthofyear'." # nolint
   expect_error(validate_rollup("invalid_rollup"), error_message)
   expect_error(validate_rollup(123), error_message)
   expect_error(validate_rollup(TRUE), error_message)
