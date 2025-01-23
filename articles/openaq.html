@@ -98,17 +98,17 @@ request a new one in your OpenAQ Explorer account.
 also provides a helper function called <code><a href="../reference/set_api_key.html">set_api_key()</a></code> to set
 this value.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/set_api_key.html">set_api_key</a></span><span class="op">(</span><span class="st">'my-super-secret-openaq-key-1234'</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/set_api_key.html">set_api_key</a></span><span class="op">(</span><span class="st">"my-super-secret-openaq-key-1234"</span><span class="op">)</span></span></code></pre></div>
 <p>Alternatively, the API key can be set on individual resource function
 calls e.g.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/list_locations.html">list_locations</a></span><span class="op">(</span>api_key<span class="op">=</span><span class="st">"my-super-secret-openaq-key-1234"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/list_locations.html">list_locations</a></span><span class="op">(</span>api_key <span class="op">=</span> <span class="st">"my-super-secret-openaq-key-1234"</span><span class="op">)</span></span></code></pre></div>
 <p>Setting the API key at an individual function level will always take
 precedent over an API key set at the environment variable level
 e.g. </p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/set_api_key.html">set_api_key</a></span><span class="op">(</span><span class="st">"my-super-secret-openaq-key-1234"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/list_locations.html">list_locations</a></span><span class="op">(</span>api_key<span class="op">=</span><span class="st">"this-is-my-alternate-api-key"</span><span class="op">)</span> <span class="co"># This key will override the previous one, for this call only.</span></span></code></pre></div>
+<span><span class="fu"><a href="../reference/list_locations.html">list_locations</a></span><span class="op">(</span>api_key <span class="op">=</span> <span class="st">"this-is-my-alternate-api-key"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="rate-limits">Rate limits<a class="anchor" aria-label="anchor" href="#rate-limits"></a>
@@ -128,9 +128,9 @@ attributes on the output date frame:</p>
 </ul>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">locations</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/list_locations.html">list_locations</a></span><span class="op">(</span></span>
-<span>    limit<span class="op">=</span><span class="fl">1000</span>, </span>
-<span>    parameters_id<span class="op">=</span><span class="fl">2</span>, </span>
-<span>    providers_id<span class="op">=</span><span class="fl">166</span></span>
+<span>  limit <span class="op">=</span> <span class="fl">1000</span>,</span>
+<span>  parameters_id <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>  providers_id <span class="op">=</span> <span class="fl">166</span></span>
 <span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">locations</span><span class="op">$</span><span class="va">x_ratelimit_remaining</span><span class="op">)</span></span>
 <span></span>
@@ -158,13 +158,13 @@ that returns more than on results, i.e. “list” functions such as
 <p>Examples:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/list_locations.html">list_locations</a></span><span class="op">(</span></span>
-<span>    limit<span class="op">=</span><span class="fl">1000</span>, </span>
-<span>    page<span class="op">=</span><span class="fl">1</span></span>
+<span>  limit <span class="op">=</span> <span class="fl">1000</span>,</span>
+<span>  page <span class="op">=</span> <span class="fl">1</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/list_locations.html">list_locations</a></span><span class="op">(</span></span>
-<span>    limit<span class="op">=</span><span class="fl">1000</span>, </span>
-<span>    page<span class="op">=</span><span class="fl">2</span></span>
+<span>  limit <span class="op">=</span> <span class="fl">1000</span>,</span>
+<span>  page <span class="op">=</span> <span class="fl">2</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
@@ -180,20 +180,20 @@ data frame parsing with the <code>as_data_frame</code> function
 parameter.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/list_locations.html">list_locations</a></span><span class="op">(</span></span>
-<span>    limit<span class="op">=</span><span class="fl">1000</span>, </span>
-<span>    parameters_id<span class="op">=</span><span class="fl">2</span>, </span>
-<span>    providers_id<span class="op">=</span><span class="fl">166</span>, </span>
-<span>    as_data_frame<span class="op">=</span><span class="cn">FALSE</span></span>
+<span>  limit <span class="op">=</span> <span class="fl">1000</span>,</span>
+<span>  parameters_id <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>  providers_id <span class="op">=</span> <span class="fl">166</span>,</span>
+<span>  as_data_frame <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">#&gt; list()</span></span>
 <span><span class="co">#&gt; attr(,"meta")</span></span>
 <span><span class="co">#&gt; attr(,"meta")$name</span></span>
 <span><span class="co">#&gt; [1] "openaq-api"</span></span>
-<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;</span></span>
 <span><span class="co">#&gt; attr(,"meta")$website</span></span>
 <span><span class="co">#&gt; [1] "/"</span></span>
-<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;</span></span>
 <span><span class="co">#&gt; attr(,"meta")$page</span></span>
 <span><span class="co">#&gt; [1] 1</span></span>
 <span><span class="co">#&gt; ...</span></span></code></pre></div>
@@ -211,10 +211,10 @@ course implement your own rate limiting yourself, but the built-in
 functionality is provided as an easy to use option.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/list_locations.html">list_locations</a></span><span class="op">(</span></span>
-<span>    limit<span class="op">=</span><span class="fl">1000</span>, </span>
-<span>    parameters_id<span class="op">=</span><span class="fl">2</span>, </span>
-<span>    providers_id<span class="op">=</span><span class="fl">166</span>, </span>
-<span>    rate_limit<span class="op">=</span><span class="cn">TRUE</span></span>
+<span>  limit <span class="op">=</span> <span class="fl">1000</span>,</span>
+<span>  parameters_id <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>  providers_id <span class="op">=</span> <span class="fl">166</span>,</span>
+<span>  rate_limit <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p>This functionality uses the OpenAQ API’s custom <a href="https://docs.openaq.org/using-the-api/rate-limits#rate-limit-headers" class="external-link">rate
 limit headers</a> and the <code><a href="https://httr2.r-lib.org/reference/req_retry.html" class="external-link">httr2::req_retry()</a></code> function
@@ -229,10 +229,10 @@ instead prints out a summary of how the requestion would have been
 made.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/list_locations.html">list_locations</a></span><span class="op">(</span></span>
-<span>    limit<span class="op">=</span><span class="fl">1000</span>, </span>
-<span>    parameters_id<span class="op">=</span><span class="fl">2</span>, </span>
-<span>    providers_id<span class="op">=</span><span class="fl">166</span>, </span>
-<span>    dry_run<span class="op">=</span><span class="cn">TRUE</span></span>
+<span>  limit <span class="op">=</span> <span class="fl">1000</span>,</span>
+<span>  parameters_id <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>  providers_id <span class="op">=</span> <span class="fl">166</span>,</span>
+<span>  dry_run <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">#&gt; GET /v3/locations?providers_id=166&amp;parameters_id=10&amp;limit=1000&amp;page=1 HTTP/1.1</span></span>
@@ -241,7 +241,7 @@ made.</p>
 <span><span class="co">#&gt; X-API-Key: &lt;REDACTED&gt;</span></span>
 <span><span class="co">#&gt; User-Agent: openaq-r</span></span>
 <span><span class="co">#&gt; Content-Type: application/json</span></span>
-<span><span class="co">#&gt; Accept: application/json </span></span></code></pre></div>
+<span><span class="co">#&gt; Accept: application/json</span></span></code></pre></div>
 <p>This can be helpful when debugging to identify issues and compare the
 raw query URL and headers.</p>
 <p>This functionality uses the <code><a href="https://httr2.r-lib.org/reference/req_dry_run.html" class="external-link">httr2::req_dry_run()</a></code>
