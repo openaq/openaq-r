@@ -88,10 +88,29 @@ test_that("check_api_key throws with correct message", {
 
 # enable_rate_limit
 
+test_that("enable_rate_limit toggles environment variable", {
+  withr::with_envvar(
+    new = c("RATE_LIMIT" = NA),
+    {
+      enable_rate_limit()
+      expect_equal(Sys.getenv("RATE_LIMIT"), "TRUE")
+    }
+  )
+})
 
 
 # get_rate_limit
 
+test_that("get_rate_limit gets environment variable", {
+  withr::with_envvar(
+    new = c("RATE_LIMIT" = NA),
+    {
+      expect_equal(get_rate_limit(), FALSE)
+      enable_rate_limit()
+      expect_equal(get_rate_limit(), TRUE)
+    }
+  )
+})
 
 
 

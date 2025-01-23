@@ -124,10 +124,10 @@ test_that("validate_licenses_id throws with correct error message", {
 
 # validate_instruments_id
 
-test_that("validate_licenses_id throws with correct error message", {
+test_that("validate_instruments_id throws with correct error message", {
   expect_error(
-    validate_licenses_id("abc"),
-    "licenses_id must be a numeric value or a list of numeric values."
+    validate_instruments_id("abc"),
+    "instruments_id must be a numeric value or a list of numeric values."
   )
 })
 
@@ -442,8 +442,25 @@ test_that("list_to_string collapses mixed values correctly", {
 })
 
 
-# transform_list_or_item TODO
+# transform_list_or_item
+
+test_that("transform_list_or_item works as expected", {
+  expect_equal(transform_list_or_item(list(1, 2, 3)), "1,2,3")
+  expect_equal(transform_list_or_item(42), 42)
+  expect_equal(transform_list_or_item("openaq"), "openaq")
+  expect_equal(transform_list_or_item(list()), "")
+  expect_equal(transform_list_or_item(NULL), NULL)
+})
 
 # parse_openaq_timestamp TODO
 
-# or TODO
+# or
+
+test_that("or function works as expected", {
+  expect_equal(or(c(), "default"), "default")
+  expect_equal(or(c(NULL, NULL), 10), 10)
+  expect_equal(or(c(NA, NA), "default"), "default")
+  expect_equal(or(c(NaN, NaN), 0), 0)
+  expect_equal(or(c(1, 2, 3), "default"), c(1, 2, 3))
+  expect_equal(or(c(1, NA, 3), "default"), c(1, NA, 3))
+})

@@ -10,6 +10,8 @@ permissions: read-all
   
 jobs:
     lint:
+        if: '!contains(github.event.head_commit.message, "lint skip")'
+
         runs-on: ubuntu-latest
         env:
           GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
