@@ -127,7 +127,8 @@ list_parameter_latest <- function(
 
 #' Method for converting openaq_latest_list to data frame.
 #'
-#' @param data A list of countries as returned from list_instruments
+#' @param data A list of countries as returned from list_instruments.
+#' @param ... Other options.
 #'
 #' @export as.data.frame.openaq_latest_list
 #' @export

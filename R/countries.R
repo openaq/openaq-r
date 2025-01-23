@@ -122,6 +122,7 @@ list_countries <- function(
 #' Method for converting openaq_countries_list to data frame.
 #'
 #' @param data A list of countries as returned from list_countries
+#' @param ... Other options
 #'
 #' @export as.data.frame.openaq_countries_list
 #' @export

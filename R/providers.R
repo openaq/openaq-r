@@ -111,15 +111,16 @@ list_providers <- function(
 
 #' Method for converting openaq_providers_list to data frame.
 #'
-#' @param data A list of countries as returned from list_instruments
+#' @param data A list of countries as returned from list_providers.
+#' @param ... Other options.
 #'
 #' @export as.data.frame.openaq_providers_list
 #' @export
 #'
 #' @examples
 #' \dontrun{
-#' instruments <- list_instruments()
-#' openaq_instruments_list.as.data.frame(instruments)
+#' providers <- list_providers(as_data_frame = FALSE)
+#' openaq_instruments_list.as.data.frame(providers)
 #' }
 as.data.frame.openaq_providers_list <- function(data, ...) {
   tbl <- do.call(rbind, lapply(data, function(x) {

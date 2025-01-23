@@ -91,13 +91,14 @@ get_location_sensors <- function(
 #' Method for converting openaq_sensors_list to data frame.
 #'
 #' @param data A list of sensors as returned from get_sensor
+#' @param ... Other options.
 #'
 #' @export as.data.frame.openaq_sensors_list
 #' @export
 #'
 #' @examples
 #' \dontrun{
-#' sensor <- get_sensor()
+#' sensor <- get_sensor(as_frame_frame = FALSE)
 #' openaq_sensors_list.as.data.frame(sensor)
 #' }
 as.data.frame.openaq_sensors_list <- function(data, ...) {

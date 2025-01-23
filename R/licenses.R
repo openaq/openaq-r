@@ -110,7 +110,8 @@ list_licenses <- function(
 
 #' Method for converting openaq_instruments_list to data frame.
 #'
-#' @param data A list of countries as returned from list_instruments
+#' @param data A list of countries as returned from list_instruments.
+#' @param ... Other options.
 #'
 #' @export as.data.frame.openaq_licenses_list
 #' @export

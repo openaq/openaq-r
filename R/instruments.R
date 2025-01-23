@@ -117,6 +117,13 @@ list_instruments <- function(
 #' Get a list of manufacturer instruments from the instruments resource.
 #'
 #' @param manufacturers_id An integer.
+#' @param as_data_frame A logical for toggling whether to return results as
+#' data frame or list defaults to TRUE.
+#' @param dry_run A logical for toggling a dry run of the request, defaults to
+#' FALSE.
+#' @param rate_limit A logical for toggling automatic rate limiting based on
+#' rate limit headers, defaults to FALSE.
+#' @param api_key A valid OpenAQ API key string, defaults to NULL.
 #'
 #' @return A data frame or a list of the results.
 #'
@@ -155,7 +162,8 @@ list_manufacturer_instruments <- function(
 
 #' Method for converting openaq_instruments_list to data frame.
 #'
-#' @param data A list of countries as returned from list_instruments
+#' @param data A list of countries as returned from list_instruments.
+#' @param ... Other options.
 #'
 #' @export as.data.frame.openaq_instruments_list
 #' @export

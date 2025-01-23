@@ -204,6 +204,9 @@ list_locations <- function(
 
 #' Method for converting to data frame
 #'
+#' @param data A list of locations as returned from list_locations.
+#' @param ... Other options.
+#'
 #' @export as.data.frame.openaq_locations_list
 #' @export
 #'
@@ -246,6 +249,11 @@ as.data.frame.openaq_locations_list <- function(data, ...) {
 
 #' Helper for plotting locations on map.
 #'
+#' @param loc A data frame of locations results.
+#' @param database the maps package database of geographic boundaries to use,
+#' defaults to "world".
+#' @param ... Other options passed on to base::plot().
+#'
 #' @export
 #'
 #' @examples
@@ -259,6 +267,11 @@ plot.openaq_locations_data.frame <- function(loc, database = "world", ...) {
 }
 
 #' Helper for plotting locations from list.
+#'
+#' @param loc A list of locations results.
+#' @param database the maps package database of geographic boundaries to use,
+#' defaults to "world".
+#' @param ... Other options passed on to base::plot().
 #'
 #' @export
 #'

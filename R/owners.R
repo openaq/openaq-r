@@ -111,7 +111,9 @@ list_owners <- function(
 
 #' Method for converting openaq_owners_list to data frame.
 #'
-#' @param data A list of countries as returned from list_instruments
+#' @param data A list of countries as returned from list_owners.
+#' @param ... Other options.
+
 #'
 #' @export as.data.frame.openaq_owners_list
 #' @export

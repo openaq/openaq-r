@@ -111,6 +111,7 @@ list_parameters <- function(
 #' Method for converting openaq_parameters_list to data frame.
 #'
 #' @param data A list of countries as returned from list_parameters.
+#' @param ... Other options.
 #'
 #' @export as.data.frame.openaq_parameters_list
 #' @export

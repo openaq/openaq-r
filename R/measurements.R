@@ -95,6 +95,8 @@ list_sensor_measurements <- function(
 #' Get a list of measurements by locations_id.
 #'
 #' @param locations_id An integer representing an OpenAQ sensors_id.
+#' @param parameters_ids An integer or list of integers to filer measurements to
+#' a subset of parameters.
 #' @param data A string a data interval to return, defaults to "measurements".
 #' @param rollup A string.
 #' @param datetime_from A POSIXct datetime to filter measurements
@@ -212,6 +214,7 @@ get_summary_field <- function(x, key) {
 #' Method for converting openaq_measurements_list to data frame.
 #'
 #' @param data A list of measurements as returned from list_sensor_measurements.
+#' @param ... Other options.
 #'
 #' @export as.data.frame.openaq_measurements_list
 #' @export
@@ -282,7 +285,8 @@ as.data.frame.openaq_measurements_list <- function(data, ...) {
 
 #' Helper for plotting measurements
 #'
-#' @param df A measurements data frame.
+#' @param df A data frame of measurements results.
+#' @param ... Other options to be passed on to base::plot().
 #'
 #' @export
 #'
@@ -304,6 +308,9 @@ plot.openaq_measurements_data.frame <- function(df, ...) {
 }
 
 #' Helper for plotting measurements from list
+#'
+#' @param meas A list of measurements results.
+#' @param ... Other options to be passed on to base::plot().
 #'
 #' @export
 #'
