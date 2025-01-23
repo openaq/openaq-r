@@ -53,15 +53,19 @@
 
 
 <dl><dt id="arg-data">data<a class="anchor" aria-label="anchor" href="#arg-data"></a></dt>
-<dd><p>A list of countries as returned from list_instruments</p></dd>
+<dd><p>A list of countries as returned from list_providers.</p></dd>
+
+
+<dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
+<dd><p>Other options.</p></dd>
 
 </dl></div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
-<span class="r-in"><span><span class="va">instruments</span> <span class="op">&lt;-</span> <span class="fu"><a href="list_instruments.html">list_instruments</a></span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu">openaq_instruments_list.as.data.frame</span><span class="op">(</span><span class="va">instruments</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">providers</span> <span class="op">&lt;-</span> <span class="fu"><a href="list_providers.html">list_providers</a></span><span class="op">(</span>as_data_frame <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">openaq_instruments_list.as.data.frame</span><span class="op">(</span><span class="va">providers</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
