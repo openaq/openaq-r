@@ -1,6 +1,9 @@
 url: https://openaq.github.io/openaq-r/
 template:
   bootstrap: 5
+  includes:
+  in_header: |
+    <script defer data-domain="openaq.github.io/openaq-r" src="https://plausible.io/js/script.js"></script>
 navbar:
   structure:
     right:
