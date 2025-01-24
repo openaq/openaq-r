@@ -1,4 +1,4 @@
-# openaq R client <img src="https://github.com/user-attachments/assets/3b75f3f7-f570-422f-99dd-17c7835d5594" align="right" alt="openaq hex logo"  style="height: 140px;"/>
+# openaq R client <img src="man/figures/logo.png" align="right" alt="openaq hex logo" style="height: 140px;"/>
 
 [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 [![R-CMD-check](https://github.com/openaq/openaq-r/actions/workflows/check.yaml/badge.svg)](https://github.com/openaq/openaq-r/actions/workflows/check.yaml)
