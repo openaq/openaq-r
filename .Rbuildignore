@@ -8,3 +8,4 @@ CONTRIBUTING.md
 .venv_altdoc
 ^altdoc$
 ^\.github$
+pkgdown/
