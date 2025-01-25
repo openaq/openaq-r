@@ -207,7 +207,11 @@ get_summary_field <- function(x, key) {
   if (is.null(x$summary)) {
     return(NA)
   } else {
-    return(x$summary[key])
+    if (is.null(x$summary[key])) {
+      return(x$summary[key])
+    } else {
+      return(NA)
+    }
   }
 }
 
