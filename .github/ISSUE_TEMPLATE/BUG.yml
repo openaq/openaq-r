@@ -13,9 +13,7 @@ body:
     id: version
     attributes:
       label: "Package version"
-      description: Please provide the version of the openaq R package you are using. | 
-      You can find the current version by running `Rscript -e "packageVersion('openaq')"` in a terminal |
-      or `packageVersion('openaq')` when in an R shell.
+      description: Please provide the version of the openaq R package you are using. You can find the current version by running `Rscript -e "packageVersion('openaq')"` in a terminal or `packageVersion('openaq')` when in an R shell.
     validations:
       required: true
   - type: textarea
