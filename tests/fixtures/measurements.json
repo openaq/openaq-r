@@ -1,0 +1,293 @@
+[
+      {
+        "value": -47340982.813954554,
+        "flagInfo": {
+          "hasFlags": false
+        },
+        "parameter": {
+          "id": 65490195,
+          "name": "enim Duis",
+          "units": "qui reprehenderit deserunt cupidatat",
+          "displayName": null
+        },
+        "period": {
+          "label": "esse",
+          "interval": "ullamco",
+          "datetimeFrom": {
+            "utc": "1937-09-10T03:47:48.0Z",
+            "local": "1925-10-19T08:29:12.0Z"
+          },
+          "datetimeTo": {
+            "utc": "1893-12-09T20:17:27.0Z",
+            "local": "1954-02-16T22:41:26.0Z"
+          }
+        },
+        "coordinates": {
+          "latitude": -76763828.2592237,
+          "longitude": null
+        },
+        "summary": null,
+        "coverage": {
+          "expectedCount": -87047965,
+          "expectedInterval": "ut commodo elit",
+          "observedCount": 68325304,
+          "observedInterval": "fugiat elit dolore sint ipsum",
+          "percentComplete": 5720402.867241383,
+          "percentCoverage": 29089238.88603407,
+          "datetimeFrom": null,
+          "datetimeTo": null
+        }
+      },
+      {
+        "value": -86371425.8576044,
+        "flagInfo": {
+          "hasFlags": false
+        },
+        "parameter": {
+          "id": -27001562,
+          "name": "ullamco proident dolor ipsum",
+          "units": "nisi",
+          "displayName": "qui sit"
+        },
+        "coordinates": {
+          "longitude": -19643689.607687518
+        }
+      },
+      {
+        "value": -6892438.932108775,
+        "flagInfo": {
+          "hasFlags": false
+        },
+        "parameter": {
+          "id": -82864038,
+          "name": "cillum culpa eiusmod",
+          "units": "aliquip enim dolor",
+          "displayName": null
+        },
+        "period": null,
+        "coordinates": {
+          "latitude": null,
+          "longitude": null
+        },
+        "summary": {
+          "min": 36709954.523892075,
+          "q02": null,
+          "q25": 12189436.564063966,
+          "median": null,
+          "q75": -40597939.937019676,
+          "q98": -59206407.590350896,
+          "max": null,
+          "avg": 81960949.88478512,
+          "sd": -14130360.072005302
+        },
+        "coverage": null
+      },
+      {
+        "value": -91366542.38267487,
+        "flagInfo": {
+          "hasFlags": true
+        },
+        "parameter": {
+          "id": 88218009,
+          "name": "magna officia quis et",
+          "units": "reprehenderit",
+          "displayName": "incididunt anim laboris velit"
+        },
+        "period": {
+          "label": "ut fugiat elit dolore",
+          "interval": "cillum"
+        },
+        "summary": {
+          "min": null,
+          "q02": null,
+          "median": -85804083.85147958,
+          "q75": null,
+          "max": null,
+          "sd": 97260260.87974119
+        },
+        "coverage": null
+      },
+      {
+        "value": 21369020.115981385,
+        "flagInfo": {
+          "hasFlags": true
+        },
+        "parameter": {
+          "id": -25819091,
+          "name": "ea fugiat reprehenderit dolor",
+          "units": "aliquip Excepteur esse velit in",
+          "displayName": null
+        },
+        "coverage": null
+      },
+      {
+        "value": 2391074.328416869,
+        "flagInfo": {
+          "hasFlags": false
+        },
+        "parameter": {
+          "id": -77763390,
+          "name": "deserunt amet",
+          "units": "id sunt",
+          "displayName": "non"
+        },
+        "period": {
+          "label": "et nostrud tempor dolore",
+          "interval": "anim"
+        },
+        "coordinates": {
+          "latitude": null,
+          "longitude": null
+        },
+        "summary": null,
+        "coverage": {
+          "expectedCount": -75230645,
+          "expectedInterval": "ut",
+          "observedCount": -27479225,
+          "observedInterval": "anim magna in mollit amet",
+          "percentComplete": 64737388.607310474,
+          "percentCoverage": 15434624.494723618,
+          "datetimeFrom": {
+            "utc": "1893-05-25T01:45:28.0Z",
+            "local": "1961-05-29T01:08:18.0Z"
+          },
+          "datetimeTo": null
+        }
+      },
+      {
+        "value": -72102098.3262779,
+        "flagInfo": {
+          "hasFlags": true
+        },
+        "parameter": {
+          "id": -7149289,
+          "name": "reprehenderit officia labore enim",
+          "units": "tempor in reprehenderit",
+          "displayName": null
+        }
+      },
+      {
+        "value": -48153352.96223515,
+        "flagInfo": {
+          "hasFlags": true
+        },
+        "parameter": {
+          "id": 1959447,
+          "name": "do cupidatat quis",
+          "units": "sed et deserunt nisi elit"
+        },
+        "coverage": null
+      },
+      {
+        "value": -47858274.189852156,
+        "flagInfo": {
+          "hasFlags": true
+        },
+        "parameter": {
+          "id": -86398406,
+          "name": "consectetur",
+          "units": "Excepteur aliqua nisi laboris dolore",
+          "displayName": null
+        },
+        "period": {
+          "label": "et ipsum reprehenderit velit",
+          "interval": "culpa in",
+          "datetimeFrom": {
+            "utc": "1954-01-11T13:34:20.0Z",
+            "local": "1965-12-17T18:16:16.0Z"
+          },
+          "datetimeTo": {
+            "utc": "1946-09-07T22:38:37.0Z",
+            "local": "1945-04-04T07:22:05.0Z"
+          }
+        },
+        "coordinates": {
+        "latitude": -26452301.537107825
+        },
+        "coverage": null
+      },
+      {
+        "value": -16652021.349222496,
+        "flagInfo": {
+          "hasFlags": false
+        },
+        "parameter": {
+          "id": -44404473,
+          "name": "Excepteur commodo",
+          "units": "velit fugiat commodo",
+          "displayName": null
+        },
+        "period": null,
+        "summary": null,
+        "coverage": null
+      },
+      {
+        "value": -47789739.15871849,
+        "flagInfo": {
+          "hasFlags": false
+        },
+        "parameter": {
+          "id": -9181870,
+          "name": "sunt mollit ut in",
+          "units": "dolore aliquip exercitation nisi incididunt"
+        },
+        "period": {
+          "label": "do ea est labore",
+          "interval": "aliquip",
+          "datetimeFrom": {
+            "utc": "1944-05-19T09:03:23.0Z",
+            "local": "1942-10-20T06:28:30.0Z"
+          },
+          "datetimeTo": null
+        },
+        "coordinates": {
+          "latitude": -49423854.99876734,
+          "longitude": -26452301.537107825
+
+        },
+        "coverage": null
+      },
+      {
+        "value": -8502299.268604353,
+        "flagInfo": {
+          "hasFlags": true
+        },
+        "parameter": {
+          "id": -80516764,
+          "name": "sint velit Lorem mollit",
+          "units": "cupidatat officia ipsum",
+          "displayName": "Ut minim deserunt qui"
+        },
+        "period": null,
+        "coordinates": {
+          "latitude": null,
+          "longitude": null
+        },
+        "summary": null,
+        "coverage": null
+      },
+      {
+        "value": 63300636.84790358,
+        "flagInfo": {
+          "hasFlags": false
+        },
+        "parameter": {
+          "id": 59832902,
+          "name": "ut labore reprehenderit in ex",
+          "units": "velit sed ut cillum",
+          "displayName": "esse laboris"
+        },
+        "summary": {
+          "q02": 63975820.65900132,
+          "q25": null,
+          "median": null,
+          "q75": null,
+          "q98": 91368370.84982404,
+          "max": null,
+          "avg": -51048955.6680044,
+          "sd": 7661450.210340351
+        },
+        "coverage": null
+      }
+    ]
+  

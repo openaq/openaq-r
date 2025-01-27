@@ -202,6 +202,18 @@ list_location_measurements <- function(
   }
 }
 
+get_period_field <- function(x, key) {
+  if (is.null(x$period)) {
+    return(NA)
+  } else {
+    if (is.null(x$period[key])) {
+      return(x$period[key])
+    } else {
+      return(NA)
+    }
+  }
+}
+
 
 get_summary_field <- function(x, key) {
   if (is.null(x$summary)) {
@@ -214,6 +226,7 @@ get_summary_field <- function(x, key) {
     }
   }
 }
+
 
 #' Method for converting openaq_measurements_list to data frame.
 #'
@@ -235,27 +248,27 @@ as.data.frame.openaq_measurements_list <- function(data, ...) {
       parameter_id = x$parameter$id,
       parameter_name = x$parameter$name,
       parameter_units = x$parameter$units,
-      period_label = x$period$label,
-      period_interval = x$period$interval,
-      datetime_from = parse_openaq_timestamp(x$period$datetimeFrom$local),
-      datetime_to = parse_openaq_timestamp(x$period$datetimeTo$local),
-      latitude = check_coordinates(x$coordinates, "latitude"),
-      longitude = check_coordinates(x$coordinates, "longitude"),
-      min = get_summary_field(x, "min"),
-      q02 = get_summary_field(x, "q02"),
-      q25 = get_summary_field(x, "q25"),
-      median = get_summary_field(x, "median"),
-      q75 = get_summary_field(x, "q75"),
-      q98 = get_summary_field(x, "q98"),
-      max = get_summary_field(x, "max"),
-      avg = get_summary_field(x, "avg"),
-      sd = get_summary_field(x, "sd"),
-      expected_count = x$coverage$expectedCount,
-      expected_interval = x$coverage$expectedInterval,
-      observed_count = x$coverage$observedCount,
-      observed_interval = x$coverage$observedInterval,
-      percent_complete = x$coverage$percentComplete,
-      percent_coverage = x$coverage$percentCoverage
+      period_label = deep_get(x, "period", "label"),
+      period_interval = deep_get(x, "period", "interval"),
+      datetime_from = parse_openaq_timestamp(deep_get(x, "period", "datetimeFrom", "local", default = NULL)),
+      datetime_to = parse_openaq_timestamp(deep_get(x, "period", "datetimeTo", "local", default = NULL)),
+      latitude = deep_get(x, "coordinates", "latitude"),
+      longitude = deep_get(x, "coordinates", "longitude"),
+      min = deep_get(x, "summary", "min"),
+      q02 = deep_get(x, "summary", "q02"),
+      q25 = deep_get(x, "summary", "q25"),
+      median = deep_get(x, "summary", "median"),
+      q75 = deep_get(x, "summary", "q75"),
+      q98 = deep_get(x, "summary", "q98"),
+      max = deep_get(x, "summary", "max"),
+      avg = deep_get(x, "summary", "avg"),
+      sd = deep_get(x, "summary", "sd"),
+      expected_count = deep_get(x, "coverage", "expectedCount"),
+      expected_interval = deep_get(x, "coverage", "expectedInterval"),
+      observed_count = deep_get(x, "coverage", "observedCount"),
+      observed_interval = deep_get(x, "coverage", "observedInterval"),
+      percent_complete = deep_get(x, "coverage", "percentComplete"),
+      percent_coverage = deep_get(x, "coverage", "percentCoverage")
     )
   }))
   tbl$value <- as.numeric(tbl$value)

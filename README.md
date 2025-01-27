@@ -13,7 +13,7 @@ The package is available to install through Github. Use the `install_github` com
 ```r
 library("remotes")
 
-install_github("openaq/openaq-r")
+install_github("openaq/openaq-r@*release")
 ```
 
 ## Quickstart
@@ -53,4 +53,17 @@ This returns a data frame that will look something like:
 
 ## Development
 
-Contributions are welcome. See the [contribution guide](CONTRIBUTING.md) for more information.
+Contributions are welcome. See the [contribution guide](CONTRIBUTING.md) for general information about contributing to the package.
+
+Specific guidelines for contributions the openaq package:
+
+* Code contributions must follow lint convention using [`lintr`](https://lintr.r-lib.org/),
+see the .lintr file for specifics.
+
+* Code contributions must include unit test, iether updated or wholly new,
+depending on the contribution. See testing [README](tests/README.md) for more information.
+
+* Limit new dependencies. While adding new external dependencies is not out of
+the question, we seek to keep external dependencies at a minimum. When possible
+use base R functionality. Code contributions that rely on external dependencies
+should be discussed with the package maintainer first.

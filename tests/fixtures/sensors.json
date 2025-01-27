@@ -1,0 +1,158 @@
+[
+    {
+        "id": 17647082,
+        "name": "anim voluptate magna minim",
+        "parameter": {
+          "id": -69234378,
+          "name": "sit Excepteur adipisicing non",
+          "units": "nulla Duis ex"
+        },
+        "datetimeFirst": null,
+        "coverage": null,
+        "latest": {
+          "datetime": {
+            "utc": "1897-02-09T13:50:27.0Z",
+            "local": "1915-03-22T07:25:29.0Z"
+          },
+          "value": 19723960.692315996,
+          "coordinates": {
+            "longitude": null
+          }
+        },
+        "summary": {
+          "q25": -39765130.89735918,
+          "median": 47714566.95081669,
+          "q75": 83441478.4900671,
+          "avg": -3226934.1472691298,
+          "sd": 96506351.47665736
+        }
+      },
+      {
+        "id": -37654970,
+        "name": "velit sunt occaecat",
+        "parameter": {
+          "id": 43340970,
+          "name": "quis Duis Ut in",
+          "units": "laborum irure dolore deserunt anim",
+          "displayName": null
+        },
+        "datetimeFirst": {
+          "utc": "1913-12-07T14:13:38.0Z",
+          "local": "1920-06-04T14:32:08.0Z"
+        },
+        "datetimeLast": {
+          "utc": "1932-11-30T14:29:28.0Z",
+          "local": "1917-10-21T19:40:02.0Z"
+        }
+      },
+      {
+        "id": -69703325,
+        "name": "eu officia",
+        "parameter": {
+          "id": 4681254,
+          "name": "enim sint nulla",
+          "units": "cupidatat culpa pariatur magna minim",
+          "displayName": null
+        },
+        "datetimeFirst": {
+          "utc": "1964-08-13T07:20:08.0Z",
+          "local": "1938-09-03T11:48:54.0Z"
+        },
+        "datetimeLast": {
+          "utc": "1940-09-12T01:01:08.0Z",
+          "local": "1935-12-27T01:38:24.0Z"
+        },
+        "coverage": {
+          "expectedCount": -79294449,
+          "expectedInterval": "Lorem incididunt est",
+          "observedCount": -33605588,
+          "observedInterval": "cillum minim consequat occaecat nulla",
+          "percentComplete": -62767872.29780232,
+          "percentCoverage": -64517639.89064143
+        },
+        "latest": {
+          "value": 28480770.306608066
+        },
+        "summary": null
+      },
+      {
+        "id": -2654467,
+        "name": "sint elit ex exercitation",
+        "parameter": {
+          "id": -4652328,
+          "name": "exercitation",
+          "units": "eu enim Excepteur veniam",
+          "displayName": null
+        },
+        "coverage": {
+          "expectedCount": 35031778,
+          "expectedInterval": "consectetur",
+          "observedCount": -2052875,
+          "observedInterval": "magna cupidatat",
+          "percentComplete": -7028313.309067786,
+          "percentCoverage": -80875527.93261027,
+          "datetimeFrom": null,
+          "datetimeTo": null
+        }
+      },
+      {
+        "id": -31834802,
+        "name": "officia sint anim cillum et",
+        "parameter": {
+          "id": -18205178,
+          "name": "nulla",
+          "units": "nisi Ut commodo veniam",
+          "displayName": "dolor reprehenderit"
+        },
+        "datetimeFirst": {
+          "utc": "1890-01-02T15:08:07.0Z",
+          "local": "1929-05-30T02:39:53.0Z"
+        },
+        "datetimeLast": {
+          "utc": "1939-03-31T14:17:10.0Z",
+          "local": "1917-03-15T01:36:49.0Z"
+        },
+        "coverage": null,
+        "latest": null,
+        "summary": null
+      },
+      {
+        "id": -2111833,
+        "name": "fugiat amet",
+        "parameter": {
+          "id": -91632519,
+          "name": "consectetur",
+          "units": "est dolor",
+          "displayName": "fugiat"
+        },
+        "datetimeFirst": {
+          "utc": "1894-04-10T08:30:21.0Z",
+          "local": "1899-10-09T12:14:48.0Z"
+        },
+        "datetimeLast": null,
+        "coverage": {
+          "expectedCount": 75866578,
+          "expectedInterval": "ad sint reprehenderit aute magna",
+          "observedCount": -97627430,
+          "observedInterval": "enim quis",
+          "percentComplete": 72490264.83235675,
+          "percentCoverage": -44609633.44025348,
+          "datetimeFrom": {
+            "utc": "1942-09-21T01:57:57.0Z",
+            "local": "1945-08-15T19:14:47.0Z"
+          },
+          "datetimeTo": {
+            "utc": "1905-06-25T15:04:44.0Z",
+            "local": "1935-07-18T19:09:30.0Z"
+          }
+        },
+        "latest": {
+          "value": 18423112.225158975,
+          "coordinates": {
+            "latitude": null,
+            "longitude": null
+          }
+        },
+        "summary": null
+      }
+]

@@ -144,10 +144,10 @@ as.data.frame.openaq_latest_list <- function(data, ...) {
       sensors_id = x$sensorsId,
       locations_id = x$locationsId,
       value = x$value,
-      datetime_local = parse_openaq_timestamp(x$datetime$local),
-      datetime_utc = parse_openaq_timestamp(x$datetime$utc),
-      latitude = x$coordinates$latitude,
-      longitude = x$coordinates$longitude
+      datetime_local = parse_openaq_timestamp(deep_get(x, "datetime", "local", default = NULL)),
+      datetime_utc = parse_openaq_timestamp(deep_get(x, "datetime", "utc", default = NULL)),
+      latitude = deep_get(x, "coordinates", "latitude"),
+      longitude = deep_get(x, "coordinates", "longitude")
     )
   }))
   tbl$sensors_id <- as.numeric(tbl$sensors_id)

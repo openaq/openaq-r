@@ -1,0 +1,78 @@
+[
+    {
+      "datetime": {
+        "utc": "1943-10-05T02:41:32.0Z",
+        "local": "1937-12-08T14:39:05.0Z"
+      },
+      "value": -73280475.35237667,
+      "coordinates": {
+        "latitude": 387358.9521192312
+      },
+      "sensorsId": 22127916,
+      "locationsId": -87854789
+    },
+    {
+      "datetime": {
+        "utc": "1922-06-11T23:06:22.0Z",
+        "local": "1916-04-21T14:30:08.0Z"
+      },
+      "value": 39136994.061748475,
+      "coordinates": {
+        "latitude": null
+      },
+      "sensorsId": 68683077,
+      "locationsId": -67435762
+    },
+    {
+      "datetime": {
+        "utc": "1919-12-25T17:21:14.0Z",
+        "local": "1940-08-02T04:07:27.0Z"
+      },
+      "value": 64840351.90480605,
+      "coordinates": {
+        "latitude": -47883448.49629862,
+        "longitude": -80406379.5557774
+      },
+      "sensorsId": -26712844,
+      "locationsId": -25437305
+    },
+    {
+        "datetime": {
+          "utc": "1959-10-01T23:02:28.0Z",
+          "local": "1960-01-19T13:29:10.0Z"
+        },
+        "value": 75541993.94497237,
+        "coordinates": {
+          "latitude": 29685258.784068987,
+          "longitude": 40947701.27508077
+        },
+        "sensorsId": -70206772,
+        "locationsId": 46681623
+      },
+      {
+        "datetime": {
+          "utc": "1962-11-20T03:16:15.0Z",
+          "local": "1944-11-25T01:31:54.0Z"
+        },
+        "value": 54356897.1585235,
+        "coordinates": {
+          "latitude": 43684149.8467187,
+          "longitude": null
+        },
+        "sensorsId": 28099957,
+        "locationsId": 53319881
+      },
+      {
+        "datetime": {
+          "utc": "1948-08-03T21:54:14.0Z",
+          "local": "1927-09-28T02:01:53.0Z"
+        },
+        "value": 27338084.69543168,
+        "coordinates": {
+          "latitude": 9663062.155642211,
+          "longitude": null
+        },
+        "sensorsId": -39641541,
+        "locationsId": 5804140
+      }
+  ]

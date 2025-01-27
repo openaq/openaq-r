@@ -411,3 +411,22 @@ or <- function(test, alternative) {
   }
   res
 }
+
+#' Gets value from nests list
+#'
+#' @param x A list to search.
+#' @param ... Keys, in order of their hierarcy to check against the list `x`.
+#'
+#' @noRd
+deep_get <- function(x, ..., default = NA) {
+  for (key in list(...)) {
+    if (is.null(x) || !key %in% names(x)) {
+      return(default)
+    }
+    x <- x[[key]]
+  }
+  if (is.null(x)) {
+    return(NA)
+  }
+  return(x)
+}

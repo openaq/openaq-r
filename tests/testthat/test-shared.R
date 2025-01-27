@@ -464,3 +464,29 @@ test_that("or function works as expected", {
   expect_equal(or(c(1, 2, 3), "default"), c(1, 2, 3))
   expect_equal(or(c(1, NA, 3), "default"), c(1, NA, 3))
 })
+
+
+## deep_get
+
+test_that("deep_get", {
+  data <- list(
+    a = list(
+      b = list(
+        c = "value"
+      )
+    ),
+    d = NULL
+  )
+  expect_equal(deep_get(data, "a"), list(
+    b = list(
+      c = "value"
+    )
+  ))
+  expect_equal(deep_get(data, "a", "b"), list(
+    c = "value"
+  ))
+  expect_equal(deep_get(data, "a", "b", "c"), "value")
+  expect_equal(deep_get(data, "d"), NA)
+  expect_equal(deep_get(data, "d", "e"), NA)
+  expect_equal(deep_get(data, "d", "e", "f"), NA)
+})

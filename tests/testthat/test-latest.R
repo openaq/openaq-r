@@ -44,3 +44,11 @@ test_that("list_location_latest(1) as list works", {
   testthat::expect_false(is.data.frame(latest))
   testthat::expect_true(length(latest) == 1)
 })
+
+fixture_path <- file.path("../../tests/fixtures", "latest.json")
+
+fixture_data <- jsonlite::fromJSON(fixture_path, simplifyVector = FALSE)
+
+test_that("as.data.frame works", {
+  expect_no_error(as.data.frame.openaq_latest_list(fixture_data))
+})
