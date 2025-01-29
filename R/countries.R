@@ -106,6 +106,9 @@ list_countries <- function(
     rate_limit = rate_limit,
     api_key = api_key
   )
+  if (isTRUE(dry_run)) {
+    return(data)
+  }
   if (as_data_frame == TRUE) {
     return(as.data.frame.openaq_countries_list(structure(
       data,

@@ -30,6 +30,9 @@ get_parameter <- function(
     rate_limit = rate_limit,
     api_key = api_key
   )
+  if (isTRUE(dry_run)) {
+    return(data)
+  }
   if (as_data_frame == TRUE) {
     return(as.data.frame.openaq_parameters_list(structure(
       data,
@@ -95,6 +98,9 @@ list_parameters <- function(
     rate_limit = rate_limit,
     api_key = api_key
   )
+  if (isTRUE(dry_run)) {
+    return(data)
+  }
   if (as_data_frame == TRUE) {
     return(as.data.frame.openaq_parameters_list(structure(
       data,

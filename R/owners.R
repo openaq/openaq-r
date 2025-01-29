@@ -30,6 +30,9 @@ get_owner <- function(
     rate_limit = rate_limit,
     api_key = api_key
   )
+  if (isTRUE(dry_run)) {
+    return(data)
+  }
   if (as_data_frame == TRUE) {
     return(as.data.frame.openaq_owners_list(structure(
       data,
@@ -96,6 +99,9 @@ list_owners <- function(
     rate_limit = rate_limit,
     api_key = api_key
   )
+  if (isTRUE(dry_run)) {
+    return(data)
+  }
   if (as_data_frame == TRUE) {
     return(as.data.frame.openaq_owners_list(structure(
       data,

@@ -47,6 +47,9 @@ list_location_latest <- function(
   )
   path <- paste("locations", locations_id, "latest", sep = "/")
   data <- fetch(path, params_list, dry_run = dry_run)
+  if (isTRUE(dry_run)) {
+    return(data)
+  }
   if (as_data_frame == TRUE) {
     invisible(as.data.frame.openaq_latest_list(structure(
       data,
