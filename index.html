@@ -75,7 +75,7 @@
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://remotes.r-lib.org" class="external-link">"remotes"</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"openaq/openaq-r"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"openaq/openaq-r@*release"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="quickstart">Quickstart<a class="anchor" aria-label="anchor" href="#quickstart"></a>
@@ -153,7 +153,13 @@
 <div class="section level2">
 <h2 id="development">Development<a class="anchor" aria-label="anchor" href="#development"></a>
 </h2>
-<p>Contributions are welcome. See the <a href="CONTRIBUTING.html">contribution guide</a> for more information.</p>
+<p>Contributions are welcome. See the <a href="CONTRIBUTING.html">contribution guide</a> for general information about contributing to the package.</p>
+<p>Specific guidelines for contributions the openaq package:</p>
+<ul>
+<li><p>Code contributions must follow lint convention using <a href="https://lintr.r-lib.org/" class="external-link"><code>lintr</code></a>, see the .lintr file for specifics.</p></li>
+<li><p>Code contributions must include unit test, iether updated or wholly new, depending on the contribution. See testing <a href="tests/README.html">README</a> for more information.</p></li>
+<li><p>Limit new dependencies. While adding new external dependencies is not out of the question, we seek to keep external dependencies at a minimum. When possible use base R functionality. Code contributions that rely on external dependencies should be discussed with the package maintainer first.</p></li>
+</ul>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
