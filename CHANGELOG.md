@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Added missing DRY_RUN checks for resource functions.
+- `deep_get` function for handling nullable fields in `as.data.frame` methods
+
 ## v0.1.2 - 2025-01-25
 
 ### Added
