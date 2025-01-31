@@ -1,5 +1,8 @@
-blank_issues_enabled: true
+blank_issues_enabled: false
 contact_links:
-  - name: Support & Community
+  - name: Community
     url: https://join.slack.com/t/openaq/shared_invite/zt-yzqlgsva-v6McumTjy2BZnegIK9XCVw
-    about: 'This issue tracker is not for support questions. Come join us on Slack to discuss OpenAQ and seek assistance'
+    about: 'Come join us on Slack to discuss OpenAQ and seek assistance'
+  - name: Support 
+    url: https://github.com/openaq/openaq-r/discussions
+    about: 'This issue tracker is not for support questions. Ask a question and get support in Github discussions'
