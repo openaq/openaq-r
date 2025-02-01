@@ -10,7 +10,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Added missing DRY_RUN checks for resource functions.
-- `deep_get` function for handling nullable fields in `as.data.frame` methods
+- `deep_get` function for handling nullable fields in `as.data.frame` methods.
+- Rate limit headers added to "headers" property as list.
+- Updated User-Agent to include package version.
 
 ## v0.1.2 - 2025-01-25
 

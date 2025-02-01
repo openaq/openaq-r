@@ -67,7 +67,7 @@ fair access for all users and prevent overuse.
 The OpenAQ API provides custom rate limit headers to indicate the number of
 requests used, the number remaining, the rate limit allowance, and the number of
 seconds remaining in the current period until reset. These headers are preserved
-by default in the openaq package as object attributes on the output date
+by default in the openaq package as object attributes on the output data
 frame:
 
 * `x_ratelimit_used`
@@ -81,7 +81,8 @@ locations <- list_locations(
   parameters_id = 2,
   providers_id = 166
 )
-print(locations$x_ratelimit_remaining)
+headers <- attr(locations, "headers")
+print(headers$x_ratelimit_remaining)
 
 # > 59
 ```
@@ -201,5 +202,3 @@ This can be helpful when debugging to identify issues and compare the raw query
 URL and headers. 
 
 This functionality uses the `httr2::req_dry_run()` function under-the-hood.
-
-

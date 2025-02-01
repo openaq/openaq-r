@@ -121,12 +121,14 @@ openaq_request <- function(path, query_params, api_key = NULL) {
 
   resource_path <- paste("/v3", path, sep = "/")
 
+  current_version <- packageVersion(packageName())
+
   req <- httr2::request(base_url)
   req <- httr2::req_url_path(req, resource_path)
   req <- httr2::req_url_query(req, !!!query_params, .multi = "comma")
   req <- httr2::req_headers(req,
     `X-API-Key` = api_key,
-    `User-Agent` = "openaq-r",
+    `User-Agent` = sprintf("openaq-r-v%s", current_version),
     `Content-Type` = "application/json",
     Accept = "application/json",
     .redact = "X-API-Key"
@@ -208,8 +210,7 @@ fetch <- function(
     x$meta[["retrieved_on"]] <- Sys.time()
     attr(results, "meta") <- x$meta
     attr(results, "params") <- query_params
-    headers <- httr2::resp_headers(res)
-    add_headers(results, headers)
+    results <- add_headers(results, res)
     return(results)
   }
 }

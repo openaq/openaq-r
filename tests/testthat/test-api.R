@@ -157,6 +157,22 @@ test_that("openaq_request throws error", {
   )
 })
 
+test_that("openaq_request headers are correct", {
+  current_version <- packageVersion(packageName())
+  webmockr::enable()
+  withr::with_envvar(
+    new = c("OPENAQ_API_KEY" = "mock-api-key-for-testing-1234"),
+    {
+      webmockr::stub_request("get", "https://api.openaq.org/v3/countries") %>%
+        webmockr::to_return(body = "", status = 200)
+      res <- openaq_request("countries", list())
+
+      headers <- res$headers
+      expect_equal(res$headers$`User-Agent`, sprintf("openaq-r-v%s", current_version))
+    }
+  )
+})
+
 test_that("request throws with incorrect config", {
   expect_error(webmockr::request("countries"))
 })

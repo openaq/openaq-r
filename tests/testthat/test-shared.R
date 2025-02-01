@@ -149,9 +149,6 @@ test_that("validate_parameters_id throws with correct error message", {
   )
 })
 
-# check_coordinates TODO
-
-
 # validate_radius
 
 test_that("validate_radius throws - non numeric", {
@@ -489,4 +486,25 @@ test_that("deep_get", {
   expect_equal(deep_get(data, "d"), NA)
   expect_equal(deep_get(data, "d", "e"), NA)
   expect_equal(deep_get(data, "d", "e", "f"), NA)
+})
+
+
+# add_headers
+
+test_that("add_headers correctly adds headers", {
+  res <- httr2::response(
+    status_code = 200,
+    headers = list(
+      `X-Ratelimit-Used` = "42",
+      `X-Ratelimit-Reset` = "43",
+      `X-Ratelimit-Limit` = "44",
+      `X-RateLimit-Remaining` = "45"
+    )
+  )
+  results <- list(a = "b")
+  results <- add_headers(results, res)
+  expect_equal(attr(results, "x_ratelimit_used"), 42)
+  expect_equal(attr(results, "x_ratelimit_reset"), 43)
+  expect_equal(attr(results, "x_ratelimit_limit"), 44)
+  expect_equal(attr(results, "x_ratelimit_remaining"), 45)
 })

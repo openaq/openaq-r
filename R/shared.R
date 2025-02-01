@@ -49,7 +49,7 @@ validate_page <- function(page) {
 #' that are of type numeric or list of numerics.
 #'
 #' @param x Any value.
-#' @param parameter A string.
+#' @param parameter A string representing the query parameter name.
 #'
 #' @noRd
 validate_numeric_or_list <- function(x, parameter) {
@@ -62,65 +62,90 @@ validate_numeric_or_list <- function(x, parameter) {
   }
 }
 
+#' Validates providers_id query parameter.
 #'
+#' A function for validating providers_id query parameter is a numeric or
+#' a list of numerics
 #'
+#' @param id Any value.
 #'
+#' @noRd
 validate_providers_id <- function(id) {
   validate_numeric_or_list(id, "providers_id")
 }
 
+#' Validates owner_contacts_id query parameter.
 #'
+#' A function for validating owner_contacts_id query parameter is a numeric or
+#' a list of numerics
 #'
+#' @param id Any value.
 #'
+#' @noRd
 validate_owner_contacts_id <- function(id) {
   validate_numeric_or_list(id, "owner_contacts_id")
 }
 
+#' Validates manufacturers_id query parameter.
 #'
+#' A function for validating manufacturers_id query parameter is a numeric or
+#' a list of numerics
 #'
+#' @param id Any value.
 #'
+#' @noRd
 validate_manufacturers_id <- function(id) {
   validate_numeric_or_list(id, "manufacturers_id")
 }
 
+#' Validates licenses_id query parameter.
 #'
+#' A function for validating licenses_id query parameter is a numeric or
+#' a list of numerics
 #'
+#' @param id Any value.
 #'
+#' @noRd
 validate_licenses_id <- function(id) {
   validate_numeric_or_list(id, "licenses_id")
 }
 
+#' Validates instruments_id query parameter.
 #'
+#' A function for validating instruments_id query parameter is a numeric or
+#' a list of numerics
 #'
+#' @param id Any value.
 #'
+#' @noRd
 validate_instruments_id <- function(id) {
   validate_numeric_or_list(id, "instruments_id")
 }
 
+#' Validates countries_id query parameter.
 #'
+#' A function for validating countries_id query parameter is a numeric or
+#' a list of numerics
 #'
+#' @param id Any value.
 #'
+#' @noRd
 validate_countries_id <- function(id) {
   validate_numeric_or_list(id, "countries_id")
 }
 
+#' Validates parameters_id query parameter.
 #'
+#' A function for validating parameters_id query parameter is a numeric or
+#' a list of numerics
 #'
+#' @param id Any value.
 #'
+#' @noRd
 validate_parameters_id <- function(id) {
   validate_numeric_or_list(id, "parameters_id")
 }
 
-#'
-#'
-#'
-check_coordinates <- function(coordinates, key) {
-  if (is.null(coordinates)) {
-    return(NA)
-  } else {
-    return(coordinates[key])
-  }
-}
 
 #' Validates radius query parameter.
 #'
@@ -297,6 +322,7 @@ validate_rollup <- function(rollup) {
 #'
 #'
 #' @param param_defs Any value.
+#' @param ... list of values
 #'
 #' @noRd
 extract_parameters <- function(param_defs, ...) {
@@ -371,14 +397,19 @@ transform_datetime <- function(x) {
 #' Set rate limit headers as attributes to an object
 #'
 #' @param data An object to which the header attributes are set.
-#' @param headers A httr2 list of response headers.
+#' @param headers A httr2 response object
+#'
+#' @return the data object with the headers as attributes.
 #'
 #' @noRd
-add_headers <- function(data, headers) {
-  attr(data, "x_ratelimit_used") <- headers["X-Ratelimit-Used"]
-  attr(data, "x_ratelimit_reset") <- headers["X-Ratelimit-Reset"]
-  attr(data, "x_ratelimit_limit") <- headers["X-Ratelimit-Limit"]
-  attr(data, "x_ratelimit_remaining") <- headers["X-Ratelimit-Remaining"]
+add_headers <- function(data, res) {
+  attr(data, "headers") <- c(
+    "x_ratelimit_used" = as.integer(httr2::resp_header(res, "X-Ratelimit-Used")),
+    "x_ratelimit_reset" = as.integer(httr2::resp_header(res, "X-Ratelimit-Reset")),
+    "x_ratelimit_limit" = as.integer(httr2::resp_header(res, "X-Ratelimit-Limit")),
+    "x_ratelimit_remaining" = as.integer(httr2::resp_header(res, "X-Ratelimit-Remaining"))
+  )
+  invisible(data)
 }
 
 
@@ -412,7 +443,7 @@ or <- function(test, alternative) {
   res
 }
 
-#' Gets value from nests list
+#' Gets value from a nested list
 #'
 #' @param x A list to search.
 #' @param ... Keys, in order of their hierarcy to check against the list `x`.

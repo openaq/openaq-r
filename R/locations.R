@@ -250,6 +250,8 @@ as.data.frame.openaq_locations_list <- function(data, ...) {
   tbl$is_monitor <- as.logical(tbl$is_monitor)
   attr(tbl, "meta") <- attr(data, "meta")
   attr(tbl, "params") <- attr(data, "params")
+  attr(tbl, "headers") <- attr(data, "headers")
+
   return(structure(tbl, class = c("openaq_locations_data.frame", "data.frame")))
 }
 
