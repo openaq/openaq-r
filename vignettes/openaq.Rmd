@@ -82,7 +82,7 @@ locations <- list_locations(
   providers_id = 166
 )
 headers <- attr(locations, "headers")
-print(headers$x_ratelimit_remaining)
+print(headers[["x_ratelimit_remaining"]])
 
 # > 59
 ```
