@@ -140,7 +140,7 @@ attributes on the output data frame:</p>
 <span>  providers_id <span class="op">=</span> <span class="fl">166</span></span>
 <span><span class="op">)</span></span>
 <span><span class="va">headers</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">locations</span>, <span class="st">"headers"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">headers</span><span class="op">$</span><span class="va">x_ratelimit_remaining</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">headers</span><span class="op">[[</span><span class="st">"x_ratelimit_remaining"</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># &gt; 59</span></span></code></pre></div>
 <p>Read more about the headers and rate limits in the OpenAQ API
