@@ -10,7 +10,7 @@ must include tests that conform to the style of existing testing.
 
 Complete and high test coverage is a priority and goal in the package to ensure
 a stable and reliable user experience. We use [`covr`](https://covr.r-lib.org/)
-for computing and tracking test coverage. `covr`](https://covr.r-lib.org/)
+for computing and tracking test coverage. [`covr`](https://covr.r-lib.org/)
 results are uploaded to [`codecov`](https://codecov.io/gh/openaq/openaq-r) and
 automatic through github actions, see [https://github.com/openaq/openaq-r/blob/main/.github/workflows/test-coverage.yaml](https://github.com/openaq/openaq-r/blob/main/.github/workflows/test-coverage.yaml).
 
