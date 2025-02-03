@@ -1,0 +1,40 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.openaq.org/v3/manufacturers?limit=100&page=1
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      X-API-Key: <<<test_openaq_api_key>>>
+      User-Agent: openaq-r-v0.1.2
+      Content-Type: application/json
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      message: OK
+    headers:
+      date: Mon, 03 Feb 2025 22:14:32 GMT
+      server: uvicorn
+      content-type: application/json
+      cache-control: public, max-age=900
+      content-encoding: gzip
+      vary: Accept-Encoding
+      Transfer-Encoding: chunked
+    body:
+      encoding: ''
+      file: no
+      string: '{"meta":{"name":"openaq-api","website":"/","page":1,"limit":100,"found":10},"results":[{"id":1,"name":"OpenAQ
+        admin","instruments":[{"id":1,"name":"N/A"}]},{"id":4,"name":"Unknown Governmental
+        Organization","instruments":[{"id":2,"name":"Government Monitor"}]},{"id":9,"name":"Clarity","instruments":[{"id":4,"name":"Clarity
+        Sensor"}]},{"id":10,"name":"Senstate","instruments":[{"id":6,"name":"Senstate
+        Sensor"}]},{"id":11,"name":"HabitatMap","instruments":[{"id":5,"name":"HabitatMap
+        Sensor"}]},{"id":12,"name":"AirGradient","instruments":[{"id":7,"name":"AirGradient
+        Sensor"}]},{"id":13,"name":"University of California, Berkeley","instruments":[{"id":9,"name":"BEACO2N
+        Sensor"},{"id":11,"name":"Aerosol Black Carbon Detector (ABCD)"}]},{"id":14,"name":"Carnegie
+        Mellon University","instruments":[{"id":10,"name":"RAMP Sensor"}]},{"id":5020,"name":"MetOne","instruments":[{"id":13,"name":"AIO
+        2"},{"id":14,"name":"BAM 1020"}]},{"id":5022,"name":"Ecotech","instruments":[{"id":15,"name":"Serinus
+        30"}]}]}'
+  recorded_at: 2025-02-03 22:14:35 GMT
+  recorded_with: vcr/1.6.0, webmockr/1.0.0

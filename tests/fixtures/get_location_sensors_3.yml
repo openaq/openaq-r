@@ -1,0 +1,32 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.openaq.org/v3/locations/3/sensors
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      X-API-Key: <<<test_openaq_api_key>>>
+      User-Agent: openaq-r-v0.1.2
+      Content-Type: application/json
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      message: OK
+    headers:
+      date: Mon, 03 Feb 2025 22:14:45 GMT
+      server: uvicorn
+      content-type: application/json
+      cache-control: public, max-age=900
+      content-encoding: gzip
+      vary: Accept-Encoding
+      Transfer-Encoding: chunked
+    body:
+      encoding: ''
+      file: no
+      string: '{"meta":{"name":"openaq-api","website":"/","page":1,"limit":100,"found":2},"results":[{"id":5,"name":"pm25
+        µg/m³","parameter":{"id":2,"name":"pm25","units":"µg/m³","displayName":"PM2.5"},"datetimeFirst":null,"datetimeLast":null,"coverage":null,"latest":null,"summary":null},{"id":6,"name":"pm10
+        µg/m³","parameter":{"id":1,"name":"pm10","units":"µg/m³","displayName":"PM10"},"datetimeFirst":null,"datetimeLast":null,"coverage":null,"latest":null,"summary":null}]}'
+  recorded_at: 2025-02-03 22:14:47 GMT
+  recorded_with: vcr/1.6.0, webmockr/1.0.0

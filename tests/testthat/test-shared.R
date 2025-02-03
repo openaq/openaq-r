@@ -504,8 +504,6 @@ test_that("add_headers correctly adds headers", {
   results <- list(a = "b")
   results <- add_headers(results, res)
   headers <- attr(results, "headers")
-  print("HEADERS")
-  print(headers)
   expect_equal(headers[["x_ratelimit_used"]], 42)
   expect_equal(headers[["x_ratelimit_reset"]], 43)
   expect_equal(headers[["x_ratelimit_limit"]], 44)
