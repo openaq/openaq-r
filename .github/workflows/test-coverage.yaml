@@ -34,16 +34,14 @@ jobs:
             quiet = FALSE,
             clean = FALSE,
             install_path = file.path(normalizePath(Sys.getenv("RUNNER_TEMP"), winslash = "/"), "package"),
+            type = "none",
+            code = "testthat::test_package(
+            'openaq',
             reporter = testthat::JunitReporter$new(file = 'junit.xml')
+            )")
           )
           covr::to_cobertura(cov)
         shell: Rscript {0}
-
-      - name: Upload test results to Codecov
-        if: ${{ !cancelled() }}
-        uses: codecov/test-results-action@v1
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
 
       - uses: codecov/codecov-action@v4
         with:
@@ -67,3 +65,10 @@ jobs:
         with:
           name: coverage-test-failures
           path: ${{ runner.temp }}/package
+
+      - name: Upload test results to Codecov
+        if: ${{ !cancelled() }}
+        uses: codecov/test-results-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./junit.xml 
