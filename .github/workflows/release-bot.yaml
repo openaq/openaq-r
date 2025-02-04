@@ -8,6 +8,8 @@ permissions: read-all
 jobs:
     release-bot:
       runs-on: ubuntu-latest
+      env:
+        GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       steps: 
       - name: Post a message in a channel
         uses: slackapi/slack-github-action@v2.0.0
