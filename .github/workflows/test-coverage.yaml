@@ -38,7 +38,7 @@ jobs:
             code = "testthat::test_package(
             'openaq',
             reporter = testthat::JunitReporter$new(file = 'junit.xml')
-            )")
+            )
           )
           covr::to_cobertura(cov)
         shell: Rscript {0}
