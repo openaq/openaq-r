@@ -1,4 +1,6 @@
 on:
+  push:
+    branches: [develop]
   workflow_dispatch:
   
 name: pkgdown.yaml
