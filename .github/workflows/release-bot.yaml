@@ -1,6 +1,6 @@
 on:
-  push:
-    branches: [develop]
+  release:
+    types: [published]
   workflow_dispatch:
   
 name: release-bot.yaml
@@ -19,5 +19,5 @@ jobs:
           webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
           webhook-type: incoming-webhook
           payload: |
-            text: "*GitHub Action build result*: ${{ job.status }}"
+            text: "*New OpenAQ R Package Release ${{ github.event.release.tag_name }}*: Read the changelog at [https://github.com/openaq/openaq-r/releases/tag/${{ github.event.release.tag_name }}](https://github.com/openaq/openaq-r/releases/tag/${{ github.event.release.tag_name }})"
                 
