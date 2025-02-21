@@ -7,8 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## v0.3.0 - 2025-02-21
+
+### Changed
+
 - *BREAKING CHANGES*
-- Changed `parameters_id`, 
+- Changed `providers_id`, `parameters_id`, `owner_contacts_id`,
+`manufacturers_id`, `licenses_id`, `instruments_id`, and `countries_id` function
+arguments to be numeric vectors
+- Changed `coordinates` function argument to be a named numeric vector with
+fields `latitude` and `longitude`
+- Changed `bbox` function argument to be a named numeric vector with fields
+`xmin`, `ymin`, `xmax` and `ymax`.
 
 ## v0.2.0 - 2025-02-03
 

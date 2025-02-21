@@ -45,11 +45,9 @@ locations <- list_locations(
 
 This returns a data frame that will look something like:
 
-
 |    id|name         |is_mobile |is_monitor |timezone            | countries_id|country_name |country_iso |  latitude| longitude|datetime_first      |datetime_last       |owner_name                        | providers_id|provider_name |
 |-----:|:------------|:------------|:----------|:-------------------|------------:|:------------|:-----------|---------:|---------:|:-------------------|:-------------------|:---------------------------------|------------:|:-------------|
 | 41726|Antananarivo |FALSE       |TRUE       |Indian/Antananarivo |          182|Madagascar   |MG          | -18.90848|  47.53751|2020-12-22 07:00:00 |2025-01-17 20:00:00 |Unknown Governmental Organization |          119|AirNow        |
-
 
 ## Development
 
