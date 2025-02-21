@@ -19,7 +19,9 @@
 <li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/plotting.html">plotting</a></li>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/geospatial-queries.html">geospatial-queries</a></li>
+    <li><a class="dropdown-item" href="../articles/plotting.html">plotting</a></li>
+    <li><a class="dropdown-item" href="../articles/querying-measurements.html">querying-measurements</a></li>
   </ul></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
@@ -73,59 +75,74 @@
 
 
 <dl><dt id="arg-bbox">bbox<a class="anchor" aria-label="anchor" href="#arg-bbox"></a></dt>
-<dd><p>A list of 4 numerics, representing a geographic bounding box for
-filtering results that are within, in the form [minimum X, minimum Y,
-maximum X, maximum Y].</p></dd>
+<dd><p>Named numeric vector with four coordinates in form X minimum,
+Y mininum, X maximum, Y maximum, named values must be <code>xmin</code>, <code>ymin</code>, <code>ymax</code>
+, <code>xmax</code>. Defaults to <code>NULL</code>.</p></dd>
 
 
 <dt id="arg-coordinates">coordinates<a class="anchor" aria-label="anchor" href="#arg-coordinates"></a></dt>
-<dd><p>A list of 2 numerics, representing a central WGS84
-geographic coordinate, in the form [y,x] or [lat,lng], for use with the
-radius parameter.</p></dd>
+<dd><p>Named numeric vector with two numeric WGS84 (EPSG:4326)
+geographic coordinates, with named values <code>latitude</code> and <code>longitude</code>.
+Represents the central point to be used in conjunction with the radius
+parameter for geographic search. Defaults to <code>NULL</code>.</p></dd>
 
 
 <dt id="arg-radius">radius<a class="anchor" aria-label="anchor" href="#arg-radius"></a></dt>
 <dd><p>An integer for the number of meters to search around the
-<code>coordinates</code> parameter for filtering locations within.</p></dd>
+<code>coordinates</code> parameter for filtering locations within the radius. Defaults
+to <code>NULL</code>.</p></dd>
 
 
 <dt id="arg-providers-id">providers_id<a class="anchor" aria-label="anchor" href="#arg-providers-id"></a></dt>
-<dd><p>An integer or list of integers representing the
-providers_id to filter results on.</p></dd>
+<dd><p>A numeric vector of length 1 or more, containing the
+ID(s) of the provider(s) to use for filtering results. If multiple IDs are
+provided, results matching any of the IDs will be returned. Defaults to
+<code>NULL</code>.</p></dd>
 
 
 <dt id="arg-parameters-id">parameters_id<a class="anchor" aria-label="anchor" href="#arg-parameters-id"></a></dt>
-<dd><p>An integer or list of integers representing the
-parameters_id to filter results on.</p></dd>
+<dd><p>A numeric vector of length 1 or more, containing the
+ID(s) of the parameter(s) to use for filtering results. If multiple IDs are
+provided, results matching any of the IDs will be returned. Defaults to
+<code>NULL</code>.</p></dd>
 
 
 <dt id="arg-owner-contacts-id">owner_contacts_id<a class="anchor" aria-label="anchor" href="#arg-owner-contacts-id"></a></dt>
-<dd><p>An integer or list of integers representing the
-owner_contacts_id to filter results on.</p></dd>
+<dd><p>A numeric vector of length 1 or more, containing the
+ID(s) of the owners(s) to use for filtering results. If multiple IDs are
+provided, results matching any of the IDs will be returned. Defaults to
+<code>NULL</code>.</p></dd>
 
 
 <dt id="arg-manufacturers-id">manufacturers_id<a class="anchor" aria-label="anchor" href="#arg-manufacturers-id"></a></dt>
-<dd><p>An integer or list of integers representing the
-manufacturers_id to filter results on.</p></dd>
+<dd><p>A numeric vector of length 1 or more, containing the
+ID(s) of the manufacturers(s) to use for filtering results. If multiple IDs
+are provided, results matching any of the IDs will be returned. Defaults to
+<code>NULL</code>.</p></dd>
 
 
 <dt id="arg-licenses-id">licenses_id<a class="anchor" aria-label="anchor" href="#arg-licenses-id"></a></dt>
-<dd><p>An integer or list of integers representing the
-licenses_id to filter results on.</p></dd>
+<dd><p>A numeric vector of length 1 or more, containing the
+ID(s) of the license(s) to use for filtering results. If multiple IDs are
+provided, results matching any of the IDs will be returned. Defaults to
+<code>NULL</code>.</p></dd>
 
 
 <dt id="arg-monitor">monitor<a class="anchor" aria-label="anchor" href="#arg-monitor"></a></dt>
 <dd><p>A logical to filter results to regulatory monitors (TRUE) or
-air sensors (FALSE), both are included if NULL.</p></dd>
+air sensors (FALSE), both are included if NULL. Defaults to <code>NULL</code>.</p></dd>
 
 
 <dt id="arg-mobile">mobile<a class="anchor" aria-label="anchor" href="#arg-mobile"></a></dt>
 <dd><p>A logical to filter results to mobile (TRUE) or stationary
-(FALSE) location, both are included if NULL.</p></dd>
+(FALSE) location, both are included if NULL. Defaults to <code>NULL</code>.</p></dd>
 
 
 <dt id="arg-instruments-id">instruments_id<a class="anchor" aria-label="anchor" href="#arg-instruments-id"></a></dt>
-<dd><p>An integer or list of integers.</p></dd>
+<dd><p>A numeric vector of length 1 or more, containing the
+ID(s) of the instrument(s) to use for filtering results. If multiple IDs are
+provided, results matching any of the IDs will be returned. Defaults to
+<code>NULL</code>.</p></dd>
 
 
 <dt id="arg-iso">iso<a class="anchor" aria-label="anchor" href="#arg-iso"></a></dt>
@@ -133,43 +150,47 @@ air sensors (FALSE), both are included if NULL.</p></dd>
 
 
 <dt id="arg-countries-id">countries_id<a class="anchor" aria-label="anchor" href="#arg-countries-id"></a></dt>
-<dd><p>An integer or list of integers of the countries_id(s) to
-filter the results.</p></dd>
+<dd><p>A numeric vector of length 1 or more, containing the
+ID(s) of the country(ies) to use for filtering results. If multiple IDs are
+provided, results matching any of the IDs will be returned. Defaults to
+<code>NULL</code>.</p></dd>
 
 
 <dt id="arg-order-by">order_by<a class="anchor" aria-label="anchor" href="#arg-order-by"></a></dt>
-<dd><p>A string.</p></dd>
+<dd><p>A string. Defaults to <code>NULL</code>.</p></dd>
 
 
 <dt id="arg-sort-order">sort_order<a class="anchor" aria-label="anchor" href="#arg-sort-order"></a></dt>
-<dd><p>A string.</p></dd>
+<dd><p>A string. Defaults to <code>NULL</code>.</p></dd>
 
 
 <dt id="arg-limit">limit<a class="anchor" aria-label="anchor" href="#arg-limit"></a></dt>
-<dd><p>An integer to limit the number of results.</p></dd>
+<dd><p>An integer to limit the number of results per page. Defaults to
+<code>NULL</code>.</p></dd>
 
 
 <dt id="arg-page">page<a class="anchor" aria-label="anchor" href="#arg-page"></a></dt>
-<dd><p>An integer for the page number for paginating through results.</p></dd>
+<dd><p>An integer for the page number for paginating through results.
+Defaults to <code>NULL</code>.</p></dd>
 
 
 <dt id="arg-as-data-frame">as_data_frame<a class="anchor" aria-label="anchor" href="#arg-as-data-frame"></a></dt>
 <dd><p>A logical for toggling whether to return results as
-data frame or list defaults to TRUE.</p></dd>
+data frame or list. Defaults to <code>TRUE</code></p></dd>
 
 
 <dt id="arg-dry-run">dry_run<a class="anchor" aria-label="anchor" href="#arg-dry-run"></a></dt>
 <dd><p>A logical for toggling a dry run of the request, defaults to
-FALSE.</p></dd>
+<code>FALSE.</code></p></dd>
 
 
 <dt id="arg-rate-limit">rate_limit<a class="anchor" aria-label="anchor" href="#arg-rate-limit"></a></dt>
 <dd><p>A logical for toggling automatic rate limiting based on
-rate limit headers, defaults to FALSE.</p></dd>
+rate limit headers. Defaults to <code>FALSE.</code></p></dd>
 
 
 <dt id="arg-api-key">api_key<a class="anchor" aria-label="anchor" href="#arg-api-key"></a></dt>
-<dd><p>A valid OpenAQ API key string, defaults to NULL.</p></dd>
+<dd><p>A valid OpenAQ API key string. Defaults to <code>NULL</code>.</p></dd>
 
 </dl></div>
     <div class="section level2">
