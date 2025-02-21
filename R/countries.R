@@ -49,8 +49,12 @@ get_country <- function(
 
 #' Get a list of countries from the countries resource.
 #'
-#' @param providers_id An integer or a list of integers
-#' @param parameters_id An integer or a list of integers
+#' @param providers_id A numeric vector of length 1 or more, containing the
+#' ID(s) of the providers to use for filtering results. If multiple IDs are
+#' provided, results matching any of the IDs will be returned.
+#' @param parameters_id A numeric vector of length 1 or more, containing the
+#' ID(s) of the parameters to use for filtering results. If multiple IDs are
+#' provided, results matching any of the IDs will be returned.
 #' @param order_by A string.
 #' @param sort_order A string.
 #' @param limit An integer.

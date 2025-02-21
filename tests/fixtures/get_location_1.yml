@@ -1,0 +1,34 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.openaq.org/v3/locations/1
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      X-API-Key: <<<test_openaq_api_key>>>
+      User-Agent: openaq-r-0.2.0-4.4.0
+      Content-Type: application/json
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      message: OK
+    headers:
+      date: Fri, 21 Feb 2025 20:36:18 GMT
+      server: uvicorn
+      content-type: application/json
+      cache-control: public, max-age=900
+      content-encoding: gzip
+      vary: Accept-Encoding
+      Transfer-Encoding: chunked
+    body:
+      encoding: ''
+      file: no
+      string: '{"meta":{"name":"openaq-api","website":"/","page":1,"limit":100,"found":1},"results":[{"id":1,"name":"testing
+        site 1","locality":null,"timezone":"Pacific/Tahiti","country":{"id":194,"code":"PF","name":"French
+        Polynesia"},"owner":{"id":1,"name":"OpenAQ admin"},"provider":{"id":119,"name":"AirNow"},"isMobile":false,"isMonitor":true,"instruments":[{"id":2,"name":"Government
+        Monitor"}],"sensors":[{"id":1,"name":"pm25 µg/m³","parameter":{"id":2,"name":"pm25","units":"µg/m³","displayName":"PM2.5"}}],"coordinates":{"latitude":-16.51516,"longitude":-151.76306},"licenses":[{"id":33,"name":"US
+        Public Domain","attribution":{"name":"OpenAQ admin","url":null},"dateFrom":null,"dateTo":null}],"bounds":[-151.76306,-16.51516,-151.76306,-16.51516],"distance":null,"datetimeFirst":{"utc":"2021-12-15T10:00:00Z","local":"2021-12-15T00:00:00-10:00"},"datetimeLast":{"utc":"2025-02-22T06:00:00Z","local":"2025-02-21T20:00:00-10:00"}}]}'
+  recorded_at: 2025-02-21 20:36:18 GMT
+  recorded_with: vcr/1.6.0, webmockr/1.0.0

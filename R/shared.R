@@ -43,19 +43,19 @@ validate_page <- function(page) {
 }
 
 
-#' Validates query parameters that are numeric or list of numerics.
+#' Validates query parameters are a numeric vector
 #'
 #' An internal helper function to generalize the validation of query parameters
-#' that are of type numeric or list of numerics.
+#' that shoudl be a numeric vector.
 #'
 #' @param x Any value.
 #' @param parameter A string representing the query parameter name.
 #'
 #' @noRd
-validate_numeric_or_list <- function(x, parameter) {
-  if (!is.numeric(x) && !(is.list(x) && all(sapply(x, is.numeric)))) {
+validate_numeric_vector <- function(x, parameter) {
+  if (!is.numeric(x) || !is.vector(x)) {
     msg <- sprintf(
-      "%s must be a numeric value or a list of numeric values.",
+      "%s must be a numeric vector",
       parameter
     )
     stop(msg)
@@ -64,86 +64,86 @@ validate_numeric_or_list <- function(x, parameter) {
 
 #' Validates providers_id query parameter.
 #'
-#' A function for validating providers_id query parameter is a numeric or
-#' a list of numerics
+#' A function for validating providers_id query parameter is a numeric
+#' vector
 #'
 #' @param id Any value.
 #'
 #' @noRd
 validate_providers_id <- function(id) {
-  validate_numeric_or_list(id, "providers_id")
+  validate_numeric_vector(id, "providers_id")
 }
 
 #' Validates owner_contacts_id query parameter.
 #'
-#' A function for validating owner_contacts_id query parameter is a numeric or
-#' a list of numerics
+#' A function for validating owner_contacts_id query parameter is a numeric
+#' vector
 #'
 #' @param id Any value.
 #'
 #' @noRd
 validate_owner_contacts_id <- function(id) {
-  validate_numeric_or_list(id, "owner_contacts_id")
+  validate_numeric_vector(id, "owner_contacts_id")
 }
 
 #' Validates manufacturers_id query parameter.
 #'
-#' A function for validating manufacturers_id query parameter is a numeric or
-#' a list of numerics
+#' A function for validating manufacturers_id query parameter is a numeric
+#' vector
 #'
 #' @param id Any value.
 #'
 #' @noRd
 validate_manufacturers_id <- function(id) {
-  validate_numeric_or_list(id, "manufacturers_id")
+  validate_numeric_vector(id, "manufacturers_id")
 }
 
 #' Validates licenses_id query parameter.
 #'
-#' A function for validating licenses_id query parameter is a numeric or
-#' a list of numerics
+#' A function for validating licenses_id query parameter is a numeric
+#' vector
 #'
 #' @param id Any value.
 #'
 #' @noRd
 validate_licenses_id <- function(id) {
-  validate_numeric_or_list(id, "licenses_id")
+  validate_numeric_vector(id, "licenses_id")
 }
 
 #' Validates instruments_id query parameter.
 #'
-#' A function for validating instruments_id query parameter is a numeric or
-#' a list of numerics
+#' A function for validating instruments_id query parameter is a numeric
+#' vector
 #'
 #' @param id Any value.
 #'
 #' @noRd
 validate_instruments_id <- function(id) {
-  validate_numeric_or_list(id, "instruments_id")
+  validate_numeric_vector(id, "instruments_id")
 }
 
 #' Validates countries_id query parameter.
 #'
-#' A function for validating countries_id query parameter is a numeric or
-#' a list of numerics
+#' A function for validating countries_id query parameter is a numeric
+#' vector
 #'
 #' @param id Any value.
 #'
 #' @noRd
 validate_countries_id <- function(id) {
-  validate_numeric_or_list(id, "countries_id")
+  validate_numeric_vector(id, "countries_id")
 }
 
 #' Validates parameters_id query parameter.
 #'
-#' A function for validating parameters_id query parameter is a numeric or
-#' a list of numerics
+#' A function for validating parameters_id query parameter is a numeric
+#' vector
 #'
 #' @param id Any value.
 #'
 #' @noRd
 validate_parameters_id <- function(id) {
-  validate_numeric_or_list(id, "parameters_id")
+  validate_numeric_vector(id, "parameters_id")
 }
 
 
@@ -163,22 +163,34 @@ validate_radius <- function(radius) {
 
 #' Validates coordinates query parameter.
 #'
-#' A function for ensuring that the coordinates query parameter is a list of
-#' numeric values and is of valid WGS84 coordinates. Ensures that longitude
-#' value is between -180 and 180 and latitude value is between -90 and 90.
+#' A function for ensuring that the coordinates query parameter is a named
+#' numeric vector with `latitude` and `longitude` fields and is of valid WGS84
+#' coordinates. Ensures that longitude value is between -180 and 180 and
+#' latitude value is between -90 and 90.
 #'
 #' @param coordinates Any value.
 #'
 #' @noRd
 validate_coordinates <- function(coordinates) {
-  if (!is.list(coordinates) || length(coordinates) != 2) {
-    stop("Coordinates must be a list of length 2.")
+  error_message <- NULL
+  if (!is.numeric(coordinates)) {
+    error_message <- "Invalid point format. Input must be numeric."
+  } else if (length(coordinates) != 2 || is.null(names(coordinates)) ||
+    !all(c("longitude", "latitude") %in% names(coordinates))) {
+    error_message <- "Invalid point format. Must be a named numeric vector with 'longitude' and 'latitude'."
+  } else {
+    lon <- coordinates["longitude"]
+    lat <- coordinates["latitude"]
+
+    if (!is.numeric(lon) || !is.numeric(lat)) {
+      error_message <- "Longitude and latitude must be numeric."
+    } else if (abs(lon) > 180 || abs(lat) > 90) {
+      error_message <- "Invalid longitude or latitude. Longitude must be between -180 and 180, and latitude between -90 and 90."
+    }
   }
-  if (!is.numeric(coordinates[[1]]) || !is.numeric(coordinates[[2]])) {
-    stop("Coordinates must be numeric values.")
-  }
-  if (abs(coordinates[[1]]) > 90 || abs(coordinates[[2]]) > 180) {
-    stop("Invalid latitude or longitude values.")
+
+  if (!is.null(error_message)) {
+    stop(error_message)
   }
 }
 
@@ -192,33 +204,35 @@ validate_coordinates <- function(coordinates) {
 #'
 #' @noRd
 validate_bbox <- function(bbox) {
-  if (!is.list(bbox) || length(bbox) != 4) {
-    stop("Bounding box must be a list of length 4.")
+  error_message <- NULL
+
+  if (!is.numeric(bbox)) {
+    error_message <- "Invalid bounding box format. Input must be numeric."
+  } else if (length(bbox) != 4 || is.null(names(bbox)) ||
+    !all(c("xmin", "ymin", "xmax", "ymax") %in% names(bbox))) {
+    error_message <- "Invalid bounding box format. Must be a named numeric vector with 'xmin', 'ymin', 'xmax', and 'ymax'."
+  } else {
+    xmin <- bbox["xmin"]
+    ymin <- bbox["ymin"]
+    xmax <- bbox["xmax"]
+    ymax <- bbox["ymax"]
+
+    if (!is.numeric(xmin) || !is.numeric(ymin) || !is.numeric(xmax) || !is.numeric(ymax)) {
+      error_message <- "Bounding box coordinates must be numeric."
+    } else if (xmin > xmax) {
+      error_message <- "Invalid bounding box. xmin must be less than or equal to xmax."
+    } else if (ymin > ymax) {
+      error_message <- "Invalid bounding box. ymin must be less than or equal to ymax."
+    } else if (abs(ymin) > 90 || abs(ymax) > 90) {
+      error_message <- "Invalid latitude values in bounding box."
+    } else if (abs(xmin) > 180 || abs(xmax) > 180) {
+      error_message <- "Invalid longitude values in bounding box."
+    }
   }
-
-  if (!all(sapply(bbox, is.numeric))) {
-    stop("Bounding box elements must be numeric values.")
-  }
-
-  min_lon <- bbox[[1]]
-  min_lat <- bbox[[2]]
-  max_lon <- bbox[[3]]
-  max_lat <- bbox[[4]]
-
-  if (abs(min_lon) > 180 || abs(max_lon) > 180) {
-    stop("Invalid longitude values in bounding box.")
-  }
-
-  if (abs(min_lat) > 90 || abs(max_lat) > 90) {
-    stop("Invalid latitude values in bounding box.")
-  }
-
-  if (min_lon >= max_lon || min_lat >= max_lat) {
-    stop("Invalid bounding box: minimum coordinates must be less than maximum
-    coordinates.")
+  if (!is.null(error_message)) {
+    stop(error_message)
   }
 }
-
 
 #' Validates iso query parameter.
 #'
@@ -353,40 +367,20 @@ extract_parameters <- function(param_defs, ...) {
 #' if is a list.
 #'
 #' @examples
-#' transform_list_or_item(list(1, 2, 3))
+#' transform_vector_to_comma_string(c(1, 2, 3))
 #' @noRd
-transform_list_or_item <- function(x) {
-  if (is.list(x)) {
-    invisible(list_to_string(x))
-  } else {
-    invisible(x)
+transform_vector_to_string <- function(x) {
+  if (!is.null(x)) {
+    invisible(paste(x, collapse = ","))
   }
 }
-
-#' Converts a list to a comma delimited string
-#'
-#' @param li A list to be collapsed.
-#'
-#' @return A string of the collapse list items
-#'
-#' @examples
-#' list_to_string(list(1, 2, 3))
-#' @noRd
-list_to_string <- function(li) {
-  if (!is.null(li)) {
-    invisible(paste(li, collapse = ","))
-  }
-}
-
 
 #' Converts a timestamp to an ISO 8601 datetime string.
 #'
 #' @param x A list to be collapsed.
 #'
-#' @return
-#'
 #' @examples
-#' list_to_string(list(1, 2, 3))
+#' transform_datetime
 #' @noRd
 transform_datetime <- function(x) {
   if (!is.null(x)) {

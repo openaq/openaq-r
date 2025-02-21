@@ -159,6 +159,8 @@ test_that("openaq_request throws error", {
 
 test_that("openaq_request headers are correct", {
   current_version <- packageVersion(packageName())
+  r_version <- paste0(R.Version()[c("major","minor")], collapse = ".")
+
   webmockr::enable()
   withr::with_envvar(
     new = c("OPENAQ_API_KEY" = "mock-api-key-for-testing-1234"),
@@ -168,7 +170,7 @@ test_that("openaq_request headers are correct", {
       res <- openaq_request("countries", list())
 
       headers <- res$headers
-      expect_equal(res$headers$`User-Agent`, sprintf("openaq-r-v%s", current_version))
+      expect_equal(res$headers$`User-Agent`, sprintf("openaq-r-%s-%s", current_version, r_version))
     }
   )
 })

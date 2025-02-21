@@ -18,9 +18,13 @@ list_countries(
 )
 }
 \arguments{
-\item{providers_id}{An integer or a list of integers}
+\item{providers_id}{A numeric vector of length 1 or more, containing the
+ID(s) of the providers to use for filtering results. If multiple IDs are
+provided, results matching any of the IDs will be returned.}
 
-\item{parameters_id}{An integer or a list of integers}
+\item{parameters_id}{A numeric vector of length 1 or more, containing the
+ID(s) of the parameters to use for filtering results. If multiple IDs are
+provided, results matching any of the IDs will be returned.}
 
 \item{order_by}{A string.}
 

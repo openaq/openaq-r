@@ -49,43 +49,62 @@ get_location <- function(
 
 #' Get a list of locations from the locations resource.
 #'
-#' @param bbox A list of 4 numerics, representing a geographic bounding box for
-#' filtering results that are within, in the form \[minimum X, minimum Y,
-#' maximum X, maximum Y\].
-#' @param coordinates A list of 2 numerics, representing a central WGS84
-#' geographic coordinate, in the form \[y,x\] or \[lat,lng\], for use with the
-#' radius parameter.
+#' @param bbox  Named numeric vector with four coordinates in form X minimum,
+#' Y mininum, X maximum, Y maximum, named values must be `xmin`, `ymin`, `ymax`
+#' , `xmax`. Defaults to `NULL`.
+#' @param coordinates Named numeric vector with two numeric WGS84 (EPSG:4326)
+#' geographic coordinates, with named values `latitude` and `longitude`.
+#' Represents the central point to be used in conjunction with the radius
+#' parameter for geographic search. Defaults to `NULL`.
 #' @param radius An integer for the number of meters to search around the
-#' `coordinates` parameter for filtering locations within.
-#' @param providers_id An integer or list of integers representing the
-#' providers_id to filter results on.
-#' @param parameters_id An integer or list of integers representing the
-#' parameters_id to filter results on.
-#' @param owner_contacts_id An integer or list of integers representing the
-#' owner_contacts_id to filter results on.
-#' @param manufacturers_id An integer or list of integers representing the
-#' manufacturers_id to filter results on.
-#' @param licenses_id An integer or list of integers representing the
-#' licenses_id to filter results on.
+#' `coordinates` parameter for filtering locations within the radius. Defaults
+#' to `NULL`.
+#' @param providers_id A numeric vector of length 1 or more, containing the
+#' ID(s) of the provider(s) to use for filtering results. If multiple IDs are
+#' provided, results matching any of the IDs will be returned. Defaults to
+#' `NULL`.
+#' @param parameters_id A numeric vector of length 1 or more, containing the
+#' ID(s) of the parameter(s) to use for filtering results. If multiple IDs are
+#' provided, results matching any of the IDs will be returned. Defaults to
+#' `NULL`.
+#' @param owner_contacts_id A numeric vector of length 1 or more, containing the
+#' ID(s) of the owners(s) to use for filtering results. If multiple IDs are
+#' provided, results matching any of the IDs will be returned. Defaults to
+#' `NULL`.
+#' @param manufacturers_id A numeric vector of length 1 or more, containing the
+#' ID(s) of the manufacturers(s) to use for filtering results. If multiple IDs
+#' are provided, results matching any of the IDs will be returned. Defaults to
+#' `NULL`.
+#' @param licenses_id A numeric vector of length 1 or more, containing the
+#' ID(s) of the license(s) to use for filtering results. If multiple IDs are
+#' provided, results matching any of the IDs will be returned. Defaults to
+#' `NULL`.
+#' @param instruments_id A numeric vector of length 1 or more, containing the
+#' ID(s) of the instrument(s) to use for filtering results. If multiple IDs are
+#' provided, results matching any of the IDs will be returned. Defaults to
+#' `NULL`.
+#' @param countries_id A numeric vector of length 1 or more, containing the
+#' ID(s) of the country(ies) to use for filtering results. If multiple IDs are
+#' provided, results matching any of the IDs will be returned. Defaults to
+#' `NULL`.
 #' @param monitor A logical to filter results to regulatory monitors (TRUE) or
-#' air sensors (FALSE), both are included if NULL.
+#' air sensors (FALSE), both are included if NULL. Defaults to `NULL`.
 #' @param mobile A logical to filter results to mobile (TRUE) or stationary
-#' (FALSE) location, both are included if NULL.
-#' @param instruments_id An integer or list of integers.
+#' (FALSE) location, both are included if NULL. Defaults to `NULL`.
 #' @param iso An ISO 3166-1 alpha-2 string of the country to filter the results.
-#' @param countries_id An integer or list of integers of the countries_id(s) to
-#' filter the results.
-#' @param order_by A string.
-#' @param sort_order A string.
-#' @param limit An integer to limit the number of results.
+#' @param order_by A string. Defaults to `NULL`.
+#' @param sort_order A string. Defaults to `NULL`.
+#' @param limit An integer to limit the number of results per page. Defaults to
+#' `NULL`.
 #' @param page An integer for the page number for paginating through results.
+#' Defaults to `NULL`.
 #' @param as_data_frame A logical for toggling whether to return results as
-#' data frame or list defaults to TRUE.
+#' data frame or list. Defaults to `TRUE`
 #' @param dry_run A logical for toggling a dry run of the request, defaults to
-#' FALSE.
+#' `FALSE.`
 #' @param rate_limit A logical for toggling automatic rate limiting based on
-#' rate limit headers, defaults to FALSE.
-#' @param api_key A valid OpenAQ API key string, defaults to NULL.
+#' rate limit headers. Defaults to `FALSE.`
+#' @param api_key A valid OpenAQ API key string. Defaults to `NULL`.
 #'
 #' @return A data frame or list of results.
 #'
@@ -121,43 +140,43 @@ list_locations <- function(
   param_defs <- list(
     bbox = list(
       default = NULL, validator = validate_bbox,
-      transform = list_to_string
+      transform = transform_vector_to_string
     ),
     coordinates = list(
       default = NULL, validator = validate_coordinates,
-      transform = list_to_string
+      transform = transform_vector_to_string
     ),
     radius = list(default = NULL, validator = validate_radius),
     providers_id = list(
       default = NULL, validator = validate_providers_id,
-      transform = transform_list_or_item
+      transform = transform_vector_to_string
     ),
     parameters_id = list(
       default = NULL, validator = validate_parameters_id,
-      transform = transform_list_or_item
+      transform = transform_vector_to_string
     ),
     owner_contacts_id = list(
       default = NULL,
-      validator = validate_owner_contacts_id, transform = transform_list_or_item
+      validator = validate_owner_contacts_id, transform = transform_vector_to_string
     ),
     manufacturers_id = list(
       default = NULL,
-      validator = validate_manufacturers_id, transform = transform_list_or_item
+      validator = validate_manufacturers_id, transform = transform_vector_to_string
     ),
     licenses_id = list(
       default = NULL, validator = validate_licenses_id,
-      transform = transform_list_or_item
+      transform = transform_vector_to_string
     ),
     monitor = list(default = NULL, validator = validate_monitor),
     mobile = list(default = NULL, validator = validate_mobile),
     instruments_id = list(
       default = NULL, validator = validate_instruments_id,
-      transform = transform_list_or_item
+      transform = transform_vector_to_string
     ),
     iso = list(default = NULL, validator = validate_iso),
     countries_id = list(
       default = NULL, validator = validate_countries_id,
-      transform = transform_list_or_item
+      transform = transform_vector_to_string
     ),
     order_by = list(default = NULL, validator = NULL),
     sort_order = list(default = NULL, validator = validate_sort_order),

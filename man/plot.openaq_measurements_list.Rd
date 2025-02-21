@@ -4,14 +4,10 @@
 \alias{plot.openaq_measurements_list}
 \title{Helper for plotting measurements from list}
 \usage{
-\method{plot}{openaq_measurements_list}(meas, label = TRUE, log = TRUE, ...)
+\method{plot}{openaq_measurements_list}(meas, ...)
 }
 \arguments{
 \item{meas}{A list of measurements results.}
-
-\item{label}{parameter one}
-
-\item{log}{parameter two}
 
 \item{...}{Other options to be passed on to base::plot().}
 }

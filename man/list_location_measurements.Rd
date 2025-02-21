@@ -22,10 +22,11 @@ list_location_measurements(
 )
 }
 \arguments{
-\item{locations_id}{An integer representing an OpenAQ sensors_id.}
+\item{locations_id}{An integer representing an OpenAQ locations_id}
 
-\item{parameters_ids}{An integer or list of integers to filer measurements to
-a subset of parameters.}
+\item{parameters_ids}{A numeric vector of length 1 or more, containing the
+ID(s) of the parameter(s) to use for filtering results. If multiple IDs are
+provided, results matching any of the IDs will be returned.}
 
 \item{data}{A string a data interval to return, defaults to "measurements".}
 

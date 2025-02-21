@@ -122,13 +122,14 @@ openaq_request <- function(path, query_params, api_key = NULL) {
   resource_path <- paste("/v3", path, sep = "/")
 
   current_version <- packageVersion(packageName())
+  r_version <- paste0(R.Version()[c("major","minor")], collapse = ".")
 
   req <- httr2::request(base_url)
   req <- httr2::req_url_path(req, resource_path)
   req <- httr2::req_url_query(req, !!!query_params, .multi = "comma")
   req <- httr2::req_headers(req,
     `X-API-Key` = api_key,
-    `User-Agent` = sprintf("openaq-r-v%s", current_version),
+    `User-Agent` = sprintf("openaq-r-%s-%s", current_version, r_version),
     `Content-Type` = "application/json",
     Accept = "application/json",
     .redact = "X-API-Key"

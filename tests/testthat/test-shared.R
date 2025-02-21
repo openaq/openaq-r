@@ -64,34 +64,12 @@ test_that("validate_page does not throw ", {
   expect_no_error(validate_page(page))
 })
 
-# validate_numeric_or_list
-
-test_that("validate_numeric_or_list works valid inputs", {
-  expect_no_error(validate_numeric_or_list(10, "parameter"))
-  expect_no_error(validate_numeric_or_list(list(1, 2, 3), "parameter"))
-})
-
-test_that("validate_numeric_or_list throws for invalid inputs", {
-  expect_error(
-    validate_numeric_or_list("abc", "parameter"),
-    "parameter must be a numeric value or a list of numeric values."
-  )
-  expect_error(
-    validate_numeric_or_list(list(1, "a", 3), "parameter"),
-    "parameter must be a numeric value or a list of numeric values."
-  )
-  expect_error(
-    validate_numeric_or_list(TRUE, "parameter"),
-    "parameter must be a numeric value or a list of numeric values."
-  )
-})
-
 # validate_providers_id
 
 test_that("validate_providers_id throws with correct error message", {
   expect_error(
     validate_providers_id("abc"),
-    "providers_id must be a numeric value or a list of numeric values."
+    "providers_id must be a numeric vector"
   )
 })
 
@@ -100,7 +78,7 @@ test_that("validate_providers_id throws with correct error message", {
 test_that("validate_owner_contacts_id throws with correct error message", {
   expect_error(
     validate_owner_contacts_id("abc"),
-    "owner_contacts_id must be a numeric value or a list of numeric values."
+    "owner_contacts_id must be a numeric vector"
   )
 })
 
@@ -109,7 +87,7 @@ test_that("validate_owner_contacts_id throws with correct error message", {
 test_that("validate_manufacturers_id throws with correct error message", {
   expect_error(
     validate_manufacturers_id("abc"),
-    "manufacturers_id must be a numeric value or a list of numeric values."
+    "manufacturers_id must be a numeric vector"
   )
 })
 
@@ -118,7 +96,7 @@ test_that("validate_manufacturers_id throws with correct error message", {
 test_that("validate_licenses_id throws with correct error message", {
   expect_error(
     validate_licenses_id("abc"),
-    "licenses_id must be a numeric value or a list of numeric values."
+    "licenses_id must be a numeric vector"
   )
 })
 
@@ -127,7 +105,7 @@ test_that("validate_licenses_id throws with correct error message", {
 test_that("validate_instruments_id throws with correct error message", {
   expect_error(
     validate_instruments_id("abc"),
-    "instruments_id must be a numeric value or a list of numeric values."
+    "instruments_id must be a numeric vector"
   )
 })
 
@@ -136,7 +114,7 @@ test_that("validate_instruments_id throws with correct error message", {
 test_that("validate_countries_id throws with correct error message", {
   expect_error(
     validate_countries_id("abc"),
-    "countries_id must be a numeric value or a list of numeric values."
+    "countries_id must be a numeric vector"
   )
 })
 
@@ -145,7 +123,7 @@ test_that("validate_countries_id throws with correct error message", {
 test_that("validate_parameters_id throws with correct error message", {
   expect_error(
     validate_parameters_id("abc"),
-    "parameters_id must be a numeric value or a list of numeric values."
+    "parameters_id must be a numeric vector"
   )
 })
 
@@ -173,95 +151,126 @@ test_that("validate_radius does not throw", {
 
 # validate_coordinates
 
-test_that("validate_coordinates throws - non numeric", {
-  coordinates <- list(0, "0")
-  expect_error(validate_coordinates(coordinates))
-  coordinates <- list("0", 0)
-  expect_error(validate_coordinates(coordinates))
-  coordinates <- list("0", "0")
-  expect_error(validate_coordinates(coordinates))
+test_that("validate_coordinates handles invalid input correctly", {
+  expect_error(
+    validate_coordinates(c("a", "b")),
+    "Invalid point format. Input must be numeric."
+  )
+  expect_error(
+    validate_coordinates(c(1, 2, 3)),
+    "Invalid point format. Must be a named numeric vector with 'longitude' and 'latitude'."
+  )
+  expect_error(
+    validate_coordinates(c(1, 2)),
+    "Invalid point format. Must be a named numeric vector with 'longitude' and 'latitude'."
+  )
+  expect_error(
+    validate_coordinates(c(x = 1, y = 2)),
+    "Invalid point format. Must be a named numeric vector with 'longitude' and 'latitude'."
+  )
+  expect_error(
+    validate_coordinates(c(longitude = "1", latitude = 2)),
+    "Invalid point format. Input must be numeric."
+  )
+  expect_error(
+    validate_coordinates(c(longitude = 1, latitude = "2")),
+    "Invalid point format. Input must be numeric."
+  )
+  expect_error(
+    validate_coordinates(c(longitude = 200, latitude = 10)),
+    "Invalid longitude or latitude. Longitude must be between -180 and 180, and latitude between -90 and 90."
+  )
+  expect_error(
+    validate_coordinates(c(longitude = -200, latitude = 10)),
+    "Invalid longitude or latitude. Longitude must be between -180 and 180, and latitude between -90 and 90."
+  )
+  expect_error(
+    validate_coordinates(c(longitude = 10, latitude = 100)),
+    "Invalid longitude or latitude. Longitude must be between -180 and 180, and latitude between -90 and 90."
+  )
+  expect_error(
+    validate_coordinates(c(longitude = 10, latitude = -100)),
+    "Invalid longitude or latitude. Longitude must be between -180 and 180, and latitude between -90 and 90."
+  )
 })
 
-test_that("validate_coordinates throws - list errors", {
-  coordinates <- list(0, 0, 0)
-  expect_error(validate_coordinates(coordinates))
-  coordinates <- list(0)
-  expect_error(validate_coordinates(coordinates))
-  coordinates <- 0
-  expect_error(validate_coordinates(coordinates))
+
+test_that("validate_coordinates handles valid input correctly", {
+  expect_silent(validate_coordinates(c(longitude = 10, latitude = 20)))
+  expect_silent(validate_coordinates(c(longitude = -10, latitude = -20)))
+  expect_silent(validate_coordinates(c(longitude = 0, latitude = 0)))
+  expect_silent(validate_coordinates(c(longitude = 180, latitude = 90)))
+  expect_silent(validate_coordinates(c(longitude = -180, latitude = -90)))
 })
-
-
-test_that("validate_coordinates throws - upper bounds", {
-  coordinates <- list(91, 170)
-  expect_error(validate_coordinates(coordinates))
-  coordinates <- list(89, 181)
-  expect_error(validate_coordinates(coordinates))
-})
-
-test_that("validate_coordinates throws - lower bounds", {
-  coordinates <- list(-91, 170)
-  expect_error(validate_coordinates(coordinates))
-  coordinates <- list(89, -181)
-  expect_error(validate_coordinates(coordinates))
-})
-
-test_that("validate_coordinates does not throw", {
-  coordinates <- list(0, 0)
-  expect_no_error(validate_coordinates(coordinates))
-  coordinates <- list(42, 42)
-  expect_no_error(validate_coordinates(coordinates))
-  coordinates <- list(90, 180)
-  expect_no_error(validate_coordinates(coordinates))
-  coordinates <- list(-90, -180)
-  expect_no_error(validate_coordinates(coordinates))
-})
-
 
 # validate_bbox
 
-test_that("validate_bbox throws - non numeric", {
-  invalid_bbox <- list("-180", -90, 180, 90)
-  expect_error(validate_bbox(invalid_bbox))
-  invalid_bbox <- list(-180, "-90", 180, 90)
-  expect_error(validate_bbox(invalid_bbox))
-  invalid_bbox <- list(-180, -90, "180", 90)
-  expect_error(validate_bbox(invalid_bbox))
-  invalid_bbox <- list(-180, -90, 180, "90")
-  expect_error(validate_bbox(invalid_bbox))
-  invalid_bbox <- list("-180", "-90", "180", "90")
-  expect_error(validate_bbox(invalid_bbox))
+test_that("validate_bbox handles invalid input correctly - catches non-numeric", {
+  expect_error(
+    validate_bbox(c("a", "b", "c", "d")),
+    "Invalid bounding box format. Input must be numeric."
+  )
+
+  expect_error(
+    validate_bbox(c(xmin = "1", ymin = 2, xmax = 3, ymax = 4)),
+    "Invalid bounding box format. Input must be numeric."
+  )
+  expect_error(
+    validate_bbox(c(xmin = 1, ymin = "2", xmax = 3, ymax = 4)),
+    "Invalid bounding box format. Input must be numeric."
+  )
+})
+test_that("validate_bbox handles invalid input correctly - catches non-compliant format", {
+  expect_error(
+    validate_bbox(c(1, 2, 3)),
+    "Invalid bounding box format. Must be a named numeric vector with 'xmin', 'ymin', 'xmax', and 'ymax'."
+  )
+
+  expect_error(
+    validate_bbox(c(1, 2, 3, 4)),
+    "Invalid bounding box format. Must be a named numeric vector with 'xmin', 'ymin', 'xmax', and 'ymax'."
+  )
+
+  expect_error(
+    validate_bbox(c(x = 1, y = 2, z = 3, w = 4)),
+    "Invalid bounding box format. Must be a named numeric vector with 'xmin', 'ymin', 'xmax', and 'ymax'."
+  )
 })
 
-test_that("validate_bbox throws error for invalid list length", {
-  invalid_bbox <- list(-180, -90, 180)
-  expect_error(validate_bbox(invalid_bbox))
-  invalid_bbox <- list(-180, -90, 180, 90, 100)
-  expect_error(validate_bbox(invalid_bbox))
+test_that("validate_bbox handles invalid input correctly - catches out of bounds", {
+  expect_error(
+    validate_bbox(c(xmin = 2, ymin = 1, xmax = 1, ymax = 2)),
+    "Invalid bounding box. xmin must be less than or equal to xmax."
+  )
+
+  expect_error(
+    validate_bbox(c(xmin = 1, ymin = 2, xmax = 2, ymax = 1)),
+    "Invalid bounding box. ymin must be less than or equal to ymax."
+  )
 })
 
-test_that("validate_bbox throws error for invalid latitude", {
-  invalid_bbox <- list(-200, -90, 180, 90)
-  expect_error(validate_bbox(invalid_bbox))
+test_that("validate_bbox handles invalid input correctly - catches invalid lat,lng", {
+  expect_error(
+    validate_bbox(c(xmin = 200, ymin = 10, xmax = 210, ymax = 20)),
+    "Invalid longitude values in bounding box."
+  )
+  expect_error(
+    validate_bbox(c(xmin = -200, ymin = 10, xmax = -190, ymax = 20)),
+    "Invalid longitude values in bounding box."
+  )
+  expect_error(
+    validate_bbox(c(xmin = 10, ymin = 100, xmax = 20, ymax = 110)),
+    "Invalid latitude values in bounding box."
+  )
 })
 
-test_that("validate_bbox throws error for invalid longitude", {
-  invalid_bbox <- list(-180, -100, 180, 90)
-  expect_error(validate_bbox(invalid_bbox))
-})
 
-test_that("validate_bbox throws - invalid bounding box range", {
-  invalid_bbox <- list(10, 20, 5, 10)
-  expect_error(validate_bbox(invalid_bbox))
-  invalid_bbox <- list(-180, 20, 180, 10)
-  expect_error(validate_bbox(invalid_bbox))
+test_that("validate_bbox handles valid input correctly", {
+  expect_silent(validate_bbox(c(xmin = 1, ymin = 2, xmax = 3, ymax = 4)))
+  expect_silent(validate_bbox(c(xmin = -180, ymin = -90, xmax = 180, ymax = 90))) # Boundary values
+  expect_silent(validate_bbox(c(xmin = -10, ymin = -20, xmax = 10, ymax = 20)))
+  expect_silent(validate_bbox(c(xmin = 0, ymin = 0, xmax = 0, ymax = 0)))
 })
-
-test_that("validate_bbox does not throw error for valid bounding box", {
-  valid_bbox <- list(-180, -90, 180, 90)
-  expect_silent(validate_bbox(valid_bbox))
-})
-
 
 # validate_iso
 
@@ -420,34 +429,6 @@ test_that("extract_parameters with validator and transform works correctly", {
   expect_equal(result, list(date = "2019-07-11T00:00:00"))
 })
 
-
-# list_to_string
-
-test_that("list_to_string collapses numbers correctly", {
-  result <- list_to_string(list(1, 2, 3))
-  expect_equal(result, "1,2,3")
-})
-
-test_that("list_to_string collapses strings correctly", {
-  result <- list_to_string(list("1", "2", "3"))
-  expect_equal(result, "1,2,3")
-})
-
-test_that("list_to_string collapses mixed values correctly", {
-  result <- list_to_string(list(1, "2", 3))
-  expect_equal(result, "1,2,3")
-})
-
-
-# transform_list_or_item
-
-test_that("transform_list_or_item works as expected", {
-  expect_equal(transform_list_or_item(list(1, 2, 3)), "1,2,3")
-  expect_equal(transform_list_or_item(42), 42)
-  expect_equal(transform_list_or_item("openaq"), "openaq")
-  expect_equal(transform_list_or_item(list()), "")
-  expect_equal(transform_list_or_item(NULL), NULL)
-})
 
 # parse_openaq_timestamp TODO
 

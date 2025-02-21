@@ -97,9 +97,10 @@ list_sensor_measurements <- function(
 
 #' Get a list of measurements by locations_id.
 #'
-#' @param locations_id An integer representing an OpenAQ sensors_id.
-#' @param parameters_ids An integer or list of integers to filer measurements to
-#' a subset of parameters.
+#' @param locations_id An integer representing an OpenAQ locations_id
+#' @param parameters_ids A numeric vector of length 1 or more, containing the
+#' ID(s) of the parameter(s) to use for filtering results. If multiple IDs are
+#' provided, results matching any of the IDs will be returned.
 #' @param data A string a data interval to return, defaults to "measurements".
 #' @param rollup A string.
 #' @param datetime_from A POSIXct datetime to filter measurements
