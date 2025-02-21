@@ -77,8 +77,8 @@ This query will return all locations within the defined rectangular region.
 
 ```{r echo=FALSE}
 bbox_coords <- c(-8.478184,  26.640174, 50.803066, 46.534067)
-names(bbox_coords) = c("xmin","ymin","xmax","ymax")
-bbox <- st_as_sfc(st_bbox(bbox_coords), crs=4326)
+names(bbox_coords) <- c("xmin", "ymin", "xmax", "ymax")
+bbox <- st_as_sfc(st_bbox(bbox_coords), crs = 4326)
 world_sp <- maps::map("world", plot = FALSE, fill = TRUE)
 world_sf <- st_as_sf(world_sp)
 plot(st_geometry(world_sf), col = "lightgray", border = "black", xlim = st_bbox(bbox)[c("xmin", "xmax")], ylim = st_bbox(bbox)[c("ymin", "ymax")]) 
@@ -120,7 +120,7 @@ This output gives you the xmin, ymin, xmax, and ymax values needed for your
 ```{r eval=FALSE}
 plot(sf::st_as_sfc(bbox))
 bbox <- sf::st_bbox(la)
-plot(la["OBJECTID"], add =TRUE)
+plot(la["OBJECTID"], add = TRUE)
 ```
 
 
@@ -129,12 +129,12 @@ bbox <- sf::st_bbox(la)
 world_sp <- maps::map("county", plot = FALSE, fill = TRUE)
 world_sf <- st_as_sf(world_sp)
 plot(
-  st_geometry(world_sf), 
-  col = "lightgray", 
-  border = "black", 
-  xlim = st_bbox(bbox)[c("xmin", "xmax")],
-  ylim = st_bbox(bbox)[c("ymin", "ymax")],
-  main = "Los Angeles city boundary with bounding box") 
+     st_geometry(world_sf),
+     col = "lightgray",
+     border = "black",
+     xlim = st_bbox(bbox)[c("xmin", "xmax")],
+     ylim = st_bbox(bbox)[c("ymin", "ymax")],
+     main = "Los Angeles city boundary with bounding box")
 plot(sf::st_as_sfc(bbox), lwd = 2, add = TRUE)
 plot(st_geometry(la), lwd = 2, add = TRUE)
 

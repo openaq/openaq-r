@@ -156,7 +156,7 @@ as.data.frame.openaq_countries_list <- function(data, ...) {
   }))
   tbl$id <- as.numeric(tbl$id)
   attr(tbl, "meta") <- attr(data, "meta")
-  return(structure(tbl,
+  structure(tbl,
     class = c("openaq_countries_data.frame", "data.frame")
-  ))
+  )
 }

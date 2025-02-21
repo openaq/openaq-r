@@ -175,8 +175,7 @@ validate_coordinates <- function(coordinates) {
   error_message <- NULL
   if (!is.numeric(coordinates)) {
     error_message <- "Invalid point format. Input must be numeric."
-  } else if (length(coordinates) != 2 || is.null(names(coordinates)) ||
-    !all(c("longitude", "latitude") %in% names(coordinates))) {
+  } else if (length(coordinates) != 2 || is.null(names(coordinates)) || !all(c("longitude", "latitude") %in% names(coordinates))) {
     error_message <- "Invalid point format. Must be a named numeric vector with 'longitude' and 'latitude'."
   } else {
     lon <- coordinates["longitude"]

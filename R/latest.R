@@ -159,7 +159,7 @@ as.data.frame.openaq_latest_list <- function(data, ...) {
   tbl$latitude <- as.numeric(tbl$latitude)
   tbl$longitude <- as.numeric(tbl$longitude)
   attr(tbl, "meta") <- attr(data, "meta")
-  return(structure(tbl,
+  structure(tbl,
     class = c("openaq_latest_data.frame", "data.frame")
-  ))
+  )
 }

@@ -159,7 +159,7 @@ test_that("openaq_request throws error", {
 
 test_that("openaq_request headers are correct", {
   current_version <- packageVersion(packageName())
-  r_version <- paste0(R.Version()[c("major","minor")], collapse = ".")
+  r_version <- paste0(R.Version()[c("major", "minor")], collapse = ".")
 
   webmockr::enable()
   withr::with_envvar(

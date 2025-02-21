@@ -208,12 +208,12 @@ list_location_measurements <- function(
 
 get_period_field <- function(x, key) {
   if (is.null(x$period)) {
-    return(NA)
+    NA
   } else {
     if (is.null(x$period[key])) {
-      return(x$period[key])
+      x$period[key]
     } else {
-      return(NA)
+      NA
     }
   }
 }
@@ -299,9 +299,9 @@ as.data.frame.openaq_measurements_list <- function(data, ...) {
 
 
   attr(tbl, "meta") <- attr(data, "meta")
-  return(structure(tbl,
+  structure(tbl,
     class = c("openaq_measurements_data.frame", "data.frame")
-  ))
+  )
 }
 
 #' Helper for plotting measurements

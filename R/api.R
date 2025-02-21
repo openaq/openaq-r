@@ -122,7 +122,7 @@ openaq_request <- function(path, query_params, api_key = NULL) {
   resource_path <- paste("/v3", path, sep = "/")
 
   current_version <- packageVersion(packageName())
-  r_version <- paste0(R.Version()[c("major","minor")], collapse = ".")
+  r_version <- paste0(R.Version()[c("major", "minor")], collapse = ".")
 
   req <- httr2::request(base_url)
   req <- httr2::req_url_path(req, resource_path)

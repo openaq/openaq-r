@@ -147,7 +147,7 @@ as.data.frame.openaq_licenses_list <- function(data, ...) {
   tbl$modification_allowed <- as.logical(tbl$modification_allowed)
   tbl$redistribution_allowed <- as.logical(tbl$redistribution_allowed)
   attr(tbl, "meta") <- attr(data, "meta")
-  return(structure(tbl,
+  structure(tbl,
     class = c("openaq_licenses_data.frame", "data.frame")
-  ))
+  )
 }

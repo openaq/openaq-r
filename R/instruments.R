@@ -188,7 +188,7 @@ as.data.frame.openaq_instruments_list <- function(data, ...) {
   tbl$manufacturer_id <- as.numeric(tbl$manufacturer_id)
   tbl$manufacturer_name <- as.factor(tbl$manufacturer_name)
   attr(tbl, "meta") <- attr(data, "meta")
-  return(structure(tbl,
+  structure(tbl,
     class = c("openaq_instruments_data.frame", "data.frame")
-  ))
+  )
 }

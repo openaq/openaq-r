@@ -271,7 +271,7 @@ as.data.frame.openaq_locations_list <- function(data, ...) {
   attr(tbl, "params") <- attr(data, "params")
   attr(tbl, "headers") <- attr(data, "headers")
 
-  return(structure(tbl, class = c("openaq_locations_data.frame", "data.frame")))
+  structure(tbl, class = c("openaq_locations_data.frame", "data.frame"))
 }
 
 #' Helper for plotting locations on map.

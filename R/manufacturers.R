@@ -143,7 +143,7 @@ as.data.frame.openaq_manufacturers_list <- function(data, ...) {
   tbl$id <- as.numeric(tbl$id)
 
   attr(tbl, "meta") <- attr(data, "meta")
-  return(structure(tbl,
+  structure(tbl,
     class = c("openaq_licenses_data.frame", "data.frame")
-  ))
+  )
 }
