@@ -1,7 +1,7 @@
 Package: openaq
 Title: OpenAQ API Client
 Description: An R package for interacting with the OpenAQ API <https://openaq.org/>.
-Version: 0.2.0
+Version: 0.3.0
 License: MIT + file LICENSE
 URL: https://github.com/openaq/openaq-r, https://openaq.github.io/openaq-r/
 BugReports: https://github.com/openaq/openaq-r/issues
