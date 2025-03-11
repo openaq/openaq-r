@@ -19,16 +19,16 @@ library(openaq)
 ```
 
 The openaq package provides convenience functions to help plot data
-extending the `base::plot` function. 
+extending the `base::plot` function.
 
 To visualize locations on a map, call the `plot` function after returning a data
 frame from the `list_locations` function call. A basic basemap with national
 boundaries is included based on the [Natural Earth dataset](https://www.naturalearthdata.com/)
-via the [`maps`](https://cran.r-project.org/web/packages/maps/index.html) package. 
+via the [`maps`](https://cran.r-project.org/web/packages/maps/index.html) package.
 
 ```{r eval=FALSE}
 df <- list_locations(
-  bbox = list(6.291990, 32.823129, 37.932615, 45.181129),
+  bbox = c(xmin = 6.291990, ymin = 32.823129, xmax = 37.932615, ymax = 45.181129),
   parameters_id = 2,
   limit = 1000
 )
@@ -38,7 +38,7 @@ plot(df)
 ![](./images/map_plot.png)
 
 We can configure and customize the figure using standard `base::plot` parameters
-in this example coloring the points by provider and customizing the type of 
+in this example coloring the points by provider and customizing the type of
 marker used.
 
 ```{r eval=FALSE}

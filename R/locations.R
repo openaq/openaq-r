@@ -288,7 +288,7 @@ as.data.frame.openaq_locations_list <- function(x, row.names = NULL, optional = 
 #' df <- list_locations(limit = 100)
 #' plot(df, pch = 19, col = df$provider)
 #' }
-plot.openaq_locations_data.frame <- function(x, y=NULL, ...) {
+plot.openaq_locations_data.frame <- function(x, y = NULL, ...) {
   base::plot(latitude ~ longitude, x, ...)
   maps::map(database = 'world', add = TRUE)
 }
@@ -307,6 +307,6 @@ plot.openaq_locations_data.frame <- function(x, y=NULL, ...) {
 #' loc <- list_locations(limit = 6, as_data_frame = FALSE)
 #' plot(loc, pch = 19, col = 2)
 #' }
-plot.openaq_locations_list <- function(x, y=NULL, ...) {
+plot.openaq_locations_list <- function(x, y = NULL, ...) {
   plot(as.data.frame(x), ...)
 }
