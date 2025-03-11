@@ -128,26 +128,26 @@ list_providers <- function(
 #' providers <- list_providers(as_data_frame = FALSE)
 #' openaq_instruments_list.as.data.frame(providers)
 #' }
-as.data.frame.openaq_providers_list <- function(data, ...) {
-  tbl <- do.call(rbind, lapply(data, function(x) {
+as.data.frame.openaq_providers_list <- function(x, row.names = NULL, optional = FALSE, ...) {
+  tbl <- do.call(rbind, lapply(x, function(rw) {
     data.frame(
-      id = x$id,
-      name = x$name,
-      source_name = x$sourceName,
-      export_prefix = x$exportPrefix,
-      datetime_added = parse_openaq_timestamp(x$datetimeAdded),
-      datetime_first = parse_openaq_timestamp(x$datetimeFirst),
-      datetime_last = parse_openaq_timestamp(x$datetimeLast),
-      entities_id = x$entitiesId,
-      parameters_ids = paste(lapply(x$parameters, function(x) {
-        x$id
+      id = rw$id,
+      name = rw$name,
+      source_name = rw$sourceName,
+      export_prefix = rw$exportPrefix,
+      datetime_added = parse_openaq_timestamp(rw$datetimeAdded),
+      datetime_first = parse_openaq_timestamp(rw$datetimeFirst),
+      datetime_last = parse_openaq_timestamp(rw$datetimeLast),
+      entities_id = rw$entitiesId,
+      parameters_ids = paste(lapply(rw$parameters, function(x) {
+        rw$id
       }), collapse = ",")
     )
   }))
   tbl$id <- as.numeric(tbl$id)
   tbl$source_name <- as.factor(tbl$source_name)
   tbl$entities_id <- as.numeric(tbl$entities_id)
-  attr(tbl, "meta") <- attr(data, "meta")
+  attr(tbl, "meta") <- attr(x, "meta")
   return(structure(tbl,
     class = c("openaq_providers_data.frame", "data.frame")
   ))

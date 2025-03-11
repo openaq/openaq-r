@@ -139,23 +139,23 @@ list_countries <- function(
 #' countries <- list_countries()
 #' openaq_countries_list.as.data.frame(countries)
 #' }
-as.data.frame.openaq_countries_list <- function(data, ...) {
-  tbl <- do.call(rbind, lapply(data, function(x) {
+as.data.frame.openaq_countries_list <- function(x, row.names = NULL, optional = FALSE, ...) {
+  tbl <- do.call(rbind, lapply(x, function(rw) {
     data.frame(
-      id = x$id,
-      code = x$code,
-      datetime_first = parse_openaq_timestamp(x$datetimeFirst),
-      datetime_last = parse_openaq_timestamp(x$datetimeLast),
-      parameter_ids = paste(lapply(x$parameters, function(x) {
-        x$id
+      id = rw$id,
+      code = rw$code,
+      datetime_first = parse_openaq_timestamp(rw$datetimeFirst),
+      datetime_last = parse_openaq_timestamp(rw$datetimeLast),
+      parameter_ids = paste(lapply(rw$parameters, function(x) {
+        rw$id
       }), collapse = ","),
-      parameter_names = paste(lapply(x$parameters, function(x) {
-        paste(x$name, x$units, collapse = " ")
+      parameter_names = paste(lapply(rw$parameters, function(x) {
+        paste(rw$name, rw$units, collapse = " ")
       }), collapse = ",")
     )
   }))
   tbl$id <- as.numeric(tbl$id)
-  attr(tbl, "meta") <- attr(data, "meta")
+  attr(tbl, "meta") <- attr(x, "meta")
   structure(tbl,
     class = c("openaq_countries_data.frame", "data.frame")
   )

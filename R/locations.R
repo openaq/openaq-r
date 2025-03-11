@@ -240,24 +240,24 @@ list_locations <- function(
 #' loc <- list_locations()
 #' write.csv(loc)
 #' }
-as.data.frame.openaq_locations_list <- function(data, ...) {
-  tbl <- do.call(rbind, lapply(data, function(x) {
+as.data.frame.openaq_locations_list <- function(x, row.names = NULL, optional = FALSE, ...) {
+  tbl <- do.call(rbind, lapply(x, function(rw) {
     data.frame(
-      id = x$id,
-      name = or(x$name, ""),
-      is_mobile = x$isMobile,
-      is_monitor = x$isMonitor,
-      timezone = x$timezone,
-      countries_id = x$country$id,
-      country_name = x$country$name,
-      country_iso = x$country$code,
-      latitude = x$coordinates$latitude,
-      longitude = x$coordinates$longitude,
-      datetime_first = parse_openaq_timestamp(x$datetimeFirst),
-      datetime_last = parse_openaq_timestamp(x$datetimeLast),
-      owner_name = x$owner$name,
-      providers_id = x$provider$id,
-      provider_name = x$provider$name
+      id = rw$id,
+      name = or(rw$name, ""),
+      is_mobile = rw$isMobile,
+      is_monitor = rw$isMonitor,
+      timezone = rw$timezone,
+      countries_id = rw$country$id,
+      country_name = rw$country$name,
+      country_iso = rw$country$code,
+      latitude = rw$coordinates$latitude,
+      longitude = rw$coordinates$longitude,
+      datetime_first = parse_openaq_timestamp(rw$datetimeFirst),
+      datetime_last = parse_openaq_timestamp(rw$datetimeLast),
+      owner_name = rw$owner$name,
+      providers_id = rw$provider$id,
+      provider_name = rw$provider$name
     )
   }))
   tbl$country_iso <- as.factor(tbl$country_iso)
@@ -267,9 +267,9 @@ as.data.frame.openaq_locations_list <- function(data, ...) {
   tbl$timezone <- as.factor(tbl$timezone)
   tbl$is_mobile <- as.logical(tbl$is_mobile)
   tbl$is_monitor <- as.logical(tbl$is_monitor)
-  attr(tbl, "meta") <- attr(data, "meta")
-  attr(tbl, "params") <- attr(data, "params")
-  attr(tbl, "headers") <- attr(data, "headers")
+  attr(tbl, "meta") <- attr(x, "meta")
+  attr(tbl, "params") <- attr(x, "params")
+  attr(tbl, "headers") <- attr(x, "headers")
 
   structure(tbl, class = c("openaq_locations_data.frame", "data.frame"))
 }
@@ -288,9 +288,9 @@ as.data.frame.openaq_locations_list <- function(data, ...) {
 #' df <- list_locations(limit = 100)
 #' plot(df, pch = 19, col = df$provider)
 #' }
-plot.openaq_locations_data.frame <- function(loc, database = "world", ...) {
-  base::plot(latitude ~ longitude, loc, ...)
-  maps::map(database = database, add = TRUE)
+plot.openaq_locations_data.frame <- function(x, y=NULL, ...) {
+  base::plot(latitude ~ longitude, x, ...)
+  maps::map(database = 'world', add = TRUE)
 }
 
 #' Helper for plotting locations from list.
@@ -307,6 +307,6 @@ plot.openaq_locations_data.frame <- function(loc, database = "world", ...) {
 #' loc <- list_locations(limit = 6, as_data_frame = FALSE)
 #' plot(loc, pch = 19, col = 2)
 #' }
-plot.openaq_locations_list <- function(loc, database = "world", ...) {
-  plot(as.data.frame(loc), database = database, ...)
+plot.openaq_locations_list <- function(x, y=NULL, ...) {
+  plot(as.data.frame(x), ...)
 }

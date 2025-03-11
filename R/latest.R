@@ -141,16 +141,16 @@ list_parameter_latest <- function(
 #' instruments <- list_instruments(as_data_frame = FALSE)
 #' openaq_latest_list.as.data.frame(instruments)
 #' }
-as.data.frame.openaq_latest_list <- function(data, ...) {
-  tbl <- do.call(rbind, lapply(data, function(x) {
+as.data.frame.openaq_latest_list <- function(x, row.names = NULL, optional = FALSE, ...) {
+  tbl <- do.call(rbind, lapply(x, function(rw) {
     data.frame(
-      sensors_id = x$sensorsId,
-      locations_id = x$locationsId,
-      value = x$value,
-      datetime_local = parse_openaq_timestamp(deep_get(x, "datetime", "local", default = NULL)),
-      datetime_utc = parse_openaq_timestamp(deep_get(x, "datetime", "utc", default = NULL)),
-      latitude = deep_get(x, "coordinates", "latitude"),
-      longitude = deep_get(x, "coordinates", "longitude")
+      sensors_id = rw$sensorsId,
+      locations_id = rw$locationsId,
+      value = rw$value,
+      datetime_local = parse_openaq_timestamp(deep_get(rw, "datetime", "local", default = NULL)),
+      datetime_utc = parse_openaq_timestamp(deep_get(rw, "datetime", "utc", default = NULL)),
+      latitude = deep_get(rw, "coordinates", "latitude"),
+      longitude = deep_get(rw, "coordinates", "longitude")
     )
   }))
   tbl$sensors_id <- as.numeric(tbl$sensors_id)
@@ -158,7 +158,7 @@ as.data.frame.openaq_latest_list <- function(data, ...) {
   tbl$value <- as.numeric(tbl$value)
   tbl$latitude <- as.numeric(tbl$latitude)
   tbl$longitude <- as.numeric(tbl$longitude)
-  attr(tbl, "meta") <- attr(data, "meta")
+  attr(tbl, "meta") <- attr(x, "meta")
   structure(tbl,
     class = c("openaq_latest_data.frame", "data.frame")
   )

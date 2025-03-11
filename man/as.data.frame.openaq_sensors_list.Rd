@@ -4,10 +4,15 @@
 \alias{as.data.frame.openaq_sensors_list}
 \title{Method for converting openaq_sensors_list to data frame.}
 \usage{
-\method{as.data.frame}{openaq_sensors_list}(data, ...)
+\method{as.data.frame}{openaq_sensors_list}(x, row.names=NULL, optional=FALSE, ...)
 }
 \arguments{
-\item{data}{A list of sensors as returned from get_sensor}
+\item{x}{A list of sensors as returned from get_sensor}
+
+\item{row.names}{‘NULL’ or a character vector giving the row names for
+  the data frame.  Missing values are not allowed.}
+
+\item{optional}{logical. Should we check names?}
 
 \item{...}{Other options.}
 }

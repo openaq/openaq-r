@@ -4,10 +4,15 @@
 \alias{as.data.frame.openaq_locations_list}
 \title{Method for converting to data frame}
 \usage{
-\method{as.data.frame}{openaq_locations_list}(data, ...)
+\method{as.data.frame}{openaq_locations_list}(x, row.names=NULL, optional=FALSE, ...)
 }
 \arguments{
-\item{data}{A list of locations as returned from list_locations.}
+\item{x}{A list of locations as returned from list_locations.}
+
+\item{row.names}{‘NULL’ or a character vector giving the row names for
+  the data frame.  Missing values are not allowed.}
+
+\item{optional}{logical. Should we check names?}
 
 \item{...}{Other options.}
 }

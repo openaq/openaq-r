@@ -130,19 +130,19 @@ list_manufacturers <- function(
 #' instruments <- list_instruments()
 #' openaq_instruments_list.as.data.frame(instruments)
 #' }
-as.data.frame.openaq_manufacturers_list <- function(data, ...) {
-  tbl <- do.call(rbind, lapply(data, function(x) {
+as.data.frame.openaq_manufacturers_list <- function(x, row.names = NULL, optional = FALSE, ...) {
+  tbl <- do.call(rbind, lapply(x, function(rw) {
     data.frame(
-      id = x$id,
-      name = x$name,
-      instruments_ids = paste(lapply(x$instruments, function(x) {
-        x$id
+      id = rw$id,
+      name = rw$name,
+      instruments_ids = paste(lapply(rw$instruments, function(x) {
+        rw$id
       }), collapse = ",")
     )
   }))
   tbl$id <- as.numeric(tbl$id)
 
-  attr(tbl, "meta") <- attr(data, "meta")
+  attr(tbl, "meta") <- attr(x, "meta")
   structure(tbl,
     class = c("openaq_licenses_data.frame", "data.frame")
   )

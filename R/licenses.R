@@ -127,17 +127,17 @@ list_licenses <- function(
 #' instruments <- list_instruments()
 #' openaq_instruments_list.as.data.frame(instruments)
 #' }
-as.data.frame.openaq_licenses_list <- function(data, ...) {
-  tbl <- do.call(rbind, lapply(data, function(x) {
+as.data.frame.openaq_licenses_list <- function(x, row.names = NULL, optional = FALSE, ...) {
+  tbl <- do.call(rbind, lapply(x, function(rw) {
     data.frame(
-      id = x$id,
-      name = x$name,
-      commercial_use_allowed = x$commercialUseAllowed,
-      attribution_required = x$attributionRequired,
-      share_alike_required = x$shareAlikeRequired,
-      modification_allowed = x$modificationAllowed,
-      redistribution_allowed = x$redistributionAllowed,
-      source_url = x$sourceUrl
+      id = rw$id,
+      name = rw$name,
+      commercial_use_allowed = rw$commercialUseAllowed,
+      attribution_required = rw$attributionRequired,
+      share_alike_required = rw$shareAlikeRequired,
+      modification_allowed = rw$modificationAllowed,
+      redistribution_allowed = rw$redistributionAllowed,
+      source_url = rw$sourceUrl
     )
   }))
   tbl$id <- as.numeric(tbl$id)
@@ -146,7 +146,7 @@ as.data.frame.openaq_licenses_list <- function(data, ...) {
   tbl$share_alike_required <- as.logical(tbl$share_alike_required)
   tbl$modification_allowed <- as.logical(tbl$modification_allowed)
   tbl$redistribution_allowed <- as.logical(tbl$redistribution_allowed)
-  attr(tbl, "meta") <- attr(data, "meta")
+  attr(tbl, "meta") <- attr(x, "meta")
   structure(tbl,
     class = c("openaq_licenses_data.frame", "data.frame")
   )

@@ -173,21 +173,21 @@ list_manufacturer_instruments <- function(
 #' instruments <- list_instruments(as_data_frame = FALSE)
 #' openaq_instruments_list.as.data.frame(instruments)
 #' }
-as.data.frame.openaq_instruments_list <- function(data, ...) {
-  tbl <- do.call(rbind, lapply(data, function(x) {
+as.data.frame.openaq_instruments_list <- function(x, row.names = NULL, optional = FALSE, ...) {
+  tbl <- do.call(rbind, lapply(x, function(rw) {
     data.frame(
-      id = x$id,
-      name = x$name,
-      is_monitor = x$isMonitor,
-      manufacturer_id = x$manufacturer$id,
-      manufacturer_name = x$manufacturer$name
+      id = rw$id,
+      name = rw$name,
+      is_monitor = rw$isMonitor,
+      manufacturer_id = rw$manufacturer$id,
+      manufacturer_name = rw$manufacturer$name
     )
   }))
   tbl$id <- as.numeric(tbl$id)
   tbl$is_monitor <- as.logical(tbl$is_monitor)
   tbl$manufacturer_id <- as.numeric(tbl$manufacturer_id)
   tbl$manufacturer_name <- as.factor(tbl$manufacturer_name)
-  attr(tbl, "meta") <- attr(data, "meta")
+  attr(tbl, "meta") <- attr(x, "meta")
   structure(tbl,
     class = c("openaq_instruments_data.frame", "data.frame")
   )

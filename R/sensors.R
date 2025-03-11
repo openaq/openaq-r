@@ -107,29 +107,29 @@ get_location_sensors <- function(
 #' sensor <- get_sensor(as_frame_frame = FALSE)
 #' openaq_sensors_list.as.data.frame(sensor)
 #' }
-as.data.frame.openaq_sensors_list <- function(data, ...) {
-  tbl <- do.call(rbind, lapply(data, function(x) {
+as.data.frame.openaq_sensors_list <- function(x, row.names = NULL, optional = FALSE, ...) {
+  tbl <- do.call(rbind, lapply(x, function(rw) {
     data.frame(
-      id = x$id,
-      name = x$name,
-      parameters_id = deep_get(x, "parameter", "id"),
-      datetime_first_utc = parse_openaq_timestamp(deep_get(x, "datetimeFirst", "utc", default = NULL)),
-      datetime_first_local = parse_openaq_timestamp(deep_get(x, "datetimeFirst", "local", default = NULL)),
-      datetime_last_utc = parse_openaq_timestamp(deep_get(x, "datetimeLast", "utc", default = NULL)),
-      datetime_last_local = parse_openaq_timestamp(deep_get(x, "datetimeLast", "local", default = NULL)),
-      min = deep_get(x, "summary", "min"),
-      max = deep_get(x, "summary", "max"),
-      avg = deep_get(x, "summary", "avg"),
-      expected_count = deep_get(x, "coverage", "expectedCount"),
-      expected_interval = deep_get(x, "coverage", "expectedInterval"),
-      observed_count = deep_get(x, "coverage", "observedCount"),
-      observed_interval = deep_get(x, "coverage", "observedInterval"),
-      percent_complete = deep_get(x, "coverage", "percentComplete"),
-      percent_coverage = deep_get(x, "coverage", "percentCoverage"),
-      latest_value = deep_get(x, "latest", "value"),
-      latest_datetime = parse_openaq_timestamp(deep_get(x, "latest", "datetime", default = NULL)),
-      latest_latitude = deep_get(x, "latest", "coordinates", "latitude"),
-      latest_longitude = deep_get(x, "latest", "coordinates", "longitude")
+      id = rw$id,
+      name = rw$name,
+      parameters_id = deep_get(rw, "parameter", "id"),
+      datetime_first_utc = parse_openaq_timestamp(deep_get(rw, "datetimeFirst", "utc", default = NULL)),
+      datetime_first_local = parse_openaq_timestamp(deep_get(rw, "datetimeFirst", "local", default = NULL)),
+      datetime_last_utc = parse_openaq_timestamp(deep_get(rw, "datetimeLast", "utc", default = NULL)),
+      datetime_last_local = parse_openaq_timestamp(deep_get(rw, "datetimeLast", "local", default = NULL)),
+      min = deep_get(rw, "summary", "min"),
+      max = deep_get(rw, "summary", "max"),
+      avg = deep_get(rw, "summary", "avg"),
+      expected_count = deep_get(rw, "coverage", "expectedCount"),
+      expected_interval = deep_get(rw, "coverage", "expectedInterval"),
+      observed_count = deep_get(rw, "coverage", "observedCount"),
+      observed_interval = deep_get(rw, "coverage", "observedInterval"),
+      percent_complete = deep_get(rw, "coverage", "percentComplete"),
+      percent_coverage = deep_get(rw, "coverage", "percentCoverage"),
+      latest_value = deep_get(rw, "latest", "value"),
+      latest_datetime = parse_openaq_timestamp(deep_get(rw, "latest", "datetime", default = NULL)),
+      latest_latitude = deep_get(rw, "latest", "coordinates", "latitude"),
+      latest_longitude = deep_get(rw, "latest", "coordinates", "longitude")
     )
   }))
   tbl$id <- as.numeric(tbl$id)
@@ -146,7 +146,7 @@ as.data.frame.openaq_sensors_list <- function(data, ...) {
   tbl$min <- as.numeric(tbl$min)
   tbl$max <- as.numeric(tbl$max)
   tbl$avg <- as.numeric(tbl$avg)
-  attr(tbl, "meta") <- attr(data, "meta")
+  attr(tbl, "meta") <- attr(x, "meta")
   return(structure(tbl,
     class = c("openaq_sensors_data.frame", "data.frame")
   ))

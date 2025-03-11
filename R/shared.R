@@ -439,7 +439,7 @@ or <- function(test, alternative) {
 #' Gets value from a nested list
 #'
 #' @param x A list to search.
-#' @param ... Keys, in order of their hierarcy to check against the list `x`.
+#' @param ... Keys, in order of their hierarchy to check against the list `x`.
 #'
 #' @noRd
 deep_get <- function(x, ..., default = NA) {

@@ -4,10 +4,15 @@
 \alias{as.data.frame.openaq_countries_list}
 \title{Method for converting openaq_countries_list to data frame.}
 \usage{
-\method{as.data.frame}{openaq_countries_list}(data, ...)
+\method{as.data.frame}{openaq_countries_list}(x, row.names = NULL, optional = FALSE, ...)
 }
 \arguments{
-\item{data}{A list of countries as returned from list_countries}
+\item{x}{A list of countries as returned from list_countries}
+
+\item{row.names}{‘NULL’ or a character vector giving the row names for
+  the data frame.  Missing values are not allowed.}
+
+\item{optional}{logical. Should we check names?}
 
 \item{...}{Other options}
 }

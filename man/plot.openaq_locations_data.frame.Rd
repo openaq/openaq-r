@@ -4,13 +4,12 @@
 \alias{plot.openaq_locations_data.frame}
 \title{Helper for plotting locations on map.}
 \usage{
-\method{plot}{openaq_locations_data.frame}(loc, database = "world", ...)
+\method{plot}{openaq_locations_data.frame}(x, y, ...)
 }
 \arguments{
-\item{loc}{A data frame of locations results.}
+\item{x}{A data frame of locations results.}
 
-\item{database}{the maps package database of geographic boundaries to use,
-defaults to "world".}
+\item{y}{Placeholder}
 
 \item{...}{Other options passed on to base::plot().}
 }

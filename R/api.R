@@ -65,7 +65,7 @@ set_base_url <- function(base_url) {
 #'
 #' @noRd
 get_base_url <- function() {
-  url <- Sys.getenv("OPENAQR_BASE_URL", "https://api.openaq.org")
+  url <- Sys.getenv("OPENAQ_BASE_URL", "https://api.openaq.org")
   url
 }
 
@@ -121,7 +121,7 @@ openaq_request <- function(path, query_params, api_key = NULL) {
 
   resource_path <- paste("/v3", path, sep = "/")
 
-  current_version <- packageVersion(packageName())
+  current_version <- utils::packageVersion(packageName())
   r_version <- paste0(R.Version()[c("major", "minor")], collapse = ".")
 
   req <- httr2::request(base_url)

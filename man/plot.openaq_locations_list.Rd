@@ -4,13 +4,12 @@
 \alias{plot.openaq_locations_list}
 \title{Helper for plotting locations from list.}
 \usage{
-\method{plot}{openaq_locations_list}(loc, database = "world", ...)
+\method{plot}{openaq_locations_list}(x, y, ...)
 }
 \arguments{
-\item{loc}{A list of locations results.}
+\item{x}{A list of locations results.}
 
-\item{database}{the maps package database of geographic boundaries to use,
-defaults to "world".}
+\item{y}{Placeholder}
 
 \item{...}{Other options passed on to base::plot().}
 }

@@ -245,34 +245,34 @@ get_summary_field <- function(x, key) {
 #' meas <- list_sensor_measurements(23707, limit = 500, as_data_frame = FALSE)
 #' openaq_measurements_list.as.data.frame(meas)
 #' }
-as.data.frame.openaq_measurements_list <- function(data, ...) {
-  tbl <- do.call(rbind, lapply(data, function(x) {
+as.data.frame.openaq_measurements_list <- function(x, row.names = NULL, optional = FALSE, ...) {
+  tbl <- do.call(rbind, lapply(x, function(rw) {
     data.frame(
-      value = x$value,
-      parameter_id = x$parameter$id,
-      parameter_name = x$parameter$name,
-      parameter_units = x$parameter$units,
-      period_label = deep_get(x, "period", "label"),
-      period_interval = deep_get(x, "period", "interval"),
-      datetime_from = parse_openaq_timestamp(deep_get(x, "period", "datetimeFrom", "local", default = NULL)),
-      datetime_to = parse_openaq_timestamp(deep_get(x, "period", "datetimeTo", "local", default = NULL)),
-      latitude = deep_get(x, "coordinates", "latitude"),
-      longitude = deep_get(x, "coordinates", "longitude"),
-      min = deep_get(x, "summary", "min"),
-      q02 = deep_get(x, "summary", "q02"),
-      q25 = deep_get(x, "summary", "q25"),
-      median = deep_get(x, "summary", "median"),
-      q75 = deep_get(x, "summary", "q75"),
-      q98 = deep_get(x, "summary", "q98"),
-      max = deep_get(x, "summary", "max"),
-      avg = deep_get(x, "summary", "avg"),
-      sd = deep_get(x, "summary", "sd"),
-      expected_count = deep_get(x, "coverage", "expectedCount"),
-      expected_interval = deep_get(x, "coverage", "expectedInterval"),
-      observed_count = deep_get(x, "coverage", "observedCount"),
-      observed_interval = deep_get(x, "coverage", "observedInterval"),
-      percent_complete = deep_get(x, "coverage", "percentComplete"),
-      percent_coverage = deep_get(x, "coverage", "percentCoverage")
+      value = rw$value,
+      parameter_id = rw$parameter$id,
+      parameter_name = rw$parameter$name,
+      parameter_units = rw$parameter$units,
+      period_label = deep_get(rw, "period", "label"),
+      period_interval = deep_get(rw, "period", "interval"),
+      datetime_from = parse_openaq_timestamp(deep_get(rw, "period", "datetimeFrom", "local", default = NULL)),
+      datetime_to = parse_openaq_timestamp(deep_get(rw, "period", "datetimeTo", "local", default = NULL)),
+      latitude = deep_get(rw, "coordinates", "latitude"),
+      longitude = deep_get(rw, "coordinates", "longitude"),
+      min = deep_get(rw, "summary", "min"),
+      q02 = deep_get(rw, "summary", "q02"),
+      q25 = deep_get(rw, "summary", "q25"),
+      median = deep_get(rw, "summary", "median"),
+      q75 = deep_get(rw, "summary", "q75"),
+      q98 = deep_get(rw, "summary", "q98"),
+      max = deep_get(rw, "summary", "max"),
+      avg = deep_get(rw, "summary", "avg"),
+      sd = deep_get(rw, "summary", "sd"),
+      expected_count = deep_get(rw, "coverage", "expectedCount"),
+      expected_interval = deep_get(rw, "coverage", "expectedInterval"),
+      observed_count = deep_get(rw, "coverage", "observedCount"),
+      observed_interval = deep_get(rw, "coverage", "observedInterval"),
+      percent_complete = deep_get(rw, "coverage", "percentComplete"),
+      percent_coverage = deep_get(rw, "coverage", "percentCoverage")
     )
   }))
   tbl$value <- as.numeric(tbl$value)
@@ -298,7 +298,7 @@ as.data.frame.openaq_measurements_list <- function(data, ...) {
   tbl$percent_coverage <- as.numeric(tbl$percent_coverage)
 
 
-  attr(tbl, "meta") <- attr(data, "meta")
+  attr(tbl, "meta") <- attr(x, "meta")
   structure(tbl,
     class = c("openaq_measurements_data.frame", "data.frame")
   )
@@ -316,15 +316,15 @@ as.data.frame.openaq_measurements_list <- function(data, ...) {
 #' meas <- list_sensor_measurements(23707, limit = 500, as_data_frame = FALSE)
 #' plot(meas)
 #' }
-plot.openaq_measurements_data.frame <- function(df, ...) {
-  n <- head(df, 1)
+plot.openaq_measurements_data.frame <- function(x, y, ...) {
+  n <- head(x, 1)
   y_label <- sprintf("Value %s %s", n$parameter_name, n$parameter_units)
-  base::plot(df$datetime_to, df$value,
+  base::plot(x$datetime_to, x$value,
     type = "l",
     xlab = "Datetime (local)",
     ylab = y_label
   )
-  points(df$datetime_to, df$value)
+  points(x$datetime_to, x$value)
   grid()
 }
 
@@ -340,6 +340,6 @@ plot.openaq_measurements_data.frame <- function(df, ...) {
 #' meas <- list_sensor_measurements(23707, limit = 500, as_data_frame = FALSE)
 #' plot(meas)
 #' }
-plot.openaq_measurements_list <- function(meas, ...) {
-  plot(as.data.frame(meas), ...)
+plot.openaq_measurements_list <- function(x, y, ...) {
+  plot(as.data.frame(x), ...)
 }

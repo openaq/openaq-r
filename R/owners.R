@@ -129,15 +129,15 @@ list_owners <- function(
 #' instruments <- list_instruments()
 #' openaq_owners_list.as.data.frame(instruments)
 #' }
-as.data.frame.openaq_owners_list <- function(data, ...) {
-  tbl <- do.call(rbind, lapply(data, function(x) {
+as.data.frame.openaq_owners_list <- function(x, row.names = NULL, optional = FALSE, ...) {
+  tbl <- do.call(rbind, lapply(x, function(rw) {
     data.frame(
-      id = x$id,
-      name = x$name,
+      id = rw$id,
+      name = rw$name,
     )
   }))
   tbl$id <- as.numeric(tbl$id)
-  attr(tbl, "meta") <- attr(data, "meta")
+  attr(tbl, "meta") <- attr(x, "meta")
   return(structure(tbl,
     class = c("openaq_owners_data.frame", "data.frame")
   ))
