@@ -25,13 +25,13 @@ set_api_key <- function(api_key) {
 #' @noRd
 get_api_key <- function() {
   key <- Sys.getenv("OPENAQ_API_KEY")
-  if (key == "" && Sys.getenv("RSTUDIO") == "1") {
-    key <- rstudioapi::askForSecret(
-      name = "OpenAQ API",
-      message = "Enter your API Key",
-      title = "Enter your API Key"
-    )
-  }
+  ## if (key == "" && Sys.getenv("RSTUDIO") == "1") {
+  ##   key <- rstudioapi::askForSecret(
+  ##     name = "OpenAQ API",
+  ##     message = "Enter your API Key",
+  ##     title = "Enter your API Key"
+  ##   )
+  ## }
   key
 }
 
