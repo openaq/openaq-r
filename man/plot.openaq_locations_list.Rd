@@ -4,21 +4,22 @@
 \alias{plot.openaq_locations_list}
 \title{Helper for plotting locations from list.}
 \usage{
-\method{plot}{openaq_locations_list}(x, y, ...)
+\method{plot}{openaq_locations_list}(x, y = NULL, ...)
 }
 \arguments{
-\item{x}{A list of locations results.}
-
-\item{y}{Placeholder}
-
 \item{...}{Other options passed on to base::plot().}
+
+\item{loc}{A list of locations results.}
+
+\item{database}{the maps package database of geographic boundaries to use,
+defaults to "world".}
 }
 \description{
 Helper for plotting locations from list.
 }
 \examples{
-\dontrun{
+\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 loc <- list_locations(limit = 6, as_data_frame = FALSE)
 plot(loc, pch = 19, col = 2)
-}
+\dontshow{\}) # examplesIf}
 }

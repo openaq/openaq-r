@@ -113,8 +113,7 @@ A data frame or list of results.
 Get a list of locations from the locations resource.
 }
 \examples{
-\dontrun{
+\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 locations <- list_locations()
-}
-
+\dontshow{\}) # examplesIf}
 }

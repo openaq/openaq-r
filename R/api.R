@@ -56,7 +56,7 @@ set_base_url <- function(base_url) {
 #' Gets the base URL value.
 #'
 #' A helper function for getting the OPENAQR_BASE_URL environment variable. If
-#' OPENAQR_BASE_URL is not set it defaults to https://api.openaq.org.
+#' OPENAQR_BASE_URL is not set it default is `https`://api.openaq.org.
 #'
 #' @return A string value of the base URL for the API.
 #'
@@ -189,11 +189,11 @@ handle_request <- function(req, dry_run, rate_limit) {
 #' @param path A string of the URL path.
 #' @param query_params A list of query parameters.
 #' @param dry_run A logical for setting whether to do a dry run of the request,
-#' defaults to FALSE.
+#' default is `FALSE`.
 #' @param rate_limit A logical for setting whether to automatically rate limit
-#' based on rate limit headers, defaults to FALSE.
+#' based on rate limit headers, default is `FALSE`.
 #' @param api_key A string of the API Key value to set in the request headers,
-#' defaults to NULL.
+#' default is `NULL`.
 #'
 #' @return An httr2 response object.
 #' @noRd

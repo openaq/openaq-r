@@ -38,7 +38,7 @@ library(openaq)
 
 locations <- list_locations(
     parameters_id = 2, 
-    coordinates = list(-18.90848, 47.53751),
+    coordinates = c(latitude = -18.90848, longitude = 47.53751),
     radius = 10000
 )
 ```

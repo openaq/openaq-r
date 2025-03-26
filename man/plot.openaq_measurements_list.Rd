@@ -7,18 +7,16 @@
 \method{plot}{openaq_measurements_list}(x, y, ...)
 }
 \arguments{
-\item{x}{A list of measurements results.}
-
-\item{y}{Placeholder}
-
 \item{...}{Other options to be passed on to base::plot().}
+
+\item{meas}{A list of measurements results.}
 }
 \description{
 Helper for plotting measurements from list
 }
 \examples{
-\dontrun{
+\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 meas <- list_sensor_measurements(23707, limit = 500, as_data_frame = FALSE)
 plot(meas)
-}
+\dontshow{\}) # examplesIf}
 }

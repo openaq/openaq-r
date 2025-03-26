@@ -4,24 +4,28 @@
 \alias{as.data.frame.openaq_parameters_list}
 \title{Method for converting openaq_parameters_list to data frame.}
 \usage{
-\method{as.data.frame}{openaq_parameters_list}(x, row.names=NULL, optional=FALSE, ...)
+\method{as.data.frame}{openaq_parameters_list}(x, row.names = NULL, optional = FALSE, ...)
 }
 \arguments{
 \item{x}{A list of countries as returned from list_parameters.}
 
-\item{row.names}{‘NULL’ or a character vector giving the row names for
-  the data frame.  Missing values are not allowed.}
+\item{row.names}{\code{NULL} or a character vector giving the row names for the
+data frame. Missing values are not allowed.}
 
-\item{optional}{logical. Should we check names?}
+\item{optional}{logical. If TRUE, setting row names and converting column
+names (to syntactic names: see make.names) is optional. Note that all of R's
+base package as.data.frame() methods use optional only for column names
+treatment, basically with the meaning of data.frame(*, check.names =
+!optional). See also the make.names argument of the matrix method.}
 
-\item{...}{Other options.}
+\item{...}{additional arguments to be passed to or from methods.}
 }
 \description{
 Method for converting openaq_parameters_list to data frame.
 }
 \examples{
-\dontrun{
+\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 instruments <- list_instruments()
 openaq_parameters_list.as.data.frame(instruments)
-}
+\dontshow{\}) # examplesIf}
 }

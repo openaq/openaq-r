@@ -25,15 +25,15 @@ list_licenses(
 \item{page}{An integer.}
 
 \item{as_data_frame}{A logical for toggling whether to return results as
-data frame or list defaults to TRUE.}
+data frame or list default is \code{TRUE}.}
 
 \item{dry_run}{A logical for toggling a dry run of the request, defaults to
-FALSE.}
+\code{FALSE}.}
 
 \item{rate_limit}{A logical for toggling automatic rate limiting based on
-rate limit headers, defaults to FALSE.}
+rate limit headers, default is \code{FALSE}.}
 
-\item{api_key}{A valid OpenAQ API key string, defaults to NULL.}
+\item{api_key}{A valid OpenAQ API key string, default is \code{NULL}.}
 }
 \value{
 A data frame.
@@ -42,8 +42,7 @@ A data frame.
 get a list of licenses from the licenses resource.
 }
 \examples{
-\dontrun{
+\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 licenses <- list_licenses()
-}
-
+\dontshow{\}) # examplesIf}
 }

@@ -123,6 +123,125 @@ list_locations(
 
 ## Features
 
+### Queriable resources
+
+The OpenAQ API follows a resource-oriented design, allowing developers to
+retrieve air quality data through standardized HTTP requests to specific
+endpoints representing data resources like measurements, locations, and
+parameters. The OpenAQ R package provides functions that correspond to these API
+resources, simplifying the process of querying and retrieving data resources.
+
+#### Countries
+
+```{r eval=FALSE}
+get_country()
+```
+
+```{r eval=FALSE}
+list_countries()
+```
+
+#### Instruments
+
+```{r eval=FALSE}
+get_instrument()
+```
+
+```{r eval=FALSE}
+list_instruments()
+```
+
+```{r eval=FALSE}
+list_manufacturer_instruments()
+```
+
+#### Latest
+
+```{r eval=FALSE}
+list_location_latest()
+```
+
+```{r eval=FALSE}
+list_parameter_latest()
+```
+
+#### Licenses
+
+```{r eval=FALSE}
+list_licenses()
+```
+
+```{r eval=FALSE}
+get_license()
+```
+
+#### Locations 
+
+```{r eval=FALSE}
+list_locations()
+```
+
+```{r eval=FALSE}
+get_location()
+```
+
+#### Manufacturers
+
+```{r eval=FALSE}
+list_manufacturers()
+```
+
+```{r eval=FALSE}
+get_manufacturer()
+```
+
+#### Measurements
+
+```{r eval=FALSE}
+list_sensor_measurements()
+```
+
+#### Owners
+
+```{r eval=FALSE}
+list_owners()
+```
+
+```{r eval=FALSE}
+get_owner()
+```
+
+#### Parameters 
+
+```{r eval=FALSE}
+list_parameters()
+```
+
+```{r eval=FALSE}
+get_parameter()
+```
+
+#### Providers 
+```{r eval=FALSE}
+list_providers()
+```
+
+```{r eval=FALSE}
+get_provider()
+```
+
+#### Sensors 
+
+```{r eval=FALSE}
+get_sensor()
+```
+
+```{r eval=FALSE}
+get_location_sensors()
+```
+
+
+
 ### Data frames
 
 All resource functions return a typed data frame by default. If you prefer to
@@ -178,7 +297,7 @@ and the `httr2::req_retry()` function under-the-hood.
 
 Every resource function provides an optional parameter named `DRY_RUN` that
 prevents a full HTTP request to the API and instead prints out a summary of how
-the requestion would have been made. 
+the request would have been made. 
 
 
 ```{r eval=FALSE}

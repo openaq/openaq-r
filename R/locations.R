@@ -2,21 +2,19 @@
 #'
 #' @param locations_id An integer representing the locations_id to request.
 #' @param as_data_frame A logical for toggling whether to return results as
-#' data frame or list defaults to TRUE.
+#' data frame or list default is `TRUE`.
 #' @param dry_run A logical for toggling a dry run of the request, defaults to
-#' FALSE.
+#' `FALSE`.
 #' @param rate_limit A logical for toggling automatic rate limiting based on
-#' rate limit headers, defaults to FALSE.
-#' @param api_key A valid OpenAQ API key string, defaults to NULL.
+#' rate limit headers, default is `FALSE`.
+#' @param api_key A valid OpenAQ API key string, default is `NULL`.
 #'
 #' @return A data frame or list of results.
 #'
 #' @export
 #'
-#' @examples
-#' \dontrun{
+#' @examplesIf interactive()
 #' location <- get_location(42)
-#' }
 #'
 get_location <- function(
     locations_id,
@@ -110,10 +108,8 @@ get_location <- function(
 #'
 #' @export
 #'
-#' @examples
-#' \dontrun{
+#' @examplesIf interactive()
 #' locations <- list_locations()
-#' }
 #'
 list_locations <- function(
     bbox = NULL,
@@ -229,17 +225,23 @@ list_locations <- function(
 
 #' Method for converting to data frame
 #'
-#' @param data A list of locations as returned from list_locations.
-#' @param ... Other options.
+#' @param x A list of locations as returned from list_locations.
+#' @param row.names `NULL` or a character vector giving the row names for the
+#' data frame. Missing values are not allowed.
+#' @param optional logical. If TRUE, setting row names and converting column
+#' names (to syntactic names: see make.names) is optional. Note that all of R's
+#' base package as.data.frame() methods use optional only for column names
+#' treatment, basically with the meaning of data.frame(*, check.names =
+#' !optional). See also the make.names argument of the matrix method.
+#' @param ... additional arguments to be passed to or from methods.
 #'
 #' @export as.data.frame.openaq_locations_list
 #' @export
 #'
-#' @examples
-#' \dontrun{
+#' @examplesIf interactive()
 #' loc <- list_locations()
 #' write.csv(loc)
-#' }
+#'
 as.data.frame.openaq_locations_list <- function(x, row.names = NULL, optional = FALSE, ...) {
   tbl <- do.call(rbind, lapply(x, function(rw) {
     data.frame(
@@ -276,21 +278,22 @@ as.data.frame.openaq_locations_list <- function(x, row.names = NULL, optional = 
 
 #' Helper for plotting locations on map.
 #'
-#' @param loc A data frame of locations results.
-#' @param database the maps package database of geographic boundaries to use,
-#' defaults to "world".
+#'
+#' @param x the coordinates of points in the plot. Alternatively, a single
+#' plotting structure, function or any R object with a plot method can be provided.
+#' @param y the y coordinates of points in the plot, optional if x is an
+#' appropriate structure.
 #' @param ... Other options passed on to base::plot().
 #'
 #' @export
 #'
-#' @examples
-#' \dontrun{
+#' @examplesIf interactive()
 #' df <- list_locations(limit = 100)
 #' plot(df, pch = 19, col = df$provider)
-#' }
+#'
 plot.openaq_locations_data.frame <- function(x, y = NULL, ...) {
   base::plot(latitude ~ longitude, x, ...)
-  maps::map(database = 'world', add = TRUE)
+  maps::map(database = "world", add = TRUE)
 }
 
 #' Helper for plotting locations from list.
@@ -302,11 +305,10 @@ plot.openaq_locations_data.frame <- function(x, y = NULL, ...) {
 #'
 #' @export
 #'
-#' @examples
-#' \dontrun{
+#' @examplesIf interactive()
 #' loc <- list_locations(limit = 6, as_data_frame = FALSE)
 #' plot(loc, pch = 19, col = 2)
-#' }
+#'
 plot.openaq_locations_list <- function(x, y = NULL, ...) {
   plot(as.data.frame(x), ...)
 }

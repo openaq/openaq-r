@@ -45,15 +45,15 @@ provided, results matching any of the IDs will be returned.}
 \item{page}{An integer.}
 
 \item{as_data_frame}{A logical for toggling whether to return results as
-data frame or list defaults to TRUE.}
+data frame or list default is \code{TRUE}.}
 
 \item{dry_run}{A logical for toggling a dry run of the request, defaults to
-FALSE.}
+\code{FALSE}.}
 
 \item{rate_limit}{A logical for toggling automatic rate limiting based on
-rate limit headers, defaults to FALSE.}
+rate limit headers, default is \code{FALSE}.}
 
-\item{api_key}{A valid OpenAQ API key string, defaults to NULL.}
+\item{api_key}{A valid OpenAQ API key string, default is \code{NULL}.}
 }
 \value{
 A data frame or a list of the results.
@@ -62,8 +62,7 @@ A data frame or a list of the results.
 Get a list of measurements by locations_id.
 }
 \examples{
-\dontrun{
+\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 measurements <- list_sensor_measurements(3920, "hours")
-}
-
+\dontshow{\}) # examplesIf}
 }

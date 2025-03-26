@@ -4,12 +4,14 @@
 \alias{plot.openaq_locations_data.frame}
 \title{Helper for plotting locations on map.}
 \usage{
-\method{plot}{openaq_locations_data.frame}(x, y, ...)
+\method{plot}{openaq_locations_data.frame}(x, y = NULL, ...)
 }
 \arguments{
-\item{x}{A data frame of locations results.}
+\item{x}{the coordinates of points in the plot. Alternatively, a single
+plotting structure, function or any R object with a plot method can be provided.}
 
-\item{y}{Placeholder}
+\item{y}{the y coordinates of points in the plot, optional if x is an
+appropriate structure.}
 
 \item{...}{Other options passed on to base::plot().}
 }
@@ -17,8 +19,8 @@
 Helper for plotting locations on map.
 }
 \examples{
-\dontrun{
+\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 df <- list_locations(limit = 100)
 plot(df, pch = 19, col = df$provider)
-}
+\dontshow{\}) # examplesIf}
 }

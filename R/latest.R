@@ -5,21 +5,19 @@
 #' @param limit An integer.
 #' @param page An integer.
 #' @param as_data_frame A logical for toggling whether to return results as
-#' data frame or list defaults to TRUE.
+#' data frame or list default is `TRUE`.
 #' @param dry_run A logical for toggling a dry run of the request, defaults to
-#' FALSE.
+#' `FALSE`.
 #' @param rate_limit A logical for toggling automatic rate limiting based on
-#' rate limit headers, defaults to FALSE.
-#' @param api_key A valid OpenAQ API key string, defaults to NULL.
+#' rate limit headers, default is `FALSE`.
+#' @param api_key A valid OpenAQ API key string, default is `NULL`.
 #'
 #' @return A data frame or a list of the results.
 #'
 #' @export
 #'
-#' @examples
-#' \dontrun{
+#' @examplesIf interactive()
 #' measurements <- list_location_latest(2178)
-#' }
 #'
 list_location_latest <- function(
     locations_id,
@@ -70,21 +68,19 @@ list_location_latest <- function(
 #' @param limit An integer.
 #' @param page An integer.
 #' @param as_data_frame A logical for toggling whether to return results as
-#' data frame or list defaults to TRUE.
+#' data frame or list default is `TRUE`.
 #' @param dry_run A logical for toggling a dry run of the request, defaults to
-#' FALSE.
+#' `FALSE`.
 #' @param rate_limit A logical for toggling automatic rate limiting based on
-#' rate limit headers, defaults to FALSE.
-#' @param api_key A valid OpenAQ API key string, defaults to NULL.
+#' rate limit headers, default is `FALSE`.
+#' @param api_key A valid OpenAQ API key string, default is `NULL`.
 #'
 #' @return A data frame or a list of the results.
 #'
 #' @export
 #'
-#' @examples
-#' \dontrun{
+#' @examplesIf interactive()
 #' measurements <- list_parameter_latest(2)
-#' }
 #'
 list_parameter_latest <- function(
     parameters_id,
@@ -130,17 +126,23 @@ list_parameter_latest <- function(
 
 #' Method for converting openaq_latest_list to data frame.
 #'
-#' @param data A list of countries as returned from list_instruments.
-#' @param ... Other options.
+#' @param x A list of countries as returned from list_instruments.
+#' @param row.names `NULL` or a character vector giving the row names for the
+#' data frame. Missing values are not allowed.
+#' @param optional logical. If TRUE, setting row names and converting column
+#' names (to syntactic names: see make.names) is optional. Note that all of R's
+#' base package as.data.frame() methods use optional only for column names
+#' treatment, basically with the meaning of data.frame(*, check.names =
+#' !optional). See also the make.names argument of the matrix method.
+#' @param ... additional arguments to be passed to or from methods.
 #'
 #' @export as.data.frame.openaq_latest_list
 #' @export
 #'
-#' @examples
-#' \dontrun{
+#' @examplesIf interactive()
 #' instruments <- list_instruments(as_data_frame = FALSE)
 #' openaq_latest_list.as.data.frame(instruments)
-#' }
+#'
 as.data.frame.openaq_latest_list <- function(x, row.names = NULL, optional = FALSE, ...) {
   tbl <- do.call(rbind, lapply(x, function(rw) {
     data.frame(
