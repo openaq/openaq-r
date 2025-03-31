@@ -353,7 +353,7 @@ extract_parameters <- function(param_defs, ...) {
       params[[param_name]] <- param_value
     }
   }
-  return(params)
+  params
 }
 
 
@@ -415,9 +415,9 @@ parse_openaq_timestamp <- function(x) {
     } else if (methods::is(x, "list") && "utc" %in% names(x)) {
       utc <- x$utc
     }
-    return(as.POSIXct(utc, format = "%Y-%m-%dT%H:%M:%S", tz = "UTC"))
+    as.POSIXct(utc, format = "%Y-%m-%dT%H:%M:%S", tz = "UTC")
   } else {
-    return(NA)
+    NA
   }
 }
 

@@ -217,12 +217,12 @@ get_period_field <- function(x, key) {
 
 get_summary_field <- function(x, key) {
   if (is.null(x$summary)) {
-    return(NA)
+    NA
   } else {
     if (is.null(x$summary[key])) {
-      return(x$summary[key])
+      x$summary[key]
     } else {
-      return(NA)
+      NA
     }
   }
 }
