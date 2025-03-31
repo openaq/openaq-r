@@ -332,7 +332,8 @@ plot.openaq_measurements_data.frame <- function(x, y, ...) {
 
 #' Helper for plotting measurements from list
 #'
-#' @param meas A list of measurements results.
+#' @param x A list of measurements results.
+#' @param y Other data
 #' @param ... Other options to be passed on to base::plot().
 #'
 #' @export
