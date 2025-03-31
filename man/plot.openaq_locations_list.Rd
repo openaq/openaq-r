@@ -7,12 +7,11 @@
 \method{plot}{openaq_locations_list}(x, y = NULL, ...)
 }
 \arguments{
+\item{x}{A list of locations results.}
+
+\item{y}{default is \code{NULL}}
+
 \item{...}{Other options passed on to base::plot().}
-
-\item{loc}{A list of locations results.}
-
-\item{database}{the maps package database of geographic boundaries to use,
-defaults to "world".}
 }
 \description{
 Helper for plotting locations from list.

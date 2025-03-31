@@ -308,7 +308,8 @@ as.data.frame.openaq_measurements_list <- function(x, row.names = NULL, optional
 
 #' Helper for plotting measurements
 #'
-#' @param df A data frame of measurements results.
+#' @param x A data frame of measurements results.
+#' @param y default is `NULL`
 #' @param ... Other options to be passed on to base::plot().
 #'
 #' @export

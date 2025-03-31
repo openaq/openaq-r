@@ -298,9 +298,8 @@ plot.openaq_locations_data.frame <- function(x, y = NULL, ...) {
 
 #' Helper for plotting locations from list.
 #'
-#' @param loc A list of locations results.
-#' @param database the maps package database of geographic boundaries to use,
-#' defaults to "world".
+#' @param x A list of locations results.
+#' @param y default is `NULL`
 #' @param ... Other options passed on to base::plot().
 #'
 #' @export
