@@ -242,7 +242,7 @@ list_locations <- function(
 #' loc <- list_locations()
 #' write.csv(loc)
 #'
-as.data.frame.openaq_locations_list <- function(x, row.names = NULL, optional = FALSE, ...) {
+as.data.frame.openaq_locations_list <- function(x, row.names = NULL, optional = FALSE, ...) { # nolint: object_name_linter
   tbl <- do.call(rbind, lapply(x, function(rw) {
     data.frame(
       id = rw$id,

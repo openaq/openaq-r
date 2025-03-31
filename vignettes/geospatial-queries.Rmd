@@ -81,7 +81,7 @@ names(bbox_coords) <- c("xmin", "ymin", "xmax", "ymax")
 bbox <- st_as_sfc(st_bbox(bbox_coords), crs = 4326)
 world_sp <- maps::map("world", plot = FALSE, fill = TRUE)
 world_sf <- st_as_sf(world_sp)
-plot(st_geometry(world_sf), col = "lightgray", border = "black", xlim = st_bbox(bbox)[c("xmin", "xmax")], ylim = st_bbox(bbox)[c("ymin", "ymax")]) 
+plot(st_geometry(world_sf), col = "lightgray", border = "black", xlim = st_bbox(bbox)[c("xmin", "xmax")], ylim = st_bbox(bbox)[c("ymin", "ymax")])
 plot(st_geometry(bbox), lwd = 2, add = TRUE)
 ```
 

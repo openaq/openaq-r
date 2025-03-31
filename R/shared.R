@@ -202,13 +202,12 @@ validate_coordinates <- function(coordinates) {
 #' @param bbox Any value.
 #'
 #' @noRd
-validate_bbox <- function(bbox) {
+validate_bbox <- function(bbox) { # nolint: cyclocomp_linter
   error_message <- NULL
 
   if (!is.numeric(bbox)) {
     error_message <- "Invalid bounding box format. Input must be numeric."
-  } else if (length(bbox) != 4 || is.null(names(bbox)) ||
-    !all(c("xmin", "ymin", "xmax", "ymax") %in% names(bbox))) {
+  } else if (length(bbox) != 4 || is.null(names(bbox)) || !all(c("xmin", "ymin", "xmax", "ymax") %in% names(bbox))) {
     error_message <- "Invalid bounding box format. Must be a named numeric vector with 'xmin', 'ymin', 'xmax', and 'ymax'."
   } else {
     xmin <- bbox["xmin"]

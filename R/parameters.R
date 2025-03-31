@@ -129,7 +129,7 @@ list_parameters <- function(
 #' instruments <- list_instruments()
 #' openaq_parameters_list.as.data.frame(instruments)
 #'
-as.data.frame.openaq_parameters_list <- function(x, row.names = NULL, optional = FALSE, ...) {
+as.data.frame.openaq_parameters_list <- function(x, row.names = NULL, optional = FALSE, ...) { # nolint: object_name_linter
   tbl <- do.call(rbind, lapply(x, function(rw) {
     data.frame(
       id = rw$id,

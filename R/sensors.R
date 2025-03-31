@@ -109,7 +109,7 @@ get_location_sensors <- function(
 #' sensor <- get_sensor(as_frame_frame = FALSE)
 #' openaq_sensors_list.as.data.frame(sensor)
 #'
-as.data.frame.openaq_sensors_list <- function(x, row.names = NULL, optional = FALSE, ...) {
+as.data.frame.openaq_sensors_list <- function(x, row.names = NULL, optional = FALSE, ...) { # nolint: object_name_linter
   tbl <- do.call(rbind, lapply(x, function(rw) {
     data.frame(
       id = rw$id,

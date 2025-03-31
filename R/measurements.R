@@ -247,7 +247,7 @@ get_summary_field <- function(x, key) {
 #' meas <- list_sensor_measurements(23707, limit = 500, as_data_frame = FALSE)
 #' openaq_measurements_list.as.data.frame(meas)
 #'
-as.data.frame.openaq_measurements_list <- function(x, row.names = NULL, optional = FALSE, ...) {
+as.data.frame.openaq_measurements_list <- function(x, row.names = NULL, optional = FALSE, ...) { # nolint: object_name_linter
   tbl <- do.call(rbind, lapply(x, function(rw) {
     data.frame(
       value = rw$value,

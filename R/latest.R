@@ -143,7 +143,7 @@ list_parameter_latest <- function(
 #' instruments <- list_instruments(as_data_frame = FALSE)
 #' openaq_latest_list.as.data.frame(instruments)
 #'
-as.data.frame.openaq_latest_list <- function(x, row.names = NULL, optional = FALSE, ...) {
+as.data.frame.openaq_latest_list <- function(x, row.names = NULL, optional = FALSE, ...) { # nolint: object_name_linter
   tbl <- do.call(rbind, lapply(x, function(rw) {
     data.frame(
       sensors_id = rw$sensorsId,

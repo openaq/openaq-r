@@ -142,7 +142,7 @@ list_countries <- function(
 #' countries <- list_countries()
 #' openaq_countries_list.as.data.frame(countries)
 #'
-as.data.frame.openaq_countries_list <- function(x, row.names = NULL, optional = FALSE, ...) {
+as.data.frame.openaq_countries_list <- function(x, row.names = NULL, optional = FALSE, ...) { # nolint: object_name_linter
   tbl <- do.call(rbind, lapply(x, function(rw) {
     data.frame(
       id = rw$id,
