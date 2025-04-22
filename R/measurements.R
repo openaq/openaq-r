@@ -57,14 +57,25 @@ list_sensor_measurements <- function(
     page = list(default = 1, validator = validate_page)
   )
 
-  params_list <- extract_parameters(param_defs,
-    datetime_from = datetime_from,
-    datetime_to = datetime_to,
-    order_by = order_by,
-    sort_order = sort_order,
-    limit = limit,
-    page = page
-  )
+  if (data == "measurements") {
+    params_list <- extract_parameters(param_defs,
+      datetime_from = datetime_from,
+      datetime_to = datetime_to,
+      order_by = order_by,
+      sort_order = sort_order,
+      limit = limit,
+      page = page
+    )
+  } else {
+    params_list <- extract_parameters(param_defs,
+      date_from = datetime_from,
+      date_to = datetime_to,
+      order_by = order_by,
+      sort_order = sort_order,
+      limit = limit,
+      page = page
+    )
+  }
   if (is.null(rollup)) {
     path <- paste("sensors", sensors_id, data, sep = "/")
   } else {
