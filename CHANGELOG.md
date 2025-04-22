@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## v0.5.0 - 2025-04-22
+
+### Changed
+
+- Check `data` parameter to correctly pass `datetime_from` and/or `datetime_to`
+ vs `date_to` and `date_from` for `list_sensor_measurements`.
+
+## v0.4.0 - 2025-03-31
+
+### Changed
+
+- Updated plot function signature to meet S3 function generic/method consistency requirements
+- removed support for oldrel-4 version
+
 ## v0.3.0 - 2025-02-21
 
 ### Changed
