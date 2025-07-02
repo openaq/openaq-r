@@ -141,8 +141,8 @@ as.data.frame.openaq_providers_list <- function(x, row.names = NULL, optional = 
       datetime_first = parse_openaq_timestamp(rw$datetimeFirst),
       datetime_last = parse_openaq_timestamp(rw$datetimeLast),
       entities_id = rw$entitiesId,
-      parameters_ids = paste(lapply(rw$parameters, function(x) {
-        rw$id
+      parameters_ids = paste(lapply(rw$parameters, function(p) {
+        p$id
       }), collapse = ",")
     )
   }))
