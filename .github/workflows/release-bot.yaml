@@ -20,4 +20,10 @@ jobs:
           webhook-type: incoming-webhook
           payload: |
             text: "*New OpenAQ R Package Release ${{ github.event.release.tag_name }}*: Read the changelog at https://github.com/openaq/openaq-r/releases/tag/${{ github.event.release.tag_name }}"
-                
+      - name: Send post to Bluesky
+        uses: cbrgm/bluesky-github-action@v1
+        with:
+          handle: ${{ secrets.BLUESKY_HANDLE }}
+          password: ${{ secrets.BLUESKY_RELEASE_BOT }}
+          text: |
+            "🚀 New OpenAQ R Package Release ${{ github.event.release.tag_name }}: Read the changelog at https://github.com/openaq/openaq-r/releases/tag/${{ github.event.release.tag_name }}"
