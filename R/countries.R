@@ -149,11 +149,11 @@ as.data.frame.openaq_countries_list <- function(x, row.names = NULL, optional = 
       code = rw$code,
       datetime_first = parse_openaq_timestamp(rw$datetimeFirst),
       datetime_last = parse_openaq_timestamp(rw$datetimeLast),
-      parameter_ids = paste(lapply(rw$parameters, function(x) {
-        rw$id
+      parameter_ids = paste(lapply(rw$parameters, function(p) {
+        p$id
       }), collapse = ","),
-      parameter_names = paste(lapply(rw$parameters, function(x) {
-        paste(rw$name, rw$units, collapse = " ")
+      parameter_names = paste(lapply(rw$parameters, function(p) {
+        paste(p$name, p$units, collapse = " ")
       }), collapse = ",")
     )
   }))

@@ -136,8 +136,8 @@ as.data.frame.openaq_manufacturers_list <- function(x, row.names = NULL, optiona
     data.frame(
       id = rw$id,
       name = rw$name,
-      instruments_ids = paste(lapply(rw$instruments, function(x) {
-        rw$id
+      instruments_ids = paste(lapply(rw$instruments, function(i) {
+        i$id
       }), collapse = ",")
     )
   }))

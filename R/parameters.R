@@ -112,7 +112,7 @@ list_parameters <- function(
 
 #' Method for converting openaq_parameters_list to data frame.
 #'
-#' @param x A list of countries as returned from list_parameters.
+#' @param x A list of parameters as returned from list_parameters.
 #' @param row.names `NULL` or a character vector giving the row names for the
 #' data frame. Missing values are not allowed.
 #' @param optional logical. If TRUE, setting row names and converting column
@@ -126,8 +126,8 @@ list_parameters <- function(
 #' @export
 #'
 #' @examplesIf interactive()
-#' instruments <- list_instruments()
-#' openaq_parameters_list.as.data.frame(instruments)
+#' parameters <- list_parameters()
+#' openaq_parameters_list.as.data.frame(parameters)
 #'
 as.data.frame.openaq_parameters_list <- function(x, row.names = NULL, optional = FALSE, ...) { # nolint: object_name_linter
   tbl <- do.call(rbind, lapply(x, function(rw) {
