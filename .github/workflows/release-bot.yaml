@@ -26,4 +26,4 @@ jobs:
           handle: ${{ secrets.BLUESKY_HANDLE }}
           password: ${{ secrets.BLUESKY_RELEASE_BOT }}
           text: |
-            "🚀 New OpenAQ R Package Release ${{ github.event.release.tag_name }}: Read the changelog at https://github.com/openaq/openaq-r/releases/tag/${{ github.event.release.tag_name }}"
+            🚀 New OpenAQ R Package Release ${{ github.event.release.tag_name }}: Read the changelog at https://github.com/openaq/openaq-r/releases/tag/${{ github.event.release.tag_name }}
