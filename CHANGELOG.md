@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## v0.6.0 - 2025-07-03
+
+### Changed
+
+- `parameter_names` field in countries resource function as.data.frame fixed to correctly list name values.
+- `parameter_ids` field in countries resource function as.data.frame fixed to correctly list ids.
+- `instrument_ids` field in manufacturers resource function as.data.frame fixed to correctly list ids.
+- `parameter_ids` field in providers resource function as.data.frame fixed to correctly list ids.
+- documentation fixes
+
 ## v0.5.0 - 2025-04-22
 
 ### Changed
