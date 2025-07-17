@@ -5,25 +5,33 @@ vignette: >
   %\VignetteIndexEntry{Integrating with ggplot2}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
----```{r setup, include=FALSE}
+
+--- ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(openaq)
 library(ggplot2)
-```## Introduction
+
+```{r setup, include=FALSE}
+## Introduction
 The openaq package provides functionality for visualizing data through the built-in R base::plot package (see `plotting`). A popular alternative package for creating data visualizations is ggplot2, known for its declarative API and ease of use for creating highly customized plots. The openaq package automatically provides data output as a data frame, making it straightforward to integrate openaq with ggplot2.## Load ggplot2 and the openaq packages.
+
 ```{r eval=FALSE}
 library(openaq)
 library(ggplot2)
-``````{r eval=FALSE}
+```
+{r eval=FALSE}
 set_api_key("my-super-secret-openaq-key-1234")
-```## Retrieve PM2.5 dataTo demonstrate how to use ggplot2 with openaq, we will query hourly PM2.5 measurement data..```{r eval=FALSE}
+```## Retrieve PM2.5 dataTo demonstrate how to use ggplot2 with openaq, we will query hourly PM2.5 measurement data..
+
+```{r eval=FALSE}
 pm25_data <- list_sensor_measurements(
   12235029,
   datetime_from = as.POSIXct("2024-08-01", tz = "Asia/Kolkata"),
   datetime_to = as.POSIXct("2024-08-31 23:59", tz = "Asia/Kolkata")
 )
-``` We will query data from sensor 12235029, a PM2.5 sensor located in Delhi, India, for May 2025. We specify the correct time zone (Asia/Kolkata) to ensure we query datetime in the local time of the location.## Why These Plots?In this exercise, we will demonstrate how to plot both a box plot and a histogram with `ggplot2`.. A box plot illustrates the distribution of PM2.5 values in May 2025. It shows the median, interquartile range, and identifies outliers in the dataset. This chart can help us understand the overall spread and average levels of particulate matter.Boxplot of PM2.5
-```{r eval=FALSE}
+``` 
+We will query data from sensor 12235029, a PM2.5 sensor located in Delhi, India, for May 2025. We specify the correct time zone (Asia/Kolkata) to ensure we query datetime in the local time of the location.## Why These Plots?In this exercise, we will demonstrate how to plot both a box plot and a histogram with `ggplot2`.. A box plot illustrates the distribution of PM2.5 values in May 2025. It shows the median, interquartile range, and identifies outliers in the dataset. This chart can help us understand the overall spread and average levels of particulate matter.Boxplot of PM2.5
+``` {r eval=FALSE}
 ggplot(aes(x = value)) +
   geom_histogram(
     binwidth = scott_bw(pm25_data),
@@ -36,7 +44,8 @@ ggplot(aes(x = value)) +
     y = "Frequency"
   ) +
   theme_grey()
-``````{r  eval=FALSE}
+
+```{r  eval=FALSE}
 pm25_data <- list_sensor_measurements(
   12235029,
   datetime_from = as.POSIXct("2025-05-01", tz = "Asia/Kolkata"),
@@ -48,7 +57,8 @@ pm25_data <- list_sensor_measurements(
     y = "Measurement Value: PM 2.5"
   ) +
   theme_grey()
-```## Histogram of PM2.5 ValuesNow, let's summarize the frequency distribution of PM2.5 values over the month. We’ll use a histogram. We'll calculate an optimal bin width using Scott's Rule, which adapts to the data's spread and size.binwidth using Scott's rule
+```
+## Histogram of PM2.5 ValuesNow, let's summarize the frequency distribution of PM2.5 values over the month. We’ll use a histogram. We'll calculate an optimal bin width using Scott's Rule, which adapts to the data's spread and size.binwidth using Scott's rule
 ```{r  eval=FALSE}
 scott_bw <- function(x) {
   (max(x) - min(x)) / nclass.scott(x)
@@ -65,7 +75,89 @@ ggplot(aes(x = value)) +
     y = "Frequency"
   ) +
   theme_grey()
-```## Plot the Histogram with ggplotThis histogram provides a quick view of the overall distribution and skew of the data, highlighting standard value ranges and the presence of high-pollution events. You can customize your histogram by changing the color and fill as shown below.```{r  eval=FALSE}
+```
+## Plot the Histogram with ggplotThis histogram provides a quick view of the overall distribution and skew of the data, highlighting standard value ranges and the presence of high-pollution events. You can customize your histogram by changing the color and fill as shown below.```{r  eval=FALSE}
+ggplot(aes(x = value)) +
+  geom_histogram(
+    binwidth = scott_bw(pm25_data),
+    fill = "#584DAE
+", color = "black"
+  ) +
+  labs(
+    title = "Histogram of PM2.5 Measurements in Delhi, May 2025",
+    x = "PM2.5 Value (µg/m³)",
+    y = "Frequency"
+  ) +
+  theme_grey()
+```
+
+
+```
+## Introduction
+The openaq package provides functionality for visualizing data through the built-in R base::plot package (see `plotting`). A popular alternative package for creating data visualizations is ggplot2, known for its declarative API and ease of use for creating highly customized plots. The openaq package automatically provides data output as a data frame, making it straightforward to integrate openaq with ggplot2.## Load ggplot2 and the openaq packages.
+``` r eval=FALSE}
+library(openaq)
+library(ggplot2)
+
+```{r eval=FALSE}
+set_api_key("my-super-secret-openaq-key-1234")
+```
+## Retrieve PM2.5 dataTo demonstrate how to use ggplot2 with openaq, we will query hourly PM2.5 measurement data..```{r eval=FALSE}
+pm25_data <- list_sensor_measurements(
+  12235029,
+  datetime_from = as.POSIXct("2024-08-01", tz = "Asia/Kolkata"),
+  datetime_to = as.POSIXct("2024-08-31 23:59", tz = "Asia/Kolkata")
+)
+``` 
+We will query data from sensor 12235029, a PM2.5 sensor located in Delhi, India, for May 2025. We specify the correct time zone (Asia/Kolkata) to ensure we query datetime in the local time of the location.## Why These Plots?In this exercise, we will demonstrate how to plot both a box plot and a histogram with `ggplot2`.. A box plot illustrates the distribution of PM2.5 values in May 2025. It shows the median, interquartile range, and identifies outliers in the dataset. This chart can help us understand the overall spread and average levels of particulate matter.Boxplot of PM2.5
+
+```{r eval=FALSE}
+ggplot(aes(x = value)) +
+  geom_histogram(
+    binwidth = scott_bw(pm25_data),
+    fill = "#584DAE
+", color = "black"
+  ) +
+  labs(
+    title = "Histogram of PM2.5 Measurements in Delhi, May 2025",
+    x = "PM2.5 Value (µg/m³)",
+    y = "Frequency"
+  ) +
+  theme_grey()
+
+```{r  eval=FALSE}
+pm25_data <- list_sensor_measurements(
+  12235029,
+  datetime_from = as.POSIXct("2025-05-01", tz = "Asia/Kolkata"),
+  datetime_to = as.POSIXct("2025-05-31", tz = "Asia/Kolkata")
+)ggplot(pm25_data, aes(x = value)) +
+  geom_boxplot() +
+  labs(
+    title = "Summary of May 2025 Data in Delhi, India",
+    y = "Measurement Value: PM 2.5"
+  ) +
+  theme_grey()
+```
+## Histogram of PM2.5 ValuesNow, let's summarize the frequency distribution of PM2.5 values over the month. We’ll use a histogram. We'll calculate an optimal bin width using Scott's Rule, which adapts to the data's spread and size.binwidth using Scott's rule
+
+```{r  eval=FALSE}
+scott_bw <- function(x) {
+  (max(x) - min(x)) / nclass.scott(x)
+}
+ggplot(aes(x = value)) +
+  geom_histogram(
+    binwidth = scott_bw(pm25_data),
+    fill = "#584DAE
+", color = "black"
+  ) +
+  labs(
+    title = "Histogram of PM2.5 Measurements in Delhi, May 2025",
+    x = "PM2.5 Value (µg/m³)",
+    y = "Frequency"
+  ) +
+  theme_grey()
+```
+## Plot the Histogram with ggplotThis histogram provides a quick view of the overall distribution and skew of the data, highlighting standard value ranges and the presence of high-pollution events. You can customize your histogram by changing the color and fill as shown below.```{r  eval=FALSE}
 ggplot(aes(x = value)) +
   geom_histogram(
     binwidth = scott_bw(pm25_data),
