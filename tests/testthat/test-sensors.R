@@ -17,18 +17,18 @@ test_that("get_sensor(5) as list works", {
 })
 
 
-test_that("get_location_sensors(3) works", {
-  vcr::use_cassette("get_location_sensors_3", {
-    sensors <- get_location_sensors(3)
+test_that("list_location_sensors(3) works", {
+  vcr::use_cassette("list_location_sensors_3", {
+    sensors <- list_location_sensors(3)
   })
   testthat::expect_type(sensors, "list")
   testthat::expect_true(is.data.frame(sensors))
   testthat::expect_true(nrow(sensors) == 2)
 })
 
-test_that("get_location_sensors(3) as list works", {
-  vcr::use_cassette("get_location_sensors_3_list", {
-    sensors <- get_location_sensors(3, as_data_frame = FALSE)
+test_that("list_location_sensors(3) as list works", {
+  vcr::use_cassette("list_location_sensors_3_list", {
+    sensors <- list_location_sensors(3, as_data_frame = FALSE)
   })
   testthat::expect_type(sensors, "list")
   testthat::expect_false(is.data.frame(sensors))

@@ -237,7 +237,7 @@ get_sensor()
 ```
 
 ```{r eval=FALSE}
-get_location_sensors()
+list_location_sensors()
 ```
 
 
