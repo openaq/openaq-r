@@ -44,7 +44,7 @@ get_sensor <- function(
   }
 }
 
-#' Get a location's sensors.
+#' Get a list of a location's sensors.
 #'
 #' @param locations_id An integer.
 #' @param as_data_frame A logical for toggling whether to return results as
@@ -60,9 +60,9 @@ get_sensor <- function(
 #' @export
 #'
 #' @examplesIf interactive()
-#' sensors <- get_location_sensors(42)
+#' sensors <- list_location_sensors(42)
 #'
-get_location_sensors <- function(
+list_location_sensors <- function(
     locations_id,
     as_data_frame = TRUE,
     dry_run = FALSE,
