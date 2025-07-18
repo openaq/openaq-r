@@ -7,7 +7,7 @@
 \method{as.data.frame}{openaq_parameters_list}(x, row.names = NULL, optional = FALSE, ...)
 }
 \arguments{
-\item{x}{A list of countries as returned from list_parameters.}
+\item{x}{A list of parameters as returned from list_parameters.}
 
 \item{row.names}{\code{NULL} or a character vector giving the row names for the
 data frame. Missing values are not allowed.}
@@ -25,7 +25,7 @@ Method for converting openaq_parameters_list to data frame.
 }
 \examples{
 \dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-instruments <- list_instruments()
-openaq_parameters_list.as.data.frame(instruments)
+parameters <- list_parameters()
+openaq_parameters_list.as.data.frame(parameters)
 \dontshow{\}) # examplesIf}
 }
