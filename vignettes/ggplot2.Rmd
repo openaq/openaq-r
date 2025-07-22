@@ -5,11 +5,13 @@ vignette: >
   %\VignetteIndexEntry{Integrating with ggplot2}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+---
 
---- ```{r setup, include=FALSE}
+```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(openaq)
 library(ggplot2)
+
 
 ```{r setup, include=FALSE}
 ## Introduction
