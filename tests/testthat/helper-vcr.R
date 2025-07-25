@@ -2,7 +2,7 @@ library("vcr")
 
 vcr_dir <- vcr::vcr_test_path("fixtures")
 
-# set_base_url('http://localhost:8000') # uncomment when generating vcr cassettes to point test cases to local DB
+# set_base_url('http://localhost:8000') # nolint uncomment when generating vcr cassettes to point test cases to local DB
 
 if (!nzchar(Sys.getenv("OPENAQ_API_KEY"))) {
   if (dir.exists(vcr_dir)) {
