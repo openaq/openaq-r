@@ -90,7 +90,7 @@ print(headers[["x_ratelimit_remaining"]])
 ```
 
 ```
-## [1] 53
+## [1] 58
 ```
 
 Read more about the headers and rate limits in the OpenAQ API documentation under 
@@ -267,7 +267,7 @@ get_sensor()
 
 
 ``` r
-list_location_sensors()
+get_location_sensors()
 ```
 
 
