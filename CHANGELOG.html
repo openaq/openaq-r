@@ -45,11 +45,17 @@
 <p>The format is based on <a href="https://keepachangelog.com/en/1.1.0/" class="external-link">Keep a Changelog</a>, and this project adheres to <a href="https://semver.org/spec/v2.0.0.html" class="external-link">Semantic Versioning</a>.</p>
 <div class="section level2">
 <h2 id="unreleased">[Unreleased]<a class="anchor" aria-label="anchor" href="#unreleased"></a></h2>
+<div class="section level3">
+<h3 id="changed">Changed<a class="anchor" aria-label="anchor" href="#changed"></a></h3>
+<ul><li><em>BREAKING CHANGES</em></li>
+<li>renamed <code>get_location_sensors</code> to <code>list_locations_sensors</code>
+</li>
+</ul></div>
 </div>
 <div class="section level2">
 <h2 id="v060---2025-07-03">v0.6.0 - 2025-07-03<a class="anchor" aria-label="anchor" href="#v060---2025-07-03"></a></h2>
 <div class="section level3">
-<h3 id="changed">Changed<a class="anchor" aria-label="anchor" href="#changed"></a></h3>
+<h3 id="changed-1">Changed<a class="anchor" aria-label="anchor" href="#changed-1"></a></h3>
 <ul><li>
 <code>parameter_names</code> field in countries resource function as.data.frame fixed to correctly list name values.</li>
 <li>
@@ -64,14 +70,14 @@
 <div class="section level2">
 <h2 id="v050---2025-04-22">v0.5.0 - 2025-04-22<a class="anchor" aria-label="anchor" href="#v050---2025-04-22"></a></h2>
 <div class="section level3">
-<h3 id="changed-1">Changed<a class="anchor" aria-label="anchor" href="#changed-1"></a></h3>
+<h3 id="changed-2">Changed<a class="anchor" aria-label="anchor" href="#changed-2"></a></h3>
 <ul><li>Check <code>data</code> parameter to correctly pass <code>datetime_from</code> and/or <code>datetime_to</code> vs <code>date_to</code> and <code>date_from</code> for <code>list_sensor_measurements</code>.</li>
 </ul></div>
 </div>
 <div class="section level2">
 <h2 id="v040---2025-03-31">v0.4.0 - 2025-03-31<a class="anchor" aria-label="anchor" href="#v040---2025-03-31"></a></h2>
 <div class="section level3">
-<h3 id="changed-2">Changed<a class="anchor" aria-label="anchor" href="#changed-2"></a></h3>
+<h3 id="changed-3">Changed<a class="anchor" aria-label="anchor" href="#changed-3"></a></h3>
 <ul><li>Updated plot function signature to meet S3 function generic/method consistency requirements</li>
 <li>removed support for oldrel-4 version</li>
 </ul></div>
@@ -79,7 +85,7 @@
 <div class="section level2">
 <h2 id="v030---2025-02-21">v0.3.0 - 2025-02-21<a class="anchor" aria-label="anchor" href="#v030---2025-02-21"></a></h2>
 <div class="section level3">
-<h3 id="changed-3">Changed<a class="anchor" aria-label="anchor" href="#changed-3"></a></h3>
+<h3 id="changed-4">Changed<a class="anchor" aria-label="anchor" href="#changed-4"></a></h3>
 <ul><li><em>BREAKING CHANGES</em></li>
 <li>Changed <code>providers_id</code>, <code>parameters_id</code>, <code>owner_contacts_id</code>, <code>manufacturers_id</code>, <code>licenses_id</code>, <code>instruments_id</code>, and <code>countries_id</code> function arguments to be numeric vectors</li>
 <li>Changed <code>coordinates</code> function argument to be a named numeric vector with fields <code>latitude</code> and <code>longitude</code>
