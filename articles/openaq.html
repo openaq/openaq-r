@@ -45,9 +45,9 @@
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="../articles/geospatial-queries.html">geospatial-queries</a></li>
-    <li><a class="dropdown-item" href="../articles/plotting.html">plotting</a></li>
-    <li><a class="dropdown-item" href="../articles/querying-measurements.html">querying-measurements</a></li>
+<li><a class="dropdown-item" href="../articles/geospatial-queries.html">Geospatial Queries</a></li>
+    <li><a class="dropdown-item" href="../articles/plotting.html">Plotting</a></li>
+    <li><a class="dropdown-item" href="../articles/querying-measurements.html">Querying measurements</a></li>
     <li><a class="dropdown-item" href="../articles/querying-rollups.html">Querying rolled up measurements</a></li>
   </ul>
 </li>
@@ -113,8 +113,7 @@ calls e.g.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/list_locations.html">list_locations</a></span><span class="op">(</span>api_key <span class="op">=</span> <span class="st">"my-super-secret-openaq-key-1234"</span><span class="op">)</span></span></code></pre></div>
 <p>Setting the API key at an individual function level will always take
-precedent over an API key set at the environment variable level
-e.g. </p>
+precedent over an API key set at the environment variable level</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/set_api_key.html">set_api_key</a></span><span class="op">(</span><span class="st">"my-super-secret-openaq-key-1234"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/list_locations.html">list_locations</a></span><span class="op">(</span>api_key <span class="op">=</span> <span class="st">"this-is-my-alternate-api-key"</span><span class="op">)</span></span></code></pre></div>
@@ -142,9 +141,8 @@ attributes on the output data frame:</p>
 <span>  providers_id <span class="op">=</span> <span class="fl">166</span></span>
 <span><span class="op">)</span></span>
 <span><span class="va">headers</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">locations</span>, <span class="st">"headers"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">headers</span><span class="op">[[</span><span class="st">"x_ratelimit_remaining"</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># &gt; 59</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">headers</span><span class="op">[[</span><span class="st">"x_ratelimit_remaining"</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 53</span></span></code></pre>
 <p>Read more about the headers and rate limits in the OpenAQ API
 documentation under <a href="https://docs.openaq.org/using-the-api/rate-limits" class="external-link">Rate
 Limits</a></p>
@@ -166,12 +164,12 @@ that returns more than on results, i.e. “list” functions such as
 <code><a href="../reference/list_locations.html">list_locations()</a></code>, <code><a href="../reference/list_licenses.html">list_licenses()</a></code> or
 <code><a href="../reference/list_sensor_measurements.html">list_sensor_measurements()</a></code></p>
 <p>Examples:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/list_locations.html">list_locations</a></span><span class="op">(</span></span>
 <span>  limit <span class="op">=</span> <span class="fl">1000</span>,</span>
 <span>  page <span class="op">=</span> <span class="fl">1</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/list_locations.html">list_locations</a></span><span class="op">(</span></span>
 <span>  limit <span class="op">=</span> <span class="fl">1000</span>,</span>
 <span>  page <span class="op">=</span> <span class="fl">2</span></span>
@@ -193,89 +191,89 @@ process of querying and retrieving data resources.</p>
 <div class="section level4">
 <h4 id="countries">Countries<a class="anchor" aria-label="anchor" href="#countries"></a>
 </h4>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/get_country.html">get_country</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/get_country.html">get_country</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/list_countries.html">list_countries</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="instruments">Instruments<a class="anchor" aria-label="anchor" href="#instruments"></a>
 </h4>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/get_instrument.html">get_instrument</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/list_instruments.html">list_instruments</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/get_instrument.html">get_instrument</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/list_instruments.html">list_instruments</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/list_manufacturer_instruments.html">list_manufacturer_instruments</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="latest">Latest<a class="anchor" aria-label="anchor" href="#latest"></a>
 </h4>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/list_location_latest.html">list_location_latest</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/list_location_latest.html">list_location_latest</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/list_parameter_latest.html">list_parameter_latest</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="licenses">Licenses<a class="anchor" aria-label="anchor" href="#licenses"></a>
 </h4>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/list_licenses.html">list_licenses</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/list_licenses.html">list_licenses</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/get_license.html">get_license</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="locations">Locations<a class="anchor" aria-label="anchor" href="#locations"></a>
 </h4>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/list_locations.html">list_locations</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/list_locations.html">list_locations</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/get_location.html">get_location</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="manufacturers">Manufacturers<a class="anchor" aria-label="anchor" href="#manufacturers"></a>
 </h4>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/list_manufacturers.html">list_manufacturers</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/list_manufacturers.html">list_manufacturers</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/get_manufacturer.html">get_manufacturer</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="measurements">Measurements<a class="anchor" aria-label="anchor" href="#measurements"></a>
 </h4>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/list_sensor_measurements.html">list_sensor_measurements</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="owners">Owners<a class="anchor" aria-label="anchor" href="#owners"></a>
 </h4>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/list_owners.html">list_owners</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/list_owners.html">list_owners</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/get_owner.html">get_owner</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a>
 </h4>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/list_parameters.html">list_parameters</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/list_parameters.html">list_parameters</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/get_parameter.html">get_parameter</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="providers">Providers<a class="anchor" aria-label="anchor" href="#providers"></a>
 </h4>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/list_providers.html">list_providers</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/list_providers.html">list_providers</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/get_provider.html">get_provider</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="sensors">Sensors<a class="anchor" aria-label="anchor" href="#sensors"></a>
 </h4>
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/get_sensor.html">get_sensor</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/get_sensor.html">get_sensor</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/get_location_sensors.html">get_location_sensors</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
@@ -286,7 +284,7 @@ process of querying and retrieving data resources.</p>
 prefer to work with JSON parsed as a standard list you can toggle off
 data frame parsing with the <code>as_data_frame</code> function
 parameter.</p>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/list_locations.html">list_locations</a></span><span class="op">(</span></span>
 <span>  limit <span class="op">=</span> <span class="fl">1000</span>,</span>
 <span>  parameters_id <span class="op">=</span> <span class="fl">2</span>,</span>
@@ -317,14 +315,14 @@ function under-the-hood.</p>
 limiting to ensure you do not exceed account rate limits. You can or
 course implement your own rate limiting yourself, but the built-in
 functionality is provided as an easy to use option.</p>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/list_locations.html">list_locations</a></span><span class="op">(</span></span>
 <span>  limit <span class="op">=</span> <span class="fl">1000</span>,</span>
 <span>  parameters_id <span class="op">=</span> <span class="fl">2</span>,</span>
 <span>  providers_id <span class="op">=</span> <span class="fl">166</span>,</span>
 <span>  rate_limit <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<p>This functionality uses the OpenAQ API’s custom <a href="https://docs.openaq.org/using-the-api/rate-limits#rate-limit-headers" class="external-link">rate
+<p>This functionality uses the OpenAQ API’s <a href="https://docs.openaq.org/using-the-api/rate-limits#rate-limit-headers" class="external-link">rate
 limit headers</a> and the <code><a href="https://httr2.r-lib.org/reference/req_retry.html" class="external-link">httr2::req_retry()</a></code> function
 under-the-hood.</p>
 </div>
@@ -335,21 +333,13 @@ under-the-hood.</p>
 <code>DRY_RUN</code> that prevents a full HTTP request to the API and
 instead prints out a summary of how the request would have been
 made.</p>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/list_locations.html">list_locations</a></span><span class="op">(</span></span>
 <span>  limit <span class="op">=</span> <span class="fl">1000</span>,</span>
 <span>  parameters_id <span class="op">=</span> <span class="fl">2</span>,</span>
 <span>  providers_id <span class="op">=</span> <span class="fl">166</span>,</span>
 <span>  dry_run <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="co">#&gt; GET /v3/locations?providers_id=166&amp;parameters_id=10&amp;limit=1000&amp;page=1 HTTP/1.1</span></span>
-<span><span class="co">#&gt; Host: api.openaq.org</span></span>
-<span><span class="co">#&gt; Accept-Encoding: gzip</span></span>
-<span><span class="co">#&gt; X-API-Key: &lt;REDACTED&gt;</span></span>
-<span><span class="co">#&gt; User-Agent: openaq-r</span></span>
-<span><span class="co">#&gt; Content-Type: application/json</span></span>
-<span><span class="co">#&gt; Accept: application/json</span></span></code></pre></div>
+<span><span class="op">)</span></span></code></pre></div>
 <p>This can be helpful when debugging to identify issues and compare the
 raw query URL and headers.</p>
 <p>This functionality uses the <code><a href="https://httr2.r-lib.org/reference/req_dry_run.html" class="external-link">httr2::req_dry_run()</a></code>

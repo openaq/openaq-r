@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>querying-measurements • openaq</title>
+<title>Querying measurements • openaq</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
 <link rel="icon" type="”image/svg+xml”" href="../favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
@@ -15,7 +15,7 @@
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="querying-measurements">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Querying measurements">
 <script defer data-domain="openaq.github.io/openaq-r" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
@@ -40,9 +40,9 @@
 <li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="../articles/geospatial-queries.html">geospatial-queries</a></li>
-    <li><a class="dropdown-item" href="../articles/plotting.html">plotting</a></li>
-    <li><a class="dropdown-item" href="../articles/querying-measurements.html">querying-measurements</a></li>
+<li><a class="dropdown-item" href="../articles/geospatial-queries.html">Geospatial Queries</a></li>
+    <li><a class="dropdown-item" href="../articles/plotting.html">Plotting</a></li>
+    <li><a class="dropdown-item" href="../articles/querying-measurements.html">Querying measurements</a></li>
     <li><a class="dropdown-item" href="../articles/querying-rollups.html">Querying rolled up measurements</a></li>
   </ul>
 </li>
@@ -65,7 +65,7 @@
 
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-      <img src="../logo.png" class="logo" alt=""><h1>querying-measurements</h1>
+      <img src="../logo.png" class="logo" alt=""><h1>Querying measurements</h1>
             
       
       <small class="dont-index">Source: <a href="https://github.com/openaq/openaq-r/blob/main/vignettes/querying-measurements.Rmd" class="external-link"><code>vignettes/querying-measurements.Rmd</code></a></small>
@@ -104,29 +104,28 @@ we will use for easier inspection in the following steps.</p>
 monitoring location. Let’s examine the first location in the list and
 explore its sensors.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="va">location</span> <span class="op">&lt;-</span> <span class="va">locations</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
+<code class="sourceCode R"><span><span class="va">location</span> <span class="op">&lt;-</span> <span class="va">locations</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
 <span><span class="va">sensors</span> <span class="op">&lt;-</span> <span class="va">location</span><span class="op">$</span><span class="va">sensors</span></span>
 <span><span class="va">sensors</span></span>
-<span><span class="co"># &gt; [[1]]</span></span>
-<span><span class="co"># &gt; [[1]]$id</span></span>
-<span><span class="co"># &gt; [1] 225221</span></span>
-<span><span class="co"># &gt;</span></span>
-<span><span class="co"># &gt; [[1]]$name</span></span>
-<span><span class="co"># &gt; [1] "pm25 µg/m³"</span></span>
-<span><span class="co"># &gt;</span></span>
-<span><span class="co"># &gt; [[1]]$parameter</span></span>
-<span><span class="co"># &gt; [[1]]$parameter$id</span></span>
-<span><span class="co"># &gt; [1] 2</span></span>
-<span><span class="co"># &gt;</span></span>
-<span><span class="co"># &gt; [[1]]$parameter$name</span></span>
-<span><span class="co"># &gt; [1] "pm25"</span></span>
-<span><span class="co"># &gt;</span></span>
-<span><span class="co"># &gt; [[1]]$parameter$units</span></span>
-<span><span class="co"># &gt; [1] "µg/m³"</span></span>
-<span><span class="co"># &gt;</span></span>
-<span><span class="co"># &gt; [[1]]$parameter$displayName</span></span>
-<span><span class="co"># &gt; [1] "PM2.5"</span></span></code></pre></div>
+<span><span class="co">#&gt; [[1]]</span></span>
+<span><span class="co">#&gt; [[1]]$id</span></span>
+<span><span class="co">#&gt; [1] 225221</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[1]]$name</span></span>
+<span><span class="co">#&gt; [1] "pm25 µg/m³"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[1]]$parameter</span></span>
+<span><span class="co">#&gt; [[1]]$parameter$id</span></span>
+<span><span class="co">#&gt; [1] 2</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[1]]$parameter$name</span></span>
+<span><span class="co">#&gt; [1] "pm25"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[1]]$parameter$units</span></span>
+<span><span class="co">#&gt; [1] "µg/m³"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[1]]$parameter$displayName</span></span>
+<span><span class="co">#&gt; [1] "PM2.5"</span></span></code></pre></div>
 <p>Each location contains information about its sensors. Each sensor has
 an id, name, and details about the measured parameter, including its
 name, units, and ID.</p>
@@ -136,15 +135,14 @@ later.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tz</span> <span class="op">&lt;-</span> <span class="va">location</span><span class="op">$</span><span class="va">timezone</span></span>
 <span><span class="va">tz</span></span>
-<span><span class="co"># &gt; [1] "Indian/Antananarivo"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "Indian/Antananarivo"</span></span></code></pre></div>
 <p>To fetch measurements, we need the sensor ID. This location only
 measures PM<sub>2.5</sub> and in turn only has one sensor so we can
 extract it as follows:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="va">sensors_id</span> <span class="op">&lt;-</span> <span class="va">sensors</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">id</span></span>
+<code class="sourceCode R"><span><span class="va">sensors_id</span> <span class="op">&lt;-</span> <span class="va">sensors</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">id</span></span>
 <span><span class="va">sensors_id</span></span>
-<span><span class="co"># &gt; [1] 225221</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 225221</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
@@ -154,7 +152,7 @@ extract it as follows:</p>
 to retrieve the measurements for the sensor. We need to provide the
 <code>sensors_id</code>, <code>datetime_from</code>, and
 <code>datetime_to</code> arguments. We will query for all measurements
-during the month of January 2025.It is important to use the correct
+during the month of January 2025. It is important to use the correct
 timezone for your dates, we use the timezone for location that we stored
 in the <code>tz</code> variable above. The limit argument controls the
 maximum number of measurements returned in a single page of results.
@@ -169,9 +167,14 @@ hourly measurements * 31 days = 744 measurements).</p>
 <span>  limit <span class="op">=</span> <span class="fl">1000</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p>Finally, we can visualize the measurements using the
-<code><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot()</a></code> function.</p>
+<code><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot()</a></code> function. <code>openaq</code> provide built-in
+helpers for the <code><a href="https://rdrr.io/r/base/plot.html" class="external-link">base::plot</a></code> function, read more in the
+<code>plotting</code> vignette.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">measurements</span><span class="op">)</span></span></code></pre></div>
+<div class="float">
+<img src="figure/measurements-plot-1.png" alt="Line chart showing sensor measurements"><div class="figcaption">Line chart showing sensor measurements</div>
+</div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>

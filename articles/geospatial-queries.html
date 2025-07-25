@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>geospatial-queries • openaq</title>
+<title>Geospatial Queries • openaq</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
 <link rel="icon" type="”image/svg+xml”" href="../favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
@@ -15,7 +15,7 @@
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="geospatial-queries">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Geospatial Queries">
 <script defer data-domain="openaq.github.io/openaq-r" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
@@ -40,9 +40,9 @@
 <li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="../articles/geospatial-queries.html">geospatial-queries</a></li>
-    <li><a class="dropdown-item" href="../articles/plotting.html">plotting</a></li>
-    <li><a class="dropdown-item" href="../articles/querying-measurements.html">querying-measurements</a></li>
+<li><a class="dropdown-item" href="../articles/geospatial-queries.html">Geospatial Queries</a></li>
+    <li><a class="dropdown-item" href="../articles/plotting.html">Plotting</a></li>
+    <li><a class="dropdown-item" href="../articles/querying-measurements.html">Querying measurements</a></li>
     <li><a class="dropdown-item" href="../articles/querying-rollups.html">Querying rolled up measurements</a></li>
   </ul>
 </li>
@@ -65,7 +65,7 @@
 
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-      <img src="../logo.png" class="logo" alt=""><h1>geospatial-queries</h1>
+      <img src="../logo.png" class="logo" alt=""><h1>Geospatial Queries</h1>
             
       
       <small class="dont-index">Source: <a href="https://github.com/openaq/openaq-r/blob/main/vignettes/geospatial-queries.Rmd" class="external-link"><code>vignettes/geospatial-queries.Rmd</code></a></small>
@@ -77,7 +77,6 @@
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/openaq/openaq-r" class="external-link">openaq</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/" class="external-link">sf</a></span><span class="op">)</span></span>
-<span><span class="co">#&gt; Linking to GEOS 3.12.1, GDAL 3.8.4, PROJ 9.4.0; sf_use_s2() is TRUE</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/adeckmyn/maps" class="external-link">maps</a></span><span class="op">)</span></span></code></pre></div>
 <p>The OpenAQ API has the ability to perform geospatial queries,
 enabling you to retrieve data based on location. This vignette will
@@ -105,7 +104,7 @@ the center point, as well as the radius within which to search. The
 radius is specified in meters, with a maximum value of 25,000 (25
 kilometers).</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">list_location</span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/list_locations.html">list_locations</a></span><span class="op">(</span></span>
 <span>  coordinates <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>latitude <span class="op">=</span> <span class="op">-</span><span class="fl">73.0666</span>, longitude <span class="op">=</span> <span class="op">-</span><span class="fl">36.7724</span><span class="op">)</span>, <span class="co"># the coordinates in Concepción, Chile.</span></span>
 <span>  radius <span class="op">=</span> <span class="fl">10000</span> <span class="co"># 10,000 meters or 10 kilometers</span></span>
 <span><span class="op">)</span></span></code></pre></div>
@@ -132,9 +131,18 @@ values that define the corners of your bounding box.</p>
 <span><span class="op">)</span></span></code></pre></div>
 <p>This query will return all locations within the defined rectangular
 region.</p>
-<p><img src="geospatial-queries_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
-<p>The map above visually represents the bounding box used in the
-example query.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">bbox_coords</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">8.478184</span>, <span class="fl">26.640174</span>, <span class="fl">50.803066</span>, <span class="fl">46.534067</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">bbox_coords</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"xmin"</span>, <span class="st">"ymin"</span>, <span class="st">"xmax"</span>, <span class="st">"ymax"</span><span class="op">)</span></span>
+<span><span class="va">bbox</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_as_sfc.html" class="external-link">st_as_sfc</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_bbox.html" class="external-link">st_bbox</a></span><span class="op">(</span><span class="va">bbox_coords</span><span class="op">)</span>, crs <span class="op">=</span> <span class="fl">4326</span><span class="op">)</span></span>
+<span><span class="va">world_sp</span> <span class="op">&lt;-</span> <span class="fu">maps</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/maps/man/map.html" class="external-link">map</a></span><span class="op">(</span><span class="st">"world"</span>, plot <span class="op">=</span> <span class="cn">FALSE</span>, fill <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">world_sf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_as_sf.html" class="external-link">st_as_sf</a></span><span class="op">(</span><span class="va">world_sp</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">world_sf</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"lightgray"</span>, border <span class="op">=</span> <span class="st">"black"</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_bbox.html" class="external-link">st_bbox</a></span><span class="op">(</span><span class="va">bbox</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"xmin"</span>, <span class="st">"xmax"</span><span class="op">)</span><span class="op">]</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_bbox.html" class="external-link">st_bbox</a></span><span class="op">(</span><span class="va">bbox</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ymin"</span>, <span class="st">"ymax"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">bbox</span><span class="op">)</span>, lwd <span class="op">=</span> <span class="fl">2</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<div class="float">
+<img src="figure/bbox-example-plot-1.png" alt="The map above visually represents the bounding box used in the example query."><div class="figcaption">The map above visually represents the bounding
+box used in the example query.</div>
+</div>
 <div class="section level3">
 <h3 id="computing-a-bounding-box-from-a-polygon">Computing a bounding box from a polygon<a class="anchor" aria-label="anchor" href="#computing-a-bounding-box-from-a-polygon"></a>
 </h3>
@@ -142,19 +150,14 @@ example query.</p>
 defined by a polygon, rather than a simple rectangle. Real-world
 boundaries are often complex shapes. For instance, consider the boundary
 of the city of Los Angeles, which has a complex, irregular shape.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://maps.lacity.org/lahub/rest/services/Boundaries/MapServer/7/query?outFields=*&amp;where=1%3D1&amp;f=geojson"</span></span>
-<span><span class="va">la</span> <span class="op">&lt;-</span> <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html" class="external-link">st_read</a></span><span class="op">(</span><span class="va">url</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Reading layer `OGRGeoJSON' from data source </span></span>
-<span><span class="co">#&gt;   `https://maps.lacity.org/lahub/rest/services/Boundaries/MapServer/7/query?outFields=*&amp;where=1%3D1&amp;f=geojson' </span></span>
-<span><span class="co">#&gt;   using driver `GeoJSON'</span></span>
-<span><span class="co">#&gt; Simple feature collection with 1 feature and 2 fields</span></span>
-<span><span class="co">#&gt; Geometry type: POLYGON</span></span>
-<span><span class="co">#&gt; Dimension:     XY</span></span>
-<span><span class="co">#&gt; Bounding box:  xmin: -118.6682 ymin: 33.70366 xmax: -118.1554 ymax: 34.33731</span></span>
-<span><span class="co">#&gt; Geodetic CRS:  WGS 84</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">la</span><span class="op">[</span><span class="st">"OBJECTID"</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
-<p><img src="geospatial-queries_files/figure-html/unnamed-chunk-5-1.png" width="700"></p>
+<span><span class="va">la</span> <span class="op">&lt;-</span> <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html" class="external-link">st_read</a></span><span class="op">(</span><span class="va">url</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">la</span><span class="op">[</span><span class="st">"OBJECTID"</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
+<div class="float">
+<img src="figure/los-angeles-boundaries-plot-1.png" alt="plot of chunk los-angeles-boundaries-plot"><div class="figcaption">plot of chunk los-angeles-boundaries-plot</div>
+</div>
 <p>We can use the <code>sf</code> package to read the GeoJSON data
 representing the city boundary.</p>
 <p>To derive a bounding box from this polygon, we can use the
@@ -163,24 +166,51 @@ and maximum x and y coordinates of the polygon, effectively creating a
 bounding box that encompasses the entire shape. The output is a named
 numeric vector, perfectly formatted for the bbox parameter in the
 <code>openaq</code> function.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bbox</span> <span class="op">&lt;-</span> <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_bbox.html" class="external-link">st_bbox</a></span><span class="op">(</span><span class="va">la</span><span class="op">)</span></span>
 <span><span class="va">bbox</span></span>
 <span><span class="co">#&gt;       xmin       ymin       xmax       ymax </span></span>
 <span><span class="co">#&gt; -118.66819   33.70366 -118.15537   34.33731</span></span></code></pre></div>
 <p>This output gives you the xmin, ymin, xmax, and ymax values needed
 for your <code>openaq</code> query.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_as_sfc.html" class="external-link">st_as_sfc</a></span><span class="op">(</span><span class="va">bbox</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">bbox</span> <span class="op">&lt;-</span> <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_bbox.html" class="external-link">st_bbox</a></span><span class="op">(</span><span class="va">la</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">la</span><span class="op">[</span><span class="st">"OBJECTID"</span><span class="op">]</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<p><img src="geospatial-queries_files/figure-html/unnamed-chunk-8-1.png" width="700"></p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">bbox</span> <span class="op">&lt;-</span> <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_bbox.html" class="external-link">st_bbox</a></span><span class="op">(</span><span class="va">la</span><span class="op">)</span></span>
+<span><span class="va">world_sp</span> <span class="op">&lt;-</span> <span class="fu">maps</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/maps/man/map.html" class="external-link">map</a></span><span class="op">(</span><span class="st">"county"</span>, plot <span class="op">=</span> <span class="cn">FALSE</span>, fill <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">world_sf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_as_sf.html" class="external-link">st_as_sf</a></span><span class="op">(</span><span class="va">world_sp</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">world_sf</span><span class="op">)</span>,</span>
+<span>  col <span class="op">=</span> <span class="st">"lightgray"</span>,</span>
+<span>  border <span class="op">=</span> <span class="st">"black"</span>,</span>
+<span>  xlim <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_bbox.html" class="external-link">st_bbox</a></span><span class="op">(</span><span class="va">bbox</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"xmin"</span>, <span class="st">"xmax"</span><span class="op">)</span><span class="op">]</span>,</span>
+<span>  ylim <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_bbox.html" class="external-link">st_bbox</a></span><span class="op">(</span><span class="va">bbox</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ymin"</span>, <span class="st">"ymax"</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_as_sfc.html" class="external-link">st_as_sfc</a></span><span class="op">(</span><span class="va">bbox</span><span class="op">)</span>, lwd <span class="op">=</span> <span class="fl">2</span>, lty <span class="op">=</span> <span class="fl">2</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">la</span><span class="op">)</span>, lwd <span class="op">=</span> <span class="fl">2</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<div class="float">
+<img src="figure/los-angeles-bbox-map-1.png" alt="Los Angeles city boundary with bounding box"><div class="figcaption">Los Angeles city boundary with bounding
+box</div>
+</div>
 <p>This map shows the Los Angeles city boundary along with the
 calculated bounding box.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/list_locations.html">list_locations</a></span><span class="op">(</span></span>
-<span>  bbox <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>xmin <span class="op">=</span> <span class="fl">100.052893</span>, ymin <span class="op">=</span> <span class="fl">13.495250</span>, xmax <span class="op">=</span> <span class="fl">101.041662</span>, ymax <span class="op">=</span> <span class="fl">13.974828</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">locations</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/list_locations.html">list_locations</a></span><span class="op">(</span></span>
+<span>  bbox <span class="op">=</span> <span class="va">bbox</span></span>
 <span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">world_sf</span><span class="op">)</span>,</span>
+<span>  col <span class="op">=</span> <span class="st">"lightgray"</span>,</span>
+<span>  border <span class="op">=</span> <span class="st">"black"</span>,</span>
+<span>  xlim <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_bbox.html" class="external-link">st_bbox</a></span><span class="op">(</span><span class="va">bbox</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"xmin"</span>, <span class="st">"xmax"</span><span class="op">)</span><span class="op">]</span>,</span>
+<span>  ylim <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_bbox.html" class="external-link">st_bbox</a></span><span class="op">(</span><span class="va">bbox</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ymin"</span>, <span class="st">"ymax"</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">la</span><span class="op">)</span>, lwd <span class="op">=</span> <span class="fl">2</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_as_sfc.html" class="external-link">st_as_sfc</a></span><span class="op">(</span><span class="va">bbox</span><span class="op">)</span>, lwd <span class="op">=</span> <span class="fl">2</span>, lty <span class="op">=</span> <span class="fl">2</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span><span class="va">locations</span><span class="op">$</span><span class="va">longitude</span>, <span class="va">locations</span><span class="op">$</span><span class="va">latitude</span>, col <span class="op">=</span> <span class="st">"#6a5cd8"</span>, pch <span class="op">=</span> <span class="fl">15</span><span class="op">)</span></span></code></pre></div>
+<div class="float">
+<img src="figure/los-angeles-bbox-query-plot-1.png" alt="Los Angeles city boundary with bounding box and OpenAQ locations"><div class="figcaption">Los Angeles city boundary with bounding box and
+OpenAQ locations</div>
+</div>
 <p>Now, you can directly use the <code>bbox</code> object generated by
 <code><a href="https://r-spatial.github.io/sf/reference/st_bbox.html" class="external-link">sf::st_bbox()</a></code> in your <code><a href="../reference/list_locations.html">list_locations()</a></code> call.
 This will retrieve air quality data within the bounding box that
