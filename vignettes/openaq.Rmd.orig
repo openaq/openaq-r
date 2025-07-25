@@ -41,23 +41,20 @@ By default the OpenAQ R client looks for an API key in the `OPENAQ_API_KEY`
 system environment variable. The package also provides a helper function called 
 `set_api_key()` to set this value. 
 
-
-``` r
+```{r eval=FALSE}
 set_api_key("my-super-secret-openaq-key-1234")
 ```
 
 Alternatively, the API key can be set on individual resource function calls e.g.
 
-
-``` r
+```{r eval=FALSE}
 list_locations(api_key = "my-super-secret-openaq-key-1234")
 ```
 
 Setting the API key at an individual function level will always take precedent
 over an API key set at the environment variable level
 
-
-``` r
+```{r eval=FALSE}
 set_api_key("my-super-secret-openaq-key-1234")
 list_locations(api_key = "this-is-my-alternate-api-key")
 ```
@@ -78,8 +75,7 @@ frame:
 * `x_ratelimit_limit`
 * `x_ratelimit_reset`
 
-
-``` r
+```{r}
 locations <- list_locations(
   limit = 1000,
   parameters_id = 2,
@@ -87,10 +83,6 @@ locations <- list_locations(
 )
 headers <- attr(locations, "headers")
 print(headers[["x_ratelimit_remaining"]])
-```
-
-```
-## [1] 53
 ```
 
 Read more about the headers and rate limits in the OpenAQ API documentation under 
@@ -113,16 +105,14 @@ any resource that returns more than on results, i.e. "list" functions such as
 
 Examples:
 
-
-``` r
+```{r eval=FALSE}
 list_locations(
   limit = 1000,
   page = 1
 )
 ```
 
-
-``` r
+```{r eval=FALSE}
 list_locations(
   limit = 1000,
   page = 2
@@ -141,132 +131,110 @@ resources, simplifying the process of querying and retrieving data resources.
 
 #### Countries
 
-
-``` r
+```{r eval=FALSE}
 get_country()
 ```
 
-
-``` r
+```{r eval=FALSE}
 list_countries()
 ```
 
 #### Instruments
 
-
-``` r
+```{r eval=FALSE}
 get_instrument()
 ```
 
-
-``` r
+```{r eval=FALSE}
 list_instruments()
 ```
 
-
-``` r
+```{r eval=FALSE}
 list_manufacturer_instruments()
 ```
 
 #### Latest
 
-
-``` r
+```{r eval=FALSE}
 list_location_latest()
 ```
 
-
-``` r
+```{r eval=FALSE}
 list_parameter_latest()
 ```
 
 #### Licenses
 
-
-``` r
+```{r eval=FALSE}
 list_licenses()
 ```
 
-
-``` r
+```{r eval=FALSE}
 get_license()
 ```
 
 #### Locations 
 
-
-``` r
+```{r eval=FALSE}
 list_locations()
 ```
 
-
-``` r
+```{r eval=FALSE}
 get_location()
 ```
 
 #### Manufacturers
 
-
-``` r
+```{r eval=FALSE}
 list_manufacturers()
 ```
 
-
-``` r
+```{r eval=FALSE}
 get_manufacturer()
 ```
 
 #### Measurements
 
-
-``` r
+```{r eval=FALSE}
 list_sensor_measurements()
 ```
 
 #### Owners
 
-
-``` r
+```{r eval=FALSE}
 list_owners()
 ```
 
-
-``` r
+```{r eval=FALSE}
 get_owner()
 ```
 
 #### Parameters 
 
-
-``` r
+```{r eval=FALSE}
 list_parameters()
 ```
 
-
-``` r
+```{r eval=FALSE}
 get_parameter()
 ```
 
 #### Providers 
-
-``` r
+```{r eval=FALSE}
 list_providers()
 ```
 
-
-``` r
+```{r eval=FALSE}
 get_provider()
 ```
 
 #### Sensors 
 
-
-``` r
+```{r eval=FALSE}
 get_sensor()
 ```
 
-
-``` r
+```{r eval=FALSE}
 get_location_sensors()
 ```
 
@@ -278,8 +246,7 @@ All resource functions return a typed data frame by default. If you prefer to
 work with JSON parsed as a standard list you can toggle off data frame parsing
 with the `as_data_frame` function parameter.
 
-
-``` r
+```{r eval=FALSE}
 list_locations(
   limit = 1000,
   parameters_id = 2,
@@ -311,8 +278,7 @@ ensure you do not exceed account rate limits. You can or course implement your
 own rate limiting yourself, but the built-in functionality is provided as an
 easy to use option.
 
-
-``` r
+```{r eval=FALSE}
 list_locations(
   limit = 1000,
   parameters_id = 2,
@@ -332,8 +298,7 @@ prevents a full HTTP request to the API and instead prints out a summary of how
 the request would have been made. 
 
 
-
-``` r
+```{r eval=FALSE}
 list_locations(
   limit = 1000,
   parameters_id = 2,
