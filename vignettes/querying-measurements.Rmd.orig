@@ -7,10 +7,14 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
 
-
-
-``` r
+```{r setup}
 library(openaq)
 ```
 
@@ -30,8 +34,7 @@ Here, we are searching for locations that measure PM<sub>2.5</sub>
 return a data frame but we set `as_data_frame = FALSE` to receive the data as a
 list, which we will use for easier inspection in the following steps.
 
-
-``` r
+```{r results='hide'}
 locations <- list_locations(
   parameters_id = 2,
   countries_id = 182,
@@ -42,30 +45,10 @@ locations <- list_locations(
 The locations object is a list, where each element represents a monitoring
 location. Let's examine the first location in the list and explore its sensors.
 
-
-``` r
+```{r}
 location <- locations[[1]]
 sensors <- location$sensors
 sensors
-#> [[1]]
-#> [[1]]$id
-#> [1] 225221
-#> 
-#> [[1]]$name
-#> [1] "pm25 µg/m³"
-#> 
-#> [[1]]$parameter
-#> [[1]]$parameter$id
-#> [1] 2
-#> 
-#> [[1]]$parameter$name
-#> [1] "pm25"
-#> 
-#> [[1]]$parameter$units
-#> [1] "µg/m³"
-#> 
-#> [[1]]$parameter$displayName
-#> [1] "PM2.5"
 ```
 
 Each location contains information about its sensors. Each sensor has an id,
@@ -75,11 +58,9 @@ ID.
 Each location also provides the timezone of where it is local, which will be
 helpful when querying measurements, so we will store this for later.
 
-
-``` r
+```{r}
 tz <- location$timezone
 tz
-#> [1] "Indian/Antananarivo"
 ```
 
 
@@ -87,11 +68,9 @@ To fetch measurements, we need the sensor ID. This location only measures
 PM<sub>2.5</sub> and in turn only has one sensor so we can extract it as
 follows:
 
-
-``` r
+```{r}
 sensors_id <- sensors[[1]]$id
 sensors_id
-#> [1] 225221
 ```
 
 ## Fetching Measurements
@@ -106,8 +85,7 @@ returned in a single page of results. Because this is hourly data, and we are
 querying 31 days of measurements, we will be able to view all the results in one
 page (24 hourly measurements * 31 days = 744 measurements).
 
-
-``` r
+```{r}
 measurements <- list_sensor_measurements(
   sensors_id,
   datetime_from = as.POSIXct("2025-01-01", tz = tz),
@@ -120,9 +98,6 @@ Finally, we can visualize the measurements using the `plot()` function. `openaq`
 provide built-in helpers for the `base::plot` function, read more in the 
 `plotting` vignette.
 
-
-``` r
+```{r measurements-plot, fig.cap="Line chart showing sensor measurements"}
 plot(measurements)
 ```
-
-![Line chart showing sensor measurements](figure/measurements-plot-1.png)

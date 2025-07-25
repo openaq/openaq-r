@@ -10,8 +10,9 @@ Authors@R: c(
     person("Christian", "Parker", email="chris@talloaks.io", role = c("aut")),
     person("OpenAQ", email="dev@openaq.org", role = c("cph", "fnd"))
     )
+Remotes: ropensci/vcr
 Imports:
-    httr2,
+    httr2 (>= 1.2.0),
     rstudioapi,
     maps,
     methods,
@@ -22,7 +23,7 @@ Imports:
 Suggests:
     testthat (>= 3.0.0),
     webmockr (>= 0.8.0),
-    vcr (>= 0.6.0),
+    vcr (>= 2.0.0),
     withr (>= 3.0.2),
     knitr,
     rmarkdown,
