@@ -2,6 +2,7 @@ old_wd <- getwd()
 
 setwd("vignettes/")
 # Pre-compile vignettes that depend on API key
+knitr::knit("ggplot2.Rmd.orig", output = "ggplot2.Rmd")
 knitr::knit("querying-rollups.Rmd.orig", output = "querying-rollups.Rmd")
 knitr::knit("querying-measurements.Rmd.orig", output = "querying-measurements.Rmd")
 knitr::knit("plotting.Rmd.orig", output = "plotting.Rmd")
