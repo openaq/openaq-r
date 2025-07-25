@@ -3,11 +3,12 @@ pkgdown: 2.1.3
 pkgdown_sha: ~
 articles:
   geospatial-queries: geospatial-queries.html
+  ggplot2: ggplot2.html
   openaq: openaq.html
   plotting: plotting.html
   querying-measurements: querying-measurements.html
   querying-rollups: querying-rollups.html
-last_built: 2025-07-25T17:36Z
+last_built: 2025-07-25T20:09Z
 urls:
   reference: https://openaq.github.io/openaq-r/reference
   article: https://openaq.github.io/openaq-r/articles
