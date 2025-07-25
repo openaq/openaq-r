@@ -1,6 +1,6 @@
-test_that("get_manufacturer(1) works", {
-  vcr::use_cassette("get_manufacturer_1", {
-    manufacturer <- get_manufacturer(1)
+test_that("get_manufacturer(8) works", {
+  vcr::use_cassette("get_manufacturer_8", {
+    manufacturer <- get_manufacturer(8)
   })
   testthat::expect_type(manufacturer, "list")
   testthat::expect_true(is.data.frame(manufacturer))
@@ -13,12 +13,12 @@ test_that("list_manufacturers() works", {
   })
   testthat::expect_type(manufacturers, "list")
   testthat::expect_true(is.data.frame(manufacturers))
-  testthat::expect_true(nrow(manufacturers) == 10)
+  testthat::expect_true(nrow(manufacturers) == 1)
 })
 
-test_that("get_manufacturer(1) as list works", {
-  vcr::use_cassette("get_manufacturer_1_list", {
-    manufacturer <- get_manufacturer(1, as_data_frame = FALSE)
+test_that("get_manufacturer(8) as list works", {
+  vcr::use_cassette("get_manufacturer_8_list", {
+    manufacturer <- get_manufacturer(8, as_data_frame = FALSE)
   })
   testthat::expect_type(manufacturer, "list")
   testthat::expect_false(is.data.frame(manufacturer))
@@ -32,5 +32,5 @@ test_that("list_manufacturers() as list works", {
   })
   testthat::expect_type(manufacturers, "list")
   testthat::expect_false(is.data.frame(manufacturers))
-  testthat::expect_true(length(manufacturers) == 10)
+  testthat::expect_true(length(manufacturers) == 1)
 })

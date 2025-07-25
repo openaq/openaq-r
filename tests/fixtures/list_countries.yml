@@ -1,37 +1,21 @@
 http_interactions:
 - request:
-    method: get
+    method: GET
     uri: https://api.openaq.org/v3/countries?limit=100&page=1
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      X-API-Key: <<<test_openaq_api_key>>>
-      User-Agent: openaq-r
-      Content-Type: application/json
-      Accept: application/json
   response:
-    status:
-      status_code: 200
-      message: OK
+    status: 200
     headers:
-      date: Fri, 17 Jan 2025 16:42:24 GMT
+      date: Fri, 25 Jul 2025 16:42:57 GMT
       server: uvicorn
       content-type: application/json
-      x-ratelimit-limit: '100'
-      x-ratelimit-remaining: '98'
-      x-ratelimit-used: '2'
-      x-ratelimit-reset: '59'
       cache-control: public, max-age=900
-      content-encoding: gzip
       vary: Accept-Encoding
+      content-encoding: gzip
       Transfer-Encoding: chunked
     body:
-      encoding: ''
-      file: no
       string: '{"meta":{"name":"openaq-api","website":"/","page":1,"limit":100,"found":4},"results":[{"id":9,"code":"IN","name":"India","datetimeFirst":"2023-02-28T19:00:00Z","datetimeLast":"2023-03-31T19:00:00Z","parameters":[{"id":2,"name":"pm25","units":"µg/m³","displayName":null}]},{"id":79,"code":"GB","name":"United
         Kingdom","datetimeFirst":"2023-03-01T00:30:00Z","datetimeLast":"2023-03-31T23:30:00Z","parameters":[{"id":2,"name":"pm25","units":"µg/m³","displayName":null}]},{"id":155,"code":"US","name":"United
         States","datetimeFirst":"2023-03-01T05:30:00Z","datetimeLast":"2023-04-01T08:00:00Z","parameters":[{"id":2,"name":"pm25","units":"µg/m³","displayName":null}]},{"id":194,"code":"PF","name":"French
-        Polynesia","datetimeFirst":"2021-12-15T10:00:00Z","datetimeLast":"2025-01-14T09:30:00Z","parameters":[{"id":2,"name":"pm25","units":"µg/m³","displayName":null}]}]}'
-  recorded_at: 2025-01-17 16:42:26 GMT
-  recorded_with: vcr/1.6.0, webmockr/1.0.0
+        Polynesia","datetimeFirst":"2021-12-15T10:00:00Z","datetimeLast":"2025-07-09T01:30:00Z","parameters":[{"id":2,"name":"pm25","units":"µg/m³","displayName":null}]}]}'
+  recorded_at: 2025-07-25 16:42:58
+recorded_with: VCR-vcr/2.0.0

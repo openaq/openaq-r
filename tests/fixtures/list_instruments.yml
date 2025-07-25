@@ -1,41 +1,20 @@
 http_interactions:
 - request:
-    method: get
+    method: GET
     uri: https://api.openaq.org/v3/instruments?limit=100&page=1
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      X-API-Key: <<<test_openaq_api_key>>>
-      User-Agent: openaq-r-v0.1.2
-      Content-Type: application/json
-      Accept: application/json
   response:
-    status:
-      status_code: 200
-      message: OK
+    status: 200
     headers:
-      date: Mon, 03 Feb 2025 22:09:20 GMT
+      date: Fri, 25 Jul 2025 16:49:12 GMT
       server: uvicorn
       content-type: application/json
       cache-control: public, max-age=900
-      content-encoding: gzip
       vary: Accept-Encoding
+      content-encoding: gzip
       Transfer-Encoding: chunked
     body:
-      encoding: ''
-      file: no
-      string: '{"meta":{"name":"openaq-api","website":"/","page":1,"limit":100,"found":12},"results":[{"id":1,"name":"N/A","isMonitor":false,"manufacturer":{"id":1,"name":"OpenAQ
-        admin"}},{"id":2,"name":"Government Monitor","isMonitor":true,"manufacturer":{"id":4,"name":"Unknown
-        Governmental Organization"}},{"id":4,"name":"Clarity Sensor","isMonitor":false,"manufacturer":{"id":9,"name":"Clarity"}},{"id":5,"name":"HabitatMap
-        Sensor","isMonitor":false,"manufacturer":{"id":11,"name":"HabitatMap"}},{"id":6,"name":"Senstate
-        Sensor","isMonitor":false,"manufacturer":{"id":10,"name":"Senstate"}},{"id":7,"name":"AirGradient
-        Sensor","isMonitor":false,"manufacturer":{"id":12,"name":"AirGradient"}},{"id":9,"name":"BEACO2N
-        Sensor","isMonitor":false,"manufacturer":{"id":13,"name":"University of California,
-        Berkeley"}},{"id":10,"name":"RAMP Sensor","isMonitor":false,"manufacturer":{"id":14,"name":"Carnegie
-        Mellon University"}},{"id":11,"name":"Aerosol Black Carbon Detector (ABCD)","isMonitor":false,"manufacturer":{"id":13,"name":"University
-        of California, Berkeley"}},{"id":13,"name":"AIO 2","isMonitor":true,"manufacturer":{"id":5020,"name":"MetOne"}},{"id":14,"name":"BAM
-        1020","isMonitor":true,"manufacturer":{"id":5020,"name":"MetOne"}},{"id":15,"name":"Serinus
-        30","isMonitor":true,"manufacturer":{"id":5022,"name":"Ecotech"}}]}'
-  recorded_at: 2025-02-03 22:09:22 GMT
-  recorded_with: vcr/1.6.0, webmockr/1.0.0
+      string: '{"meta":{"name":"openaq-api","website":"/","page":1,"limit":100,"found":1},"results":[{"id":2,"name":"Government
+        Monitor","isMonitor":true,"manufacturer":{"id":8,"name":"Default Instrument
+        Organization"}}]}'
+  recorded_at: 2025-07-25 16:49:12
+recorded_with: VCR-vcr/2.0.0

@@ -27,7 +27,7 @@ test_that("list_location_latest(1) works", {
 })
 
 test_that("list_location_latest(1) datetime_min works", {
-  t <- as.POSIXct("2025-01-16", tz = "UTC")
+  t <- as.POSIXct("2025-07-20", tz = "UTC")
   vcr::use_cassette("list_location_latest_1_min", {
     latest <- list_location_latest(1, datetime_min = t)
   })
