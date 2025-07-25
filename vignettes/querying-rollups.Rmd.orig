@@ -77,7 +77,7 @@ data <- data[data$percent_complete > 75, ]
 We can now plot the daily average time series and compare it against the WHO
 daily threshold value with `ggplot2`:
 
-```{r who-daily-avg-plot}
+```{r who-daily-avg-plot, fig.cap="ggplot2 line chart showing daily measurements against WHO guideline"}
 ggplot(data, aes(x = as.Date(datetime_to), y = value)) +
   geom_point() +
   geom_line() +

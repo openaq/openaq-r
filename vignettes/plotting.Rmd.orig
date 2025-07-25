@@ -7,10 +7,14 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
 
-
-
-``` r
+```{r setup}
 library(openaq)
 ```
 
@@ -22,8 +26,7 @@ frame from the `list_locations` function call. A basic basemap with national
 boundaries is included based on the [Natural Earth dataset](https://www.naturalearthdata.com/)
 via the [`maps`](https://cran.r-project.org/web/packages/maps/index.html) package.
 
-
-``` r
+```{r}
 locations <- list_locations(
   bbox = c(xmin = 6.291990, ymin = 32.823129, xmax = 37.932615, ymax = 45.181129),
   parameters_id = 2,
@@ -31,29 +34,22 @@ locations <- list_locations(
 )
 ```
 
-
-``` r
+```{r locations-map-plot}
 plot(locations)
 ```
-
-![plot of chunk locations-map-plot](figure/locations-map-plot-1.png)
 
 We can configure and customize the figure using standard `base::plot` parameters
 in this example coloring the points by provider and customizing the type of
 marker used.
 
-
-``` r
+```{r styled-locations-map-plot, fig.cap="Plot of locations, styled with color by providers_id"}
 plot(locations, col = locations$providers_id, pch = 20)
 ```
-
-![Plot of locations, styled with color by providers_id](figure/styled-locations-map-plot-1.png)
 
 The `list_sensor_measurements` provides a `base::plot` function to visualize the
 measurement values as a time series line chart.
 
-
-``` r
+```{r}
 measurements <- list_sensor_measurements(
   3920,
   datetime_from = as.POSIXct("2025-01-01 00:00", tz = "America/Denver"),
@@ -61,9 +57,6 @@ measurements <- list_sensor_measurements(
 )
 ```
 
-
-``` r
+```{r measurements-line-plot, fig.cap="Line chart of sensor measurements" }
 plot(measurements)
 ```
-
-![Line chart of sensor measurements](figure/measurements-line-plot-1.png)
