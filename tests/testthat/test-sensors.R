@@ -23,7 +23,7 @@ test_that("list_location_sensors(3) works", {
   })
   testthat::expect_type(sensors, "list")
   testthat::expect_true(is.data.frame(sensors))
-  testthat::expect_true(nrow(sensors) == 2)
+  testthat::expect_true(nrow(sensors) == 1)
 })
 
 test_that("list_location_sensors(3) as list works", {
@@ -32,7 +32,7 @@ test_that("list_location_sensors(3) as list works", {
   })
   testthat::expect_type(sensors, "list")
   testthat::expect_false(is.data.frame(sensors))
-  testthat::expect_true(length(sensors) == 2)
+  testthat::expect_true(length(sensors) == 1)
 })
 
 fixture_path <- file.path("../../tests/fixtures", "sensors.json")

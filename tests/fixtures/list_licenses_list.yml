@@ -1,34 +1,18 @@
 http_interactions:
 - request:
-    method: get
+    method: GET
     uri: https://api.openaq.org/v3/licenses?limit=100&page=1
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      X-API-Key: <<<test_openaq_api_key>>>
-      User-Agent: openaq-r
-      Content-Type: application/json
-      Accept: application/json
   response:
-    status:
-      status_code: 200
-      message: OK
+    status: 200
     headers:
-      date: Thu, 23 Jan 2025 22:20:32 GMT
+      date: Fri, 25 Jul 2025 16:42:58 GMT
       server: uvicorn
       content-type: application/json
-      x-ratelimit-limit: '100'
-      x-ratelimit-remaining: '96'
-      x-ratelimit-used: '4'
-      x-ratelimit-reset: '60'
       cache-control: public, max-age=900
-      content-encoding: gzip
       vary: Accept-Encoding
+      content-encoding: gzip
       Transfer-Encoding: chunked
     body:
-      encoding: ''
-      file: no
       string: '{"meta":{"name":"openaq-api","website":"/","page":1,"limit":100,"found":11},"results":[{"id":30,"name":"CC
         BY-SA 4.0 DEED","commercialUseAllowed":true,"attributionRequired":true,"shareAlikeRequired":true,"modificationAllowed":true,"redistributionAllowed":true,"sourceUrl":"https://creativecommons.org/licenses/by-sa/4.0/"},{"id":31,"name":"Taiwan
         Open Government Data License","commercialUseAllowed":true,"attributionRequired":true,"shareAlikeRequired":true,"modificationAllowed":true,"redistributionAllowed":true,"sourceUrl":"https://data.gov.tw/en/license"},{"id":32,"name":"CC
@@ -41,5 +25,5 @@ http_interactions:
         1.0 DEED","commercialUseAllowed":true,"attributionRequired":false,"shareAlikeRequired":false,"modificationAllowed":true,"redistributionAllowed":true,"sourceUrl":"https://creativecommons.org/publicdomain/zero/1.0/deed.ca"},{"id":39,"name":"Japan
         Terms of Use v2","commercialUseAllowed":true,"attributionRequired":true,"shareAlikeRequired":false,"modificationAllowed":true,"redistributionAllowed":true,"sourceUrl":"https://www.env.go.jp/kanbo/koho/opendata.html"},{"id":41,"name":"CC
         BY 4.0 DEED","commercialUseAllowed":true,"attributionRequired":true,"shareAlikeRequired":true,"modificationAllowed":true,"redistributionAllowed":true,"sourceUrl":"https://creativecommons.org/licenses/by/4.0/"}]}'
-  recorded_at: 2025-01-23 22:20:33 GMT
-  recorded_with: vcr/1.6.0, webmockr/1.0.0
+  recorded_at: 2025-07-25 16:42:59
+recorded_with: VCR-vcr/2.0.0
