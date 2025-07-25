@@ -1,13 +1,15 @@
 Package: openaq
 Title: OpenAQ API Client
 Description: An R package for interacting with the OpenAQ API <https://openaq.org/>.
-Version: 0.6.0
+Version: 0.7.0
 License: MIT + file LICENSE
 URL: https://github.com/openaq/openaq-r, https://openaq.github.io/openaq-r/
 BugReports: https://github.com/openaq/openaq-r/issues
 Authors@R: c(
-    person("Russ", "Biggs", email="russ@openaq.org", role = c("aut", "cre")),
+    person("Russ", "Biggs", email="russ@openaq.org", role = c("aut", "cre"), 
+    comment = c(ORCID = "0009-0008-0777-8479")),
     person("Christian", "Parker", email="chris@talloaks.io", role = c("aut")),
+    person("Francesca", "Mills", role = c("ctb")),
     person("OpenAQ", email="dev@openaq.org", role = c("cph", "fnd"))
     )
 Remotes: ropensci/vcr

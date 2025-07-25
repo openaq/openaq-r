@@ -1,9 +1,13 @@
 # openaq development version
 
+# openaq v0.7.0 - 2025-07-25
+
 ## Changed
 
 - *BREAKING CHANGES*
 - renamed `get_location_sensors` to `list_locations_sensors`
+- updated minimum package version of httr2 to v1.2.0
+- updated minimum package version of vcr to 2.0.0
 
 # openaq v0.6.0 - 2025-07-03
 
