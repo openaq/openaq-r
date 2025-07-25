@@ -1,0 +1,28 @@
+http_interactions:
+- request:
+    method: GET
+    uri: https://api.openaq.org/v3/locations/3/sensors
+  response:
+    status: 200
+    headers:
+      content-type: application/json
+      content-length: '470'
+      date: Fri, 25 Jul 2025 14:48:19 GMT
+      apigw-requestid: ORTgDhCKIAMEP3g=
+      x-ratelimit-reset: '60'
+      cache-control: public, max-age=900
+      vary: Accept-Encoding
+      x-ratelimit-limit: '60'
+      x-ratelimit-used: '1'
+      x-ratelimit-remaining: '59'
+      x-cache: Miss from cloudfront
+      via: 1.1 92deee8348203aa783cce35d78bd0efe.cloudfront.net (CloudFront)
+      x-amz-cf-pop: DEN53-P2
+      alt-svc: h3=":443"; ma=86400
+      x-amz-cf-id: EpLXqGGbRbVzXLN1KNvFtWjKBcdAJGlelfdoW3PBSQrFqlLn1mJUfw==
+    body:
+      string: '{"meta":{"name":"openaq-api","website":"/","page":1,"limit":100,"found":2},"results":[{"id":5,"name":"pm25
+        µg/m³","parameter":{"id":2,"name":"pm25","units":"µg/m³","displayName":"PM2.5"},"datetimeFirst":null,"datetimeLast":null,"coverage":null,"latest":null,"summary":null},{"id":6,"name":"pm10
+        µg/m³","parameter":{"id":1,"name":"pm10","units":"µg/m³","displayName":"PM10"},"datetimeFirst":null,"datetimeLast":null,"coverage":null,"latest":null,"summary":null}]}'
+  recorded_at: 2025-07-25 14:48:19
+recorded_with: VCR-vcr/2.0.0
