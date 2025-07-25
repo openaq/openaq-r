@@ -7,7 +7,7 @@ articles:
   plotting: plotting.html
   querying-measurements: querying-measurements.html
   querying-rollups: querying-rollups.html
-last_built: 2025-07-25T16:36Z
+last_built: 2025-07-25T16:42Z
 urls:
   reference: https://openaq.github.io/openaq-r/reference
   article: https://openaq.github.io/openaq-r/articles
