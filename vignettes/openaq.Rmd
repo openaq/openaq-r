@@ -267,7 +267,7 @@ get_sensor()
 
 
 ``` r
-get_location_sensors()
+list_location_sensors()
 ```
 
 
