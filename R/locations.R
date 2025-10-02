@@ -55,8 +55,8 @@ get_location <- function(
 #' Represents the central point to be used in conjunction with the radius
 #' parameter for geographic search. Defaults to `NULL`.
 #' @param radius An integer for the number of meters to search around the
-#' `coordinates` parameter for filtering locations within the radius. Defaults
-#' to `NULL`.
+#' `coordinates` parameter for filtering locations within the radius. Value
+#' must be greater than zero and less than 25000 (25km). Defaults to `NULL`.
 #' @param providers_id A numeric vector of length 1 or more, containing the
 #' ID(s) of the provider(s) to use for filtering results. If multiple IDs are
 #' provided, results matching any of the IDs will be returned. Defaults to
