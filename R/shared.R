@@ -158,7 +158,7 @@ validate_parameters_id <- function(id) {
 validate_radius <- function(radius) {
   if (!(is.numeric(radius) && radius > 0 && radius <= 25000)) {
     if (radius > 25000) {
-     stop("Invalid radius value. Must be less than 25000")
+      stop("Invalid radius value. Must be less than 25000")
     } else {
       stop("Invalid radius value. Must be a positive numeric value.")
     }
