@@ -409,6 +409,21 @@ test_that("validate_numeric_vector error messages include parameter name", {
   )
 })
 
+test_that("validate_numeric_vector rejects decimal values", {
+  expect_error(
+    validate_numeric_vector(1.5, "decimal_param"),
+    "decimal_param must contain only integer values \\(no decimals\\)"
+  )
+  expect_error(
+    validate_numeric_vector(c(1, 2.5, 3), "mixed_decimal"),
+    "mixed_decimal must contain only integer values \\(no decimals\\)"
+  )
+  expect_error(
+    validate_numeric_vector(c(0.1, 0.2, 0.3), "all_decimals"),
+    "all_decimals must contain only integer values \\(no decimals\\)"
+  )
+})
+
 
 # validate_datetime
 
