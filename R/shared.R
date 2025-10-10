@@ -60,8 +60,8 @@ validate_numeric_vector <- function(x, parameter) {
   if (any(x %% 1 != 0, na.rm = TRUE)) {
     stop(sprintf("%s must contain only integer values (no decimals)", parameter))
   }
-  
-  int32_max <- 2^31 - 1  
+
+  int32_max <- 2^31 - 1
   if (any(x > int32_max, na.rm = TRUE) || any(x < 1, na.rm = TRUE)) {
     stop(sprintf(
       "%s must contain values inside positive 32 bit integer range [%s, %s]",
@@ -70,7 +70,7 @@ validate_numeric_vector <- function(x, parameter) {
       format(int32_max, scientific = FALSE)
     ))
   }
-  
+
   invisible(TRUE)
 }
 
