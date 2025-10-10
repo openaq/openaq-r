@@ -1,5 +1,12 @@
 # openaq development version
 
+# openaq v0.8.0 - 2025-10-10
+
+## Changed
+
+- added additional validation to `validate_numeric_vectors` to prevent out of bounds integers and doubles
+- added additional validation to restrict `radius` parameters to fit within max value of 25000 (25km)
+
 # openaq v0.7.0 - 2025-07-25
 
 ## Changed
