@@ -322,6 +322,109 @@ test_that("validate_mobile throws with invalid inputs", {
   expect_error(validate_mobile(NULL), error_message)
 })
 
+
+#validate numeric vector
+
+test_that("validate_numeric_vector accepts valid numeric vectors", {
+  expect_true(validate_numeric_vector(c(1, 2, 3), "test_param"))
+  expect_true(validate_numeric_vector(1, "single_value"))
+  expect_true(validate_numeric_vector(c(1, 100, 1000), "one_and_positive"))
+  expect_true(validate_numeric_vector(numeric(0), "empty_vector"))
+})
+
+test_that("validate_numeric_vector accepts boundary values", {
+  int32_max <- 2^31 - 1
+  expect_true(validate_numeric_vector(1, "one"))
+  expect_true(validate_numeric_vector(int32_max, "max_value"))
+  expect_true(validate_numeric_vector(c(1, int32_max), "both boundaries"))
+})
+
+test_that("validate_numeric_vector rejects non-numeric inputs", {
+  expect_error(
+    validate_numeric_vector("string", "string_param"),
+    "string_param must be a numeric vector"
+  )
+  expect_error(
+    validate_numeric_vector(TRUE, "logical_param"),
+    "logical_param must be a numeric vector"
+  )
+  expect_error(
+    validate_numeric_vector(list(1, 2, 3), "list_param"),
+    "list_param must be a numeric vector"
+  )
+  expect_error(
+    validate_numeric_vector(NULL, "null_param"),
+    "null_param must be a numeric vector"
+  )
+})
+
+test_that("validate_numeric_vector rejects negative values", {
+  expect_error(
+    validate_numeric_vector(0, "zero_param"),
+    "zero_param must contain values inside positive 32 bit integer range"
+  )
+  expect_error(
+    validate_numeric_vector(-1, "negative_param"),
+    "negative_param must contain values inside positive 32 bit integer range"
+  )
+  expect_error(
+    validate_numeric_vector(c(1, 2, -5), "mixed_param"),
+    "mixed_param must contain values inside positive 32 bit integer range"
+  )
+  expect_error(
+    validate_numeric_vector(c(-100, -200), "all_negative"),
+    "all_negative must contain values inside positive 32 bit integer range"
+  )
+})
+
+test_that("validate_numeric_vector rejects values exceeding 32-bit max", {
+  int32_max <- 2^31 - 1
+  expect_error(
+    validate_numeric_vector(int32_max + 1, "too_large"),
+    "too_large must contain values inside positive 32 bit integer range"
+  )
+  expect_error(
+    validate_numeric_vector(2^32, "very_large"),
+    "very_large must contain values inside positive 32 bit integer range"
+  )
+  expect_error(
+    validate_numeric_vector(c(100, int32_max + 100), "mixed_large"),
+    "mixed_large must contain values inside positive 32 bit integer range"
+  )
+})
+
+test_that("validate_numeric_vector works with integers and doubles", {
+  expect_true(validate_numeric_vector(1L, "integer_single"))
+  expect_true(validate_numeric_vector(c(1L, 2L, 3L), "integer_vector"))
+})
+
+test_that("validate_numeric_vector error messages include parameter name", {
+  expect_error(
+    validate_numeric_vector("invalid", "my_custom_param"),
+    "my_custom_param"
+  )
+  expect_error(
+    validate_numeric_vector(-1, "another_param"),
+    "another_param"
+  )
+})
+
+test_that("validate_numeric_vector rejects decimal values", {
+  expect_error(
+    validate_numeric_vector(1.5, "decimal_param"),
+    "decimal_param must contain only integer values \\(no decimals\\)"
+  )
+  expect_error(
+    validate_numeric_vector(c(1, 2.5, 3), "mixed_decimal"),
+    "mixed_decimal must contain only integer values \\(no decimals\\)"
+  )
+  expect_error(
+    validate_numeric_vector(c(0.1, 0.2, 0.3), "all_decimals"),
+    "all_decimals must contain only integer values \\(no decimals\\)"
+  )
+})
+
+
 # validate_datetime
 
 test_that("validate_datetime handles valid inputs", {

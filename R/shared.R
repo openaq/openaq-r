@@ -46,7 +46,7 @@ validate_page <- function(page) {
 #' Validates query parameters are a numeric vector
 #'
 #' An internal helper function to generalize the validation of query parameters
-#' that shoudl be a numeric vector.
+#' that should be a numeric vector and within the positive 32 bit integer range.
 #'
 #' @param x Any value.
 #' @param parameter A string representing the query parameter name.
@@ -54,12 +54,24 @@ validate_page <- function(page) {
 #' @noRd
 validate_numeric_vector <- function(x, parameter) {
   if (!is.numeric(x) || !is.vector(x)) {
-    msg <- sprintf(
-      "%s must be a numeric vector",
-      parameter
-    )
-    stop(msg)
+    stop(sprintf("%s must be a numeric vector", parameter))
   }
+
+  if (any(x %% 1 != 0, na.rm = TRUE)) {
+    stop(sprintf("%s must contain only integer values (no decimals)", parameter))
+  }
+
+  int32_max <- 2^31 - 1
+  if (any(x > int32_max, na.rm = TRUE) || any(x < 1, na.rm = TRUE)) {
+    stop(sprintf(
+      "%s must contain values inside positive 32 bit integer range [%s, %s]",
+      parameter,
+      0,
+      format(int32_max, scientific = FALSE)
+    ))
+  }
+
+  invisible(TRUE)
 }
 
 #' Validates providers_id query parameter.
