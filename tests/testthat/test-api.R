@@ -67,7 +67,7 @@ test_that("get_base_url returns default value", {
 
 test_that("check_api_key does not throw", {
   base_url <- "https://api.openaq.org"
-  valid_api_key <- "test_valid_api_key"
+  valid_api_key <- "test-api-key-0123456789-0123456789-0123456789-0123456789-0123456"
   expect_no_error(check_api_key(base_url, valid_api_key))
 })
 
@@ -75,6 +75,7 @@ test_that("check_api_key throws", {
   base_url <- "https://api.openaq.org"
   expect_error(check_api_key(base_url, NULL))
   expect_error(check_api_key(base_url, ""))
+  expect_error(check_api_key(base_url, "this-is-not-an-empty-string"))
 })
 
 test_that("check_api_key throws with correct message", {
@@ -147,7 +148,7 @@ test_that("after returns correct rate limit remaining header value", {
 test_that("openaq_request throws error", {
   webmockr::enable()
   withr::with_envvar(
-    new = c("OPENAQ_API_KEY" = "mock-api-key-for-testing-1234"),
+    new = c("OPENAQ_API_KEY" = "test-api-key-0123456789-0123456789-0123456789-0123456789-0123456"),
     {
       webmockr::stub_request("get", "https://api.openaq.org/v3/countries") %>%
         webmockr::to_return(body = "failure", status = 401)
@@ -163,7 +164,7 @@ test_that("openaq_request headers are correct", {
 
   webmockr::enable()
   withr::with_envvar(
-    new = c("OPENAQ_API_KEY" = "mock-api-key-for-testing-1234"),
+    new = c("OPENAQ_API_KEY" = "test-api-key-0123456789-0123456789-0123456789-0123456789-0123456"),
     {
       webmockr::stub_request("get", "https://api.openaq.org/v3/countries") %>%
         webmockr::to_return(body = "", status = 200)
