@@ -8,12 +8,12 @@ An R package for interacting with the OpenAQ API.
 
 ## Installation
 
-The package is available to install through Github. Use the `install_github` command from [remotes](https://cran.r-project.org/web/packages/remotes/index.html) package.
+The package is available to install through Github. Use the `pkg_install` command from [pak](https://cran.r-project.org/web/packages/pak/index.html) package.
 
 ```r
-library("remotes")
+install.packages("pak")
 
-install_github("openaq/openaq-r@*release")
+pak::pkg_install("openaq/openaq-r@*release")
 ```
 
 ## Quickstart
