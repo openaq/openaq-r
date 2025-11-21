@@ -79,7 +79,7 @@ get_base_url <- function() {
 #' @param api_key A string for the API key.
 #' @noRd
 check_api_key <- function(base_url, api_key) {
-  if (base_url == "https://api.openaq.org" && api_key == "") {
+  if (base_url == "https://api.openaq.org" && (is.null(api_key) || api_key == "" || nchar(api_key) != 64)) {
     stop("A valid API key is required when using the OpenAQ API.")
   }
 }

@@ -134,7 +134,7 @@ as.data.frame.openaq_owners_list <- function(x, row.names = NULL, optional = FAL
   tbl <- do.call(rbind, lapply(x, function(rw) {
     data.frame(
       id = rw$id,
-      name = rw$name,
+      name = rw$name
     )
   }))
   tbl$id <- as.numeric(tbl$id)
