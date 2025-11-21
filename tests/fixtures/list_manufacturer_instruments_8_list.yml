@@ -1,0 +1,20 @@
+http_interactions:
+- request:
+    method: GET
+    uri: https://api.openaq.org/v3/manufacturers/8/instruments
+  response:
+    status: 200
+    headers:
+      date: Fri, 21 Nov 2025 19:35:29 GMT
+      server: uvicorn
+      content-type: application/json
+      cache-control: public, max-age=900
+      vary: Accept-Encoding
+      content-encoding: gzip
+      Transfer-Encoding: chunked
+    body:
+      string: '{"meta":{"name":"openaq-api","website":"/","page":1,"limit":100,"found":1},"results":[{"id":2,"name":"Government
+        Monitor","isMonitor":true,"manufacturer":{"id":8,"name":"Default Instrument
+        Organization"}}]}'
+  recorded_at: 2025-11-21 19:35:30
+recorded_with: VCR-vcr/2.0.0
