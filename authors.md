@@ -14,7 +14,7 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/openaq/openaq-r/blob/main/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/openaq/openaq-r/blob/v0.9.0/DESCRIPTION)
 
 Biggs R, Parker C (2025). *openaq: OpenAQ API Client*. R package version
 0.9.0, <https://github.com/openaq/openaq-r>.
