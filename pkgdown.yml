@@ -1,5 +1,5 @@
 pandoc: 3.1.11
-pkgdown: 2.1.3
+pkgdown: 2.2.0
 pkgdown_sha: ~
 articles:
   geospatial-queries: geospatial-queries.html
@@ -8,7 +8,7 @@ articles:
   plotting: plotting.html
   querying-measurements: querying-measurements.html
   querying-rollups: querying-rollups.html
-last_built: 2025-10-30T00:04Z
+last_built: 2025-11-21T20:10Z
 urls:
   reference: https://openaq.github.io/openaq-r/reference
   article: https://openaq.github.io/openaq-r/articles

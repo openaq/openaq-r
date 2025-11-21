@@ -1,0 +1,194 @@
+# openaq R client
+
+[![Project Status: WIP – Initial development is in progress, but there
+has not yet been a stable, usable release suitable for the
+public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+[![R-CMD-check](https://github.com/openaq/openaq-r/actions/workflows/check.yaml/badge.svg)](https://github.com/openaq/openaq-r/actions/workflows/check.yaml)
+[![Codecov test
+coverage](https://codecov.io/gh/openaq/openaq-r/graph/badge.svg)](https://app.codecov.io/gh/openaq/openaq-r)
+
+An R package for interacting with the OpenAQ API.
+
+## Installation
+
+The package is available to install through Github. Use the
+`pkg_install` command from
+[pak](https://cran.r-project.org/web/packages/pak/index.html) package.
+
+``` r
+install.packages("pak")
+
+pak::pkg_install("openaq/openaq-r@*release")
+```
+
+## Quickstart
+
+For a full walkthrough on using openaq we recommend that you read
+through the “[Introduction to
+openaq](https://openaq.github.io/openaq-r/articles/openaq.html)”
+vignette
+([`vignette("openaq")`](https://openaq.github.io/openaq-r/articles/openaq.md)).
+The following guide is a quick and minimal example to get you started.
+
+1.  Register for an account at <https://explore.openaq.org/register>.
+2.  Find your API key in the user [account
+    page](https://explore.openaq.org/account).
+3.  Save your API key as the `OPENAQ_API_KEY` [environment
+    variable](https://rstats.wtf/r-startup.html#renviron) . e.g.
+    `OPENAQ_API_KEY=yourkey` in `.Renviron`. See
+    [`help(openaq)`](https://openaq.github.io/openaq-r/reference/openaq-package.md)
+    for other ways to use and access your API key.
+
+Now we can query OpenAQ for air quality monitoring locations. For this
+example we will query locations that measure PM_(2.5) near (with 10km)
+Antananarivo, Madagascar (-18.90848, 47.53751)
+
+``` r
+library(openaq)
+
+locations <- list_locations(
+    parameters_id = 2, 
+    coordinates = c(latitude = -18.90848, longitude = 47.53751),
+    radius = 10000
+)
+```
+
+This returns a data frame that will look something like:
+
+|    id | name         | is_mobile | is_monitor | timezone            | countries_id | country_name | country_iso |  latitude | longitude | datetime_first      | datetime_last       | owner_name                        | providers_id | provider_name |
+|------:|:-------------|:----------|:-----------|:--------------------|-------------:|:-------------|:------------|----------:|----------:|:--------------------|:--------------------|:----------------------------------|-------------:|:--------------|
+| 41726 | Antananarivo | FALSE     | TRUE       | Indian/Antananarivo |          182 | Madagascar   | MG          | -18.90848 |  47.53751 | 2020-12-22 07:00:00 | 2025-01-17 20:00:00 | Unknown Governmental Organization |          119 | AirNow        |
+
+## Development
+
+Contributions are welcome. See the [contribution
+guide](https://openaq.github.io/openaq-r/CONTRIBUTING.md) for general
+information about contributing to the package.
+
+Specific guidelines for contributions the openaq package:
+
+- Code contributions must follow lint convention using
+  [`lintr`](https://lintr.r-lib.org/), see the .lintr file for
+  specifics.
+
+- Code contributions must include unit test, iether updated or wholly
+  new, depending on the contribution. See testing
+  [README](https://openaq.github.io/openaq-r/tests/README.md) for more
+  information.
+
+- Limit new dependencies. While adding new external dependencies is not
+  out of the question, we seek to keep external dependencies at a
+  minimum. When possible use base R functionality. Code contributions
+  that rely on external dependencies should be discussed with the
+  package maintainer first.
+
+# Package index
+
+## All functions
+
+- [`as.data.frame(`*`<openaq_countries_list>`*`)`](https://openaq.github.io/openaq-r/reference/as.data.frame.openaq_countries_list.md)
+  : Method for converting openaq_countries_list to data frame.
+- [`as.data.frame(`*`<openaq_instruments_list>`*`)`](https://openaq.github.io/openaq-r/reference/as.data.frame.openaq_instruments_list.md)
+  : Method for converting openaq_instruments_list to data frame.
+- [`as.data.frame(`*`<openaq_latest_list>`*`)`](https://openaq.github.io/openaq-r/reference/as.data.frame.openaq_latest_list.md)
+  : Method for converting openaq_latest_list to data frame.
+- [`as.data.frame(`*`<openaq_licenses_list>`*`)`](https://openaq.github.io/openaq-r/reference/as.data.frame.openaq_licenses_list.md)
+  : Method for converting openaq_instruments_list to data frame.
+- [`as.data.frame(`*`<openaq_locations_list>`*`)`](https://openaq.github.io/openaq-r/reference/as.data.frame.openaq_locations_list.md)
+  : Method for converting to data frame
+- [`as.data.frame(`*`<openaq_manufacturers_list>`*`)`](https://openaq.github.io/openaq-r/reference/as.data.frame.openaq_manufacturers_list.md)
+  : Method for converting openaq_manufacturers_list to data frame.
+- [`as.data.frame(`*`<openaq_measurements_list>`*`)`](https://openaq.github.io/openaq-r/reference/as.data.frame.openaq_measurements_list.md)
+  : Method for converting openaq_measurements_list to data frame.
+- [`as.data.frame(`*`<openaq_owners_list>`*`)`](https://openaq.github.io/openaq-r/reference/as.data.frame.openaq_owners_list.md)
+  : Method for converting openaq_owners_list to data frame.
+- [`as.data.frame(`*`<openaq_parameters_list>`*`)`](https://openaq.github.io/openaq-r/reference/as.data.frame.openaq_parameters_list.md)
+  : Method for converting openaq_parameters_list to data frame.
+- [`as.data.frame(`*`<openaq_providers_list>`*`)`](https://openaq.github.io/openaq-r/reference/as.data.frame.openaq_providers_list.md)
+  : Method for converting openaq_providers_list to data frame.
+- [`as.data.frame(`*`<openaq_sensors_list>`*`)`](https://openaq.github.io/openaq-r/reference/as.data.frame.openaq_sensors_list.md)
+  : Method for converting openaq_sensors_list to data frame.
+- [`enable_rate_limit()`](https://openaq.github.io/openaq-r/reference/enable_rate_limit.md)
+  : Toggles on the RATE_LIMIT environment variable to TRUE.
+- [`get_country()`](https://openaq.github.io/openaq-r/reference/get_country.md)
+  : Get a single country from countries resource.
+- [`get_instrument()`](https://openaq.github.io/openaq-r/reference/get_instrument.md)
+  : Get a single instrument from the instruments resource.
+- [`get_license()`](https://openaq.github.io/openaq-r/reference/get_license.md)
+  : get a single license from the licenses resource.
+- [`get_location()`](https://openaq.github.io/openaq-r/reference/get_location.md)
+  : Get a single location from the locations resource.
+- [`get_manufacturer()`](https://openaq.github.io/openaq-r/reference/get_manufacturer.md)
+  : Get a single manufacturer from the manufacturers resource.
+- [`get_owner()`](https://openaq.github.io/openaq-r/reference/get_owner.md)
+  : Get a single owner from owners resource.
+- [`get_parameter()`](https://openaq.github.io/openaq-r/reference/get_parameter.md)
+  : Get a single parameter from the parameters resource.
+- [`get_provider()`](https://openaq.github.io/openaq-r/reference/get_provider.md)
+  : Get a single provider from providers resource.
+- [`get_sensor()`](https://openaq.github.io/openaq-r/reference/get_sensor.md)
+  : Get a single sensor from sensors resource.
+- [`list_countries()`](https://openaq.github.io/openaq-r/reference/list_countries.md)
+  : Get a list of countries from the countries resource.
+- [`list_instruments()`](https://openaq.github.io/openaq-r/reference/list_instruments.md)
+  : Get a list of instruments from the instruments resource.
+- [`list_licenses()`](https://openaq.github.io/openaq-r/reference/list_licenses.md)
+  : get a list of licenses from the licenses resource.
+- [`list_location_latest()`](https://openaq.github.io/openaq-r/reference/list_location_latest.md)
+  : Get the latest measurements by locations_id.
+- [`list_location_measurements()`](https://openaq.github.io/openaq-r/reference/list_location_measurements.md)
+  : Get a list of measurements by locations_id.
+- [`list_location_sensors()`](https://openaq.github.io/openaq-r/reference/list_location_sensors.md)
+  : Get a location's sensors.
+- [`list_locations()`](https://openaq.github.io/openaq-r/reference/list_locations.md)
+  : Get a list of locations from the locations resource.
+- [`list_manufacturer_instruments()`](https://openaq.github.io/openaq-r/reference/list_manufacturer_instruments.md)
+  : Get a list of manufacturer instruments from the instruments
+  resource.
+- [`list_manufacturers()`](https://openaq.github.io/openaq-r/reference/list_manufacturers.md)
+  : Get a list of manufacturers from the manufacturers resource.
+- [`list_owners()`](https://openaq.github.io/openaq-r/reference/list_owners.md)
+  : Get a list of owners from the owners resource.
+- [`list_parameter_latest()`](https://openaq.github.io/openaq-r/reference/list_parameter_latest.md)
+  : Get the latest measurements by parameters_id.
+- [`list_parameters()`](https://openaq.github.io/openaq-r/reference/list_parameters.md)
+  : Get a list of parameters from the parameters resource.
+- [`list_providers()`](https://openaq.github.io/openaq-r/reference/list_providers.md)
+  : Get a list of providers from the providers resource.
+- [`list_sensor_measurements()`](https://openaq.github.io/openaq-r/reference/list_sensor_measurements.md)
+  : Get a list of measurements by sensors_id.
+- [`plot(`*`<openaq_locations_data.frame>`*`)`](https://openaq.github.io/openaq-r/reference/plot.openaq_locations_data.frame.md)
+  : Helper for plotting locations on map.
+- [`plot(`*`<openaq_locations_list>`*`)`](https://openaq.github.io/openaq-r/reference/plot.openaq_locations_list.md)
+  : Helper for plotting locations from list.
+- [`plot(`*`<openaq_measurements_data.frame>`*`)`](https://openaq.github.io/openaq-r/reference/plot.openaq_measurements_data.frame.md)
+  : Helper for plotting measurements
+- [`plot(`*`<openaq_measurements_list>`*`)`](https://openaq.github.io/openaq-r/reference/plot.openaq_measurements_list.md)
+  : Helper for plotting measurements from list
+- [`set_api_key()`](https://openaq.github.io/openaq-r/reference/set_api_key.md)
+  : Set the API key value.
+- [`set_base_url()`](https://openaq.github.io/openaq-r/reference/set_base_url.md)
+  : Sets base URL environment variable
+
+# Articles
+
+### All vignettes
+
+- [Geospatial
+  Queries](https://openaq.github.io/openaq-r/articles/geospatial-queries.md):
+
+- [Integrating with
+  ggplot2](https://openaq.github.io/openaq-r/articles/ggplot2.md):
+
+- [Introduction to
+  openaq](https://openaq.github.io/openaq-r/articles/openaq.md):
+
+  “Get started with the openaq package”
+
+- [Plotting](https://openaq.github.io/openaq-r/articles/plotting.md):
+
+- [Querying
+  measurements](https://openaq.github.io/openaq-r/articles/querying-measurements.md):
+
+- [Querying rolled up
+  measurements](https://openaq.github.io/openaq-r/articles/querying-rollups.md):

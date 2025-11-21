@@ -1,0 +1,310 @@
+# Introduction to openaq
+
+This guide provides an overview of the key features of the openaq
+package. For detailed information on the functions provided in the
+package see the reference section.
+
+For more general documentation on the OpenAQ platform and API see the
+main OpenAQ documentation site at
+[docs.openaq.org](https://docs.openaq.org).
+
+## Key concepts
+
+### API Key
+
+An API key is required for using the OpenAQ API. Register for an account
+at <https://explore.openaq.org/register> to get an API key.
+
+Important Treat your API key as you would a password. Do not share your
+API key with others. Do not commit your API key to version control to
+avoid compromising the API key. If your API key is compromised, you can
+request a new one in your OpenAQ Explorer account.
+
+By default the OpenAQ R client looks for an API key in the
+`OPENAQ_API_KEY` system environment variable. The package also provides
+a helper function called
+[`set_api_key()`](https://openaq.github.io/openaq-r/reference/set_api_key.md)
+to set this value.
+
+``` r
+set_api_key("my-super-secret-openaq-key-1234")
+```
+
+Alternatively, the API key can be set on individual resource function
+calls e.g.
+
+``` r
+list_locations(api_key = "my-super-secret-openaq-key-1234")
+```
+
+Setting the API key at an individual function level will always take
+precedent over an API key set at the environment variable level
+
+``` r
+set_api_key("my-super-secret-openaq-key-1234")
+list_locations(api_key = "this-is-my-alternate-api-key")
+```
+
+### Rate limits
+
+OpenAQ limits the number of API requests you can make in a set time to
+ensure fair access for all users and prevent overuse.
+
+The OpenAQ API provides custom rate limit headers to indicate the number
+of requests used, the number remaining, the rate limit allowance, and
+the number of seconds remaining in the current period until reset. These
+headers are preserved by default in the openaq package as object
+attributes on the output data frame:
+
+- `x_ratelimit_used`
+- `x_ratelimit_remaining`
+- `x_ratelimit_limit`
+- `x_ratelimit_reset`
+
+``` r
+locations <- list_locations(
+  limit = 1000,
+  parameters_id = 2,
+  providers_id = 166
+)
+headers <- attr(locations, "headers")
+print(headers[["x_ratelimit_remaining"]])
+```
+
+    ## [1] 58
+
+Read more about the headers and rate limits in the OpenAQ API
+documentation under [Rate
+Limits](https://docs.openaq.org/using-the-api/rate-limits)
+
+The openaq package provides optional functionality to automatically
+throttle requests when the rate limit has been reached.
+
+### Pagination
+
+The OpenAQ API uses pagination provide access to large amounts of data
+in “pages”. The number of results is controlled by the `limit` parameter
+which defaults 100 and can be configured up to 1000 results. If your
+query results in more than the page limit you can page through the
+results using the `page` parameter. For a `limit = 1000` `page=1` will
+contain results 1-1000, `page=2` will contain results 1001-2000 an so
+on. The `page` and `limit` are available on any resource that returns
+more than on results, i.e. “list” functions such as
+[`list_locations()`](https://openaq.github.io/openaq-r/reference/list_locations.md),
+[`list_licenses()`](https://openaq.github.io/openaq-r/reference/list_licenses.md)
+or
+[`list_sensor_measurements()`](https://openaq.github.io/openaq-r/reference/list_sensor_measurements.md)
+
+Examples:
+
+``` r
+list_locations(
+  limit = 1000,
+  page = 1
+)
+```
+
+``` r
+list_locations(
+  limit = 1000,
+  page = 2
+)
+```
+
+## Features
+
+### Queriable resources
+
+The OpenAQ API follows a resource-oriented design, allowing developers
+to retrieve air quality data through standardized HTTP requests to
+specific endpoints representing data resources like measurements,
+locations, and parameters. The OpenAQ R package provides functions that
+correspond to these API resources, simplifying the process of querying
+and retrieving data resources.
+
+#### Countries
+
+``` r
+get_country()
+```
+
+``` r
+list_countries()
+```
+
+#### Instruments
+
+``` r
+get_instrument()
+```
+
+``` r
+list_instruments()
+```
+
+``` r
+list_manufacturer_instruments()
+```
+
+#### Latest
+
+``` r
+list_location_latest()
+```
+
+``` r
+list_parameter_latest()
+```
+
+#### Licenses
+
+``` r
+list_licenses()
+```
+
+``` r
+get_license()
+```
+
+#### Locations
+
+``` r
+list_locations()
+```
+
+``` r
+get_location()
+```
+
+#### Manufacturers
+
+``` r
+list_manufacturers()
+```
+
+``` r
+get_manufacturer()
+```
+
+#### Measurements
+
+``` r
+list_sensor_measurements()
+```
+
+#### Owners
+
+``` r
+list_owners()
+```
+
+``` r
+get_owner()
+```
+
+#### Parameters
+
+``` r
+list_parameters()
+```
+
+``` r
+get_parameter()
+```
+
+#### Providers
+
+``` r
+list_providers()
+```
+
+``` r
+get_provider()
+```
+
+#### Sensors
+
+``` r
+get_sensor()
+```
+
+``` r
+get_location_sensors()
+```
+
+### Data frames
+
+All resource functions return a typed data frame by default. If you
+prefer to work with JSON parsed as a standard list you can toggle off
+data frame parsing with the `as_data_frame` function parameter.
+
+``` r
+list_locations(
+  limit = 1000,
+  parameters_id = 2,
+  providers_id = 166,
+  as_data_frame = FALSE
+)
+
+#> list()
+#> attr(,"meta")
+#> attr(,"meta")$name
+#> [1] "openaq-api"
+#>
+#> attr(,"meta")$website
+#> [1] "/"
+#>
+#> attr(,"meta")$page
+#> [1] 1
+#> ...
+```
+
+`as.data.frame` methods are provided for all resource classes as well.
+
+JSON results are parsed with the
+[`httr2::resp_body_json()`](https://httr2.r-lib.org/reference/resp_body_raw.html)
+function under-the-hood.
+
+### Automatic rate limiting
+
+All resource function provide an option to enable automatic rate
+limiting to ensure you do not exceed account rate limits. You can or
+course implement your own rate limiting yourself, but the built-in
+functionality is provided as an easy to use option.
+
+``` r
+list_locations(
+  limit = 1000,
+  parameters_id = 2,
+  providers_id = 166,
+  rate_limit = TRUE
+)
+```
+
+This functionality uses the OpenAQ API’s [rate limit
+headers](https://docs.openaq.org/using-the-api/rate-limits#rate-limit-headers)
+and the
+[`httr2::req_retry()`](https://httr2.r-lib.org/reference/req_retry.html)
+function under-the-hood.
+
+### Debugging
+
+Every resource function provides an optional parameter named `DRY_RUN`
+that prevents a full HTTP request to the API and instead prints out a
+summary of how the request would have been made.
+
+``` r
+list_locations(
+  limit = 1000,
+  parameters_id = 2,
+  providers_id = 166,
+  dry_run = TRUE
+)
+```
+
+This can be helpful when debugging to identify issues and compare the
+raw query URL and headers.
+
+This functionality uses the
+[`httr2::req_dry_run()`](https://httr2.r-lib.org/reference/req_dry_run.html)
+function under-the-hood.
