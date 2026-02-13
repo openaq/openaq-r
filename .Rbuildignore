@@ -13,3 +13,7 @@ pkgdown/
 CHANGELOG.md
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^DEVELOPMENT\.md$
+\.Rmd\.orig$
+^vignettes/README\.md$
+^cran-comments\.md$

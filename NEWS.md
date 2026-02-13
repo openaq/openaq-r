@@ -1,5 +1,12 @@
 # openaq development version
 
+# openaq v1.0.0 - 2026-02-XX
+
+## Added
+
+- added additional validation to validate API key.
+- added additional tests
+
 # openaq v0.9.0 - 2025-11-21
 
 ## Added
