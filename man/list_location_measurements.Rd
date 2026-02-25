@@ -28,26 +28,27 @@ list_location_measurements(
 ID(s) of the parameter(s) to use for filtering results. If multiple IDs are
 provided, results matching any of the IDs will be returned.}
 
-\item{data}{A string a data interval to return, defaults to "measurements".}
+\item{data}{A string representing the data interval to return, default is
+"measurements".}
 
-\item{rollup}{A string.}
+\item{rollup}{A string representing the aggregation rollup (e.g., 'daily').}
 
-\item{datetime_from}{A POSIXct datetime to filter measurements}
+\item{datetime_from}{A POSIXct datetime to filter measurements.}
 
-\item{datetime_to}{A POSIXct datetime to filter measurements}
+\item{datetime_to}{A POSIXct datetime to filter measurements.}
 
-\item{order_by}{A string.}
+\item{order_by}{A string representing the field to order by.}
 
-\item{sort_order}{A string.}
+\item{sort_order}{A string, either "asc" or "desc".}
 
-\item{limit}{An integer.}
+\item{limit}{An integer representing the number of results per page.}
 
-\item{page}{An integer.}
+\item{page}{An integer representing the page number.}
 
 \item{as_data_frame}{A logical for toggling whether to return results as
 data frame or list default is \code{TRUE}.}
 
-\item{dry_run}{A logical for toggling a dry run of the request, defaults to
+\item{dry_run}{A logical for toggling a dry run of the request, default is
 \code{FALSE}.}
 
 \item{rate_limit}{A logical for toggling automatic rate limiting based on
@@ -63,6 +64,6 @@ Get a list of measurements by locations_id.
 }
 \examples{
 \dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-measurements <- list_sensor_measurements(3920, "hours")
+measurements <- list_location_measurements(locations_id = 3920, "hours")
 \dontshow{\}) # examplesIf}
 }

@@ -502,12 +502,12 @@ test_that("validate_data_rollup_compatibility validates valid pairs", {
 
   for (pair in valid_pairs) {
     expect_silent(
-      validate_data_rollup_compatibility(pair$data, pair$rollup)
+      validate_data_rollup_compat(pair$data, pair$rollup)
     )
   }
 })
 
-test_that("validate_data_rollup_compatibility validates invalid pairs", {
+test_that("validate_data_rollup_compat validates invalid pairs", {
   invalid_pairs <- list(
     list(data = "measurements", rollup = "monthly"),
     list(data = "measurements", rollup = "yearly"),
@@ -529,7 +529,7 @@ test_that("validate_data_rollup_compatibility validates invalid pairs", {
 
   for (pair in invalid_pairs) {
     expect_error(
-      validate_data_rollup_compatibility(pair$data, pair$rollup),
+      validate_data_rollup_compat(pair$data, pair$rollup),
       "not compatible"
     )
   }

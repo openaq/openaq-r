@@ -150,7 +150,7 @@ test_that("openaq_request throws error", {
   withr::with_envvar(
     new = c("OPENAQ_API_KEY" = "test-api-key-0123456789-0123456789-0123456789-0123456789-0123456"),
     {
-      webmockr::stub_request("get", "https://api.openaq.org/v3/countries") %>%
+      webmockr::stub_request("get", "https://api.openaq.org/v3/countries") |>
         webmockr::to_return(body = "failure", status = 401)
       res <- openaq_request("countries", list())
       expect_error(res:status_code)
@@ -166,7 +166,7 @@ test_that("openaq_request headers are correct", {
   withr::with_envvar(
     new = c("OPENAQ_API_KEY" = "test-api-key-0123456789-0123456789-0123456789-0123456789-0123456"),
     {
-      webmockr::stub_request("get", "https://api.openaq.org/v3/countries") %>%
+      webmockr::stub_request("get", "https://api.openaq.org/v3/countries") |>
         webmockr::to_return(body = "", status = 200)
       res <- openaq_request("countries", list())
 

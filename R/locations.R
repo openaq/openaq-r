@@ -3,7 +3,7 @@
 #' @param locations_id An integer representing the locations_id to request.
 #' @param as_data_frame A logical for toggling whether to return results as
 #' data frame or list default is `TRUE`.
-#' @param dry_run A logical for toggling a dry run of the request, defaults to
+#' @param dry_run A logical for toggling a dry run of the request, default is
 #' `FALSE`.
 #' @param rate_limit A logical for toggling automatic rate limiting based on
 #' rate limit headers, default is `FALSE`.
@@ -32,15 +32,15 @@ get_location <- function(
     return(data)
   }
   if (as_data_frame == TRUE) {
-    return(as.data.frame.openaq_locations_list(structure(
-      data,
-      class = c("openaq_locations_list", "list")
-    )))
-  } else {
-    return(structure(
+    as.data.frame.openaq_locations_list(structure(
       data,
       class = c("openaq_locations_list", "list")
     ))
+  } else {
+    structure(
+      data,
+      class = c("openaq_locations_list", "list")
+    )
   }
 }
 
@@ -49,60 +49,60 @@ get_location <- function(
 #'
 #' @param bbox  Named numeric vector with four coordinates in form X minimum,
 #' Y mininum, X maximum, Y maximum, named values must be `xmin`, `ymin`, `ymax`
-#' , `xmax`. Defaults to `NULL`.
+#' , `xmax`. default is `NULL`.
 #' @param coordinates Named numeric vector with two numeric WGS84 (EPSG:4326)
 #' geographic coordinates, with named values `latitude` and `longitude`.
 #' Represents the central point to be used in conjunction with the radius
-#' parameter for geographic search. Defaults to `NULL`.
+#' parameter for geographic search. default is `NULL`.
 #' @param radius An integer for the number of meters to search around the
 #' `coordinates` parameter for filtering locations within the radius. Value
-#' must be greater than zero and less than 25000 (25km). Defaults to `NULL`.
+#' must be greater than zero and less than 25000 (25km). default is `NULL`.
 #' @param providers_id A numeric vector of length 1 or more, containing the
 #' ID(s) of the provider(s) to use for filtering results. If multiple IDs are
-#' provided, results matching any of the IDs will be returned. Defaults to
+#' provided, results matching any of the IDs will be returned. default is
 #' `NULL`.
 #' @param parameters_id A numeric vector of length 1 or more, containing the
 #' ID(s) of the parameter(s) to use for filtering results. If multiple IDs are
-#' provided, results matching any of the IDs will be returned. Defaults to
+#' provided, results matching any of the IDs will be returned. default is
 #' `NULL`.
 #' @param owner_contacts_id A numeric vector of length 1 or more, containing the
 #' ID(s) of the owners(s) to use for filtering results. If multiple IDs are
-#' provided, results matching any of the IDs will be returned. Defaults to
+#' provided, results matching any of the IDs will be returned. default is
 #' `NULL`.
 #' @param manufacturers_id A numeric vector of length 1 or more, containing the
 #' ID(s) of the manufacturers(s) to use for filtering results. If multiple IDs
-#' are provided, results matching any of the IDs will be returned. Defaults to
+#' are provided, results matching any of the IDs will be returned. default is
 #' `NULL`.
 #' @param licenses_id A numeric vector of length 1 or more, containing the
 #' ID(s) of the license(s) to use for filtering results. If multiple IDs are
-#' provided, results matching any of the IDs will be returned. Defaults to
+#' provided, results matching any of the IDs will be returned. default is
 #' `NULL`.
 #' @param instruments_id A numeric vector of length 1 or more, containing the
 #' ID(s) of the instrument(s) to use for filtering results. If multiple IDs are
-#' provided, results matching any of the IDs will be returned. Defaults to
+#' provided, results matching any of the IDs will be returned. default is
 #' `NULL`.
 #' @param countries_id A numeric vector of length 1 or more, containing the
 #' ID(s) of the country(ies) to use for filtering results. If multiple IDs are
-#' provided, results matching any of the IDs will be returned. Defaults to
+#' provided, results matching any of the IDs will be returned. default is
 #' `NULL`.
 #' @param monitor A logical to filter results to regulatory monitors (TRUE) or
-#' air sensors (FALSE), both are included if NULL. Defaults to `NULL`.
+#' air sensors (FALSE), both are included if NULL. default is `NULL`.
 #' @param mobile A logical to filter results to mobile (TRUE) or stationary
-#' (FALSE) location, both are included if NULL. Defaults to `NULL`.
+#' (FALSE) location, both are included if NULL. default is `NULL`.
 #' @param iso An ISO 3166-1 alpha-2 string of the country to filter the results.
-#' @param order_by A string. Defaults to `NULL`.
-#' @param sort_order A string. Defaults to `NULL`.
-#' @param limit An integer to limit the number of results per page. Defaults to
+#' @param order_by A string. default is `NULL`.
+#' @param sort_order A string. default is `NULL`.
+#' @param limit An integer to limit the number of results per page. default is
 #' `NULL`.
 #' @param page An integer for the page number for paginating through results.
-#' Defaults to `NULL`.
+#' default is `NULL`.
 #' @param as_data_frame A logical for toggling whether to return results as
-#' data frame or list. Defaults to `TRUE`
-#' @param dry_run A logical for toggling a dry run of the request, defaults to
+#' data frame or list. default is `TRUE`
+#' @param dry_run A logical for toggling a dry run of the request, default is
 #' `FALSE.`
 #' @param rate_limit A logical for toggling automatic rate limiting based on
-#' rate limit headers. Defaults to `FALSE.`
-#' @param api_key A valid OpenAQ API key string. Defaults to `NULL`.
+#' rate limit headers. default is `FALSE.`
+#' @param api_key A valid OpenAQ API key string. default is `NULL`.
 #'
 #' @return A data frame or list of results.
 #'
@@ -211,15 +211,15 @@ list_locations <- function(
     return(data)
   }
   if (as_data_frame == TRUE) {
-    return(as.data.frame.openaq_locations_list(structure(
-      data,
-      class = c("openaq_locations_list", "list")
-    )))
-  } else {
-    return(structure(
+    as.data.frame.openaq_locations_list(structure(
       data,
       class = c("openaq_locations_list", "list")
     ))
+  } else {
+    structure(
+      data,
+      class = c("openaq_locations_list", "list")
+    )
   }
 }
 

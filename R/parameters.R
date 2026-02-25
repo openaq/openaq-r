@@ -3,7 +3,7 @@
 #' @param parameters_id An integer.
 #' @param as_data_frame A logical for toggling whether to return results as
 #' data frame or list default is `TRUE`.
-#' @param dry_run A logical for toggling a dry run of the request, defaults to
+#' @param dry_run A logical for toggling a dry run of the request, default is
 #' `FALSE`.
 #' @param rate_limit A logical for toggling automatic rate limiting based on
 #' rate limit headers, default is `FALSE`.
@@ -32,15 +32,15 @@ get_parameter <- function(
     return(data)
   }
   if (as_data_frame == TRUE) {
-    return(as.data.frame.openaq_parameters_list(structure(
-      data,
-      class = c("openaq_parameters_list", "list")
-    )))
-  } else {
-    return(structure(
+    as.data.frame.openaq_parameters_list(structure(
       data,
       class = c("openaq_parameters_list", "list")
     ))
+  } else {
+    structure(
+      data,
+      class = c("openaq_parameters_list", "list")
+    )
   }
 }
 
@@ -53,7 +53,7 @@ get_parameter <- function(
 #' @param page An integer.
 #' @param as_data_frame A logical for toggling whether to return results as
 #' data frame or list default is `TRUE`.
-#' @param dry_run A logical for toggling a dry run of the request, defaults to
+#' @param dry_run A logical for toggling a dry run of the request, default is
 #' `FALSE`.
 #' @param rate_limit A logical for toggling automatic rate limiting based on
 #' rate limit headers, default is `FALSE`.
@@ -98,15 +98,15 @@ list_parameters <- function(
     return(data)
   }
   if (as_data_frame == TRUE) {
-    return(as.data.frame.openaq_parameters_list(structure(
-      data,
-      class = c("openaq_parameters_list", "list")
-    )))
-  } else {
-    return(structure(
+    as.data.frame.openaq_parameters_list(structure(
       data,
       class = c("openaq_parameters_list", "list")
     ))
+  } else {
+    structure(
+      data,
+      class = c("openaq_parameters_list", "list")
+    )
   }
 }
 
@@ -141,7 +141,7 @@ as.data.frame.openaq_parameters_list <- function(x, row.names = NULL, optional =
   }))
   tbl$id <- as.numeric(tbl$id)
   attr(tbl, "meta") <- attr(x, "meta")
-  return(structure(tbl,
+  structure(tbl,
     class = c("openaq_parameters_data.frame", "data.frame")
-  ))
+  )
 }

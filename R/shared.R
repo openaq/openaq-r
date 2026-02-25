@@ -354,7 +354,7 @@ validate_rollup <- function(rollup) {
 #' @param rollup Any value.
 #'
 #' @noRd
-validate_data_rollup_compatibility <- function(data, rollup) {
+validate_data_rollup_compat <- function(data, rollup) {
   if (is.null(rollup)) {
     return(invisible())
   }
@@ -369,13 +369,12 @@ validate_data_rollup_compatibility <- function(data, rollup) {
     years = character(0)
   )
 
-  is_valid <- data %in% names(valid_combinations) && 
-              rollup %in% valid_combinations[[data]]
+  is_valid <- data %in% names(valid_combinations) && rollup %in% valid_combinations[[data]]
 
   if (!is_valid) {
     stop(sprintf(
-      "Invalid combination. The rollup '%s' is not compatible with the data parameter '%s'.", 
-      rollup, 
+      "Invalid combination. The rollup '%s' is not compatible with the data parameter '%s'.",
+      rollup,
       data
     ))
   }
@@ -384,8 +383,8 @@ validate_data_rollup_compatibility <- function(data, rollup) {
 
 #' Extracts and validates parameters against a definition list.
 #'
-#' A helper function that processes a list of input arguments by applying 
-#' default values, executing validation checks, and performing data 
+#' A helper function that processes a list of input arguments by applying
+#' default values, executing validation checks, and performing data
 #' transformations as defined in a parameter definition list.
 #'
 #'
@@ -509,5 +508,5 @@ deep_get <- function(x, ..., default = NA) {
   if (is.null(x)) {
     return(NA)
   }
-  return(x)
+  x
 }

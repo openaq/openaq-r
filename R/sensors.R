@@ -3,7 +3,7 @@
 #' @param sensors_id An integer.
 #' @param as_data_frame A logical for toggling whether to return results as
 #' data frame or list default is `TRUE`.
-#' @param dry_run A logical for toggling a dry run of the request, defaults to
+#' @param dry_run A logical for toggling a dry run of the request, default is
 #' `FALSE`.
 #' @param rate_limit A logical for toggling automatic rate limiting based on
 #' rate limit headers, default is `FALSE`.
@@ -32,15 +32,15 @@ get_sensor <- function(
     return(data)
   }
   if (as_data_frame == TRUE) {
-    return(as.data.frame.openaq_sensors_list(structure(
-      data,
-      class = c("openaq_sensors_list", "list")
-    )))
-  } else {
-    return(structure(
+    as.data.frame.openaq_sensors_list(structure(
       data,
       class = c("openaq_sensors_list", "list")
     ))
+  } else {
+    structure(
+      data,
+      class = c("openaq_sensors_list", "list")
+    )
   }
 }
 
@@ -49,7 +49,7 @@ get_sensor <- function(
 #' @param locations_id An integer.
 #' @param as_data_frame A logical for toggling whether to return results as
 #' data frame or list default is `TRUE`.
-#' @param dry_run A logical for toggling a dry run of the request, defaults to
+#' @param dry_run A logical for toggling a dry run of the request, default is
 #' `FALSE`.
 #' @param rate_limit A logical for toggling automatic rate limiting based on
 #' rate limit headers, default is `FALSE`.
@@ -78,15 +78,15 @@ list_location_sensors <- function(
     return(data)
   }
   if (as_data_frame == TRUE) {
-    return(as.data.frame.openaq_sensors_list(structure(
-      data,
-      class = c("openaq_sensors_list", "list")
-    )))
-  } else {
-    return(structure(
+    as.data.frame.openaq_sensors_list(structure(
       data,
       class = c("openaq_sensors_list", "list")
     ))
+  } else {
+    structure(
+      data,
+      class = c("openaq_sensors_list", "list")
+    )
   }
 }
 
@@ -149,7 +149,7 @@ as.data.frame.openaq_sensors_list <- function(x, row.names = NULL, optional = FA
   tbl$max <- as.numeric(tbl$max)
   tbl$avg <- as.numeric(tbl$avg)
   attr(tbl, "meta") <- attr(x, "meta")
-  return(structure(tbl,
+  structure(tbl,
     class = c("openaq_sensors_data.frame", "data.frame")
-  ))
+  )
 }

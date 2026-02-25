@@ -212,6 +212,6 @@ fetch <- function(
     attr(results, "meta") <- x$meta
     attr(results, "params") <- query_params
     results <- add_headers(results, res)
-    return(results)
+    results
   }
 }

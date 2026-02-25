@@ -3,7 +3,7 @@
 #' @param instruments_id An integer.
 #' @param as_data_frame A logical for toggling whether to return results as
 #' data frame or list default is `TRUE`.
-#' @param dry_run A logical for toggling a dry run of the request, defaults to
+#' @param dry_run A logical for toggling a dry run of the request, default is
 #' `FALSE`.
 #' @param rate_limit A logical for toggling automatic rate limiting based on
 #' rate limit headers, default is `FALSE`.
@@ -32,15 +32,15 @@ get_instrument <- function(
     return(data)
   }
   if (isTRUE(as_data_frame)) {
-    invisible(as.data.frame.openaq_instruments_list(structure(
-      data,
-      class = c("openaq_instruments_list", "list")
-    )))
-  } else {
-    invisible(structure(
+    as.data.frame.openaq_instruments_list(structure(
       data,
       class = c("openaq_instruments_list", "list")
     ))
+  } else {
+    structure(
+      data,
+      class = c("openaq_instruments_list", "list")
+    )
   }
 }
 
@@ -52,7 +52,7 @@ get_instrument <- function(
 #' @param page An integer.
 #' @param as_data_frame A logical for toggling whether to return results as
 #' data frame or list default is `TRUE`.
-#' @param dry_run A logical for toggling a dry run of the request, defaults to
+#' @param dry_run A logical for toggling a dry run of the request, default is
 #' `FALSE`.
 #' @param rate_limit A logical for toggling automatic rate limiting based on
 #' rate limit headers, default is `FALSE`.
@@ -98,15 +98,15 @@ list_instruments <- function(
     return(data)
   }
   if (isTRUE(as_data_frame)) {
-    return(as.data.frame.openaq_instruments_list(structure(
-      data,
-      class = c("openaq_instruments_list", "list")
-    )))
-  } else {
-    return(structure(
+    as.data.frame.openaq_instruments_list(structure(
       data,
       class = c("openaq_instruments_list", "list")
     ))
+  } else {
+    structure(
+      data,
+      class = c("openaq_instruments_list", "list")
+    )
   }
 }
 
@@ -115,7 +115,7 @@ list_instruments <- function(
 #' @param manufacturers_id An integer.
 #' @param as_data_frame A logical for toggling whether to return results as
 #' data frame or list default is `TRUE`.
-#' @param dry_run A logical for toggling a dry run of the request, defaults to
+#' @param dry_run A logical for toggling a dry run of the request, default is
 #' `FALSE`.
 #' @param rate_limit A logical for toggling automatic rate limiting based on
 #' rate limit headers, default is `FALSE`.
@@ -141,15 +141,15 @@ list_manufacturer_instruments <- function(
     api_key = api_key
   )
   if (as_data_frame == TRUE) {
-    return(as.data.frame.openaq_instruments_list(structure(
-      data,
-      class = c("openaq_instruments_list", "list")
-    )))
-  } else {
-    return(structure(
+    as.data.frame.openaq_instruments_list(structure(
       data,
       class = c("openaq_instruments_list", "list")
     ))
+  } else {
+    structure(
+      data,
+      class = c("openaq_instruments_list", "list")
+    )
   }
 }
 

@@ -3,7 +3,7 @@
 #' @param manufacturers_id An integer.
 #' @param as_data_frame A logical for toggling whether to return results as
 #' data frame or list default is `TRUE`.
-#' @param dry_run A logical for toggling a dry run of the request, defaults to
+#' @param dry_run A logical for toggling a dry run of the request, default is
 #' `FALSE`.
 #' @param rate_limit A logical for toggling automatic rate limiting based on
 #' rate limit headers, default is `FALSE`.
@@ -32,15 +32,15 @@ get_manufacturer <- function(
     return(data)
   }
   if (as_data_frame == TRUE) {
-    return(as.data.frame.openaq_manufacturers_list(structure(
-      data,
-      class = c("openaq_manufacturers_list", "list")
-    )))
-  } else {
-    return(structure(
+    as.data.frame.openaq_manufacturers_list(structure(
       data,
       class = c("openaq_manufacturers_list", "list")
     ))
+  } else {
+    structure(
+      data,
+      class = c("openaq_manufacturers_list", "list")
+    )
   }
 }
 
@@ -52,7 +52,7 @@ get_manufacturer <- function(
 #' @param page An integer.
 #' @param as_data_frame A logical for toggling whether to return results as
 #' data frame or list default is `TRUE`.
-#' @param dry_run A logical for toggling a dry run of the request, defaults to
+#' @param dry_run A logical for toggling a dry run of the request, default is
 #' `FALSE`.
 #' @param rate_limit A logical for toggling automatic rate limiting based on
 #' rate limit headers, default is `FALSE`.
@@ -98,15 +98,15 @@ list_manufacturers <- function(
     return(data)
   }
   if (as_data_frame == TRUE) {
-    return(as.data.frame.openaq_manufacturers_list(structure(
-      data,
-      class = c("openaq_manufacturers_list", "list")
-    )))
-  } else {
-    return(structure(
+    as.data.frame.openaq_manufacturers_list(structure(
       data,
       class = c("openaq_manufacturers_list", "list")
     ))
+  } else {
+    structure(
+      data,
+      class = c("openaq_manufacturers_list", "list")
+    )
   }
 }
 

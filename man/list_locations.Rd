@@ -31,80 +31,80 @@ list_locations(
 \arguments{
 \item{bbox}{Named numeric vector with four coordinates in form X minimum,
 Y mininum, X maximum, Y maximum, named values must be \code{xmin}, \code{ymin}, \code{ymax}
-, \code{xmax}. Defaults to \code{NULL}.}
+, \code{xmax}. default is \code{NULL}.}
 
 \item{coordinates}{Named numeric vector with two numeric WGS84 (EPSG:4326)
 geographic coordinates, with named values \code{latitude} and \code{longitude}.
 Represents the central point to be used in conjunction with the radius
-parameter for geographic search. Defaults to \code{NULL}.}
+parameter for geographic search. default is \code{NULL}.}
 
 \item{radius}{An integer for the number of meters to search around the
-\code{coordinates} parameter for filtering locations within the radius. Defaults
-to \code{NULL}.}
+\code{coordinates} parameter for filtering locations within the radius. Value
+must be greater than zero and less than 25000 (25km). default is \code{NULL}.}
 
 \item{providers_id}{A numeric vector of length 1 or more, containing the
 ID(s) of the provider(s) to use for filtering results. If multiple IDs are
-provided, results matching any of the IDs will be returned. Defaults to
+provided, results matching any of the IDs will be returned. default is
 \code{NULL}.}
 
 \item{parameters_id}{A numeric vector of length 1 or more, containing the
 ID(s) of the parameter(s) to use for filtering results. If multiple IDs are
-provided, results matching any of the IDs will be returned. Defaults to
+provided, results matching any of the IDs will be returned. default is
 \code{NULL}.}
 
 \item{owner_contacts_id}{A numeric vector of length 1 or more, containing the
 ID(s) of the owners(s) to use for filtering results. If multiple IDs are
-provided, results matching any of the IDs will be returned. Defaults to
+provided, results matching any of the IDs will be returned. default is
 \code{NULL}.}
 
 \item{manufacturers_id}{A numeric vector of length 1 or more, containing the
 ID(s) of the manufacturers(s) to use for filtering results. If multiple IDs
-are provided, results matching any of the IDs will be returned. Defaults to
+are provided, results matching any of the IDs will be returned. default is
 \code{NULL}.}
 
 \item{licenses_id}{A numeric vector of length 1 or more, containing the
 ID(s) of the license(s) to use for filtering results. If multiple IDs are
-provided, results matching any of the IDs will be returned. Defaults to
+provided, results matching any of the IDs will be returned. default is
 \code{NULL}.}
 
 \item{monitor}{A logical to filter results to regulatory monitors (TRUE) or
-air sensors (FALSE), both are included if NULL. Defaults to \code{NULL}.}
+air sensors (FALSE), both are included if NULL. default is \code{NULL}.}
 
 \item{mobile}{A logical to filter results to mobile (TRUE) or stationary
-(FALSE) location, both are included if NULL. Defaults to \code{NULL}.}
+(FALSE) location, both are included if NULL. default is \code{NULL}.}
 
 \item{instruments_id}{A numeric vector of length 1 or more, containing the
 ID(s) of the instrument(s) to use for filtering results. If multiple IDs are
-provided, results matching any of the IDs will be returned. Defaults to
+provided, results matching any of the IDs will be returned. default is
 \code{NULL}.}
 
 \item{iso}{An ISO 3166-1 alpha-2 string of the country to filter the results.}
 
 \item{countries_id}{A numeric vector of length 1 or more, containing the
 ID(s) of the country(ies) to use for filtering results. If multiple IDs are
-provided, results matching any of the IDs will be returned. Defaults to
+provided, results matching any of the IDs will be returned. default is
 \code{NULL}.}
 
-\item{order_by}{A string. Defaults to \code{NULL}.}
+\item{order_by}{A string. default is \code{NULL}.}
 
-\item{sort_order}{A string. Defaults to \code{NULL}.}
+\item{sort_order}{A string. default is \code{NULL}.}
 
-\item{limit}{An integer to limit the number of results per page. Defaults to
+\item{limit}{An integer to limit the number of results per page. default is
 \code{NULL}.}
 
 \item{page}{An integer for the page number for paginating through results.
-Defaults to \code{NULL}.}
+default is \code{NULL}.}
 
 \item{as_data_frame}{A logical for toggling whether to return results as
-data frame or list. Defaults to \code{TRUE}}
+data frame or list. default is \code{TRUE}}
 
-\item{dry_run}{A logical for toggling a dry run of the request, defaults to
+\item{dry_run}{A logical for toggling a dry run of the request, default is
 \code{FALSE.}}
 
 \item{rate_limit}{A logical for toggling automatic rate limiting based on
-rate limit headers. Defaults to \code{FALSE.}}
+rate limit headers. default is \code{FALSE.}}
 
-\item{api_key}{A valid OpenAQ API key string. Defaults to \code{NULL}.}
+\item{api_key}{A valid OpenAQ API key string. default is \code{NULL}.}
 }
 \value{
 A data frame or list of results.

@@ -1,17 +1,17 @@
 #' Get a list of measurements by sensors_id.
 #'
 #' @param sensors_id An integer representing an OpenAQ sensors_id.
-#' @param data A string a data interval to return, defaults to "measurements".
-#' @param rollup A string.
+#' @param data A string a data interval to return, default is "measurements".
+#' @param rollup A string representing the aggregation rollup, default is `NULL`.
 #' @param datetime_from A POSIXct datetime to filter measurements
 #' @param datetime_to A POSIXct datetime to filter measurements
-#' @param order_by A string.
-#' @param sort_order A string.
-#' @param limit An integer.
-#' @param page An integer.
+#' @param order_by A string representing the field to order by.
+#' @param sort_order A string, either "asc" or "desc".
+#' @param limit An integer representing the number of results per page.
+#' @param page An integer representing the page number.
 #' @param as_data_frame A logical for toggling whether to return results as
 #' data frame or list default is `TRUE`.
-#' @param dry_run A logical for toggling a dry run of the request, defaults to
+#' @param dry_run A logical for toggling a dry run of the request, default is
 #' `FALSE`.
 #' @param rate_limit A logical for toggling automatic rate limiting based on
 #' rate limit headers, default is `FALSE`.
@@ -40,7 +40,7 @@ list_sensor_measurements <- function(
     api_key = NULL) {
   validate_data_param(data)
   validate_rollup(rollup)
-  validate_data_rollup_compatibility(data, rollup)
+  validate_data_rollup_compat(data, rollup)
   param_defs <- list(
     datetime_from = list(
       default = NULL,
@@ -82,25 +82,25 @@ list_sensor_measurements <- function(
   } else {
     path <- paste("sensors", sensors_id, data, rollup, sep = "/")
   }
-  data <- fetch(path,
+  fetched_data <- fetch(path,
     query_params = params_list,
     dry_run = dry_run,
     rate_limit = rate_limit,
     api_key = api_key
   )
   if (isTRUE(dry_run)) {
-    return(data)
+    return(fetched_data)
   }
-  if (as_data_frame == TRUE) {
-    return(as.data.frame.openaq_measurements_list(structure(
-      data,
-      class = c("openaq_measurements_list", "list")
-    )))
-  } else {
-    return(structure(
-      data,
+  if (as_data_frame) {
+    as.data.frame.openaq_measurements_list(structure(
+      fetched_data,
       class = c("openaq_measurements_list", "list")
     ))
+  } else {
+    structure(
+      fetched_data,
+      class = c("openaq_measurements_list", "list")
+    )
   }
 }
 
@@ -111,17 +111,18 @@ list_sensor_measurements <- function(
 #' @param parameters_ids A numeric vector of length 1 or more, containing the
 #' ID(s) of the parameter(s) to use for filtering results. If multiple IDs are
 #' provided, results matching any of the IDs will be returned.
-#' @param data A string a data interval to return, defaults to "measurements".
-#' @param rollup A string.
-#' @param datetime_from A POSIXct datetime to filter measurements
-#' @param datetime_to A POSIXct datetime to filter measurements
-#' @param order_by A string.
-#' @param sort_order A string.
-#' @param limit An integer.
-#' @param page An integer.
+#' @param data A string representing the data interval to return, default is
+#' "measurements".
+#' @param rollup A string representing the aggregation rollup (e.g., 'daily').
+#' @param datetime_from A POSIXct datetime to filter measurements.
+#' @param datetime_to A POSIXct datetime to filter measurements.
+#' @param order_by A string representing the field to order by.
+#' @param sort_order A string, either "asc" or "desc".
+#' @param limit An integer representing the number of results per page.
+#' @param page An integer representing the page number.
 #' @param as_data_frame A logical for toggling whether to return results as
 #' data frame or list default is `TRUE`.
-#' @param dry_run A logical for toggling a dry run of the request, defaults to
+#' @param dry_run A logical for toggling a dry run of the request, default is
 #' `FALSE`.
 #' @param rate_limit A logical for toggling automatic rate limiting based on
 #' rate limit headers, default is `FALSE`.
@@ -132,7 +133,7 @@ list_sensor_measurements <- function(
 #' @export
 #'
 #' @examplesIf interactive()
-#' measurements <- list_sensor_measurements(3920, "hours")
+#' measurements <- list_location_measurements(locations_id = 3920, "hours")
 #'
 list_location_measurements <- function(
     locations_id,
@@ -164,7 +165,7 @@ list_location_measurements <- function(
 
   validate_rollup(rollup)
 
-  validate_data_rollup_compatibility(data, rollup)
+  validate_data_rollup_compat(data, rollup)
 
   param_defs <- list(
     datetime_from = list(
@@ -183,14 +184,25 @@ list_location_measurements <- function(
     page = list(default = 1, validator = validate_page)
   )
 
-  params_list <- extract_parameters(param_defs,
-    datetime_from = datetime_from,
-    datetime_to = datetime_to,
-    order_by = order_by,
-    sort_order = sort_order,
-    limit = limit,
-    page = page
-  )
+  if (data %in% c("measurements", "hours")) {
+    params_list <- extract_parameters(param_defs,
+      datetime_from = datetime_from,
+      datetime_to = datetime_to,
+      order_by = order_by,
+      sort_order = sort_order,
+      limit = limit,
+      page = page
+    )
+  } else {
+    params_list <- extract_parameters(param_defs,
+      date_from = datetime_from,
+      date_to = datetime_to,
+      order_by = order_by,
+      sort_order = sort_order,
+      limit = limit,
+      page = page
+    )
+  }
   results <- list()
   for (sensors_id in sensors_ids) {
     if (is.null(rollup)) {
@@ -204,18 +216,18 @@ list_location_measurements <- function(
       rate_limit = rate_limit,
       api_key = api_key
     )
-    results <- c(result, data)
+    results[[length(results) + 1]] <- result
   }
-  if (as_data_frame == TRUE) {
-    return(as.data.frame.openaq_measurements_list(structure(
-      results,
-      class = c("openaq_measurements_list", "list")
-    )))
-  } else {
-    return(structure(
+  if (as_data_frame) {
+    as.data.frame.openaq_measurements_list(structure(
       results,
       class = c("openaq_measurements_list", "list")
     ))
+  } else {
+    structure(
+      results,
+      class = c("openaq_measurements_list", "list")
+    )
   }
 }
 
@@ -308,7 +320,7 @@ as.data.frame.openaq_measurements_list <- function(x, row.names = NULL, optional
   tbl$q98 <- as.numeric(tbl$q98)
   tbl$max <- as.numeric(tbl$max)
   tbl$avg <- as.numeric(tbl$avg)
-  tbl$avg <- as.numeric(tbl$sd)
+  tbl$sd <- as.numeric(tbl$sd)
   tbl$expected_count <- as.numeric(tbl$expected_count)
   tbl$expected_interval <- as.factor(tbl$expected_interval)
   tbl$observed_count <- as.numeric(tbl$observed_count)
