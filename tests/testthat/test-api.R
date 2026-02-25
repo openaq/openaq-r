@@ -29,6 +29,31 @@ test_that("get_api_key returns empty value", {
   )
 })
 
+# get_api_key
+
+test_that("get_api_key prompts via rstudioapi when in RStudio and key is missing", {
+  withr::local_envvar(c(
+    "OPENAQ_API_KEY" = "",
+    "RSTUDIO" = "1"
+  ))
+  mockery::stub(
+    where = get_api_key,
+    what = "rstudioapi::askForSecret",
+    how = "foo_bar"
+  )
+  result <- get_api_key()
+  expect_equal(result, "foo_bar")
+})
+
+test_that("get_api_key returns an empty string when key is missing and not in RStudio", {
+  withr::local_envvar(c(
+    "OPENAQ_API_KEY" = "",
+    "RSTUDIO" = "0"
+  ))
+  result <- get_api_key()
+  expect_equal(result, "")
+})
+
 
 # set_base_url
 

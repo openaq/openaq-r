@@ -106,7 +106,7 @@ list_sensor_measurements <- function(
 
 #' Extract a field from the period sub-list
 #'
-#' Internal helper to safely navigate the 'period' list. 
+#' Internal helper to safely navigate the 'period' list.
 #' Returns NA if 'period' is missing or the key doesn't exist.
 #'
 #' @param x A list representing a single record.
@@ -114,29 +114,28 @@ list_sensor_measurements <- function(
 #' @noRd
 get_period_field <- function(x, key) {
   if (is.null(x$period)) {
-    return(NA)
+    NA
   } else {
     if (!is.null(x$period[[key]])) {
-      return(x$period[[key]])
+      x$period[[key]]
     } else {
-      return(NA)
+      NA
     }
   }
 }
 
 #' Extract a field from the summary sub-list
 #'
-#' Internal helper to safely navigate the 'summary' list. 
+#' Internal helper to safely navigate the 'summary' list.
 #' Returns NA if 'summary' is missing or the key doesn't exist.
 #'
 #' @param x A list representing a single record.
 #' @param key The specific element name to retrieve.
 #' @noRd
 get_summary_field <- function(x, key) {
-  if (is.null(x)) stop("input 'x' cannot be NULL") 
-  
+  if (is.null(x)) stop("input 'x' cannot be NULL")
   if (is.null(x$summary) || is.null(x$summary[[key]])) {
-    return(NA)
+    NA
   }
   x$summary[[key]]
 }

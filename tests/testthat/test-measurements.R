@@ -9,7 +9,7 @@ test_that("as.data.frame works", {
 test_that("list_sensor_measurements() works", {
   tz <- "America/New_York"
   vcr::use_cassette("list_sensor_measurements_3", {
-    measurements <- list_sensor_measurements(3, datetime_from=as.POSIXct("2023-03-07", tz = tz), datetime_to=as.POSIXct("2023-03-08", tz = tz))
+    measurements <- list_sensor_measurements(3, datetime_from = as.POSIXct("2023-03-07", tz = tz), datetime_to = as.POSIXct("2023-03-08", tz = tz))
   })
   testthat::expect_type(measurements, "list")
   testthat::expect_true(is.data.frame(measurements))
@@ -20,7 +20,7 @@ test_that("list_sensor_measurements() works", {
 test_that("list_sensor_measurements() as list works", {
   tz <- "America/New_York"
   vcr::use_cassette("list_sensor_measurements_3_list", {
-    measurements <- list_sensor_measurements(3, datetime_from=as.POSIXct("2023-03-07", tz = tz), datetime_to=as.POSIXct("2023-03-08", tz = tz),  as_data_frame = FALSE)
+    measurements <- list_sensor_measurements(3, datetime_from = as.POSIXct("2023-03-07", tz = tz), datetime_to = as.POSIXct("2023-03-08", tz = tz),  as_data_frame = FALSE)
   })
   testthat::expect_type(measurements, "list")
   testthat::expect_false(is.data.frame(measurements))
