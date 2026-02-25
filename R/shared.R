@@ -345,12 +345,54 @@ validate_rollup <- function(rollup) {
 }
 
 
+#' Validates data and rollup compatibility.
 #'
+#' A function for ensuring that the rollup path parameter is compatible
+#' with the provided data path parameter.
 #'
+#' @param data Any value.
+#' @param rollup Any value.
+#'
+#' @noRd
+validate_data_rollup_compatibility <- function(data, rollup) {
+  if (is.null(rollup)) {
+    return(invisible())
+  }
+
+  valid_combinations <- list(
+    measurements = c("hourly", "daily"),
+    hours = c(
+      "daily", "monthly", "yearly", "hourofday",
+      "dayofweek", "monthofyear"
+    ),
+    days = c("monthly", "yearly", "dayofweek", "monthofyear"),
+    years = character(0)
+  )
+
+  is_valid <- data %in% names(valid_combinations) && 
+              rollup %in% valid_combinations[[data]]
+
+  if (!is_valid) {
+    stop(sprintf(
+      "Invalid combination. The rollup '%s' is not compatible with the data parameter '%s'.", 
+      rollup, 
+      data
+    ))
+  }
+}
+
+
+#' Extracts and validates parameters against a definition list.
+#'
+#' A helper function that processes a list of input arguments by applying 
+#' default values, executing validation checks, and performing data 
+#' transformations as defined in a parameter definition list.
 #'
 #'
 #' @param param_defs Any value.
 #' @param ... list of values
+#'
+#' @return A named list of validated and transformed parameters.
 #'
 #' @noRd
 extract_parameters <- function(param_defs, ...) {

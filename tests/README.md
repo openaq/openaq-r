@@ -18,8 +18,8 @@ automatic through github actions, see [https://github.com/openaq/openaq-r/blob/m
 
 ### Fixtures
 
-YML test fixures are generated using `vcr` and based off a local deployment of the
-[OpenAQ database](https://github.com/openaq/openaq-db) and
+YAML test fixures are generated using `vcr` and based off a local deployment of
+the [OpenAQ database](https://github.com/openaq/openaq-db) and
 [OpenAQ API](https://github.com/openaq/openaq-api-v2) instead of the live hosted
 instance. This is to provide a reproduceable and predictable test cases.
 

@@ -40,6 +40,7 @@ list_sensor_measurements <- function(
     api_key = NULL) {
   validate_data_param(data)
   validate_rollup(rollup)
+  validate_data_rollup_compatibility(data, rollup)
   param_defs <- list(
     datetime_from = list(
       default = NULL,
@@ -57,7 +58,7 @@ list_sensor_measurements <- function(
     page = list(default = 1, validator = validate_page)
   )
 
-  if (data == "measurements") {
+  if (data %in% c("measurements", "hours")) {
     params_list <- extract_parameters(param_defs,
       datetime_from = datetime_from,
       datetime_to = datetime_to,
@@ -158,8 +159,13 @@ list_location_measurements <- function(
     )
   }
   sensors_ids <- purrr::map(sensors, ~ .x$id)
+
   validate_data_param(data)
+
   validate_rollup(rollup)
+
+  validate_data_rollup_compatibility(data, rollup)
+
   param_defs <- list(
     datetime_from = list(
       default = NULL,

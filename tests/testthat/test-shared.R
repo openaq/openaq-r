@@ -478,6 +478,63 @@ test_that("validate_rollup handles invalid inputs", {
   expect_error(validate_rollup(TRUE), error_message)
 })
 
+# validate_data_rollup_compatibility
+
+test_that("validate_data_rollup_compatibility validates valid pairs", {
+  valid_pairs <- list(
+    list(data = "measurements", rollup = NULL),
+    list(data = "measurements", rollup = "hourly"),
+    list(data = "measurements", rollup = "daily"),
+    list(data = "hours",        rollup = NULL),
+    list(data = "hours",        rollup = "daily"),
+    list(data = "hours",        rollup = "monthly"),
+    list(data = "hours",        rollup = "yearly"),
+    list(data = "hours",        rollup = "hourofday"),
+    list(data = "hours",        rollup = "dayofweek"),
+    list(data = "hours",        rollup = "monthofyear"),
+    list(data = "days",         rollup = NULL),
+    list(data = "days",         rollup = "monthly"),
+    list(data = "days",         rollup = "yearly"),
+    list(data = "days",         rollup = "dayofweek"),
+    list(data = "days",         rollup = "monthofyear"),
+    list(data = "years",        rollup = NULL)
+  )
+
+  for (pair in valid_pairs) {
+    expect_silent(
+      validate_data_rollup_compatibility(pair$data, pair$rollup)
+    )
+  }
+})
+
+test_that("validate_data_rollup_compatibility validates invalid pairs", {
+  invalid_pairs <- list(
+    list(data = "measurements", rollup = "monthly"),
+    list(data = "measurements", rollup = "yearly"),
+    list(data = "measurements", rollup = "hourofday"),
+    list(data = "measurements", rollup = "dayofweek"),
+    list(data = "measurements", rollup = "monthofyear"),
+    list(data = "hours",        rollup = "hourly"),
+    list(data = "days",         rollup = "hourly"),
+    list(data = "days",         rollup = "daily"),
+    list(data = "days",         rollup = "hourofday"),
+    list(data = "years",        rollup = "hourly"),
+    list(data = "years",        rollup = "daily"),
+    list(data = "years",        rollup = "monthly"),
+    list(data = "years",        rollup = "yearly"),
+    list(data = "years",        rollup = "hourofday"),
+    list(data = "years",        rollup = "dayofweek"),
+    list(data = "years",        rollup = "monthofyear")
+  )
+
+  for (pair in invalid_pairs) {
+    expect_error(
+      validate_data_rollup_compatibility(pair$data, pair$rollup),
+      "not compatible"
+    )
+  }
+})
+
 
 # extract_parameters
 
