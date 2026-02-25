@@ -104,156 +104,41 @@ list_sensor_measurements <- function(
   }
 }
 
-
-#' Get a list of measurements by locations_id.
+#' Extract a field from the period sub-list
 #'
-#' @param locations_id An integer representing an OpenAQ locations_id
-#' @param parameters_ids A numeric vector of length 1 or more, containing the
-#' ID(s) of the parameter(s) to use for filtering results. If multiple IDs are
-#' provided, results matching any of the IDs will be returned.
-#' @param data A string representing the data interval to return, default is
-#' "measurements".
-#' @param rollup A string representing the aggregation rollup (e.g., 'daily').
-#' @param datetime_from A POSIXct datetime to filter measurements.
-#' @param datetime_to A POSIXct datetime to filter measurements.
-#' @param order_by A string representing the field to order by.
-#' @param sort_order A string, either "asc" or "desc".
-#' @param limit An integer representing the number of results per page.
-#' @param page An integer representing the page number.
-#' @param as_data_frame A logical for toggling whether to return results as
-#' data frame or list default is `TRUE`.
-#' @param dry_run A logical for toggling a dry run of the request, default is
-#' `FALSE`.
-#' @param rate_limit A logical for toggling automatic rate limiting based on
-#' rate limit headers, default is `FALSE`.
-#' @param api_key A valid OpenAQ API key string, default is `NULL`.
+#' Internal helper to safely navigate the 'period' list. 
+#' Returns NA if 'period' is missing or the key doesn't exist.
 #'
-#' @return A data frame or a list of the results.
-#'
-#' @export
-#'
-#' @examplesIf interactive()
-#' measurements <- list_location_measurements(locations_id = 3920, "hours")
-#'
-list_location_measurements <- function(
-    locations_id,
-    parameters_ids = NULL,
-    data = "measurements",
-    rollup = NULL,
-    datetime_from = NULL,
-    datetime_to = NULL,
-    order_by = NULL,
-    sort_order = NULL,
-    limit = NULL,
-    page = NULL,
-    as_data_frame = TRUE,
-    dry_run = FALSE,
-    rate_limit = FALSE,
-    api_key = NULL) {
-  location <- get_location(locations_id, as_data_frame = FALSE)
-  if (is.null(parameters_ids)) {
-    sensors <- location[[1]]$sensors
-  } else {
-    sensors <- purrr::keep(
-      location[[1]]$sensors,
-      \(x) x$parameters_id %in% parameters_ids
-    )
-  }
-  sensors_ids <- purrr::map(sensors, ~ .x$id)
-
-  validate_data_param(data)
-
-  validate_rollup(rollup)
-
-  validate_data_rollup_compat(data, rollup)
-
-  param_defs <- list(
-    datetime_from = list(
-      default = NULL,
-      validator = validate_datetime,
-      transform = transform_datetime
-    ),
-    datetime_to = list(
-      default = NULL,
-      validator = validate_datetime,
-      transform = transform_datetime
-    ),
-    order_by = list(default = NULL, validator = NULL),
-    sort_order = list(default = NULL, validator = validate_sort_order),
-    limit = list(default = 100, validator = validate_limit),
-    page = list(default = 1, validator = validate_page)
-  )
-
-  if (data %in% c("measurements", "hours")) {
-    params_list <- extract_parameters(param_defs,
-      datetime_from = datetime_from,
-      datetime_to = datetime_to,
-      order_by = order_by,
-      sort_order = sort_order,
-      limit = limit,
-      page = page
-    )
-  } else {
-    params_list <- extract_parameters(param_defs,
-      date_from = datetime_from,
-      date_to = datetime_to,
-      order_by = order_by,
-      sort_order = sort_order,
-      limit = limit,
-      page = page
-    )
-  }
-  results <- list()
-  for (sensors_id in sensors_ids) {
-    if (is.null(rollup)) {
-      path <- paste("sensors", sensors_id, data, sep = "/")
-    } else {
-      path <- paste("sensors", sensors_id, data, rollup, sep = "/")
-    }
-    result <- fetch(path,
-      query_params = params_list,
-      dry_run = dry_run,
-      rate_limit = rate_limit,
-      api_key = api_key
-    )
-    results[[length(results) + 1]] <- result
-  }
-  if (as_data_frame) {
-    as.data.frame.openaq_measurements_list(structure(
-      results,
-      class = c("openaq_measurements_list", "list")
-    ))
-  } else {
-    structure(
-      results,
-      class = c("openaq_measurements_list", "list")
-    )
-  }
-}
-
+#' @param x A list representing a single record.
+#' @param key The specific element name to retrieve.
+#' @noRd
 get_period_field <- function(x, key) {
   if (is.null(x$period)) {
-    NA
+    return(NA)
   } else {
-    if (is.null(x$period[key])) {
-      x$period[key]
+    if (!is.null(x$period[[key]])) {
+      return(x$period[[key]])
     } else {
-      NA
+      return(NA)
     }
   }
 }
 
-
+#' Extract a field from the summary sub-list
+#'
+#' Internal helper to safely navigate the 'summary' list. 
+#' Returns NA if 'summary' is missing or the key doesn't exist.
+#'
+#' @param x A list representing a single record.
+#' @param key The specific element name to retrieve.
+#' @noRd
 get_summary_field <- function(x, key) {
-  if (is.null(x$summary)) {
-    NA
-  } else {
-    if (is.null(x$summary[key])) {
-      x$summary[key]
-    } else {
-      NA
-    }
+  if (is.null(x)) stop("input 'x' cannot be NULL") 
+  
+  if (is.null(x$summary) || is.null(x$summary[[key]])) {
+    return(NA)
   }
+  x$summary[[key]]
 }
 
 

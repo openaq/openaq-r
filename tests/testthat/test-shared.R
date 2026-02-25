@@ -650,3 +650,14 @@ test_that("add_headers correctly adds headers", {
   expect_equal(headers[["x_ratelimit_limit"]], 44)
   expect_equal(headers[["x_ratelimit_remaining"]], 45)
 })
+
+
+# transform_vector_to_string
+
+test_that("transform_vector_to_string handles various inputs", {
+  expect_equal(transform_vector_to_string(c(1, 2, 3)), "1,2,3")
+  expect_equal(transform_vector_to_string(c("pm25", "no2")), "pm25,no2")
+  expect_equal(transform_vector_to_string("so2"), "so2")
+  expect_null(transform_vector_to_string(NULL))
+  expect_equal(transform_vector_to_string(character(0)), "")
+})

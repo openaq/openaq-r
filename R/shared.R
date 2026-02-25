@@ -425,9 +425,10 @@ extract_parameters <- function(param_defs, ...) {
 #' transform_vector_to_comma_string(c(1, 2, 3))
 #' @noRd
 transform_vector_to_string <- function(x) {
-  if (!is.null(x)) {
-    invisible(paste(x, collapse = ","))
+  if (is.null(x)) {
+    return(NULL)
   }
+  paste(as.character(x), collapse = ",")
 }
 
 #' Converts a timestamp to an ISO 8601 datetime string.
