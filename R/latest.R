@@ -63,7 +63,7 @@ list_location_latest <- function(
 
 #' Get the latest measurements by parameters_id.
 #'
-#' @param locations_id An integer representing the OpenAQ locations_id.
+#' @param parameters_id An integer representing the OpenAQ parameters_id
 #' @param datetime_min A string specifying the minimum datetime for filtering results, default is `NULL`.
 #' @param limit An integer specifying the maximum number of results to return, default is `100`.
 #' @param page An integer specifying the page number for paginated results, default is `1`.
