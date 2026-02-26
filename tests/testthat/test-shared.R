@@ -300,7 +300,7 @@ test_that("validate_monitor handles valid inputs", {
 })
 
 test_that("validate_monitor throws with invalid inputs", {
-  error_message <- "Invalid monitor Must be a logical value TRUE or FALSE."
+  error_message <- "Invalid monitor. Must be a logical value TRUE or FALSE."
   expect_error(validate_monitor("TRUE"), error_message)
   expect_error(validate_monitor(1), error_message)
   expect_error(validate_monitor(0.5), error_message)
@@ -315,7 +315,7 @@ test_that("validate_mobile handles valid inputs", {
 })
 
 test_that("validate_mobile throws with invalid inputs", {
-  error_message <- "Invalid mobile Must be a logical value TRUE or FALSE."
+  error_message <- "Invalid mobile. Must be a logical value TRUE or FALSE."
   expect_error(validate_mobile("TRUE"), error_message)
   expect_error(validate_mobile(1), error_message)
   expect_error(validate_mobile(0.5), error_message)
@@ -424,20 +424,69 @@ test_that("validate_numeric_vector rejects decimal values", {
   )
 })
 
-
 # validate_datetime
 
 test_that("validate_datetime handles valid inputs", {
   valid_datetime <- as.POSIXct("2025-07-04 17:30:00", tz = "America/Denver")
-  expect_no_error(validate_datetime(valid_datetime))
+  expect_no_error(validate_datetime(valid_datetime, "datetime_from"))
+})
+
+test_that("validate_datetime accepts NULL", {
+  expect_invisible(validate_datetime(NULL, "datetime_from"))
 })
 
 test_that("validate_datetime throws with invalid inputs", {
-  error_message <- "Invalid datetime must be a POSIXct datetime."
-  expect_error(validate_datetime("2024-07-04"), error_message)
-  expect_error(validate_datetime(1688488200), error_message)
-  expect_error(validate_datetime(as.Date("2024-07-04")), error_message)
-  expect_error(validate_datetime(NULL), error_message)
+  expect_error(validate_datetime("2024-07-04", "datetime_from"), regexp = "must be a POSIXct datetime")
+  expect_error(validate_datetime(1688488200, "datetime_from"), regexp = "must be a POSIXct datetime")
+  expect_error(validate_datetime(as.Date("2024-07-04"), "datetime_from"), regexp = "must be a POSIXct datetime")
+})
+
+# validate_date
+
+test_that("validate_date accepts NULL", {
+  expect_invisible(validate_date(NULL, "datetime_from"))
+})
+
+test_that("validate_date accepts a valid Date object", {
+  expect_invisible(validate_date(as.Date("2024-01-01"), "datetime_from"))
+})
+
+test_that("validate_date rejects POSIXct and POSIXlt", {
+  expect_error(
+    validate_date(as.POSIXct("2024-01-01"), "datetime_from"),
+    regexp = "`datetime_from` must be a Date \\(not a datetime\\)",
+    fixed = FALSE
+  )
+  expect_error(
+    validate_date(as.POSIXlt("2024-01-01"), "datetime_from"),
+    regexp = "`datetime_from` must be a Date \\(not a datetime\\)",
+    fixed = FALSE
+  )
+})
+
+test_that("validate_date rejects non-Date types with informative error", {
+  expect_error(
+    validate_date("2024-01-01", "datetime_from"),
+    regexp = "`datetime_from` must be a Date object",
+    fixed = FALSE
+  )
+  expect_error(
+    validate_date(20240101, "datetime_from"),
+    regexp = "`datetime_from` must be a Date object",
+    fixed = FALSE
+  )
+})
+
+# transform_date
+
+test_that("transform_date returns NULL for NULL input", {
+  expect_null(transform_date(NULL))
+})
+
+test_that("transform_date formats a Date as YYYY-MM-DD", {
+  expect_invisible(transform_date(as.Date("2026-02-26")))
+  expect_equal(transform_date(as.Date("2026-02-25")), "2026-02-25")
+  expect_equal(transform_date(as.Date("2026-02-26")), "2026-02-26")
 })
 
 # validate_data_param
@@ -472,10 +521,67 @@ test_that("validate_rollup handles valid inputs", {
 })
 
 test_that("validate_rollup handles invalid inputs", {
-  error_message <- "Invalid rollup Must be one of 'hourly','daily','monthly','yearly','hourofday','dayofweek','monthofyear'." # nolint
+  error_message <- "Invalid rollup. Must be one of 'hourly','daily','monthly','yearly','hourofday','dayofweek','monthofyear'." # nolint
   expect_error(validate_rollup("invalid_rollup"), error_message)
   expect_error(validate_rollup(123), error_message)
   expect_error(validate_rollup(TRUE), error_message)
+})
+
+# validate_data_rollup_compatibility
+
+test_that("validate_data_rollup_compatibility validates valid pairs", {
+  valid_pairs <- list(
+    list(data = "measurements", rollup = NULL),
+    list(data = "measurements", rollup = "hourly"),
+    list(data = "measurements", rollup = "daily"),
+    list(data = "hours",        rollup = NULL),
+    list(data = "hours",        rollup = "daily"),
+    list(data = "hours",        rollup = "monthly"),
+    list(data = "hours",        rollup = "yearly"),
+    list(data = "hours",        rollup = "hourofday"),
+    list(data = "hours",        rollup = "dayofweek"),
+    list(data = "hours",        rollup = "monthofyear"),
+    list(data = "days",         rollup = NULL),
+    list(data = "days",         rollup = "monthly"),
+    list(data = "days",         rollup = "yearly"),
+    list(data = "days",         rollup = "dayofweek"),
+    list(data = "days",         rollup = "monthofyear"),
+    list(data = "years",        rollup = NULL)
+  )
+
+  for (pair in valid_pairs) {
+    expect_silent(
+      validate_data_rollup_compat(pair$data, pair$rollup)
+    )
+  }
+})
+
+test_that("validate_data_rollup_compat validates invalid pairs", {
+  invalid_pairs <- list(
+    list(data = "measurements", rollup = "monthly"),
+    list(data = "measurements", rollup = "yearly"),
+    list(data = "measurements", rollup = "hourofday"),
+    list(data = "measurements", rollup = "dayofweek"),
+    list(data = "measurements", rollup = "monthofyear"),
+    list(data = "hours",        rollup = "hourly"),
+    list(data = "days",         rollup = "hourly"),
+    list(data = "days",         rollup = "daily"),
+    list(data = "days",         rollup = "hourofday"),
+    list(data = "years",        rollup = "hourly"),
+    list(data = "years",        rollup = "daily"),
+    list(data = "years",        rollup = "monthly"),
+    list(data = "years",        rollup = "yearly"),
+    list(data = "years",        rollup = "hourofday"),
+    list(data = "years",        rollup = "dayofweek"),
+    list(data = "years",        rollup = "monthofyear")
+  )
+
+  for (pair in invalid_pairs) {
+    expect_error(
+      validate_data_rollup_compat(pair$data, pair$rollup),
+      "not compatible"
+    )
+  }
 })
 
 
@@ -592,4 +698,15 @@ test_that("add_headers correctly adds headers", {
   expect_equal(headers[["x_ratelimit_reset"]], 43)
   expect_equal(headers[["x_ratelimit_limit"]], 44)
   expect_equal(headers[["x_ratelimit_remaining"]], 45)
+})
+
+
+# transform_vector_to_string
+
+test_that("transform_vector_to_string handles various inputs", {
+  expect_equal(transform_vector_to_string(c(1, 2, 3)), "1,2,3")
+  expect_equal(transform_vector_to_string(c("pm25", "no2")), "pm25,no2")
+  expect_equal(transform_vector_to_string("so2"), "so2")
+  expect_null(transform_vector_to_string(NULL))
+  expect_equal(transform_vector_to_string(character(0)), "")
 })

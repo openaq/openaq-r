@@ -2,12 +2,12 @@
 % Please edit documentation in R/licenses.R
 \name{as.data.frame.openaq_licenses_list}
 \alias{as.data.frame.openaq_licenses_list}
-\title{Method for converting openaq_instruments_list to data frame.}
+\title{Method for converting openaq_licenses_list to data frame.}
 \usage{
 \method{as.data.frame}{openaq_licenses_list}(x, row.names = NULL, optional = FALSE, ...)
 }
 \arguments{
-\item{x}{A list of countries as returned from list_instruments.}
+\item{x}{A list of licenses as returned from list_licenses.}
 
 \item{row.names}{\code{NULL} or a character vector giving the row names for the
 data frame. Missing values are not allowed.}
@@ -21,11 +21,11 @@ treatment, basically with the meaning of data.frame(*, check.names =
 \item{...}{additional arguments to be passed to or from methods.}
 }
 \description{
-Method for converting openaq_instruments_list to data frame.
+Method for converting openaq_licenses_list to data frame.
 }
 \examples{
 \dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-instruments <- list_instruments()
-openaq_instruments_list.as.data.frame(instruments)
+licenses <- list_licenses(as_data_frame = FALSE)
+as.data.frame(licenses)
 \dontshow{\}) # examplesIf}
 }

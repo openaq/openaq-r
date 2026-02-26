@@ -38,7 +38,7 @@ validate_limit <- function(limit) {
 #' @noRd
 validate_page <- function(page) {
   if (!(is.numeric(page) && page > 0)) {
-    stop("Invalid page Must be a positive numeric value.")
+    stop("Invalid page. Must be a positive numeric value.")
   }
 }
 
@@ -66,7 +66,7 @@ validate_numeric_vector <- function(x, parameter) {
     stop(sprintf(
       "%s must contain values inside positive 32 bit integer range [%s, %s]",
       parameter,
-      0,
+      1,
       format(int32_max, scientific = FALSE)
     ))
   }
@@ -273,7 +273,7 @@ validate_iso <- function(iso) {
 #' @noRd
 validate_monitor <- function(monitor) {
   if (!(is.logical(monitor))) {
-    stop("Invalid monitor Must be a logical value TRUE or FALSE.")
+    stop("Invalid monitor. Must be a logical value TRUE or FALSE.")
   }
 }
 
@@ -286,13 +286,15 @@ validate_monitor <- function(monitor) {
 #' @noRd
 validate_mobile <- function(mobile) {
   if (!(is.logical(mobile))) {
-    stop("Invalid mobile Must be a logical value TRUE or FALSE.")
+    stop("Invalid mobile. Must be a logical value TRUE or FALSE.")
   }
 }
 
+#' Check if object is POSIXct
 #'
-#'
-#'
+#' @param x Any value.
+#' @return A logical value.
+#' @noRd
 is.POSIXct <- function(x) inherits(x, "POSIXct") # nolint: object_name_linter.
 
 #' Validates datetime query parameters.
@@ -303,10 +305,66 @@ is.POSIXct <- function(x) inherits(x, "POSIXct") # nolint: object_name_linter.
 #' @param datetime Any value.
 #'
 #' @noRd
-validate_datetime <- function(datetime) {
-  if (!is.POSIXct(datetime)) {
-    stop("Invalid datetime must be a POSIXct datetime.")
+validate_datetime <- function(x, name) {
+  if (is.null(x)) return(invisible(NULL))
+  if (!is.POSIXct(x)) {
+    stop(sprintf("`%s` must be a POSIXct datetime.", name), call. = FALSE)
   }
+  invisible(x)
+}
+
+#' A function for ensuring that date query parameters are a valid Date value.
+#' Rejects POSIXct/POSIXlt values to prevent unexpected time truncation when
+#' `data` is 'days' or larger.
+#'
+#' @param x Any value.
+#' @param name A string representing the parameter name, used in error messages.
+#'
+#' @noRd
+validate_date <- function(x, name) {
+  if (is.null(x)) return(invisible(NULL))
+  if (inherits(x, c("POSIXct", "POSIXlt"))) {
+    stop(
+      sprintf(
+        "`%s` must be a Date (not a datetime) when `data` 'days' or 'years'.",
+        name
+      ),
+      "Use `as.Date(\"YYYY-MM-DD\")` instead of `as.POSIXct()`.",
+      call. = FALSE
+    )
+  }
+  if (!inherits(x, "Date")) {
+    stop(
+      sprintf("`%s` must be a Date object (e.g. `as.Date(\"2024-01-01\")`)", name),
+      call. = FALSE
+    )
+  }
+  invisible(x)
+}
+
+#' Converts a timestamp to an ISO 8601 datetime string.
+#'
+#' @param x A list to be collapsed.
+#'
+#' @examples
+#' transform_datetime
+#' @noRd
+transform_datetime <- function(x) {
+  if (!is.null(x)) {
+    invisible(lubridate::format_ISO8601(x, usetz = TRUE))
+  }
+}
+
+#' Converts a date to an ISO 8601 date string.
+#'
+#' @param x A Date object to be formatted.
+#'
+#' @examples
+#' transform_date
+#' @noRd
+transform_date <- function(x) {
+  if (is.null(x)) return(NULL)
+  invisible(format(x, "%Y-%m-%d"))
 }
 
 #' Validates data path parameter.
@@ -339,18 +397,59 @@ validate_rollup <- function(rollup) {
       "dayofweek", "monthofyear"
     )
     if (!(rollup %in% valid_rollups)) {
-      stop("Invalid rollup Must be one of 'hourly','daily','monthly','yearly','hourofday','dayofweek','monthofyear'.")
+      stop("Invalid rollup. Must be one of 'hourly','daily','monthly','yearly','hourofday','dayofweek','monthofyear'.")
     }
   }
 }
 
 
+#' Validates data and rollup compatibility.
 #'
+#' A function for ensuring that the rollup path parameter is compatible
+#' with the provided data path parameter.
 #'
+#' @param data Any value.
+#' @param rollup Any value.
+#'
+#' @noRd
+validate_data_rollup_compat <- function(data, rollup) {
+  if (is.null(rollup)) {
+    return(invisible())
+  }
+
+  valid_combinations <- list(
+    measurements = c("hourly", "daily"),
+    hours = c(
+      "daily", "monthly", "yearly", "hourofday",
+      "dayofweek", "monthofyear"
+    ),
+    days = c("monthly", "yearly", "dayofweek", "monthofyear"),
+    years = character(0)
+  )
+
+  is_valid <- data %in% names(valid_combinations) && rollup %in% valid_combinations[[data]]
+
+  if (!is_valid) {
+    stop(sprintf(
+      "Invalid combination. The rollup '%s' is not compatible with the data parameter '%s'.",
+      rollup,
+      data
+    ))
+  }
+}
+
+
+#' Extracts and validates parameters against a definition list.
+#'
+#' A helper function that processes a list of input arguments by applying
+#' default values, executing validation checks, and performing data
+#' transformations as defined in a parameter definition list.
 #'
 #'
 #' @param param_defs Any value.
 #' @param ... list of values
+#'
+#' @return A named list of validated and transformed parameters.
 #'
 #' @noRd
 extract_parameters <- function(param_defs, ...) {
@@ -381,26 +480,15 @@ extract_parameters <- function(param_defs, ...) {
 #' if is a list.
 #'
 #' @examples
-#' transform_vector_to_comma_string(c(1, 2, 3))
+#' transform_vector_to_string(c(1, 2, 3))
 #' @noRd
 transform_vector_to_string <- function(x) {
-  if (!is.null(x)) {
-    invisible(paste(x, collapse = ","))
+  if (is.null(x)) {
+    return(NULL)
   }
+  paste(as.character(x), collapse = ",")
 }
 
-#' Converts a timestamp to an ISO 8601 datetime string.
-#'
-#' @param x A list to be collapsed.
-#'
-#' @examples
-#' transform_datetime
-#' @noRd
-transform_datetime <- function(x) {
-  if (!is.null(x)) {
-    invisible(lubridate::format_ISO8601(x, usetz = TRUE))
-  }
-}
 
 #' Set rate limit headers as attributes to an object
 #'
@@ -421,9 +509,14 @@ add_headers <- function(data, res) {
 }
 
 
+#' Parse an OpenAQ timestamp to POSIXct
 #'
+#' Converts an OpenAQ timestamp string or list with a 'utc' field to a POSIXct
+#' object. Returns NA if the input is NULL.
 #'
-#'
+#' @param x A character string or list with a 'utc' field, or NULL.
+#' @return A POSIXct datetime object in UTC, or NA if input is NULL.
+#' @noRd
 parse_openaq_timestamp <- function(x) {
   if (!is.null(x)) {
     if (methods::is(x, "character")) {
@@ -437,9 +530,15 @@ parse_openaq_timestamp <- function(x) {
   }
 }
 
+#' Return value or alternative if empty or missing
 #'
+#' Returns the test value if it is non-null, non-NA, non-NaN, and has length
+#' greater than zero. Otherwise returns the alternative value.
 #'
-#'
+#' @param test Any value to test.
+#' @param alternative The value to return if test is empty or missing.
+#' @return Either test or alternative.
+#' @noRd
 or <- function(test, alternative) {
   res <- test
   if (!length(res)) {
@@ -467,5 +566,5 @@ deep_get <- function(x, ..., default = NA) {
   if (is.null(x)) {
     return(NA)
   }
-  return(x)
+  x
 }

@@ -1,9 +1,9 @@
 #' Get a single instrument from the instruments resource.
 #'
-#' @param instruments_id An integer.
+#' @param instruments_id An integer representing the OpenAQ instruments_id.
 #' @param as_data_frame A logical for toggling whether to return results as
-#' data frame or list default is `TRUE`.
-#' @param dry_run A logical for toggling a dry run of the request, defaults to
+#' data frame or list, default is `TRUE`.
+#' @param dry_run A logical for toggling a dry run of the request, default is
 #' `FALSE`.
 #' @param rate_limit A logical for toggling automatic rate limiting based on
 #' rate limit headers, default is `FALSE`.
@@ -32,27 +32,27 @@ get_instrument <- function(
     return(data)
   }
   if (isTRUE(as_data_frame)) {
-    invisible(as.data.frame.openaq_instruments_list(structure(
-      data,
-      class = c("openaq_instruments_list", "list")
-    )))
-  } else {
-    invisible(structure(
+    as.data.frame.openaq_instruments_list(structure(
       data,
       class = c("openaq_instruments_list", "list")
     ))
+  } else {
+    structure(
+      data,
+      class = c("openaq_instruments_list", "list")
+    )
   }
 }
 
 #' Get a list of instruments from the instruments resource.
 #'
-#' @param order_by A string.
-#' @param sort_order A string.
-#' @param limit An integer.
-#' @param page An integer.
+#' @param order_by A string specifying the field to order results by.
+#' @param sort_order A string specifying sort direction, either `"asc"` or `"desc"`.
+#' @param limit An integer specifying the maximum number of results to return, default is `100`.
+#' @param page An integer specifying the page number for paginated results, default is `1`.
 #' @param as_data_frame A logical for toggling whether to return results as
-#' data frame or list default is `TRUE`.
-#' @param dry_run A logical for toggling a dry run of the request, defaults to
+#' data frame or list, default is `TRUE`.
+#' @param dry_run A logical for toggling a dry run of the request, default is
 #' `FALSE`.
 #' @param rate_limit A logical for toggling automatic rate limiting based on
 #' rate limit headers, default is `FALSE`.
@@ -98,24 +98,24 @@ list_instruments <- function(
     return(data)
   }
   if (isTRUE(as_data_frame)) {
-    return(as.data.frame.openaq_instruments_list(structure(
-      data,
-      class = c("openaq_instruments_list", "list")
-    )))
-  } else {
-    return(structure(
+    as.data.frame.openaq_instruments_list(structure(
       data,
       class = c("openaq_instruments_list", "list")
     ))
+  } else {
+    structure(
+      data,
+      class = c("openaq_instruments_list", "list")
+    )
   }
 }
 
 #' Get a list of manufacturer instruments from the instruments resource.
 #'
-#' @param manufacturers_id An integer.
+#' @param manufacturers_id An integer representing the OpenAQ manufacturers_id.
 #' @param as_data_frame A logical for toggling whether to return results as
-#' data frame or list default is `TRUE`.
-#' @param dry_run A logical for toggling a dry run of the request, defaults to
+#' data frame or list, default is `TRUE`.
+#' @param dry_run A logical for toggling a dry run of the request, default is
 #' `FALSE`.
 #' @param rate_limit A logical for toggling automatic rate limiting based on
 #' rate limit headers, default is `FALSE`.
@@ -140,23 +140,26 @@ list_manufacturer_instruments <- function(
     rate_limit = rate_limit,
     api_key = api_key
   )
-  if (as_data_frame == TRUE) {
-    return(as.data.frame.openaq_instruments_list(structure(
-      data,
-      class = c("openaq_instruments_list", "list")
-    )))
-  } else {
-    return(structure(
+  if (isTRUE(dry_run)) {
+    return(data)
+  }
+  if (isTRUE(as_data_frame)) {
+    as.data.frame.openaq_instruments_list(structure(
       data,
       class = c("openaq_instruments_list", "list")
     ))
+  } else {
+    structure(
+      data,
+      class = c("openaq_instruments_list", "list")
+    )
   }
 }
 
 
 #' Method for converting openaq_instruments_list to data frame.
 #'
-#' @param x A list of countries as returned from list_instruments.
+#' @param x A list of instruments as returned from list_instruments.
 #' @param row.names `NULL` or a character vector giving the row names for the
 #' data frame. Missing values are not allowed.
 #' @param optional logical. If TRUE, setting row names and converting column
@@ -171,7 +174,7 @@ list_manufacturer_instruments <- function(
 #'
 #' @examplesIf interactive()
 #' instruments <- list_instruments(as_data_frame = FALSE)
-#' openaq_instruments_list.as.data.frame(instruments)
+#' as.data.frame(instruments)
 #'
 as.data.frame.openaq_instruments_list <- function(x, row.names = NULL, optional = FALSE, ...) { # nolint: object_name_linter
   tbl <- do.call(rbind, lapply(x, function(rw) {

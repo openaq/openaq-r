@@ -25,12 +25,20 @@ set_api_key <- function(api_key) {
 #' @noRd
 get_api_key <- function() {
   key <- Sys.getenv("OPENAQ_API_KEY")
-  if (key == "" && Sys.getenv("RSTUDIO") == "1") {
-    key <- rstudioapi::askForSecret(
-      name = "OpenAQ API",
-      message = "Enter your API Key",
-      title = "Enter your API Key"
-    )
+  if (key == "") {
+    if (rstudioapi::isAvailable() && rstudioapi::hasFun("askForSecret")) {
+      key <- rstudioapi::askForSecret(
+        name = "OpenAQ API",
+        message = "Enter your API Key",
+        title = "Enter your API Key"
+      )
+    } else {
+      stop(
+        "No API key found. Set the OPENAQ_API_KEY environment variable.\n",
+        "See ?set_api_key for details.",
+        call. = FALSE
+      )
+    }
   }
   key
 }
@@ -212,6 +220,6 @@ fetch <- function(
     attr(results, "meta") <- x$meta
     attr(results, "params") <- query_params
     results <- add_headers(results, res)
-    return(results)
+    results
   }
 }

@@ -1,9 +1,9 @@
 #' Get a single owner from owners resource.
 #'
-#' @param owners_id An integer.
+#' @param owners_id An integer representing the OpenAQ owners_id.
 #' @param as_data_frame A logical for toggling whether to return results as
-#' data frame or list default is `TRUE`.
-#' @param dry_run A logical for toggling a dry run of the request, defaults to
+#' data frame or list, default is `TRUE`.
+#' @param dry_run A logical for toggling a dry run of the request, default is
 #' `FALSE`.
 #' @param rate_limit A logical for toggling automatic rate limiting based on
 #' rate limit headers, default is `FALSE`.
@@ -31,29 +31,29 @@ get_owner <- function(
   if (isTRUE(dry_run)) {
     return(data)
   }
-  if (as_data_frame == TRUE) {
-    return(as.data.frame.openaq_owners_list(structure(
-      data,
-      class = c("openaq_owners_list", "list")
-    )))
-  } else {
-    return(structure(
+  if (isTRUE(as_data_frame)) {
+    as.data.frame.openaq_owners_list(structure(
       data,
       class = c("openaq_owners_list", "list")
     ))
+  } else {
+    structure(
+      data,
+      class = c("openaq_owners_list", "list")
+    )
   }
 }
 
 
 #' Get a list of owners from the owners resource.
 #'
-#' @param order_by A string.
-#' @param sort_order A string.
-#' @param limit An integer.
-#' @param page An integer.
+#' @param order_by A string specifying the field to order results by.
+#' @param sort_order A string specifying sort direction, either `"asc"` or `"desc"`.
+#' @param limit An integer specifying the maximum number of results to return, default is `100`.
+#' @param page An integer specifying the page number for paginated results, default is `1`.
 #' @param as_data_frame A logical for toggling whether to return results as
-#' data frame or list default is `TRUE`.
-#' @param dry_run A logical for toggling a dry run of the request, defaults to
+#' data frame or list, default is `TRUE`.
+#' @param dry_run A logical for toggling a dry run of the request, default is
 #' `FALSE`.
 #' @param rate_limit A logical for toggling automatic rate limiting based on
 #' rate limit headers, default is `FALSE`.
@@ -98,22 +98,22 @@ list_owners <- function(
   if (isTRUE(dry_run)) {
     return(data)
   }
-  if (as_data_frame == TRUE) {
-    return(as.data.frame.openaq_owners_list(structure(
-      data,
-      class = c("openaq_owners_list", "list")
-    )))
-  } else {
-    return(structure(
+  if (isTRUE(as_data_frame)) {
+    as.data.frame.openaq_owners_list(structure(
       data,
       class = c("openaq_owners_list", "list")
     ))
+  } else {
+    structure(
+      data,
+      class = c("openaq_owners_list", "list")
+    )
   }
 }
 
 #' Method for converting openaq_owners_list to data frame.
 #'
-#' @param x A list of countries as returned from list_owners.
+#' @param x A list of owners as returned from list_owners.
 #' @param row.names `NULL` or a character vector giving the row names for the
 #' data frame. Missing values are not allowed.
 #' @param optional logical. If TRUE, setting row names and converting column
@@ -127,8 +127,8 @@ list_owners <- function(
 #' @export
 #'
 #' @examplesIf interactive()
-#' instruments <- list_instruments()
-#' openaq_owners_list.as.data.frame(instruments)
+#' owners <- list_owners(as_data_frame = FALSE)
+#' as.data.frame(owners)
 #'
 as.data.frame.openaq_owners_list <- function(x, row.names = NULL, optional = FALSE, ...) { # nolint: object_name_linter
   tbl <- do.call(rbind, lapply(x, function(rw) {
@@ -139,7 +139,7 @@ as.data.frame.openaq_owners_list <- function(x, row.names = NULL, optional = FAL
   }))
   tbl$id <- as.numeric(tbl$id)
   attr(tbl, "meta") <- attr(x, "meta")
-  return(structure(tbl,
+  structure(tbl,
     class = c("openaq_owners_data.frame", "data.frame")
-  ))
+  )
 }

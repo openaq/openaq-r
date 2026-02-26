@@ -7,7 +7,7 @@
 \method{as.data.frame}{openaq_instruments_list}(x, row.names = NULL, optional = FALSE, ...)
 }
 \arguments{
-\item{x}{A list of countries as returned from list_instruments.}
+\item{x}{A list of instruments as returned from list_instruments.}
 
 \item{row.names}{\code{NULL} or a character vector giving the row names for the
 data frame. Missing values are not allowed.}
@@ -26,6 +26,6 @@ Method for converting openaq_instruments_list to data frame.
 \examples{
 \dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 instruments <- list_instruments(as_data_frame = FALSE)
-openaq_instruments_list.as.data.frame(instruments)
+as.data.frame(instruments)
 \dontshow{\}) # examplesIf}
 }

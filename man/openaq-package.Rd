@@ -4,11 +4,11 @@
 \name{openaq-package}
 \alias{openaq}
 \alias{openaq-package}
-\title{openaq: OpenAQ API Client}
+\title{openaq: Access Air Quality Data from the OpenAQ API}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-An R package for interacting with the OpenAQ API \url{https://openaq.org/}.
+Provides an interface to the OpenAQ API \url{https://openaq.org/}, a platform for real-time and historical air quality data from around the world. Users can retrieve measurement data, metadata for sensors and locations for air quality research and monitoring.
 }
 \seealso{
 Useful links:
@@ -20,7 +20,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Russ Biggs \email{russ@openaq.org}
+\strong{Maintainer}: Russ Biggs \email{russ@openaq.org} (\href{https://orcid.org/0009-0008-0777-8479}{ORCID})
 
 Authors:
 \itemize{
@@ -29,6 +29,7 @@ Authors:
 
 Other contributors:
 \itemize{
+  \item Francesca Mills [contributor]
   \item OpenAQ \email{dev@openaq.org} [copyright holder, funder]
 }
 

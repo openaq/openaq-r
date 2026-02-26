@@ -7,7 +7,7 @@
 \method{as.data.frame}{openaq_owners_list}(x, row.names = NULL, optional = FALSE, ...)
 }
 \arguments{
-\item{x}{A list of countries as returned from list_owners.}
+\item{x}{A list of owners as returned from list_owners.}
 
 \item{row.names}{\code{NULL} or a character vector giving the row names for the
 data frame. Missing values are not allowed.}
@@ -25,7 +25,7 @@ Method for converting openaq_owners_list to data frame.
 }
 \examples{
 \dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-instruments <- list_instruments()
-openaq_owners_list.as.data.frame(instruments)
+owners <- list_owners(as_data_frame = FALSE)
+as.data.frame(owners)
 \dontshow{\}) # examplesIf}
 }

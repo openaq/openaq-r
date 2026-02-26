@@ -1,9 +1,9 @@
 #' Get a single sensor from sensors resource.
 #'
-#' @param sensors_id An integer.
+#' @param sensors_id An integer representing the OpenAQ sensors_id.
 #' @param as_data_frame A logical for toggling whether to return results as
-#' data frame or list default is `TRUE`.
-#' @param dry_run A logical for toggling a dry run of the request, defaults to
+#' data frame or list, default is `TRUE`.
+#' @param dry_run A logical for toggling a dry run of the request, default is
 #' `FALSE`.
 #' @param rate_limit A logical for toggling automatic rate limiting based on
 #' rate limit headers, default is `FALSE`.
@@ -31,25 +31,25 @@ get_sensor <- function(
   if (isTRUE(dry_run)) {
     return(data)
   }
-  if (as_data_frame == TRUE) {
-    return(as.data.frame.openaq_sensors_list(structure(
-      data,
-      class = c("openaq_sensors_list", "list")
-    )))
-  } else {
-    return(structure(
+  if (isTRUE(as_data_frame)) {
+    as.data.frame.openaq_sensors_list(structure(
       data,
       class = c("openaq_sensors_list", "list")
     ))
+  } else {
+    structure(
+      data,
+      class = c("openaq_sensors_list", "list")
+    )
   }
 }
 
 #' Get a list of a location's sensors.
 #'
-#' @param locations_id An integer.
+#' @param locations_id An integer representing the OpenAQ locations_id.
 #' @param as_data_frame A logical for toggling whether to return results as
-#' data frame or list default is `TRUE`.
-#' @param dry_run A logical for toggling a dry run of the request, defaults to
+#' data frame or list, default is `TRUE`.
+#' @param dry_run A logical for toggling a dry run of the request, default is
 #' `FALSE`.
 #' @param rate_limit A logical for toggling automatic rate limiting based on
 #' rate limit headers, default is `FALSE`.
@@ -77,22 +77,22 @@ list_location_sensors <- function(
   if (isTRUE(dry_run)) {
     return(data)
   }
-  if (as_data_frame == TRUE) {
-    return(as.data.frame.openaq_sensors_list(structure(
-      data,
-      class = c("openaq_sensors_list", "list")
-    )))
-  } else {
-    return(structure(
+  if (isTRUE(as_data_frame)) {
+    as.data.frame.openaq_sensors_list(structure(
       data,
       class = c("openaq_sensors_list", "list")
     ))
+  } else {
+    structure(
+      data,
+      class = c("openaq_sensors_list", "list")
+    )
   }
 }
 
 #' Method for converting openaq_sensors_list to data frame.
 #'
-#' @param x A list of sensors as returned from get_sensor
+#' @param x A list of sensors as returned from get_sensor or list_location_sensors.
 #' @param row.names `NULL` or a character vector giving the row names for the
 #' data frame. Missing values are not allowed.
 #' @param optional logical. If TRUE, setting row names and converting column
@@ -100,14 +100,14 @@ list_location_sensors <- function(
 #' base package as.data.frame() methods use optional only for column names
 #' treatment, basically with the meaning of data.frame(*, check.names =
 #' !optional). See also the make.names argument of the matrix method.
-#' @param ... additional arguments to be passed to or from methods.#'
+#' @param ... additional arguments to be passed to or from methods.
 #'
 #' @export as.data.frame.openaq_sensors_list
 #' @export
 #'
 #' @examplesIf interactive()
-#' sensor <- get_sensor(as_frame_frame = FALSE)
-#' openaq_sensors_list.as.data.frame(sensor)
+#' sensor <- get_sensor(as_data_frame = FALSE)
+#' as.data.frame(sensor)
 #'
 as.data.frame.openaq_sensors_list <- function(x, row.names = NULL, optional = FALSE, ...) { # nolint: object_name_linter
   tbl <- do.call(rbind, lapply(x, function(rw) {
@@ -149,7 +149,7 @@ as.data.frame.openaq_sensors_list <- function(x, row.names = NULL, optional = FA
   tbl$max <- as.numeric(tbl$max)
   tbl$avg <- as.numeric(tbl$avg)
   attr(tbl, "meta") <- attr(x, "meta")
-  return(structure(tbl,
+  structure(tbl,
     class = c("openaq_sensors_data.frame", "data.frame")
-  ))
+  )
 }

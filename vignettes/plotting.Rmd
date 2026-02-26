@@ -20,7 +20,9 @@ extending the `base::plot` function.
 To visualize locations on a map, call the `plot` function after returning a data
 frame from the `list_locations` function call. A basic basemap with national
 boundaries is included based on the [Natural Earth dataset](https://www.naturalearthdata.com/)
-via the [`maps`](https://cran.r-project.org/web/packages/maps/index.html) package.
+via the [`maps`](https://CRAN.R-project.org/package=maps) package. If `maps` is
+not  installed, only the data points will be plotted. Install it with 
+`install.packages("maps")` to include the world boundary overlay.
 
 
 ``` r

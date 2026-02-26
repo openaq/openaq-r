@@ -2,7 +2,7 @@
 % Please edit documentation in R/locations.R
 \name{as.data.frame.openaq_locations_list}
 \alias{as.data.frame.openaq_locations_list}
-\title{Method for converting to data frame}
+\title{Method for converting openaq_locations_list to data frame.}
 \usage{
 \method{as.data.frame}{openaq_locations_list}(x, row.names = NULL, optional = FALSE, ...)
 }
@@ -21,11 +21,11 @@ treatment, basically with the meaning of data.frame(*, check.names =
 \item{...}{additional arguments to be passed to or from methods.}
 }
 \description{
-Method for converting to data frame
+Method for converting openaq_locations_list to data frame.
 }
 \examples{
 \dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-loc <- list_locations()
-write.csv(loc)
+loc <- list_locations(as_data_frame = FALSE)
+as.data.frame(loc)
 \dontshow{\}) # examplesIf}
 }

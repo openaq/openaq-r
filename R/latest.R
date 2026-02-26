@@ -1,12 +1,12 @@
 #' Get the latest measurements by locations_id.
 #'
-#' @param locations_id An integer.
-#' @param datetime_min A string.
-#' @param limit An integer.
-#' @param page An integer.
+#' @param locations_id An integer representing the OpenAQ locations_id.
+#' @param datetime_min A string specifying the minimum datetime for filtering results, default is `NULL`.
+#' @param limit An integer specifying the maximum number of results to return, default is `100`.
+#' @param page An integer specifying the page number for paginated results, default is `1`.
 #' @param as_data_frame A logical for toggling whether to return results as
-#' data frame or list default is `TRUE`.
-#' @param dry_run A logical for toggling a dry run of the request, defaults to
+#' data frame or list, default is `TRUE`.
+#' @param dry_run A logical for toggling a dry run of the request, default is
 #' `FALSE`.
 #' @param rate_limit A logical for toggling automatic rate limiting based on
 #' rate limit headers, default is `FALSE`.
@@ -44,32 +44,32 @@ list_location_latest <- function(
     page = page
   )
   path <- paste("locations", locations_id, "latest", sep = "/")
-  data <- fetch(path, params_list, dry_run = dry_run)
+  data <- fetch(path, params_list, dry_run = dry_run, rate_limit = rate_limit, api_key = api_key)
   if (isTRUE(dry_run)) {
     return(data)
   }
-  if (as_data_frame == TRUE) {
-    invisible(as.data.frame.openaq_latest_list(structure(
-      data,
-      class = c("openaq_latest_list", "list")
-    )))
-  } else {
-    invisible(structure(
+  if (isTRUE(as_data_frame)) {
+    as.data.frame.openaq_latest_list(structure(
       data,
       class = c("openaq_latest_list", "list")
     ))
+  } else {
+    structure(
+      data,
+      class = c("openaq_latest_list", "list")
+    )
   }
 }
 
 #' Get the latest measurements by parameters_id.
 #'
-#' @param parameters_id An integer.
-#' @param datetime_min A string.
-#' @param limit An integer.
-#' @param page An integer.
+#' @param parameters_id An integer representing the OpenAQ parameters_id
+#' @param datetime_min A string specifying the minimum datetime for filtering results, default is `NULL`.
+#' @param limit An integer specifying the maximum number of results to return, default is `100`.
+#' @param page An integer specifying the page number for paginated results, default is `1`.
 #' @param as_data_frame A logical for toggling whether to return results as
-#' data frame or list default is `TRUE`.
-#' @param dry_run A logical for toggling a dry run of the request, defaults to
+#' data frame or list, default is `TRUE`.
+#' @param dry_run A logical for toggling a dry run of the request, default is
 #' `FALSE`.
 #' @param rate_limit A logical for toggling automatic rate limiting based on
 #' rate limit headers, default is `FALSE`.
@@ -106,27 +106,28 @@ list_parameter_latest <- function(
     page = page
   )
   path <- paste("parameters", parameters_id, "latest", sep = "/")
-  data <- fetch(path, params_list)
+  data <- fetch(path, params_list, dry_run = dry_run, rate_limit = rate_limit, api_key = api_key)
   if (isTRUE(dry_run)) {
     return(data)
   }
   if (isTRUE(as_data_frame)) {
-    return(as.data.frame.openaq_latest_list(structure(
-      data,
-      class = c("openaq_latest_list", "list")
-    )))
-  } else {
-    return(structure(
+    as.data.frame.openaq_latest_list(structure(
       data,
       class = c("openaq_latest_list", "list")
     ))
+  } else {
+    structure(
+      data,
+      class = c("openaq_latest_list", "list")
+    )
   }
 }
 
 
 #' Method for converting openaq_latest_list to data frame.
 #'
-#' @param x A list of countries as returned from list_instruments.
+#' @param x A list of latest measurements as returned from list_location_latest
+#' or list_parameter_latest.
 #' @param row.names `NULL` or a character vector giving the row names for the
 #' data frame. Missing values are not allowed.
 #' @param optional logical. If TRUE, setting row names and converting column
@@ -140,8 +141,8 @@ list_parameter_latest <- function(
 #' @export
 #'
 #' @examplesIf interactive()
-#' instruments <- list_instruments(as_data_frame = FALSE)
-#' openaq_latest_list.as.data.frame(instruments)
+#' latest <- list_location_latest(2178, as_data_frame = FALSE)
+#' as.data.frame(latest)
 #'
 as.data.frame.openaq_latest_list <- function(x, row.names = NULL, optional = FALSE, ...) { # nolint: object_name_linter
   tbl <- do.call(rbind, lapply(x, function(rw) {

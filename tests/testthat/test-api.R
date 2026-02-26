@@ -23,12 +23,32 @@ test_that("get_api_key returns value", {
 
 
 test_that("get_api_key returns empty value", {
-  withr::with_envvar(
-    new = c("OPENAQ_API_KEY" = NA),
-    expect_equal(get_api_key(), "")
-  )
+  withr::with_envvar(c("OPENAQ_API_KEY" = ""), {
+    mockery::stub(get_api_key, "rstudioapi::isAvailable", FALSE)
+    expect_error(
+      get_api_key(),
+      "No API key found"
+    )
+  })
 })
 
+test_that("get_api_key prompts via rstudioapi when in RStudio and key is missing", {
+  withr::local_envvar(c("OPENAQ_API_KEY" = ""))
+  mockery::stub(get_api_key, "rstudioapi::isAvailable", TRUE)
+  mockery::stub(get_api_key, "rstudioapi::hasFun", TRUE)
+  mockery::stub(get_api_key, "rstudioapi::askForSecret", "foo_bar")
+  result <- get_api_key()
+  expect_equal(result, "foo_bar")
+})
+
+test_that("get_api_key stops with error when key is missing and not in RStudio", {
+  withr::local_envvar(c("OPENAQ_API_KEY" = ""))
+  mockery::stub(get_api_key, "rstudioapi::isAvailable", FALSE)
+  expect_error(
+    get_api_key(),
+    "No API key found"
+  )
+})
 
 # set_base_url
 
@@ -150,7 +170,7 @@ test_that("openaq_request throws error", {
   withr::with_envvar(
     new = c("OPENAQ_API_KEY" = "test-api-key-0123456789-0123456789-0123456789-0123456789-0123456"),
     {
-      webmockr::stub_request("get", "https://api.openaq.org/v3/countries") %>%
+      webmockr::stub_request("get", "https://api.openaq.org/v3/countries") |>
         webmockr::to_return(body = "failure", status = 401)
       res <- openaq_request("countries", list())
       expect_error(res:status_code)
@@ -166,7 +186,7 @@ test_that("openaq_request headers are correct", {
   withr::with_envvar(
     new = c("OPENAQ_API_KEY" = "test-api-key-0123456789-0123456789-0123456789-0123456789-0123456"),
     {
-      webmockr::stub_request("get", "https://api.openaq.org/v3/countries") %>%
+      webmockr::stub_request("get", "https://api.openaq.org/v3/countries") |>
         webmockr::to_return(body = "", status = 200)
       res <- openaq_request("countries", list())
 

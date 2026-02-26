@@ -1,4 +1,4 @@
-.github
+^\.github$
 LICENSE.md
 scripts
 CONTRIBUTING.md
@@ -7,9 +7,12 @@ CONTRIBUTING.md
 ^pkgdown$
 .venv_altdoc
 ^altdoc$
-^\.github$
-pkgdown/
 .lintr
 CHANGELOG.md
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^DEVELOPMENT\.md$
+^vignettes/README\.md$
+^vignettes/precompile\.R$
+^vignettes/figure$
+^cran-comments\.md$

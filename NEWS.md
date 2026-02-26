@@ -1,11 +1,56 @@
-# openaq development version
+# openaq v1.0.0 - 2026-02-XX
+
+## Added
+
+- Added `validate_data_rollup_compat()` to validate compatibility between `data`
+  and `rollup` parameters in `list_sensor_measurements()`.
+- Added tests for `list_sensor_measurements()`, `get_period_field()`,
+  `get_summary_field()`, `validate_data_rollup_compat()`, and
+  `transform_vector_to_string()`.
+- Added `validate_date()` and `transform_date()` to support date-only query
+  parameters when `data` is `"days"` or larger. Includes tests for both 
+  functions.
+
+## Changed
+
+- Moved `maps` from `Imports` to `Suggests`. World boundary overlay in
+  `plot.openaq_locations_data.frame()` is now optional. A message is displayed
+  if `maps` is not installed.
+- Moved `rstudioapi` from `Imports` to `Suggests`. API key prompting in RStudio
+  is now optional with a fallback error message when running outside RStudio.
+- Removed `purrr` and `graphics` and `utils` from `Imports`.
+- Improved parameter documentation across all resource functions.
+- Standardized `isTRUE()` usage for `as_data_frame` checks across all resource
+  functions.
+- Updated `validate_datetime()` to accept a `name` parameter.
+- Updated `list_sensor_measurements()` to use `validate_date()` or
+  `validate_datetime()` based on the `data` argument. Tests updated accordingly.
+
+## Fixed
+
+- Fixed missing `dry_run` early return in `list_manufacturer_instruments()`.
+- Fixed missing `rate_limit` and `api_key` arguments in `fetch()` calls in
+  `list_location_latest()` and `list_parameter_latest()`.
+- Fixed wrong class assignment `openaq_licenses_data.frame` in
+  `as.data.frame.openaq_manufacturers_list()`.
+- Fixed `tbl$avg <- as.numeric(tbl$sd)` typo in
+  `as.data.frame.openaq_measurements_list()`, column is now correctly assigned
+  to `tbl$sd`.
+- Fixed incorrect example function names in `as.data.frame` methods across all
+  resource files.
+- Fixed `y` parameter missing default `NULL` in `plot.openaq_measurements_data.frame()`
+  and `plot.openaq_measurements_list()`.
+
+## Removed
+
+- Removed `list_location_measurements()` function.
 
 # openaq v0.9.0 - 2025-11-21
 
 ## Added
 
-- added additional validation to validate API key.
-- added additional tests
+- Added additional validation to validate API key.
+- Added additional tests
 
 # openaq v0.8.0 - 2025-10-10
 
@@ -18,7 +63,7 @@
 
 ## Changed
 
-- *BREAKING CHANGES*
+### BREAKING CHANGES
 - renamed `get_location_sensors` to `list_locations_sensors`
 - updated minimum package version of httr2 to v1.2.0
 - updated minimum package version of vcr to 2.0.0

@@ -26,6 +26,6 @@ Method for converting openaq_parameters_list to data frame.
 \examples{
 \dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 parameters <- list_parameters()
-openaq_parameters_list.as.data.frame(parameters)
+as.data.frame(parameters)
 \dontshow{\}) # examplesIf}
 }

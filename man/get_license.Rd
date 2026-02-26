@@ -2,7 +2,7 @@
 % Please edit documentation in R/licenses.R
 \name{get_license}
 \alias{get_license}
-\title{get a single license from the licenses resource.}
+\title{Get a single license from the licenses resource.}
 \usage{
 get_license(
   licenses_id,
@@ -13,12 +13,12 @@ get_license(
 )
 }
 \arguments{
-\item{licenses_id}{An integer.}
+\item{licenses_id}{An integer representing the OpenAQ licenses_id.}
 
 \item{as_data_frame}{A logical for toggling whether to return results as
-data frame or list default is \code{TRUE}.}
+data frame or list, default is \code{TRUE}.}
 
-\item{dry_run}{A logical for toggling a dry run of the request, defaults to
+\item{dry_run}{A logical for toggling a dry run of the request, default is
 \code{FALSE}.}
 
 \item{rate_limit}{A logical for toggling automatic rate limiting based on
@@ -27,10 +27,10 @@ rate limit headers, default is \code{FALSE}.}
 \item{api_key}{A valid OpenAQ API key string, default is \code{NULL}.}
 }
 \value{
-A data frame.
+A data frame or a list of the results.
 }
 \description{
-get a single license from the licenses resource.
+Get a single license from the licenses resource.
 }
 \examples{
 \dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}

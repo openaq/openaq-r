@@ -13,12 +13,12 @@ get_owner(
 )
 }
 \arguments{
-\item{owners_id}{An integer.}
+\item{owners_id}{An integer representing the OpenAQ owners_id.}
 
 \item{as_data_frame}{A logical for toggling whether to return results as
-data frame or list default is \code{TRUE}.}
+data frame or list, default is \code{TRUE}.}
 
-\item{dry_run}{A logical for toggling a dry run of the request, defaults to
+\item{dry_run}{A logical for toggling a dry run of the request, default is
 \code{FALSE}.}
 
 \item{rate_limit}{A logical for toggling automatic rate limiting based on
