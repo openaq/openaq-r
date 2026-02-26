@@ -1,6 +1,7 @@
 # Helper for plotting locations on map.
 
-Helper for plotting locations on map.
+Plots location coordinates. If the `maps` package is installed, a world
+boundary overlay is added. Install with `install.packages("maps")`.
 
 ## Usage
 
@@ -31,6 +32,6 @@ plot(x, y = NULL, ...)
 ``` r
 if (FALSE) { # interactive()
 df <- list_locations(limit = 100)
-plot(df, pch = 19, col = df$provider)
+plot(df, pch = 19, col = df$provider_name)
 }
 ```

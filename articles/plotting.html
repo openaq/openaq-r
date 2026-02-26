@@ -26,7 +26,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">openaq</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.9.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -84,8 +84,10 @@ extending the <code><a href="https://rdrr.io/r/base/plot.html" class="external-l
 after returning a data frame from the <code>list_locations</code>
 function call. A basic basemap with national boundaries is included
 based on the <a href="https://www.naturalearthdata.com/" class="external-link">Natural Earth
-dataset</a> via the <a href="https://cran.r-project.org/web/packages/maps/index.html" class="external-link"><code>maps</code></a>
-package.</p>
+dataset</a> via the <a href="https://CRAN.R-project.org/package=maps" class="external-link"><code>maps</code></a>
+package. If <code>maps</code> is not installed, only the data points
+will be plotted. Install it with <code>install.packages("maps")</code>
+to include the world boundary overlay.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">locations</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/list_locations.html">list_locations</a></span><span class="op">(</span></span>
 <span>  bbox <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>xmin <span class="op">=</span> <span class="fl">6.291990</span>, ymin <span class="op">=</span> <span class="fl">32.823129</span>, xmax <span class="op">=</span> <span class="fl">37.932615</span>, ymax <span class="op">=</span> <span class="fl">45.181129</span><span class="op">)</span>,</span>

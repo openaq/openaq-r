@@ -18,16 +18,16 @@ get_provider(
 
 - providers_id:
 
-  An integer.
+  An integer representing the OpenAQ providers_id.
 
 - as_data_frame:
 
-  A logical for toggling whether to return results as data frame or list
-  default is `TRUE`.
+  A logical for toggling whether to return results as data frame or
+  list, default is `TRUE`.
 
 - dry_run:
 
-  A logical for toggling a dry run of the request, defaults to `FALSE`.
+  A logical for toggling a dry run of the request, default is `FALSE`.
 
 - rate_limit:
 

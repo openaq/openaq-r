@@ -9,9 +9,9 @@
 - [`as.data.frame(`*`<openaq_latest_list>`*`)`](https://openaq.github.io/openaq-r/reference/as.data.frame.openaq_latest_list.md)
   : Method for converting openaq_latest_list to data frame.
 - [`as.data.frame(`*`<openaq_licenses_list>`*`)`](https://openaq.github.io/openaq-r/reference/as.data.frame.openaq_licenses_list.md)
-  : Method for converting openaq_instruments_list to data frame.
+  : Method for converting openaq_licenses_list to data frame.
 - [`as.data.frame(`*`<openaq_locations_list>`*`)`](https://openaq.github.io/openaq-r/reference/as.data.frame.openaq_locations_list.md)
-  : Method for converting to data frame
+  : Method for converting openaq_locations_list to data frame.
 - [`as.data.frame(`*`<openaq_manufacturers_list>`*`)`](https://openaq.github.io/openaq-r/reference/as.data.frame.openaq_manufacturers_list.md)
   : Method for converting openaq_manufacturers_list to data frame.
 - [`as.data.frame(`*`<openaq_measurements_list>`*`)`](https://openaq.github.io/openaq-r/reference/as.data.frame.openaq_measurements_list.md)
@@ -31,7 +31,7 @@
 - [`get_instrument()`](https://openaq.github.io/openaq-r/reference/get_instrument.md)
   : Get a single instrument from the instruments resource.
 - [`get_license()`](https://openaq.github.io/openaq-r/reference/get_license.md)
-  : get a single license from the licenses resource.
+  : Get a single license from the licenses resource.
 - [`get_location()`](https://openaq.github.io/openaq-r/reference/get_location.md)
   : Get a single location from the locations resource.
 - [`get_manufacturer()`](https://openaq.github.io/openaq-r/reference/get_manufacturer.md)
@@ -49,13 +49,11 @@
 - [`list_instruments()`](https://openaq.github.io/openaq-r/reference/list_instruments.md)
   : Get a list of instruments from the instruments resource.
 - [`list_licenses()`](https://openaq.github.io/openaq-r/reference/list_licenses.md)
-  : get a list of licenses from the licenses resource.
+  : Get a list of licenses from the licenses resource.
 - [`list_location_latest()`](https://openaq.github.io/openaq-r/reference/list_location_latest.md)
   : Get the latest measurements by locations_id.
-- [`list_location_measurements()`](https://openaq.github.io/openaq-r/reference/list_location_measurements.md)
-  : Get a list of measurements by locations_id.
 - [`list_location_sensors()`](https://openaq.github.io/openaq-r/reference/list_location_sensors.md)
-  : Get a location's sensors.
+  : Get a list of a location's sensors.
 - [`list_locations()`](https://openaq.github.io/openaq-r/reference/list_locations.md)
   : Get a list of locations from the locations resource.
 - [`list_manufacturer_instruments()`](https://openaq.github.io/openaq-r/reference/list_manufacturer_instruments.md)

@@ -1,8 +1,8 @@
 # openaq R client
 
-[![Project Status: WIP – Initial development is in progress, but there
-has not yet been a stable, usable release suitable for the
-public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+[![Project Status: Active – The project has reached a stable, usable
+state and is being actively
+developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![R-CMD-check](https://github.com/openaq/openaq-r/actions/workflows/check.yaml/badge.svg)](https://github.com/openaq/openaq-r/actions/workflows/check.yaml)
 [![Codecov test
 coverage](https://codecov.io/gh/openaq/openaq-r/graph/badge.svg)](https://app.codecov.io/gh/openaq/openaq-r)
@@ -12,8 +12,8 @@ An R package for interacting with the OpenAQ API.
 ## Installation
 
 The package is available to install through Github. Use the
-`pkg_install` command from
-[pak](https://cran.r-project.org/web/packages/pak/index.html) package.
+`pkg_install` command from [pak](https://CRAN.R-project.org/package=pak)
+package.
 
 ``` r
 install.packages("pak")
@@ -61,26 +61,11 @@ This returns a data frame that will look something like:
 
 ## Development
 
-Contributions are welcome. See the [contribution
-guide](https://openaq.github.io/openaq-r/CONTRIBUTING.md) for general
-information about contributing to the package.
-
-Specific guidelines for contributions the openaq package:
-
-- Code contributions must follow lint convention using
-  [`lintr`](https://lintr.r-lib.org/), see the .lintr file for
-  specifics.
-
-- Code contributions must include unit test, iether updated or wholly
-  new, depending on the contribution. See testing
-  [README](https://openaq.github.io/openaq-r/tests/README.md) for more
-  information.
-
-- Limit new dependencies. While adding new external dependencies is not
-  out of the question, we seek to keep external dependencies at a
-  minimum. When possible use base R functionality. Code contributions
-  that rely on external dependencies should be discussed with the
-  package maintainer first.
+Contributions are welcome. See the [Development
+Guide](https://openaq.github.io/openaq-r/DEVELOPMENT.md) for setup,
+building, testing, and code style. See the [Contribution
+Guide](https://openaq.github.io/openaq-r/CONTRIBUTING.md) for general
+contribution guidelines.
 
 # Package index
 
@@ -93,9 +78,9 @@ Specific guidelines for contributions the openaq package:
 - [`as.data.frame(`*`<openaq_latest_list>`*`)`](https://openaq.github.io/openaq-r/reference/as.data.frame.openaq_latest_list.md)
   : Method for converting openaq_latest_list to data frame.
 - [`as.data.frame(`*`<openaq_licenses_list>`*`)`](https://openaq.github.io/openaq-r/reference/as.data.frame.openaq_licenses_list.md)
-  : Method for converting openaq_instruments_list to data frame.
+  : Method for converting openaq_licenses_list to data frame.
 - [`as.data.frame(`*`<openaq_locations_list>`*`)`](https://openaq.github.io/openaq-r/reference/as.data.frame.openaq_locations_list.md)
-  : Method for converting to data frame
+  : Method for converting openaq_locations_list to data frame.
 - [`as.data.frame(`*`<openaq_manufacturers_list>`*`)`](https://openaq.github.io/openaq-r/reference/as.data.frame.openaq_manufacturers_list.md)
   : Method for converting openaq_manufacturers_list to data frame.
 - [`as.data.frame(`*`<openaq_measurements_list>`*`)`](https://openaq.github.io/openaq-r/reference/as.data.frame.openaq_measurements_list.md)
@@ -115,7 +100,7 @@ Specific guidelines for contributions the openaq package:
 - [`get_instrument()`](https://openaq.github.io/openaq-r/reference/get_instrument.md)
   : Get a single instrument from the instruments resource.
 - [`get_license()`](https://openaq.github.io/openaq-r/reference/get_license.md)
-  : get a single license from the licenses resource.
+  : Get a single license from the licenses resource.
 - [`get_location()`](https://openaq.github.io/openaq-r/reference/get_location.md)
   : Get a single location from the locations resource.
 - [`get_manufacturer()`](https://openaq.github.io/openaq-r/reference/get_manufacturer.md)
@@ -133,13 +118,11 @@ Specific guidelines for contributions the openaq package:
 - [`list_instruments()`](https://openaq.github.io/openaq-r/reference/list_instruments.md)
   : Get a list of instruments from the instruments resource.
 - [`list_licenses()`](https://openaq.github.io/openaq-r/reference/list_licenses.md)
-  : get a list of licenses from the licenses resource.
+  : Get a list of licenses from the licenses resource.
 - [`list_location_latest()`](https://openaq.github.io/openaq-r/reference/list_location_latest.md)
   : Get the latest measurements by locations_id.
-- [`list_location_measurements()`](https://openaq.github.io/openaq-r/reference/list_location_measurements.md)
-  : Get a list of measurements by locations_id.
 - [`list_location_sensors()`](https://openaq.github.io/openaq-r/reference/list_location_sensors.md)
-  : Get a location's sensors.
+  : Get a list of a location's sensors.
 - [`list_locations()`](https://openaq.github.io/openaq-r/reference/list_locations.md)
   : Get a list of locations from the locations resource.
 - [`list_manufacturer_instruments()`](https://openaq.github.io/openaq-r/reference/list_manufacturer_instruments.md)

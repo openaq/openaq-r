@@ -13,7 +13,7 @@ as.data.frame(x, row.names = NULL, optional = FALSE, ...)
 
 - x:
 
-  A list of countries as returned from list_manufacturers.
+  A list of manufacturers as returned from list_manufacturers.
 
 - row.names:
 
@@ -37,7 +37,7 @@ as.data.frame(x, row.names = NULL, optional = FALSE, ...)
 
 ``` r
 if (FALSE) { # interactive()
-instruments <- list_instruments()
-openaq_instruments_list.as.data.frame(instruments)
+manufacturers <- list_manufacturers(as_data_frame = FALSE)
+as.data.frame(manufacturers)
 }
 ```

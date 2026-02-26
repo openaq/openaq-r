@@ -13,7 +13,7 @@ as.data.frame(x, row.names = NULL, optional = FALSE, ...)
 
 - x:
 
-  A list of countries as returned from list_providers.
+  A list of providers as returned from list_providers
 
 - row.names:
 
@@ -31,13 +31,13 @@ as.data.frame(x, row.names = NULL, optional = FALSE, ...)
 
 - ...:
 
-  additional arguments to be passed to or from methods.#'
+  additional arguments to be passed to or from methods.
 
 ## Examples
 
 ``` r
 if (FALSE) { # interactive()
 providers <- list_providers(as_data_frame = FALSE)
-openaq_instruments_list.as.data.frame(providers)
+as.data.frame(providers)
 }
 ```

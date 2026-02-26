@@ -13,7 +13,7 @@ as.data.frame(x, row.names = NULL, optional = FALSE, ...)
 
 - x:
 
-  A list of countries as returned from list_instruments.
+  A list of instruments as returned from list_instruments.
 
 - row.names:
 
@@ -38,6 +38,6 @@ as.data.frame(x, row.names = NULL, optional = FALSE, ...)
 ``` r
 if (FALSE) { # interactive()
 instruments <- list_instruments(as_data_frame = FALSE)
-openaq_instruments_list.as.data.frame(instruments)
+as.data.frame(instruments)
 }
 ```

@@ -13,7 +13,7 @@ as.data.frame(x, row.names = NULL, optional = FALSE, ...)
 
 - x:
 
-  A list of countries as returned from list_countries
+  A list of countries as returned from list_countries.
 
 - row.names:
 
@@ -38,6 +38,6 @@ as.data.frame(x, row.names = NULL, optional = FALSE, ...)
 ``` r
 if (FALSE) { # interactive()
 countries <- list_countries()
-openaq_countries_list.as.data.frame(countries)
+as.data.frame(countries)
 }
 ```

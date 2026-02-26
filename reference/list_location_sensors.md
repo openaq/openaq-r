@@ -1,6 +1,6 @@
-# Get a location's sensors.
+# Get a list of a location's sensors.
 
-Get a location's sensors.
+Get a list of a location's sensors.
 
 ## Usage
 
@@ -18,16 +18,16 @@ list_location_sensors(
 
 - locations_id:
 
-  An integer.
+  An integer representing the OpenAQ locations_id.
 
 - as_data_frame:
 
-  A logical for toggling whether to return results as data frame or list
-  default is `TRUE`.
+  A logical for toggling whether to return results as data frame or
+  list, default is `TRUE`.
 
 - dry_run:
 
-  A logical for toggling a dry run of the request, defaults to `FALSE`.
+  A logical for toggling a dry run of the request, default is `FALSE`.
 
 - rate_limit:
 

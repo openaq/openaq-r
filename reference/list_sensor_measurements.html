@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">openaq</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.9.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -74,44 +74,48 @@
 
 
 <dt id="arg-data">data<a class="anchor" aria-label="anchor" href="#arg-data"></a></dt>
-<dd><p>A string a data interval to return, defaults to "measurements".</p></dd>
+<dd><p>A string a data interval to return, default is "measurements".</p></dd>
 
 
 <dt id="arg-rollup">rollup<a class="anchor" aria-label="anchor" href="#arg-rollup"></a></dt>
-<dd><p>A string.</p></dd>
+<dd><p>A string representing the aggregation rollup, default is <code>NULL</code>.</p></dd>
 
 
 <dt id="arg-datetime-from">datetime_from<a class="anchor" aria-label="anchor" href="#arg-datetime-from"></a></dt>
-<dd><p>A POSIXct datetime to filter measurements</p></dd>
+<dd><p>A POSIXct datetime (when <code>data</code> is <code>"measurements"</code> or
+<code>"hours"</code>) or a Date (when <code>data</code> is <code>"days"</code> or larger) to filter from,
+default is <code>NULL</code>.</p></dd>
 
 
 <dt id="arg-datetime-to">datetime_to<a class="anchor" aria-label="anchor" href="#arg-datetime-to"></a></dt>
-<dd><p>A POSIXct datetime to filter measurements</p></dd>
+<dd><p>A POSIXct datetime (when <code>data</code> is <code>"measurements"</code> or
+<code>"hours"</code>) or a Date (when <code>data</code> is <code>"days"</code> or larger) to filter to,
+default is <code>NULL</code>.</p></dd>
 
 
 <dt id="arg-order-by">order_by<a class="anchor" aria-label="anchor" href="#arg-order-by"></a></dt>
-<dd><p>A string.</p></dd>
+<dd><p>A string representing the field to order by, default is <code>NULL</code>.</p></dd>
 
 
 <dt id="arg-sort-order">sort_order<a class="anchor" aria-label="anchor" href="#arg-sort-order"></a></dt>
-<dd><p>A string.</p></dd>
+<dd><p>A string, either "asc" or "desc", default is <code>NULL</code>.</p></dd>
 
 
 <dt id="arg-limit">limit<a class="anchor" aria-label="anchor" href="#arg-limit"></a></dt>
-<dd><p>An integer.</p></dd>
+<dd><p>An integer representing the number of results per page.</p></dd>
 
 
 <dt id="arg-page">page<a class="anchor" aria-label="anchor" href="#arg-page"></a></dt>
-<dd><p>An integer.</p></dd>
+<dd><p>An integer representing the page number.</p></dd>
 
 
 <dt id="arg-as-data-frame">as_data_frame<a class="anchor" aria-label="anchor" href="#arg-as-data-frame"></a></dt>
 <dd><p>A logical for toggling whether to return results as
-data frame or list default is <code>TRUE</code>.</p></dd>
+data frame or list, default is <code>TRUE</code>.</p></dd>
 
 
 <dt id="arg-dry-run">dry_run<a class="anchor" aria-label="anchor" href="#arg-dry-run"></a></dt>
-<dd><p>A logical for toggling a dry run of the request, defaults to
+<dd><p>A logical for toggling a dry run of the request, default is
 <code>FALSE</code>.</p></dd>
 
 

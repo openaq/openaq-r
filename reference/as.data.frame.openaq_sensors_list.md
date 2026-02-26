@@ -13,7 +13,8 @@ as.data.frame(x, row.names = NULL, optional = FALSE, ...)
 
 - x:
 
-  A list of sensors as returned from get_sensor
+  A list of sensors as returned from get_sensor or
+  list_location_sensors.
 
 - row.names:
 
@@ -31,13 +32,13 @@ as.data.frame(x, row.names = NULL, optional = FALSE, ...)
 
 - ...:
 
-  additional arguments to be passed to or from methods.#'
+  additional arguments to be passed to or from methods.
 
 ## Examples
 
 ``` r
 if (FALSE) { # interactive()
-sensor <- get_sensor(as_frame_frame = FALSE)
-openaq_sensors_list.as.data.frame(sensor)
+sensor <- get_sensor(as_data_frame = FALSE)
+as.data.frame(sensor)
 }
 ```

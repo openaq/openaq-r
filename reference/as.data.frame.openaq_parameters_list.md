@@ -38,6 +38,6 @@ as.data.frame(x, row.names = NULL, optional = FALSE, ...)
 ``` r
 if (FALSE) { # interactive()
 parameters <- list_parameters()
-openaq_parameters_list.as.data.frame(parameters)
+as.data.frame(parameters)
 }
 ```

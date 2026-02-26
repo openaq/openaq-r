@@ -13,7 +13,7 @@ as.data.frame(x, row.names = NULL, optional = FALSE, ...)
 
 - x:
 
-  A list of countries as returned from list_owners.
+  A list of owners as returned from list_owners.
 
 - row.names:
 
@@ -37,7 +37,7 @@ as.data.frame(x, row.names = NULL, optional = FALSE, ...)
 
 ``` r
 if (FALSE) { # interactive()
-instruments <- list_instruments()
-openaq_owners_list.as.data.frame(instruments)
+owners <- list_owners(as_data_frame = FALSE)
+as.data.frame(owners)
 }
 ```

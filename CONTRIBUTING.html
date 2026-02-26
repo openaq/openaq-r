@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="index.html">openaq</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.9.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,52 +43,48 @@
 
 <div id="contributing-to-the-openaq-r-client" class="section level1">
 
-<p>We welcome contributions to the OpenAQ R client! Here’s a guide on how to contribute effectively:</p>
+<p>We welcome contributions to the OpenAQ R client! Here’s a guide on how to contribute effectively.</p>
 <div class="section level2">
 <h2 id="code-of-conduct">Code of Conduct<a class="anchor" aria-label="anchor" href="#code-of-conduct"></a></h2>
-<p>Please review and adhere to our Code of Conduct: <a href="https://github.com/openaq/.github/blob/main/CODE_OF_CONDUCT.md" class="external-link">https://github.com/openaq/.github/blob/main/CODE_OF_CONDUCT.md</a>]</p>
+<p>Please review and adhere to our Code of Conduct: <a href="https://github.com/openaq/.github/blob/main/CODE_OF_CONDUCT.md" class="external-link">https://github.com/openaq/.github/blob/main/CODE_OF_CONDUCT.md</a> and organizational contribution guide: <a href="https://github.com/openaq/.github/blob/main/CONTRIBUTING.md" class="external-link">https://github.com/openaq/.github/blob/main/CONTRIBUTING.md</a></p>
+</div>
+<div class="section level2">
+<h2 id="getting-started">Getting Started<a class="anchor" aria-label="anchor" href="#getting-started"></a></h2>
+<p>Before contributing, please read the <a href="DEVELOPMENT.html">Development Guide</a> for instructions on setting up the package locally, running tests, and checking code style.</p>
 </div>
 <div class="section level2">
 <h2 id="reporting-issues-and-questions">Reporting Issues and Questions<a class="anchor" aria-label="anchor" href="#reporting-issues-and-questions"></a></h2>
-<ol style="list-style-type: decimal"><li>Search for Existing Issues: Before creating a new issue, search the existing issues to see if your problem has already been reported.</li>
-<li>Use Issue Templates: When reporting bugs or proposing features, please use one of the provided issue templates:
-<ul><li>Bug Report: Clearly describe the bug, including steps to reproduce it.</li>
-<li>Feature Request: Explain the desired feature and its benefits.</li>
-</ul></li>
-</ol><div class="section level3">
-<h3 id="for-general-questions">For General Questions<a class="anchor" aria-label="anchor" href="#for-general-questions"></a></h3>
-<p>The issue tracker is primarily for reporting bugs and requesting features. For general questions, discussions, or seeking help, please visit the project discussions: <a href="https://github.com/openaq/openaq-r/discussions" class="external-link">https://github.com/openaq/openaq-r/discussions</a></p>
-</div>
+<p>Before creating a new issue, search the existing issues to see if your problem has already been reported. When reporting bugs or proposing features, please use one of the provided issue templates:</p>
+<ul><li>
+<strong>Bug Report:</strong> Clearly describe the bug, including steps to reproduce it.</li>
+<li>
+<strong>Feature Request:</strong> Explain the desired feature and its benefits.</li>
+<li>
+<strong>Documentation:</strong> Provide feedback on documentation improvements.</li>
+</ul><p>For general questions and discussions, please use the project <a href="https://github.com/openaq/openaq-r/discussions" class="external-link">discussions</a> rather than the issue tracker.</p>
 </div>
 <div class="section level2">
 <h2 id="submitting-pull-requests">Submitting Pull Requests<a class="anchor" aria-label="anchor" href="#submitting-pull-requests"></a></h2>
-<ol style="list-style-type: decimal"><li>Fork the OpenAQ R client repository to your GitHub account.</li>
+<ol style="list-style-type: decimal"><li>Fork the repository to your GitHub account.</li>
 <li>Create a new branch for your feature or bug fix.</li>
-<li>Make your changes and commit them with clear, concise commit messages.</li>
-<li>Push your branch to your forked repository.</li>
-<li>Create a pull request from your branch to the main repository.</li>
-<li>Ensure that your pull request is linked to an existing issue. <strong>(Pull requests must be linked to an existing issue.)</strong>
+<li>Make your changes following the guidelines below.</li>
+<li>Push your branch and open a pull request linked to an existing issue. <strong>(Pull requests must be linked to an existing issue.)</strong>
 </li>
 </ol><div class="section level3">
-<h3 id="pull-request-guidelines">Pull Request Guidelines<a class="anchor" aria-label="anchor" href="#pull-request-guidelines"></a></h3>
+<h3 id="guidelines">Guidelines<a class="anchor" aria-label="anchor" href="#guidelines"></a></h3>
 <ul><li>
-<strong>Adhere to Coding Standards:</strong> Follow the existing coding style and conventions.</li>
+<strong>Code style:</strong> Lint your changes with <code>lintr::lint_package()</code> before submitting.</li>
 <li>
-<strong>Write Clear Commit Messages:</strong> Use clear and concise commit messages that describe the changes made.</li>
+<strong>Tests:</strong> Include unit tests for any new or changed functionality. See the testing <a href="tests/README.html">README</a> for details.</li>
 <li>
-<strong>Add Tests:</strong> Write unit tests to cover your changes.</li>
+<strong>Dependencies:</strong> Keep new external dependencies to a minimum. When possible, use base R. Contributions that introduce new dependencies should be discussed with the maintainer first.</li>
 <li>
-<strong>Document Your Changes:</strong> Update the documentation if necessary.</li>
+<strong>Documentation:</strong> Update roxygen2 comments and vignettes if relevant.</li>
 <li>
-<strong>Be Patient and Respectful:</strong> Be patient and respectful of other contributors.</li>
+<strong>Commit messages:</strong> Use clear, concise messages that describe what changed and why.</li>
+<li>
+<strong>Be patient and respectful</strong> of maintainer and reviewer time.</li>
 </ul></div>
-</div>
-<div class="section level2">
-<h2 id="additional-tips">Additional Tips<a class="anchor" aria-label="anchor" href="#additional-tips"></a></h2>
-<ul><li>Start Small: If you’re new to open source, start with small contributions like fixing typos or improving documentation.</li>
-<li>Ask Questions: Feel free to ask questions on the project discussions forum.</li>
-<li>Be Proactive: Be proactive in addressing feedback and making improvements to your pull request.</li>
-</ul><p>By following these guidelines, you can help make the OpenAQ R client even better!</p>
 </div>
 </div>
 

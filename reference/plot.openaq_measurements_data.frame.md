@@ -6,7 +6,7 @@ Helper for plotting measurements
 
 ``` r
 # S3 method for class 'openaq_measurements_data.frame'
-plot(x, y, ...)
+plot(x, y = NULL, ...)
 ```
 
 ## Arguments
@@ -17,7 +17,7 @@ plot(x, y, ...)
 
 - y:
 
-  default is `NULL`
+  Unused, default is `NULL`.
 
 - ...:
 

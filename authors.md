@@ -16,13 +16,14 @@
 Source:
 [`DESCRIPTION`](https://github.com/openaq/openaq-r/blob/main/DESCRIPTION)
 
-Biggs R, Parker C (2025). *openaq: OpenAQ API Client*. R package version
-0.9.0, <https://github.com/openaq/openaq-r>.
+Biggs R, Parker C (2026). *openaq: Access Air Quality Data from the
+OpenAQ API*. R package version 1.0.0,
+<https://github.com/openaq/openaq-r>.
 
     @Manual{,
-      title = {openaq: OpenAQ API Client},
+      title = {openaq: Access Air Quality Data from the OpenAQ API},
       author = {Russ Biggs and Christian Parker},
-      year = {2025},
-      note = {R package version 0.9.0},
+      year = {2026},
+      note = {R package version 1.0.0},
       url = {https://github.com/openaq/openaq-r},
     }

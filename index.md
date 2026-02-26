@@ -1,8 +1,8 @@
 # openaq R client
 
-[![Project Status: WIP – Initial development is in progress, but there
-has not yet been a stable, usable release suitable for the
-public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+[![Project Status: Active – The project has reached a stable, usable
+state and is being actively
+developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![R-CMD-check](https://github.com/openaq/openaq-r/actions/workflows/check.yaml/badge.svg)](https://github.com/openaq/openaq-r/actions/workflows/check.yaml)
 [![Codecov test
 coverage](https://codecov.io/gh/openaq/openaq-r/graph/badge.svg)](https://app.codecov.io/gh/openaq/openaq-r)
@@ -12,8 +12,8 @@ An R package for interacting with the OpenAQ API.
 ## Installation
 
 The package is available to install through Github. Use the
-`pkg_install` command from
-[pak](https://cran.r-project.org/web/packages/pak/index.html) package.
+`pkg_install` command from [pak](https://CRAN.R-project.org/package=pak)
+package.
 
 ``` r
 install.packages("pak")
@@ -61,23 +61,8 @@ This returns a data frame that will look something like:
 
 ## Development
 
-Contributions are welcome. See the [contribution
-guide](https://openaq.github.io/openaq-r/CONTRIBUTING.md) for general
-information about contributing to the package.
-
-Specific guidelines for contributions the openaq package:
-
-- Code contributions must follow lint convention using
-  [`lintr`](https://lintr.r-lib.org/), see the .lintr file for
-  specifics.
-
-- Code contributions must include unit test, iether updated or wholly
-  new, depending on the contribution. See testing
-  [README](https://openaq.github.io/openaq-r/tests/README.md) for more
-  information.
-
-- Limit new dependencies. While adding new external dependencies is not
-  out of the question, we seek to keep external dependencies at a
-  minimum. When possible use base R functionality. Code contributions
-  that rely on external dependencies should be discussed with the
-  package maintainer first.
+Contributions are welcome. See the [Development
+Guide](https://openaq.github.io/openaq-r/DEVELOPMENT.md) for setup,
+building, testing, and code style. See the [Contribution
+Guide](https://openaq.github.io/openaq-r/CONTRIBUTING.md) for general
+contribution guidelines.

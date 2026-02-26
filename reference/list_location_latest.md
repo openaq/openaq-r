@@ -21,28 +21,31 @@ list_location_latest(
 
 - locations_id:
 
-  An integer.
+  An integer representing the OpenAQ locations_id.
 
 - datetime_min:
 
-  A string.
+  A string specifying the minimum datetime for filtering results,
+  default is `NULL`.
 
 - limit:
 
-  An integer.
+  An integer specifying the maximum number of results to return, default
+  is `100`.
 
 - page:
 
-  An integer.
+  An integer specifying the page number for paginated results, default
+  is `1`.
 
 - as_data_frame:
 
-  A logical for toggling whether to return results as data frame or list
-  default is `TRUE`.
+  A logical for toggling whether to return results as data frame or
+  list, default is `TRUE`.
 
 - dry_run:
 
-  A logical for toggling a dry run of the request, defaults to `FALSE`.
+  A logical for toggling a dry run of the request, default is `FALSE`.
 
 - rate_limit:
 

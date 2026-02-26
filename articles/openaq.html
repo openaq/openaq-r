@@ -31,7 +31,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">openaq</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.9.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -123,12 +123,13 @@ precedent over an API key set at the environment variable level</p>
 <div class="section level3">
 <h3 id="rate-limits">Rate limits<a class="anchor" aria-label="anchor" href="#rate-limits"></a>
 </h3>
-<p>OpenAQ limits the number of API requests you can make in a set time
-to ensure fair access for all users and prevent overuse.</p>
-<p>The OpenAQ API provides custom rate limit headers to indicate the
-number of requests used, the number remaining, the rate limit allowance,
-and the number of seconds remaining in the current period until reset.
-These headers are preserved by default in the openaq package as object
+<p>The OpenAQ API limits the number of requests a single API key can
+make in a set time to ensure fair access for all users and prevent
+overuse.</p>
+<p>The API provides custom rate limit headers to indicate the number of
+requests used, the number remaining, the rate limit allowance, and the
+number of seconds remaining in the current period until reset. These
+headers are preserved by default in the openaq package as object
 attributes on the output data frame:</p>
 <ul>
 <li><code>x_ratelimit_used</code></li>
@@ -144,12 +145,42 @@ attributes on the output data frame:</p>
 <span><span class="op">)</span></span>
 <span><span class="va">headers</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">locations</span>, <span class="st">"headers"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">headers</span><span class="op">[[</span><span class="st">"x_ratelimit_remaining"</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 58</span></span></code></pre>
+<pre><code><span><span class="co">## [1] 52</span></span></code></pre>
 <p>Read more about the headers and rate limits in the OpenAQ API
 documentation under <a href="https://docs.openaq.org/using-the-api/rate-limits" class="external-link">Rate
 Limits</a></p>
 <p>The openaq package provides optional functionality to automatically
 throttle requests when the rate limit has been reached.</p>
+<div class="section level4">
+<h4 id="automatic-rate-limit-handling">Automatic rate limit handling<a class="anchor" aria-label="anchor" href="#automatic-rate-limit-handling"></a>
+</h4>
+<p>The openaq package provides optional functionality to automatically
+throttle requests when the rate limit has been reached. This feature
+uses httr2’s built-in retry mechanism to intelligently handle rate limit
+errors.</p>
+<p>Using the openaq package you can enable automatic rate limiting in
+two ways:</p>
+<p><strong>Option 1: Enable globally for your session</strong></p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Enable automatic rate limiting for all subsequent requests</span></span>
+<span><span class="fu"><a href="../reference/enable_rate_limit.html">enable_rate_limit</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Now all API calls will automatically handle rate limits</span></span>
+<span><span class="va">locations</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/list_locations.html">list_locations</a></span><span class="op">(</span>limit <span class="op">=</span> <span class="fl">1000</span>, parameters_id <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
+<p><strong>Option 2: Enable per request</strong></p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Enable rate limiting for a single function call</span></span>
+<span><span class="va">locations</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/list_locations.html">list_locations</a></span><span class="op">(</span></span>
+<span>  limit <span class="op">=</span> <span class="fl">1000</span>,</span>
+<span>  parameters_id <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>  rate_limit <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Setting `max_tries = 2`.</span></span></code></pre>
+<p>This is particularly useful when making many sequential requests or
+when working with large datasets where you might exceed the rate limit.
+The automatic retry mechanism will pause execution until the rate limit
+resets, then continue automatically without raising an error.</p>
+</div>
 </div>
 <div class="section level3">
 <h3 id="pagination">Pagination<a class="anchor" aria-label="anchor" href="#pagination"></a>
@@ -166,12 +197,12 @@ that returns more than on results, i.e. “list” functions such as
 <code><a href="../reference/list_locations.html">list_locations()</a></code>, <code><a href="../reference/list_licenses.html">list_licenses()</a></code> or
 <code><a href="../reference/list_sensor_measurements.html">list_sensor_measurements()</a></code></p>
 <p>Examples:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/list_locations.html">list_locations</a></span><span class="op">(</span></span>
 <span>  limit <span class="op">=</span> <span class="fl">1000</span>,</span>
 <span>  page <span class="op">=</span> <span class="fl">1</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/list_locations.html">list_locations</a></span><span class="op">(</span></span>
 <span>  limit <span class="op">=</span> <span class="fl">1000</span>,</span>
 <span>  page <span class="op">=</span> <span class="fl">2</span></span>
@@ -182,7 +213,7 @@ that returns more than on results, i.e. “list” functions such as
 <h2 id="features">Features<a class="anchor" aria-label="anchor" href="#features"></a>
 </h2>
 <div class="section level3">
-<h3 id="queriable-resources">Queriable resources<a class="anchor" aria-label="anchor" href="#queriable-resources"></a>
+<h3 id="queryable-resources">Queryable resources<a class="anchor" aria-label="anchor" href="#queryable-resources"></a>
 </h3>
 <p>The OpenAQ API follows a resource-oriented design, allowing
 developers to retrieve air quality data through standardized HTTP
@@ -193,89 +224,89 @@ process of querying and retrieving data resources.</p>
 <div class="section level4">
 <h4 id="countries">Countries<a class="anchor" aria-label="anchor" href="#countries"></a>
 </h4>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/get_country.html">get_country</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/list_countries.html">list_countries</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="instruments">Instruments<a class="anchor" aria-label="anchor" href="#instruments"></a>
 </h4>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/get_instrument.html">get_instrument</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/list_instruments.html">list_instruments</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/list_manufacturer_instruments.html">list_manufacturer_instruments</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="latest">Latest<a class="anchor" aria-label="anchor" href="#latest"></a>
 </h4>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/list_location_latest.html">list_location_latest</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/list_parameter_latest.html">list_parameter_latest</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="licenses">Licenses<a class="anchor" aria-label="anchor" href="#licenses"></a>
 </h4>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/list_licenses.html">list_licenses</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/get_license.html">get_license</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="locations">Locations<a class="anchor" aria-label="anchor" href="#locations"></a>
 </h4>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/list_locations.html">list_locations</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/get_location.html">get_location</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="manufacturers">Manufacturers<a class="anchor" aria-label="anchor" href="#manufacturers"></a>
 </h4>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/list_manufacturers.html">list_manufacturers</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/get_manufacturer.html">get_manufacturer</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="measurements">Measurements<a class="anchor" aria-label="anchor" href="#measurements"></a>
 </h4>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/list_sensor_measurements.html">list_sensor_measurements</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="owners">Owners<a class="anchor" aria-label="anchor" href="#owners"></a>
 </h4>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/list_owners.html">list_owners</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/get_owner.html">get_owner</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a>
 </h4>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/list_parameters.html">list_parameters</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/get_parameter.html">get_parameter</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="providers">Providers<a class="anchor" aria-label="anchor" href="#providers"></a>
 </h4>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/list_providers.html">list_providers</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/get_provider.html">get_provider</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="sensors">Sensors<a class="anchor" aria-label="anchor" href="#sensors"></a>
 </h4>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/get_sensor.html">get_sensor</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">get_location_sensors</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
@@ -286,7 +317,7 @@ process of querying and retrieving data resources.</p>
 prefer to work with JSON parsed as a standard list you can toggle off
 data frame parsing with the <code>as_data_frame</code> function
 parameter.</p>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/list_locations.html">list_locations</a></span><span class="op">(</span></span>
 <span>  limit <span class="op">=</span> <span class="fl">1000</span>,</span>
 <span>  parameters_id <span class="op">=</span> <span class="fl">2</span>,</span>
@@ -317,7 +348,7 @@ function under-the-hood.</p>
 limiting to ensure you do not exceed account rate limits. You can or
 course implement your own rate limiting yourself, but the built-in
 functionality is provided as an easy to use option.</p>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/list_locations.html">list_locations</a></span><span class="op">(</span></span>
 <span>  limit <span class="op">=</span> <span class="fl">1000</span>,</span>
 <span>  parameters_id <span class="op">=</span> <span class="fl">2</span>,</span>
@@ -335,7 +366,7 @@ under-the-hood.</p>
 <code>DRY_RUN</code> that prevents a full HTTP request to the API and
 instead prints out a summary of how the request would have been
 made.</p>
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/list_locations.html">list_locations</a></span><span class="op">(</span></span>
 <span>  limit <span class="op">=</span> <span class="fl">1000</span>,</span>
 <span>  parameters_id <span class="op">=</span> <span class="fl">2</span>,</span>

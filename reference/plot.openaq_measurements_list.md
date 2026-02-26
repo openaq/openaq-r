@@ -6,7 +6,7 @@ Helper for plotting measurements from list
 
 ``` r
 # S3 method for class 'openaq_measurements_list'
-plot(x, y, ...)
+plot(x, y = NULL, ...)
 ```
 
 ## Arguments
@@ -27,7 +27,7 @@ plot(x, y, ...)
 
 ``` r
 if (FALSE) { # interactive()
-meas <- list_sensor_measurements(23707, limit = 500, as_data_frame = FALSE)
+meas <- list_sensor_measurements(23707, limit = 500)
 plot(meas)
 }
 ```

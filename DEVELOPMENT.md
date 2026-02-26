@@ -1,43 +1,74 @@
-# Local development
+# Development Guide
+
+This guide covers how to set up, build, test, and document the `openaq`
+R package locally.
+
+## Prerequisites
+
+- R \>= 4.1.0
+- [devtools](https://devtools.r-lib.org/)
+- [roxygen2](https://roxygen2.r-lib.org/)
+- An OpenAQ API key set as the environment variable `OPENAQ_API_KEY`
+
+## Getting Started
+
+Clone the repository and install dependencies:
+
+``` r
+install.packages("devtools")
+devtools::install_deps(dependencies = TRUE)
+```
 
 ## Building
 
-building the package
+Build the package tarball:
 
 ``` sh
 R CMD build .
 ```
 
-## Testing
-
-### Setup
-
-Testing uses `vcr` and `webmockr` for saving and mocking API results for
-reproducable offline tests.
-
-Test fixtures are built from the local build of the openaq-db, and so
-only contain a subset of data as compared to the full local setup.
-
-To record `vcr` cassettes set up a local instance of the [OpenAQ
-DB](https://github.com/openaq/openaq-db) and the [OpenAQ
-API](https://github.com/openaq/openaq-api-v2) and uncomment the line in
-[helper-vcr.R](https://openaq.github.io/openaq-r/'./test/testthat/helper-vcr.R')
-to set the base URL to the local API address e.g.
-`set_base_url('http://localhost:8000')` (or whichever port is used by
-the local instance of the API)
-
-Tests can be run in the R REPL with:
-
-### Running tests
+Or using `devtools`:
 
 ``` r
-devtools::test()
+devtools::build()
 ```
 
-or from a standard shell using `Rscript`:
+To check the package against CRAN rules:
 
-``` sh
-Rscript -e "devtools::test()"
+``` r
+devtools::check(cran = TRUE)
 ```
+
+## Tests
+
+Tests use the [`testthat`](https://testthat.r-lib.org/) framework with
+[`vcr`](https://docs.ropensci.org/vcr/) and
+[`webmockr`](https://docs.ropensci.org/webmockr/) for fixture-based
+mocking.
+
+For full details on running tests, recording cassettes, and coverage,
+see the [Testing
+Guide](https://openaq.github.io/openaq-r/test/README.md).
 
 ## Documentation
+
+Documentation is generated from roxygen2 comments. To build:
+
+``` r
+devtools::document()
+```
+
+### Vignettes
+
+Vignettes are precompiled because they require OpenAQ API authentication
+and cannot be built in a standard CRAN check environment. See
+`vignettes/README.md` for details on rebuilding vignettes from source.
+
+## Code Style
+
+Code style is enforced using [`lintr`](https://lintr.r-lib.org/). To
+check locally:
+
+``` r
+lintr::lint_package()
+```

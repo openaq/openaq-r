@@ -47,12 +47,12 @@ list_locations(api_key = "this-is-my-alternate-api-key")
 
 ### Rate limits
 
-OpenAQ limits the number of API requests you can make in a set time to
-ensure fair access for all users and prevent overuse.
+The OpenAQ API limits the number of requests a single API key can make
+in a set time to ensure fair access for all users and prevent overuse.
 
-The OpenAQ API provides custom rate limit headers to indicate the number
-of requests used, the number remaining, the rate limit allowance, and
-the number of seconds remaining in the current period until reset. These
+The API provides custom rate limit headers to indicate the number of
+requests used, the number remaining, the rate limit allowance, and the
+number of seconds remaining in the current period until reset. These
 headers are preserved by default in the openaq package as object
 attributes on the output data frame:
 
@@ -71,7 +71,7 @@ headers <- attr(locations, "headers")
 print(headers[["x_ratelimit_remaining"]])
 ```
 
-    ## [1] 58
+    ## [1] 52
 
 Read more about the headers and rate limits in the OpenAQ API
 documentation under [Rate
@@ -79,6 +79,44 @@ Limits](https://docs.openaq.org/using-the-api/rate-limits)
 
 The openaq package provides optional functionality to automatically
 throttle requests when the rate limit has been reached.
+
+#### Automatic rate limit handling
+
+The openaq package provides optional functionality to automatically
+throttle requests when the rate limit has been reached. This feature
+uses httr2’s built-in retry mechanism to intelligently handle rate limit
+errors.
+
+Using the openaq package you can enable automatic rate limiting in two
+ways:
+
+**Option 1: Enable globally for your session**
+
+``` r
+# Enable automatic rate limiting for all subsequent requests
+enable_rate_limit()
+
+# Now all API calls will automatically handle rate limits
+locations <- list_locations(limit = 1000, parameters_id = 2)
+```
+
+**Option 2: Enable per request**
+
+``` r
+# Enable rate limiting for a single function call
+locations <- list_locations(
+  limit = 1000,
+  parameters_id = 2,
+  rate_limit = TRUE
+)
+```
+
+    ## Setting `max_tries = 2`.
+
+This is particularly useful when making many sequential requests or when
+working with large datasets where you might exceed the rate limit. The
+automatic retry mechanism will pause execution until the rate limit
+resets, then continue automatically without raising an error.
 
 ### Pagination
 
@@ -113,7 +151,7 @@ list_locations(
 
 ## Features
 
-### Queriable resources
+### Queryable resources
 
 The OpenAQ API follows a resource-oriented design, allowing developers
 to retrieve air quality data through standardized HTTP requests to

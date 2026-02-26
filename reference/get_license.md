@@ -1,6 +1,6 @@
-# get a single license from the licenses resource.
+# Get a single license from the licenses resource.
 
-get a single license from the licenses resource.
+Get a single license from the licenses resource.
 
 ## Usage
 
@@ -18,16 +18,16 @@ get_license(
 
 - licenses_id:
 
-  An integer.
+  An integer representing the OpenAQ licenses_id.
 
 - as_data_frame:
 
-  A logical for toggling whether to return results as data frame or list
-  default is `TRUE`.
+  A logical for toggling whether to return results as data frame or
+  list, default is `TRUE`.
 
 - dry_run:
 
-  A logical for toggling a dry run of the request, defaults to `FALSE`.
+  A logical for toggling a dry run of the request, default is `FALSE`.
 
 - rate_limit:
 
@@ -40,7 +40,7 @@ get_license(
 
 ## Value
 
-A data frame.
+A data frame or a list of the results.
 
 ## Examples
 

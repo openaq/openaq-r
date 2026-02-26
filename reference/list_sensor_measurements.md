@@ -30,44 +30,48 @@ list_sensor_measurements(
 
 - data:
 
-  A string a data interval to return, defaults to "measurements".
+  A string a data interval to return, default is "measurements".
 
 - rollup:
 
-  A string.
+  A string representing the aggregation rollup, default is `NULL`.
 
 - datetime_from:
 
-  A POSIXct datetime to filter measurements
+  A POSIXct datetime (when `data` is `"measurements"` or `"hours"`) or a
+  Date (when `data` is `"days"` or larger) to filter from, default is
+  `NULL`.
 
 - datetime_to:
 
-  A POSIXct datetime to filter measurements
+  A POSIXct datetime (when `data` is `"measurements"` or `"hours"`) or a
+  Date (when `data` is `"days"` or larger) to filter to, default is
+  `NULL`.
 
 - order_by:
 
-  A string.
+  A string representing the field to order by, default is `NULL`.
 
 - sort_order:
 
-  A string.
+  A string, either "asc" or "desc", default is `NULL`.
 
 - limit:
 
-  An integer.
+  An integer representing the number of results per page.
 
 - page:
 
-  An integer.
+  An integer representing the page number.
 
 - as_data_frame:
 
-  A logical for toggling whether to return results as data frame or list
-  default is `TRUE`.
+  A logical for toggling whether to return results as data frame or
+  list, default is `TRUE`.
 
 - dry_run:
 
-  A logical for toggling a dry run of the request, defaults to `FALSE`.
+  A logical for toggling a dry run of the request, default is `FALSE`.
 
 - rate_limit:
 

@@ -1,6 +1,6 @@
-# Method for converting to data frame
+# Method for converting openaq_locations_list to data frame.
 
-Method for converting to data frame
+Method for converting openaq_locations_list to data frame.
 
 ## Usage
 
@@ -37,7 +37,7 @@ as.data.frame(x, row.names = NULL, optional = FALSE, ...)
 
 ``` r
 if (FALSE) { # interactive()
-loc <- list_locations()
-write.csv(loc)
+loc <- list_locations(as_data_frame = FALSE)
+as.data.frame(loc)
 }
 ```

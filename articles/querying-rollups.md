@@ -26,7 +26,7 @@ set_api_key("replace-me-with-a-valid-openaq-api-key")
 The
 [`list_sensor_measurements()`](https://openaq.github.io/openaq-r/reference/list_sensor_measurements.md)
 function provides precomputed aggregations through the data argument.
-This arugment defaults to `measurements` or the original measurement
+This argument defaults to `measurements` or the original measurement
 period. The full list of options includes: `measurements`, `hours`,
 `days`, `years`. As an example we will query PM_(2.5) data from sensor
 `3646869`, from the ‘Mari - Industrial Station’ location in the Republic

@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">openaq</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.9.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,7 +57,7 @@
 
 
 <dl><dt id="arg-x">x<a class="anchor" aria-label="anchor" href="#arg-x"></a></dt>
-<dd><p>A list of sensors as returned from get_sensor</p></dd>
+<dd><p>A list of sensors as returned from get_sensor or list_location_sensors.</p></dd>
 
 
 <dt id="arg-row-names">row.names<a class="anchor" aria-label="anchor" href="#arg-row-names"></a></dt>
@@ -74,15 +74,15 @@ treatment, basically with the meaning of data.frame(*, check.names =
 
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
-<dd><p>additional arguments to be passed to or from methods.#'</p></dd>
+<dd><p>additional arguments to be passed to or from methods.</p></dd>
 
 </dl></div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># interactive()</span></span></span>
-<span class="r-in"><span><span class="va">sensor</span> <span class="op">&lt;-</span> <span class="fu"><a href="get_sensor.html">get_sensor</a></span><span class="op">(</span>as_frame_frame <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu">openaq_sensors_list.as.data.frame</span><span class="op">(</span><span class="va">sensor</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">sensor</span> <span class="op">&lt;-</span> <span class="fu"><a href="get_sensor.html">get_sensor</a></span><span class="op">(</span>as_data_frame <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">sensor</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
