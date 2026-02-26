@@ -1,6 +1,6 @@
 # Changelog
 
-## openaq v1.0.0 - 2026-02-XX
+## openaq v1.0.0 - 2026-02-26
 
 ### Added
 
