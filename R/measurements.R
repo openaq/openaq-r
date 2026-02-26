@@ -135,7 +135,7 @@ get_period_field <- function(x, key) {
 get_summary_field <- function(x, key) {
   if (is.null(x)) stop("input 'x' cannot be NULL")
   if (is.null(x$summary) || is.null(x$summary[[key]])) {
-    NA
+    return(NA)
   }
   x$summary[[key]]
 }
