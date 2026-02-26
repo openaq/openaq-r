@@ -305,10 +305,66 @@ is.POSIXct <- function(x) inherits(x, "POSIXct") # nolint: object_name_linter.
 #' @param datetime Any value.
 #'
 #' @noRd
-validate_datetime <- function(datetime) {
-  if (!is.POSIXct(datetime)) {
-    stop("Invalid datetime must be a POSIXct datetime.")
+validate_datetime <- function(x, name) {
+  if (is.null(x)) return(invisible(NULL))
+  if (!is.POSIXct(x)) {
+    stop(sprintf("`%s` must be a POSIXct datetime.", name), call. = FALSE)
   }
+  invisible(x)
+}
+
+#' A function for ensuring that date query parameters are a valid Date value.
+#' Rejects POSIXct/POSIXlt values to prevent unexpected time truncation when
+#' `data` is 'days' or larger.
+#'
+#' @param x Any value.
+#' @param name A string representing the parameter name, used in error messages.
+#'
+#' @noRd
+validate_date <- function(x, name) {
+  if (is.null(x)) return(invisible(NULL))
+  if (inherits(x, c("POSIXct", "POSIXlt"))) {
+    stop(
+      sprintf(
+        "`%s` must be a Date (not a datetime) when `data` 'days' or 'years'.",
+        name
+      ),
+      "Use `as.Date(\"YYYY-MM-DD\")` instead of `as.POSIXct()`.",
+      call. = FALSE
+    )
+  }
+  if (!inherits(x, "Date")) {
+    stop(
+      sprintf("`%s` must be a Date object (e.g. `as.Date(\"2024-01-01\")`)", name),
+      call. = FALSE
+    )
+  }
+  invisible(x)
+}
+
+#' Converts a timestamp to an ISO 8601 datetime string.
+#'
+#' @param x A list to be collapsed.
+#'
+#' @examples
+#' transform_datetime
+#' @noRd
+transform_datetime <- function(x) {
+  if (!is.null(x)) {
+    invisible(lubridate::format_ISO8601(x, usetz = TRUE))
+  }
+}
+
+#' Converts a date to an ISO 8601 date string.
+#'
+#' @param x A Date object to be formatted.
+#'
+#' @examples
+#' transform_date
+#' @noRd
+transform_date <- function(x) {
+  if (is.null(x)) return(NULL)
+  invisible(format(x, "%Y-%m-%d"))
 }
 
 #' Validates data path parameter.
@@ -433,18 +489,6 @@ transform_vector_to_string <- function(x) {
   paste(as.character(x), collapse = ",")
 }
 
-#' Converts a timestamp to an ISO 8601 datetime string.
-#'
-#' @param x A list to be collapsed.
-#'
-#' @examples
-#' transform_datetime
-#' @noRd
-transform_datetime <- function(x) {
-  if (!is.null(x)) {
-    invisible(lubridate::format_ISO8601(x, usetz = TRUE))
-  }
-}
 
 #' Set rate limit headers as attributes to an object
 #'

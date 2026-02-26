@@ -51,17 +51,6 @@ This returns a data frame that will look something like:
 
 ## Development
 
-Contributions are welcome. See the [contribution guide](CONTRIBUTING.md) for general information about contributing to the package.
-
-Specific guidelines for contributions the openaq package:
-
-* Code contributions must follow lint convention using [`lintr`](https://lintr.r-lib.org/),
-see the .lintr file for specifics.
-
-* Code contributions must include unit tests, either updated or new, depending
-on the contribution. See testing [README](tests/README.md) for more information.
-
-* Limit new dependencies. While adding new external dependencies is not out of
-the question, we seek to keep external dependencies at a minimum. When possible
-use base R functionality. Code contributions that rely on external dependencies
-should be discussed with the package maintainer first.
+Contributions are welcome. See the [Development Guide](DEVELOPMENT.md) for
+setup, building, testing, and code style. See the [Contribution Guide](CONTRIBUTING.md)
+for general contribution guidelines.

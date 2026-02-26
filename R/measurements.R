@@ -3,8 +3,12 @@
 #' @param sensors_id An integer representing an OpenAQ sensors_id.
 #' @param data A string a data interval to return, default is "measurements".
 #' @param rollup A string representing the aggregation rollup, default is `NULL`.
-#' @param datetime_from A POSIXct datetime to filter measurements, default is `NULL`.
-#' @param datetime_to A POSIXct datetime to filter measurements, default is `NULL`.
+#' @param datetime_from A POSIXct datetime (when `data` is `"measurements"` or
+#' `"hours"`) or a Date (when `data` is `"days"` or larger) to filter from,
+#' default is `NULL`.
+#' @param datetime_to A POSIXct datetime (when `data` is `"measurements"` or
+#' `"hours"`) or a Date (when `data` is `"days"` or larger) to filter to,
+#' default is `NULL`.
 #' @param order_by A string representing the field to order by, default is `NULL`.
 #' @param sort_order A string, either "asc" or "desc", default is `NULL`.
 #' @param limit An integer representing the number of results per page.
@@ -41,16 +45,23 @@ list_sensor_measurements <- function(
   validate_data_param(data)
   validate_rollup(rollup)
   validate_data_rollup_compat(data, rollup)
+  if (data %in% c("measurements", "hours")) {
+    datetime_validator <- validate_datetime
+    datetime_transformer <- transform_datetime
+  } else {
+    datetime_validator <- validate_date
+    datetime_transformer <- transform_date
+  }
   param_defs <- list(
     datetime_from = list(
       default = NULL,
-      validator = validate_datetime,
-      transform = transform_datetime
+      validator = datetime_validator,
+      transform = datetime_transformer
     ),
     datetime_to = list(
       default = NULL,
-      validator = validate_datetime,
-      transform = transform_datetime
+      validator = datetime_validator,
+      transform = datetime_transformer
     ),
     order_by = list(default = NULL, validator = NULL),
     sort_order = list(default = NULL, validator = validate_sort_order),

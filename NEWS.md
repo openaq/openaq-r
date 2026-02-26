@@ -7,6 +7,9 @@
 - Added tests for `list_sensor_measurements()`, `get_period_field()`,
   `get_summary_field()`, `validate_data_rollup_compat()`, and
   `transform_vector_to_string()`.
+- Added `validate_date()` and `transform_date()` to support date-only query
+  parameters when `data` is `"days"` or larger. Includes tests for both 
+  functions.
 
 ## Changed
 
@@ -19,6 +22,9 @@
 - Improved parameter documentation across all resource functions.
 - Standardized `isTRUE()` usage for `as_data_frame` checks across all resource
   functions.
+- Updated `validate_datetime()` to accept a `name` parameter.
+- Updated `list_sensor_measurements()` to use `validate_date()` or
+  `validate_datetime()` based on the `data` argument. Tests updated accordingly.
 
 ## Fixed
 

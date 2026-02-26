@@ -27,9 +27,13 @@ list_sensor_measurements(
 
 \item{rollup}{A string representing the aggregation rollup, default is \code{NULL}.}
 
-\item{datetime_from}{A POSIXct datetime to filter measurements, default is \code{NULL}.}
+\item{datetime_from}{A POSIXct datetime (when \code{data} is \code{"measurements"} or
+\code{"hours"}) or a Date (when \code{data} is \code{"days"} or larger) to filter from,
+default is \code{NULL}.}
 
-\item{datetime_to}{A POSIXct datetime to filter measurements, default is \code{NULL}.}
+\item{datetime_to}{A POSIXct datetime (when \code{data} is \code{"measurements"} or
+\code{"hours"}) or a Date (when \code{data} is \code{"days"} or larger) to filter to,
+default is \code{NULL}.}
 
 \item{order_by}{A string representing the field to order by, default is \code{NULL}.}
 

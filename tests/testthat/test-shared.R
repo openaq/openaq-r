@@ -424,20 +424,69 @@ test_that("validate_numeric_vector rejects decimal values", {
   )
 })
 
-
 # validate_datetime
 
 test_that("validate_datetime handles valid inputs", {
   valid_datetime <- as.POSIXct("2025-07-04 17:30:00", tz = "America/Denver")
-  expect_no_error(validate_datetime(valid_datetime))
+  expect_no_error(validate_datetime(valid_datetime, "datetime_from"))
+})
+
+test_that("validate_datetime accepts NULL", {
+  expect_invisible(validate_datetime(NULL, "datetime_from"))
 })
 
 test_that("validate_datetime throws with invalid inputs", {
-  error_message <- "Invalid datetime must be a POSIXct datetime."
-  expect_error(validate_datetime("2024-07-04"), error_message)
-  expect_error(validate_datetime(1688488200), error_message)
-  expect_error(validate_datetime(as.Date("2024-07-04")), error_message)
-  expect_error(validate_datetime(NULL), error_message)
+  expect_error(validate_datetime("2024-07-04", "datetime_from"), regexp = "must be a POSIXct datetime")
+  expect_error(validate_datetime(1688488200, "datetime_from"), regexp = "must be a POSIXct datetime")
+  expect_error(validate_datetime(as.Date("2024-07-04"), "datetime_from"), regexp = "must be a POSIXct datetime")
+})
+
+# validate_date
+
+test_that("validate_date accepts NULL", {
+  expect_invisible(validate_date(NULL, "datetime_from"))
+})
+
+test_that("validate_date accepts a valid Date object", {
+  expect_invisible(validate_date(as.Date("2024-01-01"), "datetime_from"))
+})
+
+test_that("validate_date rejects POSIXct and POSIXlt", {
+  expect_error(
+    validate_date(as.POSIXct("2024-01-01"), "datetime_from"),
+    regexp = "`datetime_from` must be a Date \\(not a datetime\\)",
+    fixed = FALSE
+  )
+  expect_error(
+    validate_date(as.POSIXlt("2024-01-01"), "datetime_from"),
+    regexp = "`datetime_from` must be a Date \\(not a datetime\\)",
+    fixed = FALSE
+  )
+})
+
+test_that("validate_date rejects non-Date types with informative error", {
+  expect_error(
+    validate_date("2024-01-01", "datetime_from"),
+    regexp = "`datetime_from` must be a Date object",
+    fixed = FALSE
+  )
+  expect_error(
+    validate_date(20240101, "datetime_from"),
+    regexp = "`datetime_from` must be a Date object",
+    fixed = FALSE
+  )
+})
+
+# transform_date
+
+test_that("transform_date returns NULL for NULL input", {
+  expect_null(transform_date(NULL))
+})
+
+test_that("transform_date formats a Date as YYYY-MM-DD", {
+  expect_invisible(transform_date(as.Date("2026-02-26")))
+  expect_equal(transform_date(as.Date("2026-02-25")), "2026-02-25")
+  expect_equal(transform_date(as.Date("2026-02-26")), "2026-02-26")
 })
 
 # validate_data_param
