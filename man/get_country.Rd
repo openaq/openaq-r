@@ -16,9 +16,9 @@ get_country(
 \item{countries_id}{An integer representing the OpenAQ countries_id.}
 
 \item{as_data_frame}{A logical for toggling whether to return results as
-data frame or list default is \code{TRUE}.}
+data frame or list, default is \code{TRUE}.}
 
-\item{dry_run}{A logical for toggling a dry run of the request, defaults is
+\item{dry_run}{A logical for toggling a dry run of the request, default is
 \code{FALSE.}}
 
 \item{rate_limit}{A logical for toggling automatic rate limiting based on

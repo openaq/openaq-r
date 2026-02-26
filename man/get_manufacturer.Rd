@@ -13,10 +13,10 @@ get_manufacturer(
 )
 }
 \arguments{
-\item{manufacturers_id}{An integer.}
+\item{manufacturers_id}{An integer representing the OpenAQ manufacturers_id.}
 
 \item{as_data_frame}{A logical for toggling whether to return results as
-data frame or list default is \code{TRUE}.}
+data frame or list, default is \code{TRUE}.}
 
 \item{dry_run}{A logical for toggling a dry run of the request, default is
 \code{FALSE}.}

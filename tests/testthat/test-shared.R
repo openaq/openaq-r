@@ -300,7 +300,7 @@ test_that("validate_monitor handles valid inputs", {
 })
 
 test_that("validate_monitor throws with invalid inputs", {
-  error_message <- "Invalid monitor Must be a logical value TRUE or FALSE."
+  error_message <- "Invalid monitor. Must be a logical value TRUE or FALSE."
   expect_error(validate_monitor("TRUE"), error_message)
   expect_error(validate_monitor(1), error_message)
   expect_error(validate_monitor(0.5), error_message)
@@ -315,7 +315,7 @@ test_that("validate_mobile handles valid inputs", {
 })
 
 test_that("validate_mobile throws with invalid inputs", {
-  error_message <- "Invalid mobile Must be a logical value TRUE or FALSE."
+  error_message <- "Invalid mobile. Must be a logical value TRUE or FALSE."
   expect_error(validate_mobile("TRUE"), error_message)
   expect_error(validate_mobile(1), error_message)
   expect_error(validate_mobile(0.5), error_message)
@@ -472,7 +472,7 @@ test_that("validate_rollup handles valid inputs", {
 })
 
 test_that("validate_rollup handles invalid inputs", {
-  error_message <- "Invalid rollup Must be one of 'hourly','daily','monthly','yearly','hourofday','dayofweek','monthofyear'." # nolint
+  error_message <- "Invalid rollup. Must be one of 'hourly','daily','monthly','yearly','hourofday','dayofweek','monthofyear'." # nolint
   expect_error(validate_rollup("invalid_rollup"), error_message)
   expect_error(validate_rollup(123), error_message)
   expect_error(validate_rollup(TRUE), error_message)

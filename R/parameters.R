@@ -1,8 +1,8 @@
 #' Get a single parameter from the parameters resource.
 #'
-#' @param parameters_id An integer.
+#' @param parameters_id An integer representing the OpenAQ parameters_id.
 #' @param as_data_frame A logical for toggling whether to return results as
-#' data frame or list default is `TRUE`.
+#' data frame or list, default is `TRUE`.
 #' @param dry_run A logical for toggling a dry run of the request, default is
 #' `FALSE`.
 #' @param rate_limit A logical for toggling automatic rate limiting based on
@@ -31,7 +31,7 @@ get_parameter <- function(
   if (isTRUE(dry_run)) {
     return(data)
   }
-  if (as_data_frame == TRUE) {
+  if (isTRUE(as_data_frame)) {
     as.data.frame.openaq_parameters_list(structure(
       data,
       class = c("openaq_parameters_list", "list")
@@ -47,12 +47,12 @@ get_parameter <- function(
 
 #' Get a list of parameters from the parameters resource.
 #'
-#' @param order_by A string.
-#' @param sort_order A string.
-#' @param limit An integer.
-#' @param page An integer.
+#' @param order_by A string specifying the field to order results by.
+#' @param sort_order A string specifying sort direction, either `"asc"` or `"desc"`.
+#' @param limit An integer specifying the maximum number of results to return, default is `100`.
+#' @param page An integer specifying the page number for paginated results, default is `1`.
 #' @param as_data_frame A logical for toggling whether to return results as
-#' data frame or list default is `TRUE`.
+#' data frame or list, default is `TRUE`.
 #' @param dry_run A logical for toggling a dry run of the request, default is
 #' `FALSE`.
 #' @param rate_limit A logical for toggling automatic rate limiting based on
@@ -97,7 +97,7 @@ list_parameters <- function(
   if (isTRUE(dry_run)) {
     return(data)
   }
-  if (as_data_frame == TRUE) {
+  if (isTRUE(as_data_frame)) {
     as.data.frame.openaq_parameters_list(structure(
       data,
       class = c("openaq_parameters_list", "list")
@@ -127,7 +127,7 @@ list_parameters <- function(
 #'
 #' @examplesIf interactive()
 #' parameters <- list_parameters()
-#' openaq_parameters_list.as.data.frame(parameters)
+#' as.data.frame(parameters)
 #'
 as.data.frame.openaq_parameters_list <- function(x, row.names = NULL, optional = FALSE, ...) { # nolint: object_name_linter
   tbl <- do.call(rbind, lapply(x, function(rw) {

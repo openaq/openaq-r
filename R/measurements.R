@@ -3,14 +3,14 @@
 #' @param sensors_id An integer representing an OpenAQ sensors_id.
 #' @param data A string a data interval to return, default is "measurements".
 #' @param rollup A string representing the aggregation rollup, default is `NULL`.
-#' @param datetime_from A POSIXct datetime to filter measurements
-#' @param datetime_to A POSIXct datetime to filter measurements
-#' @param order_by A string representing the field to order by.
-#' @param sort_order A string, either "asc" or "desc".
+#' @param datetime_from A POSIXct datetime to filter measurements, default is `NULL`.
+#' @param datetime_to A POSIXct datetime to filter measurements, default is `NULL`.
+#' @param order_by A string representing the field to order by, default is `NULL`.
+#' @param sort_order A string, either "asc" or "desc", default is `NULL`.
 #' @param limit An integer representing the number of results per page.
 #' @param page An integer representing the page number.
 #' @param as_data_frame A logical for toggling whether to return results as
-#' data frame or list default is `TRUE`.
+#' data frame or list, default is `TRUE`.
 #' @param dry_run A logical for toggling a dry run of the request, default is
 #' `FALSE`.
 #' @param rate_limit A logical for toggling automatic rate limiting based on
@@ -91,7 +91,7 @@ list_sensor_measurements <- function(
   if (isTRUE(dry_run)) {
     return(fetched_data)
   }
-  if (as_data_frame) {
+  if (isTRUE(as_data_frame)) {
     as.data.frame.openaq_measurements_list(structure(
       fetched_data,
       class = c("openaq_measurements_list", "list")
@@ -158,7 +158,7 @@ get_summary_field <- function(x, key) {
 #'
 #' @examplesIf interactive()
 #' meas <- list_sensor_measurements(23707, limit = 500, as_data_frame = FALSE)
-#' openaq_measurements_list.as.data.frame(meas)
+#' as.data.frame(meas)
 #'
 as.data.frame.openaq_measurements_list <- function(x, row.names = NULL, optional = FALSE, ...) { # nolint: object_name_linter
   tbl <- do.call(rbind, lapply(x, function(rw) {
@@ -222,7 +222,7 @@ as.data.frame.openaq_measurements_list <- function(x, row.names = NULL, optional
 #' Helper for plotting measurements
 #'
 #' @param x A data frame of measurements results.
-#' @param y default is `NULL`
+#' @param y Unused, default is `NULL`.
 #' @param ... Other options to be passed on to base::plot().
 #'
 #' @export
@@ -231,7 +231,7 @@ as.data.frame.openaq_measurements_list <- function(x, row.names = NULL, optional
 #' meas <- list_sensor_measurements(23707, limit = 500, as_data_frame = FALSE)
 #' plot(meas)
 #'
-plot.openaq_measurements_data.frame <- function(x, y, ...) {
+plot.openaq_measurements_data.frame <- function(x, y = NULL, ...) {
   n <- head(x, 1)
   y_label <- sprintf("Value %s %s", n$parameter_name, n$parameter_units)
   base::plot(x$datetime_to, x$value,
@@ -252,9 +252,9 @@ plot.openaq_measurements_data.frame <- function(x, y, ...) {
 #' @export
 #'
 #' @examplesIf interactive()
-#' meas <- list_sensor_measurements(23707, limit = 500, as_data_frame = FALSE)
+#' meas <- list_sensor_measurements(23707, limit = 500)
 #' plot(meas)
 #'
-plot.openaq_measurements_list <- function(x, y, ...) {
+plot.openaq_measurements_list <- function(x, y = NULL, ...) {
   plot(as.data.frame(x), ...)
 }

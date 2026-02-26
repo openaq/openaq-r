@@ -1,18 +1,15 @@
-# openaq development version
-
 # openaq v1.0.0 - 2026-02-XX
 
 ## Added
 
-- added additional validation to validate API key.
-- added additional tests
+## Fixed
 
 # openaq v0.9.0 - 2025-11-21
 
 ## Added
 
-- added additional validation to validate API key.
-- added additional tests
+- Added additional validation to validate API key.
+- Added additional tests
 
 # openaq v0.8.0 - 2025-10-10
 
@@ -25,7 +22,7 @@
 
 ## Changed
 
-- *BREAKING CHANGES*
+### BREAKING CHANGES
 - renamed `get_location_sensors` to `list_locations_sensors`
 - updated minimum package version of httr2 to v1.2.0
 - updated minimum package version of vcr to 2.0.0

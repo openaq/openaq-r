@@ -1,6 +1,6 @@
 # Vignettes
 
-The vignettes in this package are pre-compiled because they demonstrate
+The vignettes in this package are precompiled because they demonstrate
 functionality that requires OpenAQ API authentication.
 
 ## Building Vignettes
@@ -12,4 +12,4 @@ To rebuild vignettes from source:
 3. Commit the updated `.Rmd` files
 
 The `.Rmd.orig` files contain the source code, and the `.Rmd` files
-are the pre-compiled versions included in the package.
+are the precompiled versions included in the package.

@@ -2,7 +2,7 @@
 % Please edit documentation in R/licenses.R
 \name{list_licenses}
 \alias{list_licenses}
-\title{get a list of licenses from the licenses resource.}
+\title{Get a list of licenses from the licenses resource.}
 \usage{
 list_licenses(
   order_by = NULL,
@@ -16,16 +16,16 @@ list_licenses(
 )
 }
 \arguments{
-\item{order_by}{A string.}
+\item{order_by}{A string specifying the field to order results by.}
 
-\item{sort_order}{A string.}
+\item{sort_order}{A string specifying sort direction, either \code{"asc"} or \code{"desc"}.}
 
-\item{limit}{An integer.}
+\item{limit}{An integer specifying the maximum number of results to return, default is \code{100}.}
 
-\item{page}{An integer.}
+\item{page}{An integer specifying the page number for paginated results, default is \code{1}.}
 
 \item{as_data_frame}{A logical for toggling whether to return results as
-data frame or list default is \code{TRUE}.}
+data frame or list, default is \code{TRUE}.}
 
 \item{dry_run}{A logical for toggling a dry run of the request, default is
 \code{FALSE}.}
@@ -39,7 +39,7 @@ rate limit headers, default is \code{FALSE}.}
 A data frame.
 }
 \description{
-get a list of licenses from the licenses resource.
+Get a list of licenses from the licenses resource.
 }
 \examples{
 \dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}

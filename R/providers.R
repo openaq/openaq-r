@@ -1,8 +1,8 @@
 #' Get a single provider from providers resource.
 #'
-#' @param providers_id An integer.
+#' @param providers_id An integer representing the OpenAQ providers_id.
 #' @param as_data_frame A logical for toggling whether to return results as
-#' data frame or list default is `TRUE`.
+#' data frame or list, default is `TRUE`.
 #' @param dry_run A logical for toggling a dry run of the request, default is
 #' `FALSE`.
 #' @param rate_limit A logical for toggling automatic rate limiting based on
@@ -31,7 +31,7 @@ get_provider <- function(
   if (isTRUE(dry_run)) {
     return(data)
   }
-  if (as_data_frame == TRUE) {
+  if (isTRUE(as_data_frame)) {
     as.data.frame.openaq_providers_list(structure(
       data,
       class = c("openaq_providers_list", "list")
@@ -47,12 +47,12 @@ get_provider <- function(
 
 #' Get a list of providers from the providers resource.
 #'
-#' @param order_by A string.
-#' @param sort_order A string.
-#' @param limit An integer.
-#' @param page An integer.
+#' @param order_by A string specifying the field to order results by.
+#' @param sort_order A string specifying sort direction, either `"asc"` or `"desc"`.
+#' @param limit An integer specifying the maximum number of results to return, default is `100`.
+#' @param page An integer specifying the page number for paginated results, default is `1`.
 #' @param as_data_frame A logical for toggling whether to return results as
-#' data frame or list default is `TRUE`.
+#' data frame or list, default is `TRUE`.
 #' @param dry_run A logical for toggling a dry run of the request, default is
 #' `FALSE`.
 #' @param rate_limit A logical for toggling automatic rate limiting based on
@@ -97,7 +97,7 @@ list_providers <- function(
   if (isTRUE(dry_run)) {
     return(data)
   }
-  if (as_data_frame == TRUE) {
+  if (isTRUE(as_data_frame)) {
     as.data.frame.openaq_providers_list(structure(
       data,
       class = c("openaq_providers_list", "list")
@@ -113,7 +113,7 @@ list_providers <- function(
 
 #' Method for converting openaq_providers_list to data frame.
 #'
-#' @param x A list of countries as returned from list_providers.
+#' @param x A list of providers as returned from list_providers
 #' @param row.names `NULL` or a character vector giving the row names for the
 #' data frame. Missing values are not allowed.
 #' @param optional logical. If TRUE, setting row names and converting column
@@ -121,14 +121,14 @@ list_providers <- function(
 #' base package as.data.frame() methods use optional only for column names
 #' treatment, basically with the meaning of data.frame(*, check.names =
 #' !optional). See also the make.names argument of the matrix method.
-#' @param ... additional arguments to be passed to or from methods.#'
+#' @param ... additional arguments to be passed to or from methods.
 #'
 #' @export as.data.frame.openaq_providers_list
 #' @export
 #'
 #' @examplesIf interactive()
 #' providers <- list_providers(as_data_frame = FALSE)
-#' openaq_instruments_list.as.data.frame(providers)
+#' as.data.frame(providers)
 #'
 as.data.frame.openaq_providers_list <- function(x, row.names = NULL, optional = FALSE, ...) { # nolint: object_name_linter
   tbl <- do.call(rbind, lapply(x, function(rw) {

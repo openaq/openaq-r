@@ -1,6 +1,9 @@
 Package: openaq
 Title: Access Air Quality Data from the OpenAQ API
-Description: An R package for interacting with the OpenAQ API <https://openaq.org/>.
+Description: Provides an interface to the OpenAQ API <https://openaq.org/>, 
+    a platform for real-time and historical air quality data from around the 
+    world. Users can retrieve measurement data, metadata for sensors and 
+    locations for air quality research and monitoring.
 Version: 1.0.0
 License: MIT + file LICENSE
 URL: https://github.com/openaq/openaq-r, https://openaq.github.io/openaq-r/
@@ -17,18 +20,15 @@ Depends:
 Imports:
     httr2 (>= 1.2.0),
     rstudioapi,
-    maps,
     methods,
-    lubridate,
-    purrr,
-    graphics,
-    utils
+    lubridate
 Suggests:
     testthat (>= 3.0.0),
     webmockr (>= 0.8.0),
     vcr (>= 2.1.0),
     withr (>= 3.0.2),
     knitr,
+    maps,
     rmarkdown,
     sf (>= 0.9),
     spelling,

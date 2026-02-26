@@ -30,7 +30,7 @@ list_locations(
 }
 \arguments{
 \item{bbox}{Named numeric vector with four coordinates in form X minimum,
-Y mininum, X maximum, Y maximum, named values must be \code{xmin}, \code{ymin}, \code{ymax}
+Y minimum, X maximum, Y maximum, named values must be \code{xmin}, \code{ymin}, \code{ymax}
 , \code{xmax}. default is \code{NULL}.}
 
 \item{coordinates}{Named numeric vector with two numeric WGS84 (EPSG:4326)
@@ -68,41 +68,39 @@ provided, results matching any of the IDs will be returned. default is
 \code{NULL}.}
 
 \item{monitor}{A logical to filter results to regulatory monitors (TRUE) or
-air sensors (FALSE), both are included if NULL. default is \code{NULL}.}
+air sensors (FALSE), both are included if NULL, default is \code{NULL}.}
 
 \item{mobile}{A logical to filter results to mobile (TRUE) or stationary
-(FALSE) location, both are included if NULL. default is \code{NULL}.}
+(FALSE) location, both are included if NULL, default is \code{NULL}.}
 
 \item{instruments_id}{A numeric vector of length 1 or more, containing the
 ID(s) of the instrument(s) to use for filtering results. If multiple IDs are
 provided, results matching any of the IDs will be returned. default is
 \code{NULL}.}
 
-\item{iso}{An ISO 3166-1 alpha-2 string of the country to filter the results.}
+\item{iso}{An ISO 3166-1 alpha-2 string of the country to filter the results, , default is \code{NULL}.}
 
-\item{countries_id}{A numeric vector of length 1 or more, containing the
-ID(s) of the country(ies) to use for filtering results. If multiple IDs are
+\item{countries_id}{A numeric vector of length 1 or more containing country
+IDs to use for filtering results. If multiple IDs are
 provided, results matching any of the IDs will be returned. default is
 \code{NULL}.}
 
-\item{order_by}{A string. default is \code{NULL}.}
+\item{order_by}{A string specifying the field to order results by.}
 
-\item{sort_order}{A string. default is \code{NULL}.}
+\item{sort_order}{A string specifying sort direction, either \code{"asc"} or \code{"desc"}.}
 
-\item{limit}{An integer to limit the number of results per page. default is
-\code{NULL}.}
+\item{limit}{An integer specifying the maximum number of results to return, default is \code{100}.}
 
-\item{page}{An integer for the page number for paginating through results.
-default is \code{NULL}.}
+\item{page}{An integer specifying the page number for paginated results, default is \code{1}.}
 
 \item{as_data_frame}{A logical for toggling whether to return results as
-data frame or list. default is \code{TRUE}}
+data frame or list, default is \code{TRUE}.}
 
 \item{dry_run}{A logical for toggling a dry run of the request, default is
-\code{FALSE.}}
+\code{FALSE}.}
 
 \item{rate_limit}{A logical for toggling automatic rate limiting based on
-rate limit headers. default is \code{FALSE.}}
+rate limit headers. default is \code{FALSE}.}
 
 \item{api_key}{A valid OpenAQ API key string. default is \code{NULL}.}
 }

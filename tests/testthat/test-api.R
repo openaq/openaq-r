@@ -23,37 +23,32 @@ test_that("get_api_key returns value", {
 
 
 test_that("get_api_key returns empty value", {
-  withr::with_envvar(
-    new = c("OPENAQ_API_KEY" = NA),
-    expect_equal(get_api_key(), "")
-  )
+  withr::with_envvar(c("OPENAQ_API_KEY" = ""), {
+    mockery::stub(get_api_key, "rstudioapi::isAvailable", FALSE)
+    expect_error(
+      get_api_key(),
+      "No API key found"
+    )
+  })
 })
 
-# get_api_key
-
 test_that("get_api_key prompts via rstudioapi when in RStudio and key is missing", {
-  withr::local_envvar(c(
-    "OPENAQ_API_KEY" = "",
-    "RSTUDIO" = "1"
-  ))
-  mockery::stub(
-    where = get_api_key,
-    what = "rstudioapi::askForSecret",
-    how = "foo_bar"
-  )
+  withr::local_envvar(c("OPENAQ_API_KEY" = ""))
+  mockery::stub(get_api_key, "rstudioapi::isAvailable", TRUE)
+  mockery::stub(get_api_key, "rstudioapi::hasFun", TRUE)
+  mockery::stub(get_api_key, "rstudioapi::askForSecret", "foo_bar")
   result <- get_api_key()
   expect_equal(result, "foo_bar")
 })
 
-test_that("get_api_key returns an empty string when key is missing and not in RStudio", {
-  withr::local_envvar(c(
-    "OPENAQ_API_KEY" = "",
-    "RSTUDIO" = "0"
-  ))
-  result <- get_api_key()
-  expect_equal(result, "")
+test_that("get_api_key stops with error when key is missing and not in RStudio", {
+  withr::local_envvar(c("OPENAQ_API_KEY" = ""))
+  mockery::stub(get_api_key, "rstudioapi::isAvailable", FALSE)
+  expect_error(
+    get_api_key(),
+    "No API key found"
+  )
 })
-
 
 # set_base_url
 

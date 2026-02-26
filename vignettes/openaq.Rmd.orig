@@ -151,7 +151,7 @@ list_locations(
 
 ## Features
 
-### Queriable resources
+### Queryable resources
 
 The OpenAQ API follows a resource-oriented design, allowing developers to
 retrieve air quality data through standardized HTTP requests to specific

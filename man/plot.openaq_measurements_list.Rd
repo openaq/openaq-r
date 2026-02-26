@@ -4,7 +4,7 @@
 \alias{plot.openaq_measurements_list}
 \title{Helper for plotting measurements from list}
 \usage{
-\method{plot}{openaq_measurements_list}(x, y, ...)
+\method{plot}{openaq_measurements_list}(x, y = NULL, ...)
 }
 \arguments{
 \item{x}{A list of measurements results.}
@@ -18,7 +18,7 @@ Helper for plotting measurements from list
 }
 \examples{
 \dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-meas <- list_sensor_measurements(23707, limit = 500, as_data_frame = FALSE)
+meas <- list_sensor_measurements(23707, limit = 500)
 plot(meas)
 \dontshow{\}) # examplesIf}
 }

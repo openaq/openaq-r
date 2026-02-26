@@ -16,16 +16,16 @@ list_location_latest(
 )
 }
 \arguments{
-\item{locations_id}{An integer.}
+\item{locations_id}{An integer representing the OpenAQ locations_id.}
 
-\item{datetime_min}{A string.}
+\item{datetime_min}{A string specifying the minimum datetime for filtering results, default is \code{NULL}.}
 
-\item{limit}{An integer.}
+\item{limit}{An integer specifying the maximum number of results to return, default is \code{100}.}
 
-\item{page}{An integer.}
+\item{page}{An integer specifying the page number for paginated results, default is \code{1}.}
 
 \item{as_data_frame}{A logical for toggling whether to return results as
-data frame or list default is \code{TRUE}.}
+data frame or list, default is \code{TRUE}.}
 
 \item{dry_run}{A logical for toggling a dry run of the request, default is
 \code{FALSE}.}

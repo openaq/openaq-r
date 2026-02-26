@@ -7,7 +7,7 @@
 \method{as.data.frame}{openaq_countries_list}(x, row.names = NULL, optional = FALSE, ...)
 }
 \arguments{
-\item{x}{A list of countries as returned from list_countries}
+\item{x}{A list of countries as returned from list_countries.}
 
 \item{row.names}{\code{NULL} or a character vector giving the row names for the
 data frame. Missing values are not allowed.}
@@ -26,6 +26,6 @@ Method for converting openaq_countries_list to data frame.
 \examples{
 \dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 countries <- list_countries()
-openaq_countries_list.as.data.frame(countries)
+as.data.frame(countries)
 \dontshow{\}) # examplesIf}
 }

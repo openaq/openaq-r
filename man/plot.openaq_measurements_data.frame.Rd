@@ -4,12 +4,12 @@
 \alias{plot.openaq_measurements_data.frame}
 \title{Helper for plotting measurements}
 \usage{
-\method{plot}{openaq_measurements_data.frame}(x, y, ...)
+\method{plot}{openaq_measurements_data.frame}(x, y = NULL, ...)
 }
 \arguments{
 \item{x}{A data frame of measurements results.}
 
-\item{y}{default is \code{NULL}}
+\item{y}{Unused, default is \code{NULL}.}
 
 \item{...}{Other options to be passed on to base::plot().}
 }

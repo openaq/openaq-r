@@ -26,6 +26,6 @@ Method for converting openaq_measurements_list to data frame.
 \examples{
 \dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 meas <- list_sensor_measurements(23707, limit = 500, as_data_frame = FALSE)
-openaq_measurements_list.as.data.frame(meas)
+as.data.frame(meas)
 \dontshow{\}) # examplesIf}
 }

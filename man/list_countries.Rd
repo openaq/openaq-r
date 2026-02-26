@@ -26,16 +26,16 @@ provided, results matching any of the IDs will be returned.}
 ID(s) of the parameters to use for filtering results. If multiple IDs are
 provided, results matching any of the IDs will be returned.}
 
-\item{order_by}{A string.}
+\item{order_by}{A string specifying the field to order results by.}
 
-\item{sort_order}{A string.}
+\item{sort_order}{A string specifying sort direction, either \code{"asc"} or \code{"desc"}.}
 
-\item{limit}{An integer.}
+\item{limit}{An integer specifying the maximum number of results to return, default is \code{100}.}
 
-\item{page}{An integer.}
+\item{page}{An integer specifying the page number for paginated results, default is \code{1}.}
 
 \item{as_data_frame}{A logical for toggling whether to return results as
-data frame or list default is \code{TRUE}.}
+data frame or list, default is \code{TRUE}.}
 
 \item{dry_run}{A logical for toggling a dry run of the request, default is
 \code{FALSE}.}

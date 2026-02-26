@@ -7,7 +7,7 @@
 \method{as.data.frame}{openaq_sensors_list}(x, row.names = NULL, optional = FALSE, ...)
 }
 \arguments{
-\item{x}{A list of sensors as returned from get_sensor}
+\item{x}{A list of sensors as returned from get_sensor or list_location_sensors.}
 
 \item{row.names}{\code{NULL} or a character vector giving the row names for the
 data frame. Missing values are not allowed.}
@@ -18,14 +18,14 @@ base package as.data.frame() methods use optional only for column names
 treatment, basically with the meaning of data.frame(*, check.names =
 !optional). See also the make.names argument of the matrix method.}
 
-\item{...}{additional arguments to be passed to or from methods.#'}
+\item{...}{additional arguments to be passed to or from methods.}
 }
 \description{
 Method for converting openaq_sensors_list to data frame.
 }
 \examples{
 \dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-sensor <- get_sensor(as_frame_frame = FALSE)
-openaq_sensors_list.as.data.frame(sensor)
+sensor <- get_sensor(as_data_frame = FALSE)
+as.data.frame(sensor)
 \dontshow{\}) # examplesIf}
 }
