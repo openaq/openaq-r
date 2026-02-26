@@ -2,7 +2,42 @@
 
 ## Added
 
+- Added `validate_data_rollup_compat()` to validate compatibility between `data`
+  and `rollup` parameters in `list_sensor_measurements()`.
+- Added tests for `list_sensor_measurements()`, `get_period_field()`,
+  `get_summary_field()`, `validate_data_rollup_compat()`, and
+  `transform_vector_to_string()`.
+
+## Changed
+
+- Moved `maps` from `Imports` to `Suggests`. World boundary overlay in
+  `plot.openaq_locations_data.frame()` is now optional. A message is displayed
+  if `maps` is not installed.
+- Moved `rstudioapi` from `Imports` to `Suggests`. API key prompting in RStudio
+  is now optional with a fallback error message when running outside RStudio.
+- Removed `purrr` and `graphics` and `utils` from `Imports`.
+- Improved parameter documentation across all resource functions.
+- Standardized `isTRUE()` usage for `as_data_frame` checks across all resource
+  functions.
+
 ## Fixed
+
+- Fixed missing `dry_run` early return in `list_manufacturer_instruments()`.
+- Fixed missing `rate_limit` and `api_key` arguments in `fetch()` calls in
+  `list_location_latest()` and `list_parameter_latest()`.
+- Fixed wrong class assignment `openaq_licenses_data.frame` in
+  `as.data.frame.openaq_manufacturers_list()`.
+- Fixed `tbl$avg <- as.numeric(tbl$sd)` typo in
+  `as.data.frame.openaq_measurements_list()`, column is now correctly assigned
+  to `tbl$sd`.
+- Fixed incorrect example function names in `as.data.frame` methods across all
+  resource files.
+- Fixed `y` parameter missing default `NULL` in `plot.openaq_measurements_data.frame()`
+  and `plot.openaq_measurements_list()`.
+
+## Removed
+
+- Removed `list_location_measurements()` function.
 
 # openaq v0.9.0 - 2025-11-21
 

@@ -16,6 +16,8 @@ list_parameter_latest(
 )
 }
 \arguments{
+\item{parameters_id}{An integer representing the OpenAQ parameters_id}
+
 \item{datetime_min}{A string specifying the minimum datetime for filtering results, default is \code{NULL}.}
 
 \item{limit}{An integer specifying the maximum number of results to return, default is \code{100}.}
@@ -32,8 +34,6 @@ data frame or list, default is \code{TRUE}.}
 rate limit headers, default is \code{FALSE}.}
 
 \item{api_key}{A valid OpenAQ API key string, default is \code{NULL}.}
-
-\item{locations_id}{An integer representing the OpenAQ locations_id.}
 }
 \value{
 A data frame or a list of the results.
