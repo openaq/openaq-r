@@ -62,7 +62,7 @@ This returns a data frame that will look something like:
 ## Development
 
 Contributions are welcome. See the [Development
-Guide](https://github.com/openaq/openaq-r/DEVELOPMENT.md) for setup,
-building, testing, and code style. See the [Contribution
-Guide](https://github.com/openaq/openaq-r/CONTRIBUTING.md) for general
-contribution guidelines.
+Guide](https://github.com/openaq/openaq-r/blob/main/DEVELOPMENT.md) for
+setup, building, testing, and code style. See the [Contribution
+Guide](https://github.com/openaq/openaq-r/blob/main/CONTRIBUTING.md) for
+general contribution guidelines.
