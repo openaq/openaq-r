@@ -21,7 +21,12 @@ in the package for transparency.
 
 There are currently no downstream dependencies for this package.
 
-## Resubmission
+## Resubmission (2)
+
+* Fixed GitHub URLs for DEVELOPMENT.md and CONTRIBUTING.md in README.md to 
+  include the full blob path (/blob/main/).
+
+## Resubmission (1)
 
 * Fixed invalid file URIs in README.md: DEVELOPMENT.md and CONTRIBUTING.md
   now use full GitHub URLs.
