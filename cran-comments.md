@@ -9,7 +9,7 @@
 
 0 errors | 0 warnings | 1 note
 
-* This is a new submission.
+* This is a resubmission. See resubmission notes below.
 
 ## Vignettes
 
@@ -20,3 +20,11 @@ in the package for transparency.
 ## Downstream dependencies
 
 There are currently no downstream dependencies for this package.
+
+## Resubmission
+
+* Fixed invalid file URIs in README.md: DEVELOPMENT.md and CONTRIBUTING.md
+  now use full GitHub URLs.
+* Quoted 'OpenAQ' in the Title and Description fields of DESCRIPTION. Note
+  that OpenAQ is an organization name, but it also serves as the API name,
+  so quoting has been applied per reviewer feedback.

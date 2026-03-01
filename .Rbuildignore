@@ -16,3 +16,4 @@ CHANGELOG.md
 ^vignettes/precompile\.R$
 ^vignettes/figure$
 ^cran-comments\.md$
+^CRAN-SUBMISSION$
