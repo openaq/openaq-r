@@ -62,9 +62,9 @@ This returns a data frame that will look something like:
 ## Development
 
 Contributions are welcome. See the [Development
-Guide](https://openaq.github.io/openaq-r/DEVELOPMENT.md) for setup,
+Guide](https://github.com/openaq/openaq-r/DEVELOPMENT.md) for setup,
 building, testing, and code style. See the [Contribution
-Guide](https://openaq.github.io/openaq-r/CONTRIBUTING.md) for general
+Guide](https://github.com/openaq/openaq-r/CONTRIBUTING.md) for general
 contribution guidelines.
 
 # Package index
