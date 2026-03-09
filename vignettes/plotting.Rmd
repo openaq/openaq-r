@@ -2,7 +2,7 @@
 title: "Plotting"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{plotting}
+  %\VignetteIndexEntry{Plotting}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -21,7 +21,7 @@ To visualize locations on a map, call the `plot` function after returning a data
 frame from the `list_locations` function call. A basic basemap with national
 boundaries is included based on the [Natural Earth dataset](https://www.naturalearthdata.com/)
 via the [`maps`](https://CRAN.R-project.org/package=maps) package. If `maps` is
-not  installed, only the data points will be plotted. Install it with 
+not  installed, only the data points will be plotted. Install it with
 `install.packages("maps")` to include the world boundary overlay.
 
 
@@ -31,10 +31,6 @@ locations <- list_locations(
   parameters_id = 2,
   limit = 1000
 )
-```
-
-
-``` r
 plot(locations)
 ```
 
@@ -61,10 +57,6 @@ measurements <- list_sensor_measurements(
   datetime_from = as.POSIXct("2025-01-01 00:00", tz = "America/Denver"),
   datetime_to = as.POSIXct("2025-01-15 23:00", tz = "America/Denver"),
 )
-```
-
-
-``` r
 plot(measurements)
 ```
 

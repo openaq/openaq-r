@@ -14,9 +14,13 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+```{r setup, message = FALSE}
+library(openaq)
+```
+
 This guide provides an overview of the key features of the openaq package. For
 detailed information on the functions provided in the package see the reference
-section. 
+section.
 
 For more general documentation on the OpenAQ platform and API see the main
 OpenAQ documentation site at [docs.openaq.org](https://docs.openaq.org).
@@ -29,7 +33,7 @@ An API key is required for using the OpenAQ API. Register for an account at
 [https://explore.openaq.org/register](https://explore.openaq.org/register) to
 get an API key.
 
-<aside style="padding: 16px; margin:16px; background-color: #fbdcda; border-inline-start-color: #dd443c; border-inline-start-style: solid; border-inline-start-width: 4px;"> 
+<aside style="padding: 16px; margin:16px; background-color: #fbdcda; border-inline-start-color: #dd443c; border-inline-start-style: solid; border-inline-start-width: 4px;">
 <span style="color:#8a0f3a; margin:0; padding: 6px;">Important</span>
 Treat your API key as you would a password. Do not share your API key with
 others. Do not commit your API key to version control to avoid compromising the
@@ -38,8 +42,8 @@ OpenAQ Explorer account.
 </aside>
 
 By default the OpenAQ R client looks for an API key in the `OPENAQ_API_KEY`
-system environment variable. The package also provides a helper function called 
-`set_api_key()` to set this value. 
+system environment variable. The package also provides a helper function called
+`set_api_key()` to set this value.
 
 ```{r eval=FALSE}
 set_api_key("my-super-secret-openaq-key-1234")
@@ -84,7 +88,7 @@ headers <- attr(locations, "headers")
 print(headers[["x_ratelimit_remaining"]])
 ```
 
-Read more about the headers and rate limits in the OpenAQ API documentation under 
+Read more about the headers and rate limits in the OpenAQ API documentation under
 [Rate Limits](https://docs.openaq.org/using-the-api/rate-limits)
 
 The openaq package provides optional functionality to automatically throttle
@@ -99,12 +103,13 @@ built-in retry mechanism to intelligently handle rate limit errors.
 Using the openaq package you can enable automatic rate limiting in two ways:
 
 **Option 1: Enable globally for your session**
-```{r eval=FALSE}
+```{r eval=TRUE}
 # Enable automatic rate limiting for all subsequent requests
 enable_rate_limit()
 
 # Now all API calls will automatically handle rate limits
 locations <- list_locations(limit = 1000, parameters_id = 2)
+nrow(locations)
 ```
 
 **Option 2: Enable per request**
@@ -115,11 +120,12 @@ locations <- list_locations(
   parameters_id = 2,
   rate_limit = TRUE
 )
+head(locations)
 ```
 
 This is particularly useful when making many sequential requests or when working
 with large datasets where you might exceed the rate limit. The automatic retry
-mechanism will pause execution until the rate limit resets, then continue 
+mechanism will pause execution until the rate limit resets, then continue
 automatically without raising an error.
 
 ### Pagination
@@ -135,18 +141,20 @@ any resource that returns more than on results, i.e. "list" functions such as
 
 Examples:
 
-```{r eval=FALSE}
-list_locations(
+```{r eval=TRUE}
+locs <- list_locations(
   limit = 1000,
   page = 1
 )
+head(locs)
 ```
 
-```{r eval=FALSE}
-list_locations(
+```{r eval=TRUE}
+locs <- list_locations(
   limit = 1000,
   page = 2
 )
+head(locs)
 ```
 
 ## Features
@@ -161,7 +169,7 @@ resources, simplifying the process of querying and retrieving data resources.
 
 #### Countries
 
-```{r eval=FALSE}
+```{r eval=TRUE}
 get_country()
 ```
 
@@ -171,7 +179,7 @@ list_countries()
 
 #### Instruments
 
-```{r eval=FALSE}
+```{r eval=TRUE}
 get_instrument()
 ```
 
@@ -203,7 +211,7 @@ list_licenses()
 get_license()
 ```
 
-#### Locations 
+#### Locations
 
 ```{r eval=FALSE}
 list_locations()
@@ -239,7 +247,7 @@ list_owners()
 get_owner()
 ```
 
-#### Parameters 
+#### Parameters
 
 ```{r eval=FALSE}
 list_parameters()
@@ -249,7 +257,7 @@ list_parameters()
 get_parameter()
 ```
 
-#### Providers 
+#### Providers
 ```{r eval=FALSE}
 list_providers()
 ```
@@ -258,7 +266,7 @@ list_providers()
 get_provider()
 ```
 
-#### Sensors 
+#### Sensors
 
 ```{r eval=FALSE}
 get_sensor()
@@ -301,7 +309,7 @@ list_locations(
 
 JSON results are parsed with the `httr2::resp_body_json()` function under-the-hood.
 
-### Automatic rate limiting 
+### Automatic rate limiting
 
 All resource function provide an option to enable automatic rate limiting to
 ensure you do not exceed account rate limits. You can or course implement your
@@ -317,7 +325,7 @@ list_locations(
 )
 ```
 
-This functionality uses the OpenAQ API's 
+This functionality uses the OpenAQ API's
 [rate limit headers](https://docs.openaq.org/using-the-api/rate-limits#rate-limit-headers)
 and the `httr2::req_retry()` function under-the-hood.
 
@@ -325,7 +333,7 @@ and the `httr2::req_retry()` function under-the-hood.
 
 Every resource function provides an optional parameter named `DRY_RUN` that
 prevents a full HTTP request to the API and instead prints out a summary of how
-the request would have been made. 
+the request would have been made.
 
 
 ```{r eval=FALSE}
@@ -338,6 +346,6 @@ list_locations(
 ```
 
 This can be helpful when debugging to identify issues and compare the raw query
-URL and headers. 
+URL and headers.
 
 This functionality uses the `httr2::req_dry_run()` function under-the-hood.

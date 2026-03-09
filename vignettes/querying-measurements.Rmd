@@ -2,7 +2,7 @@
 title: "Querying measurements"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{querying-measurements}
+  %\VignetteIndexEntry{Querying measurements}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -97,7 +97,7 @@ sensors_id
 ## Fetching Measurements
 
 Now we can use the `list_sensor_measurements()` function to retrieve the
-measurements for the sensor. We need to provide the `sensors_id`, 
+measurements for the sensor. We need to provide the `sensors_id`,
 `datetime_from`, and `datetime_to` arguments. We will query for all measurements
 during the month of January 2025. It is important to use the correct timezone
 for your dates, we use the timezone for location that we stored in the `tz`
@@ -117,7 +117,7 @@ measurements <- list_sensor_measurements(
 ```
 
 Finally, we can visualize the measurements using the `plot()` function. `openaq`
-provide built-in helpers for the `base::plot` function, read more in the 
+provide built-in helpers for the `base::plot` function, read more in the
 `plotting` vignette.
 
 

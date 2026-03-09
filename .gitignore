@@ -58,3 +58,5 @@ altdoc/freeze.rds
 old_tests
 
 CRAN-SUBMISSION
+/doc/
+/Meta/

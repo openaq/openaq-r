@@ -1,15 +1,15 @@
 Package: openaq
 Title: Access Air Quality Data from the 'OpenAQ' API
-Description: Provides an interface to the 'OpenAQ' API <https://openaq.org/>, 
-    a platform for real-time and historical air quality data from around the 
-    world. Users can retrieve measurement data, metadata for sensors and 
+Description: Provides an interface to the 'OpenAQ' API <https://openaq.org/>,
+    a platform for real-time and historical air quality data from around the
+    world. Users can retrieve measurement data, metadata for sensors and
     locations for air quality research and monitoring.
 Version: 1.0.0
 License: MIT + file LICENSE
 URL: https://github.com/openaq/openaq-r, https://openaq.github.io/openaq-r/
 BugReports: https://github.com/openaq/openaq-r/issues
 Authors@R: c(
-    person("Russ", "Biggs", email="russ@openaq.org", role = c("aut", "cre"), 
+    person("Russ", "Biggs", email="russ@openaq.org", role = c("aut", "cre"),
     comment = c(ORCID = "0009-0008-0777-8479")),
     person("Christian", "Parker", email="chris@talloaks.io", role = c("aut")),
     person("Francesca", "Mills", role = c("ctb")),

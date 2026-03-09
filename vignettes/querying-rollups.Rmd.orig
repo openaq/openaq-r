@@ -2,7 +2,7 @@
 title: "Querying rolled up measurements"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Querying rollups}
+  %\VignetteIndexEntry{Querying rolled up measurements}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -30,7 +30,7 @@ Health Organization (WHO) sets the daily PM<sub>2.5</sub> guideline to 15 Âµg/mÂ
 
 This vignette will demonstrate how to query data using `openaq` and get results
 to compare against public health benchmarks like the WHO daily PM<sub>2.5</sub>
-standard. 
+standard.
 
 ```{r eval=FALSE}
 set_api_key("replace-me-with-a-valid-openaq-api-key")
@@ -44,7 +44,7 @@ sensor `3646869`, from the 'Mari - Industrial Station' location in the Republic
 of Cyprus. To compare against the WHO daily guideline, we will request data
 aggregated to the day, using the `days` option:
 
-```{r} 
+```{r}
 data <- list_sensor_measurements(
   3646869,
   data = "days",
@@ -56,11 +56,11 @@ data <- list_sensor_measurements(
 
 
 The measurements resource provides coverage information when aggregating data
-into time periods. This helps provide transparency into the data coverage and 
-help us decide if the resulting mean is representative. This completeness is 
+into time periods. This helps provide transparency into the data coverage and
+help us decide if the resulting mean is representative. This completeness is
 computed based on the result of dividing `observed_count` by `expected_count`,
 in the case of a `days` average and hourly measurement, we expect 24
-measurements to be the complete period. 
+measurements to be the complete period.
 
 ```{r}
 head(data[, c("value", "percent_complete", "expected_count", "observed_count")])
@@ -91,5 +91,3 @@ ggplot(data, aes(x = as.Date(datetime_to), y = value)) +
   expand_limits(y = 0) +
   theme_minimal()
 ```
-
-
