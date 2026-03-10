@@ -123,7 +123,20 @@ list_manufacturers <- function(
 #' treatment, basically with the meaning of data.frame(*, check.names =
 #' !optional). See also the make.names argument of the matrix method.
 #' @param ... additional arguments to be passed to or from methods.
-#'
+#' 
+#' @return A data frame class of the manufacturers results, with the following
+#' columns:
+#'    \describe{
+#'      \item{id}{Numeric. The manufacturers identifier. }
+#'      \item{name}{Character. The name of the manufacturer. }
+#'      \item{instrument_ids}{Character. A comma delimited list of instrument
+#'        identifiers manufactured by the manufacturer.}
+#'      \item{instrument_names}{Character. A comma delimited list of instrument
+#'        names manufactured by this manufacturer.}
+#'    }
+#'    The data frame also includes a \code{meta} attribute from the original 
+#'    \code{openaq_manufacturers_list}.
+#' 
 #' @export as.data.frame.openaq_manufacturers_list
 #' @export
 #'
@@ -136,8 +149,11 @@ as.data.frame.openaq_manufacturers_list <- function(x, row.names = NULL, optiona
     data.frame(
       id = rw$id,
       name = rw$name,
-      instruments_ids = paste(lapply(rw$instruments, function(i) {
+      instrument_ids = paste(lapply(rw$instruments, function(i) {
         i$id
+      }), collapse = ","),
+      instrument_names = paste(lapply(rw$instruments, function(i) {
+        i$name
       }), collapse = ",")
     )
   }))

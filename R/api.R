@@ -3,6 +3,8 @@
 #' A helper function to set the OPENAQ_API_KEY environment variable.
 #'
 #' @param api_key A string value for the API key to set.
+#' 
+#' @return No return value, called for side effects.
 #'
 #' @export
 #'
@@ -50,6 +52,8 @@ get_api_key <- function() {
 #' function is generally not used by most users except in extraordinary cases.
 #'
 #' @param base_url A string.
+#' 
+#' @return No return value, called for side effects.
 #'
 #' @export
 #'
@@ -95,7 +99,12 @@ check_api_key <- function(base_url, api_key) {
 
 #' Toggles on the RATE_LIMIT environment variable to TRUE.
 #'
+#' @return No return value, called for side effects.
+#' 
 #' @export
+#' 
+#' @examples
+#' enable_rate_limit()
 #'
 enable_rate_limit <- function() {
   Sys.setenv("RATE_LIMIT" = TRUE)

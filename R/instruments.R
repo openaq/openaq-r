@@ -168,7 +168,22 @@ list_manufacturer_instruments <- function(
 #' treatment, basically with the meaning of data.frame(*, check.names =
 #' !optional). See also the make.names argument of the matrix method.
 #' @param ... additional arguments to be passed to or from methods.
-#'
+#' 
+#' @return A data frame class of the instruments results, with the following
+#' columns:
+#'    \describe{
+#'      \item{id}{Numeric. The instruments identifier. }
+#'      \item{name}{Character. The name of the measurement instrument. }
+#'      \item{is_monitor}{Logical. Indicates if the instrument is considered a
+#'        reference monitor. }
+#'      \item{manufacturer_id}{Numeric. The manufacturers identifier for the
+#'        manufacturer that makes the instrument. }
+#'      \item{manufacturer_name}{Factor. The name of manufacturer that makes
+#'        the instrument. }
+#'    }
+#'    The data frame also includes a \code{meta} attribute from the original 
+#'    \code{openaq_instruments_list}.
+#' 
 #' @export as.data.frame.openaq_instruments_list
 #' @export
 #'

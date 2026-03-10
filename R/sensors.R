@@ -102,11 +102,55 @@ list_location_sensors <- function(
 #' !optional). See also the make.names argument of the matrix method.
 #' @param ... additional arguments to be passed to or from methods.
 #'
+#' @return A data frame class of the sensors results, with the following
+#' columns:
+#'    \describe{
+#'      \item{id}{Numeric. The sensors identifier.}
+#'      \item{name}{Character. }
+#'      \item{parameters_id}{Numeric. .}
+#'      \item{datetime_first_utc}{POSIXct. The datetime of the first measurement
+#'        in UTC.}
+#'      \item{datetime_first_local}{POSIXct. The datetime of the first
+#'        measurement in local time.}
+#'      \item{datetime_last_utc}{POSIXct. The datetime of the last measurement
+#'        in UTC.}
+#'      \item{datetime_last_local}{POSIXct. The datetime of the last measurement
+#'        in local time.}
+#'      \item{min}{Numeric. The minimum measurement value recorded by the
+#'        sensor.}
+#'      \item{max}{Numeric. The maximum measurement value recorded by the
+#'        sensor.}
+#'      \item{avg}{Numeric. The average measurement value recorded by the
+#'        sensor.}
+#'      \item{expected_count}{Numeric. The expected number of measurements for
+#'        the sensor.}
+#'      \item{expected_interval}{Factor. The expected measurement interval in 
+#'        HH:MM:SS format (e.g. "01:00:00").}
+#'      \item{observed_count}{Numeric. The observed number of measurements for
+#'        the sensor.}
+#'      \item{observed_interval}{Factor. The observed measurement interval in 
+#'        HH:MM:SS format (e.g. "01:00:00").}
+#'      \item{percent_complete}{Numeric. The percentage of expected measurements
+#'        that were observed.}
+#'      \item{percent_coverage}{Numeric. The percentage of time coverage for the
+#'        sensor.}
+#'      \item{latest_value}{Numeric. The most recent measurement value from the
+#'        sensor.}
+#'      \item{latest_datetime}{POSIXct. The datetime of the most recent
+#'        measurement.}
+#'      \item{latest_latitude}{Numeric. The latitude of the most recent
+#'        measurement location.}
+#'      \item{latest_longitude}{Numeric.  The longitude of the most recent
+#'        measurement location}
+#'    }
+#'    The data frame also includes a \code{meta} attribute from the original 
+#'    \code{openaq_sensors_list}.
+#' 
 #' @export as.data.frame.openaq_sensors_list
 #' @export
 #'
 #' @examplesIf interactive()
-#' sensor <- get_sensor(as_data_frame = FALSE)
+#' sensor <- get_sensor(42, as_data_frame = FALSE)
 #' as.data.frame(sensor)
 #'
 as.data.frame.openaq_sensors_list <- function(x, row.names = NULL, optional = FALSE, ...) { # nolint: object_name_linter

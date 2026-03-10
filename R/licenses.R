@@ -59,7 +59,7 @@ get_license <- function(
 #' rate limit headers, default is `FALSE`.
 #' @param api_key A valid OpenAQ API key string, default is `NULL`.
 #'
-#' @return A data frame.
+#' @return A data frame or a list of the results.
 #'
 #' @export
 #'
@@ -122,6 +122,28 @@ list_licenses <- function(
 #' !optional). See also the make.names argument of the matrix method.
 #' @param ... additional arguments to be passed to or from methods.
 #'
+#' @return A data frame class of the licenses results, with the following
+#' columns:
+#'    \describe{
+#'      \item{id}{Numeric. The licenses identifier. }
+#'      \item{name}{Character. The license name. }
+#'      \item{commercial_use_allowed}{Logical. Indicates whether commerical use
+#'        is allowed under the license terms. }
+#'      \item{attribution_required}{Logical. Indicates whether attribution
+#'        is required under the license terms. }
+#'      \item{share_alike_required}{Logical. Indicates whether share-alike
+#'        is required under the license terms.}
+#'      \item{modification_allowed}{Logical. Indicates whether modification
+#'        is allowed under the license terms. }
+#'      \item{redistribution_allowed}{Logical. Indicates whether redistribution
+#'        is allowed under the license terms. }
+#'      \item{source_url}{String. The URL of the license as listed by the
+#'        upstream source. }
+#'    }
+#'    The data frame also includes a \code{meta} attribute from the original 
+#'    \code{openaq_licenses_list}.
+#' 
+#' 
 #' @export as.data.frame.openaq_licenses_list
 #' @export
 #'

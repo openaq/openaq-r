@@ -113,7 +113,7 @@ list_providers <- function(
 
 #' Method for converting openaq_providers_list to data frame.
 #'
-#' @param x A list of providers as returned from list_providers
+#' @param x A list of providers as returned from list_providers.
 #' @param row.names `NULL` or a character vector giving the row names for the
 #' data frame. Missing values are not allowed.
 #' @param optional logical. If TRUE, setting row names and converting column
@@ -123,6 +123,26 @@ list_providers <- function(
 #' !optional). See also the make.names argument of the matrix method.
 #' @param ... additional arguments to be passed to or from methods.
 #'
+#' @return A data frame class of the providers results, with the following
+#' columns:
+#'    \describe{
+#'      \item{id}{Numeric. The providers identifier.}
+#'      \item{name}{Character. The name of the provider.}
+#'      \item{source_name}{Factor. The name of the source.}
+#'      \item{export_prefix}{Character. Prefixed when exported to file store.}
+#'      \item{datetime_added}{POSIXct. Datetime when the provider was first
+#'      added to OpenAQ. }
+#'      \item{datetime_first}{POSIXct. Datetime of the first measurement value
+#'        from the provider.}
+#'      \item{datetime_last}{POSIXct. Datetime of the last measurement value
+#'        from the provider.}
+#'      \item{entities_id}{Numeric. Entities identifier for the provider. }
+#'      \item{parameter_ids}{Character. A comma delimited list of parameters 
+#'        identifier measured by the provider.}
+#'    }
+#'    The data frame also includes a \code{meta} attribute from the original 
+#'    \code{openaq_providers_list}.
+#' 
 #' @export as.data.frame.openaq_providers_list
 #' @export
 #'
@@ -141,7 +161,7 @@ as.data.frame.openaq_providers_list <- function(x, row.names = NULL, optional = 
       datetime_first = parse_openaq_timestamp(rw$datetimeFirst),
       datetime_last = parse_openaq_timestamp(rw$datetimeLast),
       entities_id = rw$entitiesId,
-      parameters_ids = paste(lapply(rw$parameters, function(p) {
+      parameter_ids = paste(lapply(rw$parameters, function(p) {
         p$id
       }), collapse = ",")
     )

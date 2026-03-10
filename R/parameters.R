@@ -121,12 +121,26 @@ list_parameters <- function(
 #' treatment, basically with the meaning of data.frame(*, check.names =
 #' !optional). See also the make.names argument of the matrix method.
 #' @param ... additional arguments to be passed to or from methods.
-#'
+#' 
+#' @return A data frame class of the parameters results, with the following
+#' columns:
+#'    \describe{
+#'      \item{id}{Numeric. The parameter identifier. }
+#'      \item{name}{Character. Name of the parameter.}
+#'      \item{units}{Character. The units used by the parameter. }
+#'      \item{display_name}{Character. The combined name of the parameter and
+#'        units. May be NA if not provided.}
+#'      \item{description}{Character. Description of the parameter. May be NA if
+#'        not provided.}
+#'    }
+#'    The data frame also includes a \code{meta} attribute from the original 
+#'    \code{openaq_parameters_list}.
+#' 
 #' @export as.data.frame.openaq_parameters_list
 #' @export
 #'
 #' @examplesIf interactive()
-#' parameters <- list_parameters()
+#' parameters <- list_parameters(as_data_frame = FALSE)
 #' as.data.frame(parameters)
 #'
 as.data.frame.openaq_parameters_list <- function(x, row.names = NULL, optional = FALSE, ...) { # nolint: object_name_linter
