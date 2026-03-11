@@ -49,7 +49,7 @@ validate_page <- function(page) {
 #' that should be a numeric vector and within the positive 32 bit integer range.
 #'
 #' @param x Any value.
-#' @param parameter A string representing the query parameter name.
+#' @param parameter A character representing the query parameter name.
 #'
 #' @noRd
 validate_numeric_vector <- function(x, parameter) {
@@ -318,7 +318,8 @@ validate_datetime <- function(x, name) {
 #' `data` is 'days' or larger.
 #'
 #' @param x Any value.
-#' @param name A string representing the parameter name, used in error messages.
+#' @param name A character string representing the parameter name, used in error
+#' messages.
 #'
 #' @noRd
 validate_date <- function(x, name) {

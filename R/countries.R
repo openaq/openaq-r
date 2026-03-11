@@ -53,8 +53,8 @@ get_country <- function(
 #' @param parameters_id A numeric vector of length 1 or more, containing the
 #' ID(s) of the parameters to use for filtering results. If multiple IDs are
 #' provided, results matching any of the IDs will be returned.
-#' @param order_by A string specifying the field to order results by.
-#' @param sort_order A string specifying sort direction, either `"asc"` or `"desc"`.
+#' @param order_by A character string specifying the field to order results by.
+#' @param sort_order A character string specifying sort direction, either `"asc"` or `"desc"`.
 #' @param limit An integer specifying the maximum number of results to return, default is `100`.
 #' @param page An integer specifying the page number for paginated results, default is `1`.
 #' @param as_data_frame A logical for toggling whether to return results as

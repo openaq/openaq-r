@@ -1,16 +1,20 @@
 #' Get a list of measurements by sensors_id.
 #'
 #' @param sensors_id An integer representing an OpenAQ sensors_id.
-#' @param data A string a data interval to return, default is "measurements".
-#' @param rollup A string representing the aggregation rollup, default is `NULL`.
+#' @param data A character string for the data interval to return, default is
+#' "measurements".
+#' @param rollup A character string representing the aggregation rollup, default
+#' is `NULL`.
 #' @param datetime_from A POSIXct datetime (when `data` is `"measurements"` or
 #' `"hours"`) or a Date (when `data` is `"days"` or larger) to filter from,
 #' default is `NULL`.
 #' @param datetime_to A POSIXct datetime (when `data` is `"measurements"` or
 #' `"hours"`) or a Date (when `data` is `"days"` or larger) to filter to,
 #' default is `NULL`.
-#' @param order_by A string representing the field to order by, default is `NULL`.
-#' @param sort_order A string, either "asc" or "desc", default is `NULL`.
+#' @param order_by A character string representing the field to order by,
+#' default is `NULL`.
+#' @param sort_order A character string, either "asc" or "desc", default is
+#' `NULL`.
 #' @param limit An integer representing the number of results per page.
 #' @param page An integer representing the page number.
 #' @param as_data_frame A logical for toggling whether to return results as

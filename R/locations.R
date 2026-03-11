@@ -90,8 +90,8 @@ get_location <- function(
 #' @param mobile A logical to filter results to mobile (TRUE) or stationary
 #' (FALSE) location, both are included if NULL, default is `NULL`.
 #' @param iso An ISO 3166-1 alpha-2 string of the country to filter the results, , default is `NULL`.
-#' @param order_by A string specifying the field to order results by.
-#' @param sort_order A string specifying sort direction, either `"asc"` or `"desc"`.
+#' @param order_by A character string specifying the field to order results by.
+#' @param sort_order A character string specifying sort direction, either `"asc"` or `"desc"`.
 #' @param limit An integer specifying the maximum number of results to return, default is `100`.
 #' @param page An integer specifying the page number for paginated results, default is `1`.
 #' @param as_data_frame A logical for toggling whether to return results as
