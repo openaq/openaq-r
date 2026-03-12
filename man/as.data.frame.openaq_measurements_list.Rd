@@ -20,6 +20,57 @@ treatment, basically with the meaning of data.frame(*, check.names =
 
 \item{...}{additional arguments to be passed to or from methods.}
 }
+\value{
+A data frame class of the measurements results, with the following
+columns:
+\describe{
+\item{value}{Numeric. The measurement value.}
+\item{parameter_id}{Numeric. The parameter identifier for the
+measurement.}
+\item{parameter_name}{Character. The name of the measured parameter.}
+\item{parameter_units}{Character. The units of the measured parameter.}
+\item{period_label}{Factor. The label describing the measurement period
+(e.g. "hour", "day").}
+\item{period_interval}{Factor. The period of the measurement interval in
+HH:MM:SS format (e.g. "01:00:00").}
+\item{datetime_from}{POSIXct. The start datetime of the measurement
+period in local time.}
+\item{datetime_to}{POSIXct. The end datetime of the measurement period
+in local time.}
+\item{latitude}{Numeric. The latitude, geographic Y, value for the
+measurement.}
+\item{longitude}{Numeric. The longitude, geographic X, value for the
+measurement.}
+\item{min}{Numeric. The minimum value within the measurement period.}
+\item{q02}{Numeric. The 2nd percentile value within the measurement
+period.}
+\item{q25}{Numeric. The 25th percentile value within the measurement
+period.}
+\item{median}{Numeric. The median value within the measurement period.}
+\item{q75}{Numeric. The 75th percentile value within the measurement
+period.}
+\item{q98}{Numeric. The 98th percentile value within the measurement
+period.}
+\item{max}{Numeric. The maximum value within the measurement period.}
+\item{avg}{Numeric. The average value within the measurement period.}
+\item{sd}{Numeric. The standard deviation of values within the
+measurement period.}
+\item{expected_count}{Numeric. The expected number of measurements
+within the period.}
+\item{expected_interval}{Factor. The expected measurement interval in
+HH:MM:SS format (e.g. "01:00:00").}
+\item{observed_count}{Numeric. The observed number of measurements
+within the period.}
+\item{observed_interval}{Factor. The observer measurement interval in
+HH:MM:SS format (e.g. "01:00:00").}
+\item{percent_complete}{Numeric. The percentage of expected measurements
+that were observed.}
+\item{percent_coverage}{Numeric. The percentage of time coverage for
+the measurement period.}
+}
+The data frame also includes a \code{meta} attribute from the original
+\code{openaq_measurements_list}.
+}
 \description{
 Method for converting openaq_measurements_list to data frame.
 }

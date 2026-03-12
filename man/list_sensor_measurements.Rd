@@ -23,9 +23,11 @@ list_sensor_measurements(
 \arguments{
 \item{sensors_id}{An integer representing an OpenAQ sensors_id.}
 
-\item{data}{A string a data interval to return, default is "measurements".}
+\item{data}{A character string for the data interval to return, default is
+"measurements".}
 
-\item{rollup}{A string representing the aggregation rollup, default is \code{NULL}.}
+\item{rollup}{A character string representing the aggregation rollup, default
+is \code{NULL}.}
 
 \item{datetime_from}{A POSIXct datetime (when \code{data} is \code{"measurements"} or
 \code{"hours"}) or a Date (when \code{data} is \code{"days"} or larger) to filter from,
@@ -35,9 +37,11 @@ default is \code{NULL}.}
 \code{"hours"}) or a Date (when \code{data} is \code{"days"} or larger) to filter to,
 default is \code{NULL}.}
 
-\item{order_by}{A string representing the field to order by, default is \code{NULL}.}
+\item{order_by}{A character string representing the field to order by,
+default is \code{NULL}.}
 
-\item{sort_order}{A string, either "asc" or "desc", default is \code{NULL}.}
+\item{sort_order}{A character string, either "asc" or "desc", default is
+\code{NULL}.}
 
 \item{limit}{An integer representing the number of results per page.}
 

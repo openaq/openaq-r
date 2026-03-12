@@ -11,7 +11,10 @@
 
 \item{y}{Other data}
 
-\item{...}{Other options to be passed on to base::plot().}
+\item{...}{Other options to be passed on to base::plot().
+
+#' @return Called for its side effect of producing a plot. Returns \code{NULL}
+invisibly.}
 }
 \description{
 Helper for plotting measurements from list

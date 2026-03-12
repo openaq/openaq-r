@@ -16,9 +16,9 @@ list_parameters(
 )
 }
 \arguments{
-\item{order_by}{A string specifying the field to order results by.}
+\item{order_by}{A character string specifying the field to order results by.}
 
-\item{sort_order}{A string specifying sort direction, either \code{"asc"} or \code{"desc"}.}
+\item{sort_order}{A character string specifying sort direction, either \code{"asc"} or \code{"desc"}.}
 
 \item{limit}{An integer specifying the maximum number of results to return, default is \code{100}.}
 

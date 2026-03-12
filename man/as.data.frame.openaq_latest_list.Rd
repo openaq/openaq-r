@@ -21,6 +21,25 @@ treatment, basically with the meaning of data.frame(*, check.names =
 
 \item{...}{additional arguments to be passed to or from methods.}
 }
+\value{
+A data frame class of the latest results, with the following
+columns:
+\describe{
+\item{sensors_id}{Numeric. The sensors identifier. }
+\item{locations_id}{Numeric. The locations identifier.}
+\item{value}{Numeric. The measurement value.}
+\item{datetime_local}{POSIXct. The datetime of the measurement value,
+in local time}
+\item{datetime_utc}{POSIXct. The datetime of the measurement value,
+in UTC time}
+\item{latitude}{Numeric. The latitude, geographic Y, value for the
+measurement.}
+\item{longitude}{Numeric.  The longitude, geographic X, value for the
+measurement.}
+}
+The data frame also includes a \code{meta} attribute from the original
+\code{openaq_latest_list}.
+}
 \description{
 Method for converting openaq_latest_list to data frame.
 }

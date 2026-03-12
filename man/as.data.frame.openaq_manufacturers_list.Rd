@@ -20,6 +20,20 @@ treatment, basically with the meaning of data.frame(*, check.names =
 
 \item{...}{additional arguments to be passed to or from methods.}
 }
+\value{
+A data frame class of the manufacturers results, with the following
+columns:
+\describe{
+\item{id}{Numeric. The manufacturers identifier. }
+\item{name}{Character. The name of the manufacturer. }
+\item{instrument_ids}{Character. A comma delimited list of instrument
+identifiers manufactured by the manufacturer.}
+\item{instrument_names}{Character. A comma delimited list of instrument
+names manufactured by this manufacturer.}
+}
+The data frame also includes a \code{meta} attribute from the original
+\code{openaq_manufacturers_list}.
+}
 \description{
 Method for converting openaq_manufacturers_list to data frame.
 }

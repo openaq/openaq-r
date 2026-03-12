@@ -20,6 +20,22 @@ treatment, basically with the meaning of data.frame(*, check.names =
 
 \item{...}{additional arguments to be passed to or from methods.}
 }
+\value{
+A data frame class of the instruments results, with the following
+columns:
+\describe{
+\item{id}{Numeric. The instruments identifier.}
+\item{name}{Character. The name of the measurement instrument.}
+\item{is_monitor}{Logical. Indicates if the instrument is considered a
+reference monitor. }
+\item{manufacturer_id}{Numeric. The manufacturers identifier for the
+manufacturer that makes the instrument. }
+\item{manufacturer_name}{Factor. The name of manufacturer that makes
+the instrument. }
+}
+The data frame also includes a \code{meta} attribute from the original
+\code{openaq_instruments_list}.
+}
 \description{
 Method for converting openaq_instruments_list to data frame.
 }

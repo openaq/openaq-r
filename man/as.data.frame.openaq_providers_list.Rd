@@ -7,7 +7,7 @@
 \method{as.data.frame}{openaq_providers_list}(x, row.names = NULL, optional = FALSE, ...)
 }
 \arguments{
-\item{x}{A list of providers as returned from list_providers}
+\item{x}{A list of providers as returned from list_providers.}
 
 \item{row.names}{\code{NULL} or a character vector giving the row names for the
 data frame. Missing values are not allowed.}
@@ -19,6 +19,27 @@ treatment, basically with the meaning of data.frame(*, check.names =
 !optional). See also the make.names argument of the matrix method.}
 
 \item{...}{additional arguments to be passed to or from methods.}
+}
+\value{
+A data frame class of the providers results, with the following
+columns:
+\describe{
+\item{id}{Numeric. The providers identifier.}
+\item{name}{Character. The name of the provider.}
+\item{source_name}{Factor. The name of the source.}
+\item{export_prefix}{Character. Prefixed when exported to file store.}
+\item{datetime_added}{POSIXct. Datetime when the provider was first
+added to OpenAQ. }
+\item{datetime_first}{POSIXct. Datetime of the first measurement value
+from the provider.}
+\item{datetime_last}{POSIXct. Datetime of the last measurement value
+from the provider.}
+\item{entities_id}{Numeric. Entities identifier for the provider.}
+\item{parameter_ids}{Character. A comma delimited list of parameters
+identifier measured by the provider.}
+}
+The data frame also includes a \code{meta} attribute from the original
+\code{openaq_providers_list}.
 }
 \description{
 Method for converting openaq_providers_list to data frame.

@@ -15,6 +15,10 @@ appropriate structure.}
 
 \item{...}{Other options passed on to base::plot().}
 }
+\value{
+Called for its side effect of producing a plot. Returns \code{NULL}
+invisibly.
+}
 \description{
 Plots location coordinates. If the \code{maps} package is installed, a world
 boundary overlay is added. Install with \code{install.packages("maps")}.

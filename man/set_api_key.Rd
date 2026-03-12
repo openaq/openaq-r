@@ -7,7 +7,10 @@
 set_api_key(api_key)
 }
 \arguments{
-\item{api_key}{A string value for the API key to set.}
+\item{api_key}{A character string value for the API key to set.}
+}
+\value{
+No return value, called for side effects.
 }
 \description{
 A helper function to set the OPENAQ_API_KEY environment variable.

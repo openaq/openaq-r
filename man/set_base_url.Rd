@@ -7,7 +7,10 @@
 set_base_url(base_url)
 }
 \arguments{
-\item{base_url}{A string.}
+\item{base_url}{A character string containing a URL.}
+}
+\value{
+No return value, called for side effects.
 }
 \description{
 A helper function to set the OPENAQR_BASE_URL environment variable. This is
