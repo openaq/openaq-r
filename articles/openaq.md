@@ -1,5 +1,9 @@
 # Introduction to openaq
 
+``` r
+library(openaq)
+```
+
 This guide provides an overview of the key features of the openaq
 package. For detailed information on the functions provided in the
 package see the reference section.
@@ -71,7 +75,7 @@ headers <- attr(locations, "headers")
 print(headers[["x_ratelimit_remaining"]])
 ```
 
-    ## [1] 52
+    ## [1] 50
 
 Read more about the headers and rate limits in the OpenAQ API
 documentation under [Rate
@@ -100,6 +104,14 @@ enable_rate_limit()
 locations <- list_locations(limit = 1000, parameters_id = 2)
 ```
 
+    ## Setting `max_tries = 2`.
+
+``` r
+nrow(locations)
+```
+
+    ## [1] 1000
+
 **Option 2: Enable per request**
 
 ``` r
@@ -112,6 +124,39 @@ locations <- list_locations(
 ```
 
     ## Setting `max_tries = 2`.
+
+``` r
+head(locations)
+```
+
+    ##   id                name is_mobile is_monitor     timezone countries_id
+    ## 1  3          NMA - Nima     FALSE       TRUE Africa/Accra          152
+    ## 2  4          NMT - Nima     FALSE       TRUE Africa/Accra          152
+    ## 3  5     JTA - Jamestown     FALSE       TRUE Africa/Accra          152
+    ## 4  6   ADT - Asylum Down     FALSE       TRUE Africa/Accra          152
+    ## 5  7 ADEPA - Asylum Down     FALSE       TRUE Africa/Accra          152
+    ## 6  8   ADA - Asylum Down     FALSE       TRUE Africa/Accra          152
+    ##   country_name country_iso latitude  longitude datetime_first datetime_last
+    ## 1        Ghana          GH 5.583890 -0.1996800             NA            NA
+    ## 2        Ghana          GH 5.581650 -0.1989800             NA            NA
+    ## 3        Ghana          GH 5.540114 -0.2103972             NA            NA
+    ## 4        Ghana          GH 5.570722 -0.2120555             NA            NA
+    ## 5        Ghana          GH 5.567833 -0.2040278             NA            NA
+    ## 6        Ghana          GH 5.566722 -0.2077778             NA            NA
+    ##                          owner_name providers_id
+    ## 1 Unknown Governmental Organization          209
+    ## 2 Unknown Governmental Organization          209
+    ## 3 Unknown Governmental Organization          209
+    ## 4 Unknown Governmental Organization          209
+    ## 5 Unknown Governmental Organization          209
+    ## 6 Unknown Governmental Organization          209
+    ##                        provider_name
+    ## 1 Dr. Raphael E. Arku and Colleagues
+    ## 2 Dr. Raphael E. Arku and Colleagues
+    ## 3 Dr. Raphael E. Arku and Colleagues
+    ## 4 Dr. Raphael E. Arku and Colleagues
+    ## 5 Dr. Raphael E. Arku and Colleagues
+    ## 6 Dr. Raphael E. Arku and Colleagues
 
 This is particularly useful when making many sequential requests or when
 working with large datasets where you might exceed the rate limit. The
@@ -136,18 +181,88 @@ or
 Examples:
 
 ``` r
-list_locations(
+locs <- list_locations(
   limit = 1000,
   page = 1
 )
 ```
 
+    ## Setting `max_tries = 2`.
+
 ``` r
-list_locations(
+head(locs)
+```
+
+    ##   id                name is_mobile is_monitor     timezone countries_id
+    ## 1  3          NMA - Nima     FALSE       TRUE Africa/Accra          152
+    ## 2  4          NMT - Nima     FALSE       TRUE Africa/Accra          152
+    ## 3  5     JTA - Jamestown     FALSE       TRUE Africa/Accra          152
+    ## 4  6   ADT - Asylum Down     FALSE       TRUE Africa/Accra          152
+    ## 5  7 ADEPA - Asylum Down     FALSE       TRUE Africa/Accra          152
+    ## 6  8   ADA - Asylum Down     FALSE       TRUE Africa/Accra          152
+    ##   country_name country_iso latitude  longitude datetime_first datetime_last
+    ## 1        Ghana          GH 5.583890 -0.1996800             NA            NA
+    ## 2        Ghana          GH 5.581650 -0.1989800             NA            NA
+    ## 3        Ghana          GH 5.540114 -0.2103972             NA            NA
+    ## 4        Ghana          GH 5.570722 -0.2120555             NA            NA
+    ## 5        Ghana          GH 5.567833 -0.2040278             NA            NA
+    ## 6        Ghana          GH 5.566722 -0.2077778             NA            NA
+    ##                          owner_name providers_id
+    ## 1 Unknown Governmental Organization          209
+    ## 2 Unknown Governmental Organization          209
+    ## 3 Unknown Governmental Organization          209
+    ## 4 Unknown Governmental Organization          209
+    ## 5 Unknown Governmental Organization          209
+    ## 6 Unknown Governmental Organization          209
+    ##                        provider_name
+    ## 1 Dr. Raphael E. Arku and Colleagues
+    ## 2 Dr. Raphael E. Arku and Colleagues
+    ## 3 Dr. Raphael E. Arku and Colleagues
+    ## 4 Dr. Raphael E. Arku and Colleagues
+    ## 5 Dr. Raphael E. Arku and Colleagues
+    ## 6 Dr. Raphael E. Arku and Colleagues
+
+``` r
+locs <- list_locations(
   limit = 1000,
   page = 2
 )
 ```
+
+    ## Setting `max_tries = 2`.
+
+``` r
+head(locs)
+```
+
+    ##     id            name is_mobile is_monitor            timezone countries_id
+    ## 1 1119         HANOVER     FALSE       TRUE    America/New_York          155
+    ## 2 1120  HAMPTON - NASA     FALSE       TRUE    America/New_York          155
+    ## 3 1121     Jerome Mack     FALSE       TRUE America/Los_Angeles          155
+    ## 4 1122     Jersey City     FALSE       TRUE    America/New_York          155
+    ## 5 1123 46th and Farnam     FALSE       TRUE     America/Chicago          155
+    ## 6 1124        Joe Neal     FALSE       TRUE America/Los_Angeles          155
+    ##    country_name country_iso latitude  longitude      datetime_first
+    ## 1 United States          US 37.60613  -77.21880 2016-03-06 20:00:00
+    ## 2 United States          US 37.10373  -76.38702 2016-03-10 08:00:00
+    ## 3 United States          US 36.14187 -115.07874 2016-03-06 20:00:00
+    ## 4 United States          US 40.73169  -74.06657 2016-03-06 20:00:00
+    ## 5 United States          US 41.25732  -95.98383 2016-03-06 20:00:00
+    ## 6 United States          US 36.27059 -115.23828 2016-03-06 20:00:00
+    ##         datetime_last                        owner_name providers_id
+    ## 1 2026-03-09 20:00:00 Unknown Governmental Organization          119
+    ## 2 2026-03-09 20:00:00 Unknown Governmental Organization          119
+    ## 3 2026-03-09 20:00:00 Unknown Governmental Organization          119
+    ## 4 2026-03-09 20:00:00 Unknown Governmental Organization          119
+    ## 5 2018-04-25 05:00:00 Unknown Governmental Organization          119
+    ## 6 2026-03-09 20:00:00 Unknown Governmental Organization          119
+    ##   provider_name
+    ## 1        AirNow
+    ## 2        AirNow
+    ## 3        AirNow
+    ## 4        AirNow
+    ## 5        AirNow
+    ## 6        AirNow
 
 ## Features
 
@@ -166,6 +281,8 @@ and retrieving data resources.
 get_country()
 ```
 
+    ## Error in get_country(): argument "countries_id" is missing, with no default
+
 ``` r
 list_countries()
 ```
@@ -175,6 +292,8 @@ list_countries()
 ``` r
 get_instrument()
 ```
+
+    ## Error in get_instrument(): argument "instruments_id" is missing, with no default
 
 ``` r
 list_instruments()

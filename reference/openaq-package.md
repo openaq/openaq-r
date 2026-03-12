@@ -1,6 +1,6 @@
-# openaq: Access Air Quality Data from the OpenAQ API
+# openaq: Access Air Quality Data from the 'OpenAQ' API
 
-Provides an interface to the OpenAQ API <https://openaq.org/>, a
+Provides an interface to the 'OpenAQ' API <https://openaq.org/>, a
 platform for real-time and historical air quality data from around the
 world. Users can retrieve measurement data, metadata for sensors and
 locations for air quality research and monitoring.

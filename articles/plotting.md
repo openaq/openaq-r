@@ -21,9 +21,6 @@ locations <- list_locations(
   parameters_id = 2,
   limit = 1000
 )
-```
-
-``` r
 plot(locations)
 ```
 
@@ -55,9 +52,6 @@ measurements <- list_sensor_measurements(
   datetime_from = as.POSIXct("2025-01-01 00:00", tz = "America/Denver"),
   datetime_to = as.POSIXct("2025-01-15 23:00", tz = "America/Denver"),
 )
-```
-
-``` r
 plot(measurements)
 ```
 

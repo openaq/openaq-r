@@ -40,7 +40,7 @@
 <li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="../articles/geospatial-queries.html">Geospatial Queries</a></li>
+<li><a class="dropdown-item" href="../articles/geospatial-queries.html">Geospatial queries</a></li>
     <li><a class="dropdown-item" href="../articles/ggplot2.html">Integrating with ggplot2</a></li>
     <li><a class="dropdown-item" href="../articles/plotting.html">Plotting</a></li>
     <li><a class="dropdown-item" href="../articles/querying-measurements.html">Querying measurements</a></li>
@@ -93,16 +93,15 @@ to include the world boundary overlay.</p>
 <span>  bbox <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>xmin <span class="op">=</span> <span class="fl">6.291990</span>, ymin <span class="op">=</span> <span class="fl">32.823129</span>, xmax <span class="op">=</span> <span class="fl">37.932615</span>, ymax <span class="op">=</span> <span class="fl">45.181129</span><span class="op">)</span>,</span>
 <span>  parameters_id <span class="op">=</span> <span class="fl">2</span>,</span>
 <span>  limit <span class="op">=</span> <span class="fl">1000</span></span>
-<span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">locations</span><span class="op">)</span></span></code></pre></div>
+<span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">locations</span><span class="op">)</span></span></code></pre></div>
 <div class="float">
 <img src="figure/locations-map-plot-1.png" alt="plot of chunk locations-map-plot"><div class="figcaption">plot of chunk locations-map-plot</div>
 </div>
 <p>We can configure and customize the figure using standard
 <code><a href="https://rdrr.io/r/base/plot.html" class="external-link">base::plot</a></code> parameters in this example coloring the points
 by provider and customizing the type of marker used.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">locations</span>, col <span class="op">=</span> <span class="va">locations</span><span class="op">$</span><span class="va">providers_id</span>, pch <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div>
 <div class="float">
 <img src="figure/styled-locations-map-plot-1.png" alt="Plot of locations, styled with color by providers_id"><div class="figcaption">Plot of locations, styled with color by
@@ -111,14 +110,13 @@ providers_id</div>
 <p>The <code>list_sensor_measurements</code> provides a
 <code><a href="https://rdrr.io/r/base/plot.html" class="external-link">base::plot</a></code> function to visualize the measurement values as
 a time series line chart.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">measurements</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/list_sensor_measurements.html">list_sensor_measurements</a></span><span class="op">(</span></span>
 <span>  <span class="fl">3920</span>,</span>
 <span>  datetime_from <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.POSIXlt.html" class="external-link">as.POSIXct</a></span><span class="op">(</span><span class="st">"2025-01-01 00:00"</span>, tz <span class="op">=</span> <span class="st">"America/Denver"</span><span class="op">)</span>,</span>
 <span>  datetime_to <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.POSIXlt.html" class="external-link">as.POSIXct</a></span><span class="op">(</span><span class="st">"2025-01-15 23:00"</span>, tz <span class="op">=</span> <span class="st">"America/Denver"</span><span class="op">)</span>,</span>
-<span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">measurements</span><span class="op">)</span></span></code></pre></div>
+<span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">measurements</span><span class="op">)</span></span></code></pre></div>
 <div class="float">
 <img src="figure/measurements-line-plot-1.png" alt="Line chart of sensor measurements"><div class="figcaption">Line chart of sensor measurements</div>
 </div>

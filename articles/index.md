@@ -3,7 +3,7 @@
 ### All vignettes
 
 - [Geospatial
-  Queries](https://openaq.github.io/openaq-r/articles/geospatial-queries.md):
+  queries](https://openaq.github.io/openaq-r/articles/geospatial-queries.md):
 
 - [Integrating with
   ggplot2](https://openaq.github.io/openaq-r/articles/ggplot2.md):
