@@ -21,11 +21,12 @@ list_licenses(
 
 - order_by:
 
-  A string specifying the field to order results by.
+  A character string specifying the field to order results by.
 
 - sort_order:
 
-  A string specifying sort direction, either `"asc"` or `"desc"`.
+  A character string specifying sort direction, either `"asc"` or
+  `"desc"`.
 
 - limit:
 
@@ -57,7 +58,7 @@ list_licenses(
 
 ## Value
 
-A data frame.
+A data frame or a list of the results.
 
 ## Examples
 

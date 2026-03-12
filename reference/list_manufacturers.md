@@ -21,11 +21,12 @@ list_manufacturers(
 
 - order_by:
 
-  A string specifying the field to order results by.
+  A character string specifying the field to order results by.
 
 - sort_order:
 
-  A string specifying sort direction, either `"asc"` or `"desc"`.
+  A character string specifying sort direction, either `"asc"` or
+  `"desc"`.
 
 - limit:
 

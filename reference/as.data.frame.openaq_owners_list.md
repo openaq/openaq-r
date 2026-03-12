@@ -33,6 +33,21 @@ as.data.frame(x, row.names = NULL, optional = FALSE, ...)
 
   additional arguments to be passed to or from methods.
 
+## Value
+
+A data frame class of the owners results, with the following columns:
+
+- id:
+
+  Numeric. The owners identifier.
+
+- name:
+
+  Character. The owners name.
+
+The data frame also includes a `meta` attribute from the original
+`openaq_owners_list`.
+
 ## Examples
 
 ``` r

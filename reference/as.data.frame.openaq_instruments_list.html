@@ -77,6 +77,31 @@ treatment, basically with the meaning of data.frame(*, check.names =
 <dd><p>additional arguments to be passed to or from methods.</p></dd>
 
 </dl></div>
+    <div class="section level2">
+    <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
+    <p>A data frame class of the instruments results, with the following
+columns:</p><dl><dt>id</dt>
+<dd><p>Numeric. The instruments identifier.</p></dd>
+
+<dt>name</dt>
+<dd><p>Character. The name of the measurement instrument.</p></dd>
+
+<dt>is_monitor</dt>
+<dd><p>Logical. Indicates if the instrument is considered a
+reference monitor.</p></dd>
+
+<dt>manufacturer_id</dt>
+<dd><p>Numeric. The manufacturers identifier for the
+manufacturer that makes the instrument.</p></dd>
+
+<dt>manufacturer_name</dt>
+<dd><p>Factor. The name of manufacturer that makes
+the instrument.</p></dd>
+
+
+</dl><p>The data frame also includes a <code>meta</code> attribute from the original
+<code>openaq_instruments_list</code>.</p>
+    </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>

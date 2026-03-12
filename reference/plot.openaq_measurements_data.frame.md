@@ -23,6 +23,9 @@ plot(x, y = NULL, ...)
 
   Other options to be passed on to base::plot().
 
+  \#' @return Called for its side effect of producing a plot. Returns
+  `NULL` invisibly.
+
 ## Examples
 
 ``` r

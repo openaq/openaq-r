@@ -33,6 +33,36 @@ as.data.frame(x, row.names = NULL, optional = FALSE, ...)
 
   additional arguments to be passed to or from methods.
 
+## Value
+
+A data frame class of the instruments results, with the following
+columns:
+
+- id:
+
+  Numeric. The instruments identifier.
+
+- name:
+
+  Character. The name of the measurement instrument.
+
+- is_monitor:
+
+  Logical. Indicates if the instrument is considered a reference
+  monitor.
+
+- manufacturer_id:
+
+  Numeric. The manufacturers identifier for the manufacturer that makes
+  the instrument.
+
+- manufacturer_name:
+
+  Factor. The name of manufacturer that makes the instrument.
+
+The data frame also includes a `meta` attribute from the original
+`openaq_instruments_list`.
+
 ## Examples
 
 ``` r

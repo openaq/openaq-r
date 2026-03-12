@@ -33,6 +33,50 @@ as.data.frame(x, row.names = NULL, optional = FALSE, ...)
 
   additional arguments to be passed to or from methods.
 
+## Value
+
+A data frame class of the licenses results, with the following columns:
+
+- id:
+
+  Numeric. The licenses identifier.
+
+- name:
+
+  Character. The license name.
+
+- commercial_use_allowed:
+
+  Logical. Indicates whether commerical use is allowed under the license
+  terms.
+
+- attribution_required:
+
+  Logical. Indicates whether attribution is required under the license
+  terms.
+
+- share_alike_required:
+
+  Logical. Indicates whether share-alike is required under the license
+  terms.
+
+- modification_allowed:
+
+  Logical. Indicates whether modification is allowed under the license
+  terms.
+
+- redistribution_allowed:
+
+  Logical. Indicates whether redistribution is allowed under the license
+  terms.
+
+- source_url:
+
+  String. The URL of the license as listed by the upstream source.
+
+The data frame also includes a `meta` attribute from the original
+`openaq_licenses_list`.
+
 ## Examples
 
 ``` r

@@ -34,6 +34,41 @@ as.data.frame(x, row.names = NULL, optional = FALSE, ...)
 
   additional arguments to be passed to or from methods.
 
+## Value
+
+A data frame class of the latest results, with the following columns:
+
+- sensors_id:
+
+  Numeric. The sensors identifier.
+
+- locations_id:
+
+  Numeric. The locations identifier.
+
+- value:
+
+  Numeric. The measurement value.
+
+- datetime_local:
+
+  POSIXct. The datetime of the measurement value, in local time
+
+- datetime_utc:
+
+  POSIXct. The datetime of the measurement value, in UTC time
+
+- latitude:
+
+  Numeric. The latitude, geographic Y, value for the measurement.
+
+- longitude:
+
+  Numeric. The longitude, geographic X, value for the measurement.
+
+The data frame also includes a `meta` attribute from the original
+`openaq_latest_list`.
+
 ## Examples
 
 ``` r

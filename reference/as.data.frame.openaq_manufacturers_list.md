@@ -33,6 +33,32 @@ as.data.frame(x, row.names = NULL, optional = FALSE, ...)
 
   additional arguments to be passed to or from methods.
 
+## Value
+
+A data frame class of the manufacturers results, with the following
+columns:
+
+- id:
+
+  Numeric. The manufacturers identifier.
+
+- name:
+
+  Character. The name of the manufacturer.
+
+- instrument_ids:
+
+  Character. A comma delimited list of instrument identifiers
+  manufactured by the manufacturer.
+
+- instrument_names:
+
+  Character. A comma delimited list of instrument names manufactured by
+  this manufacturer.
+
+The data frame also includes a `meta` attribute from the original
+`openaq_manufacturers_list`.
+
 ## Examples
 
 ``` r

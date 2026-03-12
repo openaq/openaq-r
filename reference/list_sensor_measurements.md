@@ -30,11 +30,13 @@ list_sensor_measurements(
 
 - data:
 
-  A string a data interval to return, default is "measurements".
+  A character string for the data interval to return, default is
+  "measurements".
 
 - rollup:
 
-  A string representing the aggregation rollup, default is `NULL`.
+  A character string representing the aggregation rollup, default is
+  `NULL`.
 
 - datetime_from:
 
@@ -50,11 +52,12 @@ list_sensor_measurements(
 
 - order_by:
 
-  A string representing the field to order by, default is `NULL`.
+  A character string representing the field to order by, default is
+  `NULL`.
 
 - sort_order:
 
-  A string, either "asc" or "desc", default is `NULL`.
+  A character string, either "asc" or "desc", default is `NULL`.
 
 - limit:
 

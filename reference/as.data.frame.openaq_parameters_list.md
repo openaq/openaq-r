@@ -33,11 +33,40 @@ as.data.frame(x, row.names = NULL, optional = FALSE, ...)
 
   additional arguments to be passed to or from methods.
 
+## Value
+
+A data frame class of the parameters results, with the following
+columns:
+
+- id:
+
+  Numeric. The parameter identifier.
+
+- name:
+
+  Character. Name of the parameter.
+
+- units:
+
+  Character. The units used by the parameter.
+
+- display_name:
+
+  Character. The combined name of the parameter and units. May be NA if
+  not provided.
+
+- description:
+
+  Character. Description of the parameter. May be NA if not provided.
+
+The data frame also includes a `meta` attribute from the original
+`openaq_parameters_list`.
+
 ## Examples
 
 ``` r
 if (FALSE) { # interactive()
-parameters <- list_parameters()
+parameters <- list_parameters(as_data_frame = FALSE)
 as.data.frame(parameters)
 }
 ```

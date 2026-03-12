@@ -77,6 +77,69 @@ treatment, basically with the meaning of data.frame(*, check.names =
 <dd><p>additional arguments to be passed to or from methods.</p></dd>
 
 </dl></div>
+    <div class="section level2">
+    <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
+    <p>A data frame class of the locations results, with the following
+columns:</p><dl><dt>id</dt>
+<dd><p>Numeric. The locations identifier.</p></dd>
+
+<dt>name</dt>
+<dd><p>Character. The name of the location.</p></dd>
+
+<dt>is_mobile</dt>
+<dd><p>Logical. Indicates whether the location is stationary
+or mobile.</p></dd>
+
+<dt>is_monitor</dt>
+<dd><p>Logical. Indicates whether the location is considered
+a reference monitor.</p></dd>
+
+<dt>timezone</dt>
+<dd><p>Factor. The IANA timezone of the location (e.g.
+"America/New_York").</p></dd>
+
+<dt>countries_id</dt>
+<dd><p>Numeric. The countries identifier where the
+location is located.</p></dd>
+
+<dt>country_name</dt>
+<dd><p>Character. The name of the country where the
+location is located</p></dd>
+
+<dt>country_iso</dt>
+<dd><p>Factor. The ISO 3166-1 alpha-2 country code where the
+location is located</p></dd>
+
+<dt>latitude</dt>
+<dd><p>Numeric.The latitude, geographic Y, value for the
+measurement.</p></dd>
+
+<dt>longitude</dt>
+<dd><p>Numeric. The longitude, geographic X, value for the
+measurement.</p></dd>
+
+<dt>datetime_first</dt>
+<dd><p>POSIXct. The datetime of the first measurement
+of this location.</p></dd>
+
+<dt>datetime_last</dt>
+<dd><p>POSIXct. The datetime of the last measurement
+of this location.</p></dd>
+
+<dt>owner_name</dt>
+<dd><p>Factor. The name of the owner of the location.</p></dd>
+
+<dt>providers_id</dt>
+<dd><p>Numeric. The providers identifier for the location.</p></dd>
+
+<dt>provider_name</dt>
+<dd><p>Character. The name of the provider for the
+location.</p></dd>
+
+
+</dl><p>The data frame also includes a <code>meta</code> attribute from the original
+<code>openaq_locations_list</code>.</p>
+    </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>

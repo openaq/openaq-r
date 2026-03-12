@@ -57,7 +57,7 @@
 
 
 <dl><dt id="arg-x">x<a class="anchor" aria-label="anchor" href="#arg-x"></a></dt>
-<dd><p>A list of providers as returned from list_providers</p></dd>
+<dd><p>A list of providers as returned from list_providers.</p></dd>
 
 
 <dt id="arg-row-names">row.names<a class="anchor" aria-label="anchor" href="#arg-row-names"></a></dt>
@@ -77,6 +77,44 @@ treatment, basically with the meaning of data.frame(*, check.names =
 <dd><p>additional arguments to be passed to or from methods.</p></dd>
 
 </dl></div>
+    <div class="section level2">
+    <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
+    <p>A data frame class of the providers results, with the following
+columns:</p><dl><dt>id</dt>
+<dd><p>Numeric. The providers identifier.</p></dd>
+
+<dt>name</dt>
+<dd><p>Character. The name of the provider.</p></dd>
+
+<dt>source_name</dt>
+<dd><p>Factor. The name of the source.</p></dd>
+
+<dt>export_prefix</dt>
+<dd><p>Character. Prefixed when exported to file store.</p></dd>
+
+<dt>datetime_added</dt>
+<dd><p>POSIXct. Datetime when the provider was first
+added to OpenAQ.</p></dd>
+
+<dt>datetime_first</dt>
+<dd><p>POSIXct. Datetime of the first measurement value
+from the provider.</p></dd>
+
+<dt>datetime_last</dt>
+<dd><p>POSIXct. Datetime of the last measurement value
+from the provider.</p></dd>
+
+<dt>entities_id</dt>
+<dd><p>Numeric. Entities identifier for the provider.</p></dd>
+
+<dt>parameter_ids</dt>
+<dd><p>Character. A comma delimited list of parameters
+identifier measured by the provider.</p></dd>
+
+
+</dl><p>The data frame also includes a <code>meta</code> attribute from the original
+<code>openaq_providers_list</code>.</p>
+    </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>

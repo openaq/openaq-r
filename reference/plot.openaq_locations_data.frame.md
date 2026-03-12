@@ -27,6 +27,11 @@ plot(x, y = NULL, ...)
 
   Other options passed on to base::plot().
 
+## Value
+
+Called for its side effect of producing a plot. Returns `NULL`
+invisibly.
+
 ## Examples
 
 ``` r

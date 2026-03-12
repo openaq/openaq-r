@@ -77,11 +77,35 @@ treatment, basically with the meaning of data.frame(*, check.names =
 <dd><p>additional arguments to be passed to or from methods.</p></dd>
 
 </dl></div>
+    <div class="section level2">
+    <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
+    <p>A data frame class of the parameters results, with the following
+columns:</p><dl><dt>id</dt>
+<dd><p>Numeric. The parameter identifier.</p></dd>
+
+<dt>name</dt>
+<dd><p>Character. Name of the parameter.</p></dd>
+
+<dt>units</dt>
+<dd><p>Character. The units used by the parameter.</p></dd>
+
+<dt>display_name</dt>
+<dd><p>Character. The combined name of the parameter and
+units. May be NA if not provided.</p></dd>
+
+<dt>description</dt>
+<dd><p>Character. Description of the parameter. May be NA if
+not provided.</p></dd>
+
+
+</dl><p>The data frame also includes a <code>meta</code> attribute from the original
+<code>openaq_parameters_list</code>.</p>
+    </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># interactive()</span></span></span>
-<span class="r-in"><span><span class="va">parameters</span> <span class="op">&lt;-</span> <span class="fu"><a href="list_parameters.html">list_parameters</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">parameters</span> <span class="op">&lt;-</span> <span class="fu"><a href="list_parameters.html">list_parameters</a></span><span class="op">(</span>as_data_frame <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">parameters</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>

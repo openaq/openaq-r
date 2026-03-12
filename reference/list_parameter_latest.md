@@ -25,8 +25,8 @@ list_parameter_latest(
 
 - datetime_min:
 
-  A string specifying the minimum datetime for filtering results,
-  default is `NULL`.
+  A POSIXct datetime specifying the minimum datetime for filtering
+  results, default is `NULL`.
 
 - limit:
 

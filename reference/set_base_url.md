@@ -15,7 +15,11 @@ set_base_url(base_url)
 
 - base_url:
 
-  A string.
+  A character string containing a URL.
+
+## Value
+
+No return value, called for side effects.
 
 ## Examples
 

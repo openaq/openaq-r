@@ -77,11 +77,43 @@ treatment, basically with the meaning of data.frame(*, check.names =
 <dd><p>additional arguments to be passed to or from methods.</p></dd>
 
 </dl></div>
+    <div class="section level2">
+    <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
+    <p>A data frame class of the countries results, with the following
+columns:</p><dl><dt>id</dt>
+<dd><p>Numeric. The countries identifier</p></dd>
+
+<dt>name</dt>
+<dd><p>Character. Then English name of the country.</p></dd>
+
+<dt>code</dt>
+<dd><p>Character. The ISO-3166 Alpha 2 identifier for the country.</p></dd>
+
+<dt>datetime_first</dt>
+<dd><p>POSIXct. The datetime of the first measurement
+value available in the country.</p></dd>
+
+<dt>datetime_last</dt>
+<dd><p>POSIXct. The datetime of the last measurement
+value available in the country.</p></dd>
+
+<dt>parameter_ids</dt>
+<dd><p>Character. A comma delimited list of parameter ids
+that are measured within the country.</p></dd>
+
+<dt>parameter_names</dt>
+<dd><p>Character. a comma delimited list of parameter
+names and their units that are measured within the country.</p></dd>
+
+
+</dl><p>The data frame also includes a <code>meta</code> attribute from the original
+<code>openaq_countries_list</code>.</p>
+    </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># interactive()</span></span></span>
-<span class="r-in"><span><span class="va">countries</span> <span class="op">&lt;-</span> <span class="fu"><a href="list_countries.html">list_countries</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">countries</span> <span class="op">&lt;-</span> <span class="fu"><a href="list_countries.html">list_countries</a></span><span class="op">(</span>as_data_frame <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">countries</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>

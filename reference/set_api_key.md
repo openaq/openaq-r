@@ -12,7 +12,11 @@ set_api_key(api_key)
 
 - api_key:
 
-  A string value for the API key to set.
+  A character string value for the API key to set.
+
+## Value
+
+No return value, called for side effects.
 
 ## Examples
 

@@ -33,6 +33,75 @@ as.data.frame(x, row.names = NULL, optional = FALSE, ...)
 
   additional arguments to be passed to or from methods.
 
+## Value
+
+A data frame class of the locations results, with the following columns:
+
+- id:
+
+  Numeric. The locations identifier.
+
+- name:
+
+  Character. The name of the location.
+
+- is_mobile:
+
+  Logical. Indicates whether the location is stationary or mobile.
+
+- is_monitor:
+
+  Logical. Indicates whether the location is considered a reference
+  monitor.
+
+- timezone:
+
+  Factor. The IANA timezone of the location (e.g. "America/New_York").
+
+- countries_id:
+
+  Numeric. The countries identifier where the location is located.
+
+- country_name:
+
+  Character. The name of the country where the location is located
+
+- country_iso:
+
+  Factor. The ISO 3166-1 alpha-2 country code where the location is
+  located
+
+- latitude:
+
+  Numeric.The latitude, geographic Y, value for the measurement.
+
+- longitude:
+
+  Numeric. The longitude, geographic X, value for the measurement.
+
+- datetime_first:
+
+  POSIXct. The datetime of the first measurement of this location.
+
+- datetime_last:
+
+  POSIXct. The datetime of the last measurement of this location.
+
+- owner_name:
+
+  Factor. The name of the owner of the location.
+
+- providers_id:
+
+  Numeric. The providers identifier for the location.
+
+- provider_name:
+
+  Character. The name of the provider for the location.
+
+The data frame also includes a `meta` attribute from the original
+`openaq_locations_list`.
+
 ## Examples
 
 ``` r

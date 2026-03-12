@@ -77,11 +77,95 @@ treatment, basically with the meaning of data.frame(*, check.names =
 <dd><p>additional arguments to be passed to or from methods.</p></dd>
 
 </dl></div>
+    <div class="section level2">
+    <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
+    <p>A data frame class of the sensors results, with the following
+columns:</p><dl><dt>id</dt>
+<dd><p>Numeric. The sensors identifier.</p></dd>
+
+<dt>name</dt>
+<dd><p>Character.</p></dd>
+
+<dt>parameters_id</dt>
+<dd><p>Numeric. .</p></dd>
+
+<dt>datetime_first_utc</dt>
+<dd><p>POSIXct. The datetime of the first measurement
+in UTC.</p></dd>
+
+<dt>datetime_first_local</dt>
+<dd><p>POSIXct. The datetime of the first
+measurement in local time.</p></dd>
+
+<dt>datetime_last_utc</dt>
+<dd><p>POSIXct. The datetime of the last measurement
+in UTC.</p></dd>
+
+<dt>datetime_last_local</dt>
+<dd><p>POSIXct. The datetime of the last measurement
+in local time.</p></dd>
+
+<dt>min</dt>
+<dd><p>Numeric. The minimum measurement value recorded by the
+sensor.</p></dd>
+
+<dt>max</dt>
+<dd><p>Numeric. The maximum measurement value recorded by the
+sensor.</p></dd>
+
+<dt>avg</dt>
+<dd><p>Numeric. The average measurement value recorded by the
+sensor.</p></dd>
+
+<dt>expected_count</dt>
+<dd><p>Numeric. The expected number of measurements for
+the sensor.</p></dd>
+
+<dt>expected_interval</dt>
+<dd><p>Factor. The expected measurement interval in
+HH:MM:SS format (e.g. "01:00:00").</p></dd>
+
+<dt>observed_count</dt>
+<dd><p>Numeric. The observed number of measurements for
+the sensor.</p></dd>
+
+<dt>observed_interval</dt>
+<dd><p>Factor. The observed measurement interval in
+HH:MM:SS format (e.g. "01:00:00").</p></dd>
+
+<dt>percent_complete</dt>
+<dd><p>Numeric. The percentage of expected measurements
+that were observed.</p></dd>
+
+<dt>percent_coverage</dt>
+<dd><p>Numeric. The percentage of time coverage for the
+sensor.</p></dd>
+
+<dt>latest_value</dt>
+<dd><p>Numeric. The most recent measurement value from the
+sensor.</p></dd>
+
+<dt>latest_datetime</dt>
+<dd><p>POSIXct. The datetime of the most recent
+measurement.</p></dd>
+
+<dt>latest_latitude</dt>
+<dd><p>Numeric. The latitude of the most recent
+measurement location.</p></dd>
+
+<dt>latest_longitude</dt>
+<dd><p>Numeric.  The longitude of the most recent
+measurement location</p></dd>
+
+
+</dl><p>The data frame also includes a <code>meta</code> attribute from the original
+<code>openaq_sensors_list</code>.</p>
+    </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># interactive()</span></span></span>
-<span class="r-in"><span><span class="va">sensor</span> <span class="op">&lt;-</span> <span class="fu"><a href="get_sensor.html">get_sensor</a></span><span class="op">(</span>as_data_frame <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">sensor</span> <span class="op">&lt;-</span> <span class="fu"><a href="get_sensor.html">get_sensor</a></span><span class="op">(</span><span class="fl">42</span>, as_data_frame <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">sensor</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
