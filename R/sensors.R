@@ -124,11 +124,11 @@ list_location_sensors <- function(
 #'        sensor.}
 #'      \item{expected_count}{Numeric. The expected number of measurements for
 #'        the sensor.}
-#'      \item{expected_interval}{Factor. The expected measurement interval in 
+#'      \item{expected_interval}{Factor. The expected measurement interval in
 #'        HH:MM:SS format (e.g. "01:00:00").}
 #'      \item{observed_count}{Numeric. The observed number of measurements for
 #'        the sensor.}
-#'      \item{observed_interval}{Factor. The observed measurement interval in 
+#'      \item{observed_interval}{Factor. The observed measurement interval in
 #'        HH:MM:SS format (e.g. "01:00:00").}
 #'      \item{percent_complete}{Numeric. The percentage of expected measurements
 #'        that were observed.}
@@ -143,9 +143,9 @@ list_location_sensors <- function(
 #'      \item{latest_longitude}{Numeric.  The longitude of the most recent
 #'        measurement location}
 #'    }
-#'    The data frame also includes a \code{meta} attribute from the original 
+#'    The data frame also includes a \code{meta} attribute from the original
 #'    \code{openaq_sensors_list}.
-#' 
+#'
 #' @export as.data.frame.openaq_sensors_list
 #' @export
 #'

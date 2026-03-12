@@ -167,7 +167,7 @@ get_summary_field <- function(x, key) {
 #' treatment, basically with the meaning of data.frame(*, check.names =
 #' !optional). See also the make.names argument of the matrix method.
 #' @param ... additional arguments to be passed to or from methods.
-#' 
+#'
 #' @return A data frame class of the measurements results, with the following
 #' columns:
 #'    \describe{
@@ -178,7 +178,7 @@ get_summary_field <- function(x, key) {
 #'      \item{parameter_units}{Character. The units of the measured parameter.}
 #'      \item{period_label}{Factor. The label describing the measurement period
 #'        (e.g. "hour", "day").}
-#'      \item{period_interval}{Factor. The period of the measurement interval in 
+#'      \item{period_interval}{Factor. The period of the measurement interval in
 #'        HH:MM:SS format (e.g. "01:00:00").}
 #'      \item{datetime_from}{POSIXct. The start datetime of the measurement
 #'        period in local time.}
@@ -204,11 +204,11 @@ get_summary_field <- function(x, key) {
 #'        measurement period.}
 #'      \item{expected_count}{Numeric. The expected number of measurements
 #'        within the period.}
-#'      \item{expected_interval}{Factor. The expected measurement interval in 
+#'      \item{expected_interval}{Factor. The expected measurement interval in
 #'        HH:MM:SS format (e.g. "01:00:00").}
 #'      \item{observed_count}{Numeric. The observed number of measurements
 #'        within the period.}
-#'      \item{observed_interval}{Factor. The observer measurement interval in 
+#'      \item{observed_interval}{Factor. The observer measurement interval in
 #'        HH:MM:SS format (e.g. "01:00:00").}
 #'      \item{percent_complete}{Numeric. The percentage of expected measurements
 #'        that were observed.}
@@ -217,7 +217,7 @@ get_summary_field <- function(x, key) {
 #'    }
 #'    The data frame also includes a \code{meta} attribute from the original
 #'    \code{openaq_measurements_list}.
-#' 
+#'
 #' @export as.data.frame.openaq_measurements_list
 #' @export
 #'
@@ -292,7 +292,7 @@ as.data.frame.openaq_measurements_list <- function(x, row.names = NULL, optional
 #'
 #' #' @return Called for its side effect of producing a plot. Returns `NULL`
 #'   invisibly.
-#' 
+#'
 #' @export
 #'
 #' @examplesIf interactive()
@@ -319,7 +319,7 @@ plot.openaq_measurements_data.frame <- function(x, y = NULL, ...) {
 #'
 #' #' @return Called for its side effect of producing a plot. Returns `NULL`
 #'   invisibly.
-#' 
+#'
 #' @export
 #'
 #' @examplesIf interactive()

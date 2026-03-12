@@ -136,13 +136,13 @@ list_providers <- function(
 #'        from the provider.}
 #'      \item{datetime_last}{POSIXct. Datetime of the last measurement value
 #'        from the provider.}
-#'      \item{entities_id}{Numeric. Entities identifier for the provider. }
-#'      \item{parameter_ids}{Character. A comma delimited list of parameters 
+#'      \item{entities_id}{Numeric. Entities identifier for the provider.}
+#'      \item{parameter_ids}{Character. A comma delimited list of parameters
 #'        identifier measured by the provider.}
 #'    }
-#'    The data frame also includes a \code{meta} attribute from the original 
+#'    The data frame also includes a \code{meta} attribute from the original
 #'    \code{openaq_providers_list}.
-#' 
+#'
 #' @export as.data.frame.openaq_providers_list
 #' @export
 #'

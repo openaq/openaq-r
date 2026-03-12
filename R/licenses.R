@@ -140,10 +140,9 @@ list_licenses <- function(
 #'      \item{source_url}{String. The URL of the license as listed by the
 #'        upstream source. }
 #'    }
-#'    The data frame also includes a \code{meta} attribute from the original 
+#'    The data frame also includes a \code{meta} attribute from the original
 #'    \code{openaq_licenses_list}.
-#' 
-#' 
+#'
 #' @export as.data.frame.openaq_licenses_list
 #' @export
 #'

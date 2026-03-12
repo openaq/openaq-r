@@ -158,9 +158,9 @@ list_parameter_latest <- function(
 #'      \item{longitude}{Numeric.  The longitude, geographic X, value for the
 #'        measurement.}
 #'    }
-#'    The data frame also includes a \code{meta} attribute from the original 
+#'    The data frame also includes a \code{meta} attribute from the original
 #'    \code{openaq_latest_list}.
-#' 
+#'
 #' @export as.data.frame.openaq_latest_list
 #' @export
 #'

@@ -232,19 +232,19 @@ list_locations <- function(
 #' treatment, basically with the meaning of data.frame(*, check.names =
 #' !optional). See also the make.names argument of the matrix method.
 #' @param ... additional arguments to be passed to or from methods.
-#' 
+#'
 #' @return A data frame class of the locations results, with the following
 #' columns:
 #'    \describe{
 #'      \item{id}{Numeric. The locations identifier. }
 #'      \item{name}{Character. The name of the location. }
-#'      \item{is_mobile}{Logical. Indicates whether the location is stationary 
+#'      \item{is_mobile}{Logical. Indicates whether the location is stationary
 #'        or mobile. }
 #'      \item{is_monitor}{Logical. Indicates whether the location is considered
 #'        a reference monitor.}
-#'      \item{timezone}{Factor. The IANA timezone of the location (e.g. 
+#'      \item{timezone}{Factor. The IANA timezone of the location (e.g.
 #'        "America/New_York").}
-#'      \item{countries_id}{Numeric. The countries identifier where the 
+#'      \item{countries_id}{Numeric. The countries identifier where the
 #'        location is located.}
 #'      \item{country_name}{Character. The name of the country where the
 #'        location is located}
@@ -261,12 +261,13 @@ list_locations <- function(
 #'      \item{owner_name}{Factor. The name of the owner of the location.}
 #'      \item{providers_id}{Numeric. The providers identifier for the location.
 #'        }
-#'      \item{provider_name}{Character. The name of the provider for the location.
+#'      \item{provider_name}{Character. The name of the provider for the
+#'        location.
 #'        }
 #'    }
-#'    The data frame also includes a \code{meta} attribute from the original 
+#'    The data frame also includes a \code{meta} attribute from the original
 #'    \code{openaq_locations_list}.
-#' 
+#'
 #' @export as.data.frame.openaq_locations_list
 #' @export
 #'
@@ -316,10 +317,10 @@ as.data.frame.openaq_locations_list <- function(x, row.names = NULL, optional = 
 #' @param y the y coordinates of points in the plot, optional if x is an
 #' appropriate structure.
 #' @param ... Other options passed on to base::plot().
-#' 
+#'
 #' @return Called for its side effect of producing a plot. Returns `NULL`
 #'   invisibly.
-#' 
+#'
 #' @export
 #'
 #' @examplesIf interactive()
@@ -343,7 +344,7 @@ plot.openaq_locations_data.frame <- function(x, y = NULL, ...) {
 #'
 #' @return Called for its side effect of producing a plot. Returns `NULL`
 #'   invisibly.
-#' 
+#'
 #' @export
 #'
 #' @examplesIf interactive()

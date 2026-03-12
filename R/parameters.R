@@ -121,7 +121,7 @@ list_parameters <- function(
 #' treatment, basically with the meaning of data.frame(*, check.names =
 #' !optional). See also the make.names argument of the matrix method.
 #' @param ... additional arguments to be passed to or from methods.
-#' 
+#'
 #' @return A data frame class of the parameters results, with the following
 #' columns:
 #'    \describe{
@@ -133,9 +133,9 @@ list_parameters <- function(
 #'      \item{description}{Character. Description of the parameter. May be NA if
 #'        not provided.}
 #'    }
-#'    The data frame also includes a \code{meta} attribute from the original 
+#'    The data frame also includes a \code{meta} attribute from the original
 #'    \code{openaq_parameters_list}.
-#' 
+#'
 #' @export as.data.frame.openaq_parameters_list
 #' @export
 #'
