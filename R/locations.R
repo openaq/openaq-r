@@ -90,8 +90,8 @@ get_location <- function(
 #' @param mobile A logical to filter results to mobile (TRUE) or stationary
 #' (FALSE) location, both are included if NULL, default is `NULL`.
 #' @param iso An ISO 3166-1 alpha-2 string of the country to filter the results, , default is `NULL`.
-#' @param order_by A string specifying the field to order results by.
-#' @param sort_order A string specifying sort direction, either `"asc"` or `"desc"`.
+#' @param order_by A character string specifying the field to order results by.
+#' @param sort_order A character string specifying sort direction, either `"asc"` or `"desc"`.
 #' @param limit An integer specifying the maximum number of results to return, default is `100`.
 #' @param page An integer specifying the page number for paginated results, default is `1`.
 #' @param as_data_frame A logical for toggling whether to return results as
@@ -233,6 +233,41 @@ list_locations <- function(
 #' !optional). See also the make.names argument of the matrix method.
 #' @param ... additional arguments to be passed to or from methods.
 #'
+#' @return A data frame class of the locations results, with the following
+#' columns:
+#'    \describe{
+#'      \item{id}{Numeric. The locations identifier. }
+#'      \item{name}{Character. The name of the location. }
+#'      \item{is_mobile}{Logical. Indicates whether the location is stationary
+#'        or mobile. }
+#'      \item{is_monitor}{Logical. Indicates whether the location is considered
+#'        a reference monitor.}
+#'      \item{timezone}{Factor. The IANA timezone of the location (e.g.
+#'        "America/New_York").}
+#'      \item{countries_id}{Numeric. The countries identifier where the
+#'        location is located.}
+#'      \item{country_name}{Character. The name of the country where the
+#'        location is located}
+#'      \item{country_iso}{Factor. The ISO 3166-1 alpha-2 country code where the
+#'        location is located}
+#'      \item{latitude}{Numeric.The latitude, geographic Y, value for the
+#'        measurement. }
+#'      \item{longitude}{Numeric. The longitude, geographic X, value for the
+#'        measurement. }
+#'      \item{datetime_first}{POSIXct. The datetime of the first measurement
+#'        of this location.}
+#'      \item{datetime_last}{POSIXct. The datetime of the last measurement
+#'        of this location.}
+#'      \item{owner_name}{Factor. The name of the owner of the location.}
+#'      \item{providers_id}{Numeric. The providers identifier for the location.
+#'        }
+#'      \item{provider_name}{Character. The name of the provider for the
+#'        location.
+#'        }
+#'    }
+#'    The data frame also includes a \code{meta} attribute from the original
+#'    \code{openaq_locations_list}.
+#'
 #' @export as.data.frame.openaq_locations_list
 #' @export
 #'
@@ -268,8 +303,6 @@ as.data.frame.openaq_locations_list <- function(x, row.names = NULL, optional = 
   tbl$is_mobile <- as.logical(tbl$is_mobile)
   tbl$is_monitor <- as.logical(tbl$is_monitor)
   attr(tbl, "meta") <- attr(x, "meta")
-  attr(tbl, "params") <- attr(x, "params")
-  attr(tbl, "headers") <- attr(x, "headers")
 
   structure(tbl, class = c("openaq_locations_data.frame", "data.frame"))
 }
@@ -284,6 +317,9 @@ as.data.frame.openaq_locations_list <- function(x, row.names = NULL, optional = 
 #' @param y the y coordinates of points in the plot, optional if x is an
 #' appropriate structure.
 #' @param ... Other options passed on to base::plot().
+#'
+#' @return Called for its side effect of producing a plot. Returns `NULL`
+#'   invisibly.
 #'
 #' @export
 #'
@@ -305,6 +341,9 @@ plot.openaq_locations_data.frame <- function(x, y = NULL, ...) {
 #' @param x A list of locations results.
 #' @param y default is `NULL`
 #' @param ... Other options passed on to base::plot().
+#'
+#' @return Called for its side effect of producing a plot. Returns `NULL`
+#'   invisibly.
 #'
 #' @export
 #'

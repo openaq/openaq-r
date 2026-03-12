@@ -6,6 +6,13 @@
 \usage{
 enable_rate_limit()
 }
+\value{
+No return value, called for side effects.
+}
 \description{
 Toggles on the RATE_LIMIT environment variable to TRUE.
+}
+\examples{
+enable_rate_limit()
+
 }

@@ -1,9 +1,12 @@
 #' Get the latest measurements by locations_id.
 #'
 #' @param locations_id An integer representing the OpenAQ locations_id.
-#' @param datetime_min A string specifying the minimum datetime for filtering results, default is `NULL`.
-#' @param limit An integer specifying the maximum number of results to return, default is `100`.
-#' @param page An integer specifying the page number for paginated results, default is `1`.
+#' @param datetime_min A POSIXct datetime specifying the minimum datetime for
+#' filtering results, default is `NULL`.
+#' @param limit An integer specifying the maximum number of results to return,
+#' default is `100`.
+#' @param page An integer specifying the page number for paginated results,
+#' default is `1`.
 #' @param as_data_frame A logical for toggling whether to return results as
 #' data frame or list, default is `TRUE`.
 #' @param dry_run A logical for toggling a dry run of the request, default is
@@ -64,9 +67,12 @@ list_location_latest <- function(
 #' Get the latest measurements by parameters_id.
 #'
 #' @param parameters_id An integer representing the OpenAQ parameters_id
-#' @param datetime_min A string specifying the minimum datetime for filtering results, default is `NULL`.
-#' @param limit An integer specifying the maximum number of results to return, default is `100`.
-#' @param page An integer specifying the page number for paginated results, default is `1`.
+#' @param datetime_min A POSIXct datetime  specifying the minimum datetime for
+#' filtering results, default is `NULL`.
+#' @param limit An integer specifying the maximum number of results to return,
+#' default is `100`.
+#' @param page An integer specifying the page number for paginated results,
+#' default is `1`.
 #' @param as_data_frame A logical for toggling whether to return results as
 #' data frame or list, default is `TRUE`.
 #' @param dry_run A logical for toggling a dry run of the request, default is
@@ -136,6 +142,24 @@ list_parameter_latest <- function(
 #' treatment, basically with the meaning of data.frame(*, check.names =
 #' !optional). See also the make.names argument of the matrix method.
 #' @param ... additional arguments to be passed to or from methods.
+#'
+#' @return A data frame class of the latest results, with the following
+#' columns:
+#'    \describe{
+#'      \item{sensors_id}{Numeric. The sensors identifier. }
+#'      \item{locations_id}{Numeric. The locations identifier.}
+#'      \item{value}{Numeric. The measurement value.}
+#'      \item{datetime_local}{POSIXct. The datetime of the measurement value,
+#'        in local time}
+#'      \item{datetime_utc}{POSIXct. The datetime of the measurement value,
+#'        in UTC time}
+#'      \item{latitude}{Numeric. The latitude, geographic Y, value for the
+#'        measurement.}
+#'      \item{longitude}{Numeric.  The longitude, geographic X, value for the
+#'        measurement.}
+#'    }
+#'    The data frame also includes a \code{meta} attribute from the original
+#'    \code{openaq_latest_list}.
 #'
 #' @export as.data.frame.openaq_latest_list
 #' @export

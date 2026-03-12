@@ -16,9 +16,9 @@ list_licenses(
 )
 }
 \arguments{
-\item{order_by}{A string specifying the field to order results by.}
+\item{order_by}{A character string specifying the field to order results by.}
 
-\item{sort_order}{A string specifying sort direction, either \code{"asc"} or \code{"desc"}.}
+\item{sort_order}{A character string specifying sort direction, either \code{"asc"} or \code{"desc"}.}
 
 \item{limit}{An integer specifying the maximum number of results to return, default is \code{100}.}
 
@@ -36,7 +36,7 @@ rate limit headers, default is \code{FALSE}.}
 \item{api_key}{A valid OpenAQ API key string, default is \code{NULL}.}
 }
 \value{
-A data frame.
+A data frame or a list of the results.
 }
 \description{
 Get a list of licenses from the licenses resource.

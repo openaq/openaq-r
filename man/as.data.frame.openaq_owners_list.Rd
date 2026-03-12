@@ -20,6 +20,16 @@ treatment, basically with the meaning of data.frame(*, check.names =
 
 \item{...}{additional arguments to be passed to or from methods.}
 }
+\value{
+A data frame class of the owners results, with the following
+columns:
+\describe{
+\item{id}{Numeric. The owners identifier. }
+\item{name}{Character. The owners name. }
+}
+The data frame also includes a \code{meta} attribute from the original
+\code{openaq_owners_list}.
+}
 \description{
 Method for converting openaq_owners_list to data frame.
 }

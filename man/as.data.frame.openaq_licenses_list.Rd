@@ -20,6 +20,28 @@ treatment, basically with the meaning of data.frame(*, check.names =
 
 \item{...}{additional arguments to be passed to or from methods.}
 }
+\value{
+A data frame class of the licenses results, with the following
+columns:
+\describe{
+\item{id}{Numeric. The licenses identifier. }
+\item{name}{Character. The license name. }
+\item{commercial_use_allowed}{Logical. Indicates whether commerical use
+is allowed under the license terms. }
+\item{attribution_required}{Logical. Indicates whether attribution
+is required under the license terms. }
+\item{share_alike_required}{Logical. Indicates whether share-alike
+is required under the license terms.}
+\item{modification_allowed}{Logical. Indicates whether modification
+is allowed under the license terms. }
+\item{redistribution_allowed}{Logical. Indicates whether redistribution
+is allowed under the license terms. }
+\item{source_url}{String. The URL of the license as listed by the
+upstream source. }
+}
+The data frame also includes a \code{meta} attribute from the original
+\code{openaq_licenses_list}.
+}
 \description{
 Method for converting openaq_licenses_list to data frame.
 }

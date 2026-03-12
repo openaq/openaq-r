@@ -2,7 +2,9 @@
 #'
 #' A helper function to set the OPENAQ_API_KEY environment variable.
 #'
-#' @param api_key A string value for the API key to set.
+#' @param api_key A character string value for the API key to set.
+#'
+#' @return No return value, called for side effects.
 #'
 #' @export
 #'
@@ -18,10 +20,8 @@ set_api_key <- function(api_key) {
 #' Gets an API key value from the system envionment variable OPENAQ_API_KEY.
 #' If run in RSTUDIO, function prompts for user inputs to enter the key.
 #'
-#' @return A string.
+#' @return A character string containing the OpenAQ API key.
 #'
-#' @examples
-#' api_key <- get_api_key()
 #' @noRd
 get_api_key <- function() {
   key <- Sys.getenv("OPENAQ_API_KEY")
@@ -49,7 +49,9 @@ get_api_key <- function() {
 #' to override the default URL for testing and custom instance of the API. This
 #' function is generally not used by most users except in extraordinary cases.
 #'
-#' @param base_url A string.
+#' @param base_url A character string containing a URL.
+#'
+#' @return No return value, called for side effects.
 #'
 #' @export
 #'
@@ -66,7 +68,7 @@ set_base_url <- function(base_url) {
 #' A helper function for getting the OPENAQR_BASE_URL environment variable. If
 #' OPENAQR_BASE_URL is not set it default is `https`://api.openaq.org.
 #'
-#' @return A string value of the base URL for the API.
+#' @return A character string value of the base URL for the API.
 #'
 #' @examples
 #' base_url <- get_base_url()
@@ -83,8 +85,8 @@ get_base_url <- function() {
 #' (https://api.openaq.orgt) that an API Key is set. This prevents
 #' unauthenticated requests from the package.
 #'
-#' @param base_url A string representing the base URL used for requests.
-#' @param api_key A string for the API key.
+#' @param base_url A character string representing the base URL used for requests.
+#' @param api_key A character string for the API key.
 #' @noRd
 check_api_key <- function(base_url, api_key) {
   if (base_url == "https://api.openaq.org" && (is.null(api_key) || api_key == "" || nchar(api_key) != 64)) {
@@ -95,7 +97,12 @@ check_api_key <- function(base_url, api_key) {
 
 #' Toggles on the RATE_LIMIT environment variable to TRUE.
 #'
+#' @return No return value, called for side effects.
+#'
 #' @export
+#'
+#' @examples
+#' enable_rate_limit()
 #'
 enable_rate_limit <- function() {
   Sys.setenv("RATE_LIMIT" = TRUE)
@@ -113,9 +120,9 @@ get_rate_limit <- function() {
 
 #' Creates httr2 request from path and query parameters.
 #'
-#' @param path A string.
+#' @param path A character string.
 #' @param query_params A list.
-#' @param api_key A string.
+#' @param api_key A character string.
 #'
 #' @return A httr2 request object.
 #' @noRd
@@ -194,14 +201,14 @@ handle_request <- function(req, dry_run, rate_limit) {
 
 #' fetch
 #'
-#' @param path A string of the URL path.
+#' @param path A character string of the URL path.
 #' @param query_params A list of query parameters.
 #' @param dry_run A logical for setting whether to do a dry run of the request,
 #' default is `FALSE`.
 #' @param rate_limit A logical for setting whether to automatically rate limit
 #' based on rate limit headers, default is `FALSE`.
-#' @param api_key A string of the API Key value to set in the request headers,
-#' default is `NULL`.
+#' @param api_key A character string of the API Key value to set in the request
+#' headers, default is `NULL`.
 #'
 #' @return An httr2 response object.
 #' @noRd

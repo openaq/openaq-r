@@ -20,12 +20,31 @@ treatment, basically with the meaning of data.frame(*, check.names =
 
 \item{...}{additional arguments to be passed to or from methods.}
 }
+\value{
+A data frame class of the countries results, with the following
+columns:
+\describe{
+\item{id}{Numeric. The countries identifier}
+\item{name}{Character. Then English name of the country.}
+\item{code}{Character. The ISO-3166 Alpha 2 identifier for the country.}
+\item{datetime_first}{POSIXct. The datetime of the first measurement
+value available in the country.}
+\item{datetime_last}{POSIXct. The datetime of the last measurement
+value available in the country.}
+\item{parameter_ids}{Character. A comma delimited list of parameter ids
+that are measured within the country.}
+\item{parameter_names}{Character. a comma delimited list of parameter
+names and their units that are measured within the country.}
+}
+The data frame also includes a \code{meta} attribute from the original
+\code{openaq_countries_list}.
+}
 \description{
 Method for converting openaq_countries_list to data frame.
 }
 \examples{
 \dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-countries <- list_countries()
+countries <- list_countries(as_data_frame = FALSE)
 as.data.frame(countries)
 \dontshow{\}) # examplesIf}
 }

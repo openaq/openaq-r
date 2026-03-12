@@ -47,8 +47,8 @@ get_owner <- function(
 
 #' Get a list of owners from the owners resource.
 #'
-#' @param order_by A string specifying the field to order results by.
-#' @param sort_order A string specifying sort direction, either `"asc"` or `"desc"`.
+#' @param order_by A character string specifying the field to order results by.
+#' @param sort_order A character string specifying sort direction, either `"asc"` or `"desc"`.
 #' @param limit An integer specifying the maximum number of results to return, default is `100`.
 #' @param page An integer specifying the page number for paginated results, default is `1`.
 #' @param as_data_frame A logical for toggling whether to return results as
@@ -122,6 +122,15 @@ list_owners <- function(
 #' treatment, basically with the meaning of data.frame(*, check.names =
 #' !optional). See also the make.names argument of the matrix method.
 #' @param ... additional arguments to be passed to or from methods.
+#'
+#' @return A data frame class of the owners results, with the following
+#' columns:
+#'    \describe{
+#'      \item{id}{Numeric. The owners identifier. }
+#'      \item{name}{Character. The owners name. }
+#'    }
+#'    The data frame also includes a \code{meta} attribute from the original
+#'    \code{openaq_owners_list}.
 #'
 #' @export as.data.frame.openaq_owners_list
 #' @export

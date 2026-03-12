@@ -20,6 +20,42 @@ treatment, basically with the meaning of data.frame(*, check.names =
 
 \item{...}{additional arguments to be passed to or from methods.}
 }
+\value{
+A data frame class of the locations results, with the following
+columns:
+\describe{
+\item{id}{Numeric. The locations identifier. }
+\item{name}{Character. The name of the location. }
+\item{is_mobile}{Logical. Indicates whether the location is stationary
+or mobile. }
+\item{is_monitor}{Logical. Indicates whether the location is considered
+a reference monitor.}
+\item{timezone}{Factor. The IANA timezone of the location (e.g.
+"America/New_York").}
+\item{countries_id}{Numeric. The countries identifier where the
+location is located.}
+\item{country_name}{Character. The name of the country where the
+location is located}
+\item{country_iso}{Factor. The ISO 3166-1 alpha-2 country code where the
+location is located}
+\item{latitude}{Numeric.The latitude, geographic Y, value for the
+measurement. }
+\item{longitude}{Numeric. The longitude, geographic X, value for the
+measurement. }
+\item{datetime_first}{POSIXct. The datetime of the first measurement
+of this location.}
+\item{datetime_last}{POSIXct. The datetime of the last measurement
+of this location.}
+\item{owner_name}{Factor. The name of the owner of the location.}
+\item{providers_id}{Numeric. The providers identifier for the location.
+}
+\item{provider_name}{Character. The name of the provider for the
+location.
+}
+}
+The data frame also includes a \code{meta} attribute from the original
+\code{openaq_locations_list}.
+}
 \description{
 Method for converting openaq_locations_list to data frame.
 }
