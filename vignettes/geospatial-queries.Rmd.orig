@@ -1,8 +1,8 @@
 ---
-title: "Geospatial Queries"
+title: "Geospatial queries"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{geospatial-queries}
+  %\VignetteIndexEntry{Geospatial queries}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -44,11 +44,12 @@ point. You provide the latitude and longitude of the center point, as well as
 the radius within which to search. The radius is specified in meters, with a
 maximum value of 25,000 (25 kilometers).
 
-```{r eval=FALSE}
-list_locations(
-  coordinates = c(latitude = -73.0666, longitude = -36.7724), # the coordinates in Concepción, Chile.
-  radius = 10000 # 10,000 meters or 10 kilometers
+```{r eval=TRUE}
+locs <- list_locations(
+  coordinates = c(latitude = -36.7724, longitude = -73.0666), # the coordinates in Concepción, Chile.
+  radius = 25000 # 10,000 meters or 10 kilometers
 )
+head(locs)
 ```
 
 In this example, we are searching for locations within a 10 kilometer radius of
@@ -62,8 +63,8 @@ function with the bbox argument. You need to provide the minimum and maximum
 longitude (`xmin`, `xmax`) and latitude (`ymin`, `ymax`) values that define the
 corners of your bounding box.
 
-```{r eval=FALSE}
-list_locations(
+```{r eval=TRUE}
+locs <- list_locations(
   bbox = c(
     xmin = -8.478184,
     ymin = 26.640174,
@@ -71,6 +72,7 @@ list_locations(
     ymax = 46.534067
   )
 )
+head(locs)
 ```
 
 This query will return all locations within the defined rectangular region.

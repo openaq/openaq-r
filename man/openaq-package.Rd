@@ -4,11 +4,11 @@
 \name{openaq-package}
 \alias{openaq}
 \alias{openaq-package}
-\title{openaq: Access Air Quality Data from the OpenAQ API}
+\title{openaq: Access Air Quality Data from the 'OpenAQ' API}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Provides an interface to the OpenAQ API \url{https://openaq.org/}, a platform for real-time and historical air quality data from around the world. Users can retrieve measurement data, metadata for sensors and locations for air quality research and monitoring.
+Provides an interface to the 'OpenAQ' API \url{https://openaq.org/}, a platform for real-time and historical air quality data from around the world. Users can retrieve measurement data, metadata for sensors and locations for air quality research and monitoring.
 }
 \seealso{
 Useful links:

@@ -7,7 +7,11 @@ CONTRIBUTING.md
 ^pkgdown$
 .venv_altdoc
 ^altdoc$
-.lintr
+^\.lintr$
+^\.git$
+^\.gitignore$
+^\.Rhistory$
+^\.gitattributes$
 CHANGELOG.md
 ^.*\.Rproj$
 ^\.Rproj\.user$
@@ -17,3 +21,6 @@ CHANGELOG.md
 ^vignettes/figure$
 ^cran-comments\.md$
 ^CRAN-SUBMISSION$
+^doc$
+^Meta$
+\.Rmd\.orig$
