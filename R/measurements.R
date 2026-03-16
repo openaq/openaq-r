@@ -290,7 +290,7 @@ as.data.frame.openaq_measurements_list <- function(x, row.names = NULL, optional
 #' @param y Unused, default is `NULL`.
 #' @param ... Other options to be passed on to base::plot().
 #'
-#' #' @return Called for its side effect of producing a plot. Returns `NULL`
+#' @return Called for its side effect of producing a plot. Returns `NULL`
 #'   invisibly.
 #'
 #' @export
@@ -317,7 +317,7 @@ plot.openaq_measurements_data.frame <- function(x, y = NULL, ...) {
 #' @param y Other data
 #' @param ... Other options to be passed on to base::plot().
 #'
-#' #' @return Called for its side effect of producing a plot. Returns `NULL`
+#' @return Called for its side effect of producing a plot. Returns `NULL`
 #'   invisibly.
 #'
 #' @export

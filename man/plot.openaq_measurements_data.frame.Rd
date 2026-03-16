@@ -11,10 +11,11 @@
 
 \item{y}{Unused, default is \code{NULL}.}
 
-\item{...}{Other options to be passed on to base::plot().
-
-#' @return Called for its side effect of producing a plot. Returns \code{NULL}
-invisibly.}
+\item{...}{Other options to be passed on to base::plot().}
+}
+\value{
+Called for its side effect of producing a plot. Returns \code{NULL}
+invisibly.
 }
 \description{
 Helper for plotting measurements

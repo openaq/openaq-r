@@ -21,6 +21,17 @@ in the package for transparency.
 
 There are currently no downstream dependencies for this package.
 
+## Resubmission (3)
+
+* Added executable code examples to vignettes that previously contained no
+  executed code: geospatial-queries.Rmd, ggplot2.Rmd, openaq.Rmd,
+  plotting.Rmd, querying-measurements.Rmd, and querying-rollups.Rmd.
+* Added `\value` tags to all exported functions and methods missing
+  documentation for return values, including all `as.data.frame.*`,
+  `plot.*`, `set_api_key`, `set_base_url`, and `enable_rate_limit`. Each
+  tag describes the structure and meaning of the return value, or notes that
+  the function is called for side effects where applicable.
+
 ## Resubmission (2)
 
 * Fixed GitHub URLs for DEVELOPMENT.md and CONTRIBUTING.md in README.md to 
