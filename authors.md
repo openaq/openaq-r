@@ -14,7 +14,7 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/openaq/openaq-r/blob/main/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/openaq/openaq-r/blob/v1.0.0/DESCRIPTION)
 
 Biggs R, Parker C (2026). *openaq: Access Air Quality Data from the
 'OpenAQ' API*. R package version 1.0.0,
