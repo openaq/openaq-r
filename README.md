@@ -8,7 +8,17 @@ An R package for interacting with the OpenAQ API.
 
 ## Installation
 
-The package is available to install through Github. Use the `pkg_install` command from [pak](https://CRAN.R-project.org/package=pak) package.
+### CRAN (The Comprehensive R Archive Network)
+
+[`openaq`](https://cran.r-project.org/web/packages/openaq/) is available on CRAN:
+
+```r
+install.packages("openaq")
+```
+
+### From source
+
+You can also install the package from source through Github. Use the `pkg_install` command from [pak](https://CRAN.R-project.org/package=pak) package.
 
 ```r
 install.packages("pak")
