@@ -1,6 +1,8 @@
 # Changelog
 
-## openaq v1.0.0 - 2026-02-26
+## openaq v1.0.0 - 2026-03-19
+
+CRAN release: 2026-03-19
 
 ### Added
 

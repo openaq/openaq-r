@@ -75,11 +75,22 @@
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>The package is available to install through Github. Use the <code>pkg_install</code> command from <a href="https://CRAN.R-project.org/package=pak" class="external-link">pak</a> package.</p>
+<div class="section level3">
+<h3 id="cran-the-comprehensive-r-archive-network">CRAN (The Comprehensive R Archive Network)<a class="anchor" aria-label="anchor" href="#cran-the-comprehensive-r-archive-network"></a>
+</h3>
+<p><a href="https://cran.r-project.org/web/packages/openaq/" class="external-link"><code>openaq</code></a> is available on CRAN:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"openaq"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="from-source">From source<a class="anchor" aria-label="anchor" href="#from-source"></a>
+</h3>
+<p>You can also install the package from source through Github. Use the <code>pkg_install</code> command from <a href="https://CRAN.R-project.org/package=pak" class="external-link">pak</a> package.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"pak"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pkg_install.html" class="external-link">pkg_install</a></span><span class="op">(</span><span class="st">"openaq/openaq-r@*release"</span><span class="op">)</span></span></code></pre></div>
+</div>
 </div>
 <div class="section level2">
 <h2 id="quickstart">Quickstart<a class="anchor" aria-label="anchor" href="#quickstart"></a>
@@ -91,7 +102,7 @@
 <li>Save your API key as the <code>OPENAQ_API_KEY</code> <a href="https://rstats.wtf/r-startup.html#renviron" class="external-link">environment variable</a> . e.g. <code>OPENAQ_API_KEY=yourkey</code> in <code>.Renviron</code>. See <code><a href="reference/openaq-package.html">help(openaq)</a></code> for other ways to use and access your API key.</li>
 </ol>
 <p>Now we can query OpenAQ for air quality monitoring locations. For this example we will query locations that measure PM<sub>2.5</sub> near (with 10km) Antananarivo, Madagascar (-18.90848, 47.53751)</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/openaq/openaq-r" class="external-link">openaq</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">locations</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/list_locations.html">list_locations</a></span><span class="op">(</span></span>
@@ -163,6 +174,7 @@
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
+<li><a href="https://cloud.r-project.org/package=openaq" class="external-link">View on CRAN</a></li>
 <li><a href="https://github.com/openaq/openaq-r/" class="external-link">Browse source code</a></li>
 <li><a href="https://github.com/openaq/openaq-r/issues" class="external-link">Report a bug</a></li>
 </ul>
