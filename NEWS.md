@@ -1,3 +1,14 @@
+# openaq v1.0.1 - 2026-05-11
+
+## Added
+
+- Added support for locally cached versions of reference tables along with getters:
+  `get_countries()`, `get_instruments()`, `get_licenses()`, `get_manufacurers()`,
+  `get_owners()`, `get_parameters()`, `get_providers()` and a suite of functions
+  to convert human readable names into OpenAQ IDs: `country_to_id()`,
+  `instrument_to_id()`, `license_to_id()`, `manufacturer_to_id()`, `owner_to_id()`,
+  `parameter_to_id()`, 'provider_to_id()`.
+
 # openaq v1.0.0 - 2026-03-19
 
 ## Added

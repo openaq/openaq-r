@@ -24,7 +24,7 @@ Plots location coordinates. If the \code{maps} package is installed, a world
 boundary overlay is added. Install with \code{install.packages("maps")}.
 }
 \examples{
-\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
 df <- list_locations(limit = 100)
 plot(df, pch = 19, col = df$provider_name)
 \dontshow{\}) # examplesIf}

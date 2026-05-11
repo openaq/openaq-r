@@ -33,7 +33,7 @@ A data frame or list of the results.
 Get a single country from countries resource.
 }
 \examples{
-\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
 country <- get_country(42)
 \dontshow{\}) # examplesIf}
 }

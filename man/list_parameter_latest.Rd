@@ -45,7 +45,7 @@ A data frame or a list of the results.
 Get the latest measurements by parameters_id.
 }
 \examples{
-\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
 measurements <- list_parameter_latest(2)
 \dontshow{\}) # examplesIf}
 }

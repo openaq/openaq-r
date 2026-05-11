@@ -33,7 +33,7 @@ A data frame or a list of the results.
 Get a single owner from owners resource.
 }
 \examples{
-\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
 owners <- get_owner(42)
 \dontshow{\}) # examplesIf}
 }

@@ -42,7 +42,7 @@ A data frame or a list of the results.
 Get a list of providers from the providers resource.
 }
 \examples{
-\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
 providers <- list_providers()
 \dontshow{\}) # examplesIf}
 }

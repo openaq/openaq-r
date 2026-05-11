@@ -65,7 +65,7 @@ A data frame or a list of the results.
 Get a list of measurements by sensors_id.
 }
 \examples{
-\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
 measurements <- list_sensor_measurements(3920, "hours")
 \dontshow{\}) # examplesIf}
 }

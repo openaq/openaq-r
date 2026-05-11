@@ -33,7 +33,7 @@ A data frame or list of results.
 Get a single location from the locations resource.
 }
 \examples{
-\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
 location <- get_location(42)
 \dontshow{\}) # examplesIf}
 }

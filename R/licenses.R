@@ -127,7 +127,7 @@ list_licenses <- function(
 #'    \describe{
 #'      \item{id}{Numeric. The licenses identifier. }
 #'      \item{name}{Character. The license name. }
-#'      \item{commercial_use_allowed}{Logical. Indicates whether commerical use
+#'      \item{commercial_use_allowed}{Logical. Indicates whether commercial use
 #'        is allowed under the license terms. }
 #'      \item{attribution_required}{Logical. Indicates whether attribution
 #'        is required under the license terms. }

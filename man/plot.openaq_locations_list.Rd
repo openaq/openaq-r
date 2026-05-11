@@ -21,7 +21,7 @@ invisibly.
 Helper for plotting locations from list.
 }
 \examples{
-\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
 loc <- list_locations(limit = 6, as_data_frame = FALSE)
 plot(loc, pch = 19, col = 2)
 \dontshow{\}) # examplesIf}

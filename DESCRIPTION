@@ -4,7 +4,7 @@ Description: Provides an interface to the 'OpenAQ' API <https://openaq.org/>,
     a platform for real-time and historical air quality data from around the
     world. Users can retrieve measurement data, metadata for sensors and
     locations for air quality research and monitoring.
-Version: 1.0.0
+Version: 1.0.1
 License: MIT + file LICENSE
 URL: https://github.com/openaq/openaq-r, https://openaq.github.io/openaq-r/
 BugReports: https://github.com/openaq/openaq-r/issues
@@ -13,6 +13,7 @@ Authors@R: c(
     comment = c(ORCID = "0009-0008-0777-8479")),
     person("Christian", "Parker", email="chris@talloaks.io", role = c("aut")),
     person("Francesca", "Mills", role = c("ctb")),
+    person("Jonathan", "Callahan", email="jonathan.s.callahan@gmail.com", role=c("ctb")),
     person("OpenAQ", email="dev@openaq.org", role = c("cph", "fnd"))
     )
 Depends:
@@ -37,6 +38,6 @@ Suggests:
 Config/testthat/edition: 3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 VignetteBuilder: knitr
 Language: en-US

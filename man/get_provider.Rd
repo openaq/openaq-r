@@ -33,7 +33,7 @@ A data frame or a list of the results.
 Get a single provider from providers resource.
 }
 \examples{
-\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
 provider <- get_provider(42)
 \dontshow{\}) # examplesIf}
 }

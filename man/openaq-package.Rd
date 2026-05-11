@@ -30,6 +30,7 @@ Authors:
 Other contributors:
 \itemize{
   \item Francesca Mills [contributor]
+  \item Jonathan Callahan \email{jonathan.s.callahan@gmail.com} [contributor]
   \item OpenAQ \email{dev@openaq.org} [copyright holder, funder]
 }
 
