@@ -24,3 +24,5 @@ CHANGELOG.md
 ^doc$
 ^Meta$
 \.Rmd\.orig$
+^\.positai$
+^\.claude$

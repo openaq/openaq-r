@@ -43,7 +43,7 @@ The data frame also includes a \code{meta} attribute from the original
 Method for converting openaq_countries_list to data frame.
 }
 \examples{
-\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
 countries <- list_countries(as_data_frame = FALSE)
 as.data.frame(countries)
 \dontshow{\}) # examplesIf}

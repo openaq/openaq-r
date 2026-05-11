@@ -33,7 +33,7 @@ A data frame or a list of the results.
 Get a single license from the licenses resource.
 }
 \examples{
-\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
 license <- get_license(42)
 \dontshow{\}) # examplesIf}
 }

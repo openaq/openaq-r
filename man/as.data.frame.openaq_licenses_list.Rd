@@ -26,7 +26,7 @@ columns:
 \describe{
 \item{id}{Numeric. The licenses identifier. }
 \item{name}{Character. The license name. }
-\item{commercial_use_allowed}{Logical. Indicates whether commerical use
+\item{commercial_use_allowed}{Logical. Indicates whether commercial use
 is allowed under the license terms. }
 \item{attribution_required}{Logical. Indicates whether attribution
 is required under the license terms. }
@@ -46,7 +46,7 @@ The data frame also includes a \code{meta} attribute from the original
 Method for converting openaq_licenses_list to data frame.
 }
 \examples{
-\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
 licenses <- list_licenses(as_data_frame = FALSE)
 as.data.frame(licenses)
 \dontshow{\}) # examplesIf}

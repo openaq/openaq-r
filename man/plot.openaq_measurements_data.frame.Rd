@@ -21,7 +21,7 @@ invisibly.
 Helper for plotting measurements
 }
 \examples{
-\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
 meas <- list_sensor_measurements(23707, limit = 500, as_data_frame = FALSE)
 plot(meas)
 \dontshow{\}) # examplesIf}

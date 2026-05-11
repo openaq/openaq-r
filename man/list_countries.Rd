@@ -52,7 +52,7 @@ A data frame or a list of the results.
 Get a list of countries from the countries resource.
 }
 \examples{
-\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
 countries <- list_countries()
 \dontshow{\}) # examplesIf}
 }
