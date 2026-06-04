@@ -307,6 +307,7 @@ is.POSIXct <- function(x) inherits(x, "POSIXct") # nolint: object_name_linter.
 #' @noRd
 validate_datetime <- function(x, name) {
   if (is.null(x)) return(invisible(NULL))
+  if (is.na(x)) return(invisible(NULL))  
   if (!is.POSIXct(x)) {
     stop(sprintf("`%s` must be a POSIXct datetime.", name), call. = FALSE)
   }

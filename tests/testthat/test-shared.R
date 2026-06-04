@@ -441,6 +441,14 @@ test_that("validate_datetime throws with invalid inputs", {
   expect_error(validate_datetime(as.Date("2024-07-04"), "datetime_from"), regexp = "must be a POSIXct datetime")
 })
 
+test_that("validate_datetime accepts NA", {
+  expect_invisible(validate_datetime(NA, "datetime_from"))
+})
+
+test_that("validate_datetime accepts NA string", {
+  expect_invisible(validate_datetime("NA", "datetime_from"))
+})
+
 # validate_date
 
 test_that("validate_date accepts NULL", {
