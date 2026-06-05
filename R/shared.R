@@ -308,6 +308,7 @@ is.POSIXct <- function(x) inherits(x, "POSIXct") # nolint: object_name_linter.
 validate_datetime <- function(x, name) {
   if (is.null(x)) return(invisible(NULL))
   if (is.na(x)) return(invisible(NULL))  
+  if (identical(x, "NA")) return(invisible(NULL)) 
   if (!is.POSIXct(x)) {
     stop(sprintf("`%s` must be a POSIXct datetime.", name), call. = FALSE)
   }
@@ -459,6 +460,10 @@ extract_parameters <- function(param_defs, ...) {
   for (param_name in names(param_defs)) {
     param_def <- param_defs[[param_name]]
     param_value <- params[[param_name]]
+    if (is.null(param_value) || (length(param_value) == 1 && is.na(param_value)) || identical(param_value, "NA")) {
+      params[[param_name]] <- param_def$default
+      next
+    }
     if (is.null(param_value)) {
       param_value <- param_def$default
     } else if (!is.null(param_def$validator)) {

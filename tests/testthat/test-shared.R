@@ -646,6 +646,32 @@ test_that("extract_parameters with validator and transform works correctly", {
   expect_equal(result, list(date = "2019-07-11T00:00:00"))
 })
 
+test_that("extract_parameters treats NA as NULL and uses default", {
+  param_defs <- list(
+    param1 = list(default = 10)
+  )
+  result <- extract_parameters(param_defs, param1 = NA)
+  expect_equal(result, list(param1 = 10))
+})
+
+test_that("extract_parameters treats NA string as NULL and uses default", {
+  param_defs <- list(
+    param1 = list(default = 10)
+  )
+  result <- extract_parameters(param_defs, param1 = "NA")
+  expect_equal(result, list(param1 = 10))
+})
+
+test_that("extract_parameters skips validation when NA is passed", {
+  validate_positive <- function(x) {
+    if (x <= 0) stop("Value must be positive")
+  }
+  param_defs <- list(
+    param1 = list(default = 10, validator = validate_positive)
+  )
+  expect_no_error(extract_parameters(param_defs, param1 = NA))
+})
+
 
 # parse_openaq_timestamp TODO
 
