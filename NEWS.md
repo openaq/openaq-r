@@ -1,3 +1,5 @@
+# openaq v1.1.0 - 2026-xx-xx
+
 # openaq v1.0.0 - 2026-03-19
 
 ## Added
