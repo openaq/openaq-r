@@ -673,7 +673,28 @@ test_that("extract_parameters skips validation when NA is passed", {
 })
 
 
-# parse_openaq_timestamp TODO
+# parse_openaq_timestamp
+
+test_that("parse_openaq_timestamp parses character string correctly", {
+  result <- parse_openaq_timestamp("2019-07-11T14:00:00")
+  expect_s3_class(result, "POSIXct")
+  expect_equal(result, as.POSIXct("2019-07-11T14:00:00", format = "%Y-%m-%dT%H:%M:%S", tz = "UTC"))
+})
+
+test_that("parse_openaq_timestamp parses list with utc field correctly", {
+  result <- parse_openaq_timestamp(list(utc = "2019-07-11T14:00:00", local = "2019-07-11T08:00:00"))
+  expect_s3_class(result, "POSIXct")
+  expect_equal(result, as.POSIXct("2019-07-11T14:00:00", format = "%Y-%m-%dT%H:%M:%S", tz = "UTC"))
+})
+
+test_that("parse_openaq_timestamp returns NA for NULL input", {
+  expect_equal(parse_openaq_timestamp(NULL), NA)
+})
+
+test_that("parse_openaq_timestamp returns NA for unsupported input", {
+  expect_equal(parse_openaq_timestamp(list(local = "2019-07-11T14:00:00")), NA)
+  expect_equal(parse_openaq_timestamp(12345), NA)
+})
 
 # or
 
