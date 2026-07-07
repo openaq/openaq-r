@@ -119,6 +119,19 @@ test_that("enable_rate_limit toggles environment variable", {
   )
 })
 
+# disable_rate_limit
+
+test_that("disable_rate_limit toggles environment variable", {
+  withr::with_envvar(
+    new = c("RATE_LIMIT" = NA),
+    {
+      disable_rate_limit()
+      expect_equal(Sys.getenv("RATE_LIMIT"), "FALSE")
+    }
+  )
+})
+
+
 
 # get_rate_limit
 
@@ -126,9 +139,9 @@ test_that("get_rate_limit gets environment variable", {
   withr::with_envvar(
     new = c("RATE_LIMIT" = NA),
     {
-      expect_equal(get_rate_limit(), FALSE)
-      enable_rate_limit()
       expect_equal(get_rate_limit(), TRUE)
+      disable_rate_limit()
+      expect_equal(get_rate_limit(), FALSE)
     }
   )
 })

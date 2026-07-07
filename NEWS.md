@@ -1,5 +1,14 @@
 # openaq v1.1.0 - 2026-xx-xx
 
+## Added
+
+- Added `disable_rate_limit()` function for setting `RATE_LIMIT` environment
+variable to `FALSE`
+
+## Changed
+
+- Made `RATE_LIMIT` environment variable setting `TRUE` by default.
+
 # openaq v1.0.0 - 2026-03-19
 
 ## Added
