@@ -94,6 +94,19 @@ check_api_key <- function(base_url, api_key) {
   }
 }
 
+#' Toggles on the RATE_LIMIT environment variable to FALSE
+#'
+#' @return No return value, called for side effects.
+#'
+#' @export
+#'
+#' @examples
+#' disable_rate_limit()
+#'
+disable_rate_limit <- function() {
+  Sys.setenv("RATE_LIMIT" = FALSE)
+}
+
 
 #' Toggles on the RATE_LIMIT environment variable to TRUE.
 #'
@@ -113,7 +126,7 @@ enable_rate_limit <- function() {
 #' @return A logical value.
 #' @noRd
 get_rate_limit <- function() {
-  rate_limit <- Sys.getenv("RATE_LIMIT", FALSE)
+  rate_limit <- Sys.getenv("RATE_LIMIT", TRUE)
   as.logical(rate_limit)
 }
 
