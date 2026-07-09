@@ -7,7 +7,10 @@ variable to `FALSE`
 
 ## Changed
 
+- Updated datetime validation, parameter extraction, and timestamp parsing to
+gracefully handle NA/"NA" values.
 - Made `RATE_LIMIT` environment variable setting `TRUE` by default.
+- Changed from MIT license to Apache 2.0
 
 # openaq v1.0.0 - 2026-03-19
 
