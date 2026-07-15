@@ -20,12 +20,11 @@ get_provider <- function(
     providers_id,
     as_data_frame = TRUE,
     dry_run = FALSE,
-    rate_limit = FALSE,
     api_key = NULL) {
   path <- paste("providers", providers_id, sep = "/")
   data <- fetch(path,
     dry_run = dry_run,
-    rate_limit = rate_limit,
+
     api_key = api_key
   )
   if (isTRUE(dry_run)) {
@@ -73,7 +72,6 @@ list_providers <- function(
     page = 1,
     as_data_frame = TRUE,
     dry_run = FALSE,
-    rate_limit = FALSE,
     api_key = NULL) {
   param_defs <- list(
     order_by = list(default = NULL, validator = NULL),
@@ -91,7 +89,7 @@ list_providers <- function(
   path <- "providers"
   data <- fetch(path,
     query_params = params_list, dry_run = dry_run,
-    rate_limit = rate_limit,
+
     api_key = api_key
   )
   if (isTRUE(dry_run)) {

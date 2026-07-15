@@ -20,12 +20,10 @@ get_sensor <- function(
     sensors_id,
     as_data_frame = TRUE,
     dry_run = FALSE,
-    rate_limit = FALSE,
     api_key = NULL) {
   path <- paste("sensors", sensors_id, sep = "/")
   data <- fetch(path,
     dry_run = dry_run,
-    rate_limit = rate_limit,
     api_key = api_key
   )
   if (isTRUE(dry_run)) {
@@ -66,12 +64,10 @@ list_location_sensors <- function(
     locations_id,
     as_data_frame = TRUE,
     dry_run = FALSE,
-    rate_limit = FALSE,
     api_key = NULL) {
   path <- paste("locations", locations_id, "sensors", sep = "/")
   data <- fetch(path,
     dry_run = dry_run,
-    rate_limit = rate_limit,
     api_key = api_key
   )
   if (isTRUE(dry_run)) {

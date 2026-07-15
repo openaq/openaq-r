@@ -96,32 +96,9 @@ requests when the rate limit has been reached.
 
 #### Automatic rate limit handling
 
-The openaq package provides optional functionality to automatically throttle
-requests when the rate limit has been reached. This feature uses httr2's
-built-in retry mechanism to intelligently handle rate limit errors.
-
-Using the openaq package you can enable automatic rate limiting in two ways:
-
-**Option 1: Enable globally for your session**
-```{r eval=TRUE}
-# Enable automatic rate limiting for all subsequent requests
-enable_rate_limit()
-
-# Now all API calls will automatically handle rate limits
-locations <- list_locations(limit = 1000, parameters_id = 2)
-nrow(locations)
-```
-
-**Option 2: Enable per request**
-```{r}
-# Enable rate limiting for a single function call
-locations <- list_locations(
-  limit = 1000,
-  parameters_id = 2,
-  rate_limit = TRUE
-)
-head(locations)
-```
+The openaq package by default automatically throttles requests when the rate
+limit has been reached. This feature uses httr2's built-in retry mechanism to
+intelligently handle rate limit errors.
 
 This is particularly useful when making many sequential requests or when working
 with large datasets where you might exceed the rate limit. The automatic retry
@@ -277,7 +254,6 @@ get_location_sensors()
 ```
 
 
-
 ### Data frames
 
 All resource functions return a typed data frame by default. If you prefer to
@@ -311,19 +287,9 @@ JSON results are parsed with the `httr2::resp_body_json()` function under-the-ho
 
 ### Automatic rate limiting
 
-All resource function provide an option to enable automatic rate limiting to
-ensure you do not exceed account rate limits. You can or course implement your
-own rate limiting yourself, but the built-in functionality is provided as an
-easy to use option.
-
-```{r eval=FALSE}
-list_locations(
-  limit = 1000,
-  parameters_id = 2,
-  providers_id = 166,
-  rate_limit = TRUE
-)
-```
+The openaq package by default automatically throttles requests when the rate
+limit has been reached. This feature uses httr2's built-in retry mechanism to
+intelligently handle rate limit errors.
 
 This functionality uses the OpenAQ API's
 [rate limit headers](https://docs.openaq.org/using-the-api/rate-limits#rate-limit-headers)

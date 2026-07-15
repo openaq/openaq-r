@@ -4,13 +4,7 @@
 \alias{get_owner}
 \title{Get a single owner from owners resource.}
 \usage{
-get_owner(
-  owners_id,
-  as_data_frame = TRUE,
-  dry_run = FALSE,
-  rate_limit = FALSE,
-  api_key = NULL
-)
+get_owner(owners_id, as_data_frame = TRUE, dry_run = FALSE, api_key = NULL)
 }
 \arguments{
 \item{owners_id}{An integer representing the OpenAQ owners_id.}
@@ -21,10 +15,10 @@ data frame or list, default is \code{TRUE}.}
 \item{dry_run}{A logical for toggling a dry run of the request, default is
 \code{FALSE}.}
 
+\item{api_key}{A valid OpenAQ API key string, default is \code{NULL}.}
+
 \item{rate_limit}{A logical for toggling automatic rate limiting based on
 rate limit headers, default is \code{FALSE}.}
-
-\item{api_key}{A valid OpenAQ API key string, default is \code{NULL}.}
 }
 \value{
 A data frame or a list of the results.

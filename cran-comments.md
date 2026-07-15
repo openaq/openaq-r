@@ -1,15 +1,22 @@
 ## Test environments
 
-* local: macOS 15.2 (aarch64), R 4.5.0 (and devel)
+* local: macOS 15.x (aarch64), R 4.5.x (and devel)
 * GitHub Actions (ubuntu-latest): R-devel, R-release, R-oldrel-1, R-oldrel-2, R-oldrel-3
-* GitHub Actions (windows-latest): R-release, R-oldrel-1, R-oldrel-2  
+* GitHub Actions (windows-latest): R-release, R-oldrel-1, R-oldrel-2
 * GitHub Actions (macos-latest): R-release
 
 ## R CMD check results
 
-0 errors | 0 warnings | 1 note
+0 errors | 0 warnings | 0 notes
 
-* This is a resubmission. See resubmission notes below.
+## Summary of changes in this version
+
+* Added `disable_rate_limit()` for setting the `RATE_LIMIT` environment
+  variable to `FALSE`.
+* Updated datetime validation, parameter extraction, and timestamp parsing
+  to gracefully handle `NA`/`"NA"` values.
+* Changed the default for the `RATE_LIMIT` environment variable to `TRUE`.
+* Changed the package license from MIT to Apache License 2.0.
 
 ## Vignettes
 
@@ -20,27 +27,3 @@ in the package for transparency.
 ## Downstream dependencies
 
 There are currently no downstream dependencies for this package.
-
-## Resubmission (3)
-
-* Added executable code examples to vignettes that previously contained no
-  executed code: geospatial-queries.Rmd, ggplot2.Rmd, openaq.Rmd,
-  plotting.Rmd, querying-measurements.Rmd, and querying-rollups.Rmd.
-* Added `\value` tags to all exported functions and methods missing
-  documentation for return values, including all `as.data.frame.*`,
-  `plot.*`, `set_api_key`, `set_base_url`, and `enable_rate_limit`. Each
-  tag describes the structure and meaning of the return value, or notes that
-  the function is called for side effects where applicable.
-
-## Resubmission (2)
-
-* Fixed GitHub URLs for DEVELOPMENT.md and CONTRIBUTING.md in README.md to 
-  include the full blob path (/blob/main/).
-
-## Resubmission (1)
-
-* Fixed invalid file URIs in README.md: DEVELOPMENT.md and CONTRIBUTING.md
-  now use full GitHub URLs.
-* Quoted 'OpenAQ' in the Title and Description fields of DESCRIPTION. Note
-  that OpenAQ is an organization name, but it also serves as the API name,
-  so quoting has been applied per reviewer feedback.

@@ -44,7 +44,6 @@ list_sensor_measurements <- function(
     page = NULL,
     as_data_frame = TRUE,
     dry_run = FALSE,
-    rate_limit = FALSE,
     api_key = NULL) {
   validate_data_param(data)
   validate_rollup(rollup)
@@ -100,7 +99,6 @@ list_sensor_measurements <- function(
   fetched_data <- fetch(path,
     query_params = params_list,
     dry_run = dry_run,
-    rate_limit = rate_limit,
     api_key = api_key
   )
   if (isTRUE(dry_run)) {

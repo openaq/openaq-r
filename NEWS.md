@@ -2,14 +2,17 @@
 
 ## Added
 
-- Added `disable_rate_limit()` function for setting `RATE_LIMIT` environment
-variable to `FALSE`
+## Removed
+
+- `enable_rate_limit` 
+- `get_rate_limit` 
 
 ## Changed
 
 - Updated datetime validation, parameter extraction, and timestamp parsing to
 gracefully handle NA/"NA" values.
-- Made `RATE_LIMIT` environment variable setting `TRUE` by default.
+- Removed rate limit options, enforcing httr2 req_retry for all requests based
+on headers
 - Changed from MIT license to Apache 2.0
 
 # openaq v1.0.0 - 2026-03-19
@@ -22,7 +25,7 @@ gracefully handle NA/"NA" values.
   `get_summary_field()`, `validate_data_rollup_compat()`, and
   `transform_vector_to_string()`.
 - Added `validate_date()` and `transform_date()` to support date-only query
-  parameters when `data` is `"days"` or larger. Includes tests for both 
+  parameters when `data` is `"days"` or larger. Includes tests for both
   functions.
 
 ## Changed
