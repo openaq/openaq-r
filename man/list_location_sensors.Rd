@@ -21,9 +21,6 @@ data frame or list, default is \code{TRUE}.}
 \code{FALSE}.}
 
 \item{api_key}{A valid OpenAQ API key string, default is \code{NULL}.}
-
-\item{rate_limit}{A logical for toggling automatic rate limiting based on
-rate limit headers, default is \code{FALSE}.}
 }
 \value{
 A data frame or a list of the results.

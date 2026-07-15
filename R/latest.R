@@ -11,8 +11,6 @@
 #' data frame or list, default is `TRUE`.
 #' @param dry_run A logical for toggling a dry run of the request, default is
 #' `FALSE`.
-#' @param rate_limit A logical for toggling automatic rate limiting based on
-#' rate limit headers, default is `FALSE`.
 #' @param api_key A valid OpenAQ API key string, default is `NULL`.
 #'
 #' @return A data frame or a list of the results.
@@ -76,8 +74,6 @@ list_location_latest <- function(
 #' data frame or list, default is `TRUE`.
 #' @param dry_run A logical for toggling a dry run of the request, default is
 #' `FALSE`.
-#' @param rate_limit A logical for toggling automatic rate limiting based on
-#' rate limit headers, default is `FALSE`.
 #' @param api_key A valid OpenAQ API key string, default is `NULL`.
 #'
 #' @return A data frame or a list of the results.
