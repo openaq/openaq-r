@@ -5,8 +5,6 @@
 #' data frame or list, default is `TRUE`.
 #' @param dry_run A logical for toggling a dry run of the request, default is
 #' `FALSE.`
-#' @param rate_limit A logical for toggling automatic rate limiting based on
-#' rate limit headers, default is `FALSE`.
 #' @param api_key A valid OpenAQ API key string, default is `NULL`.
 #'
 #' @return A data frame or list of the results.
@@ -20,12 +18,10 @@ get_country <- function(
     countries_id,
     as_data_frame = TRUE,
     dry_run = FALSE,
-    rate_limit = FALSE,
     api_key = NULL) {
   path <- paste("countries", countries_id, sep = "/")
   data <- fetch(path,
     dry_run = dry_run,
-    rate_limit = rate_limit,
     api_key = api_key
   )
   if (isTRUE(dry_run)) {
@@ -61,8 +57,6 @@ get_country <- function(
 #' data frame or list, default is `TRUE`.
 #' @param dry_run A logical for toggling a dry run of the request, default is
 #' `FALSE`.
-#' @param rate_limit A logical for toggling automatic rate limiting based on
-#' rate limit headers, default is `FALSE`.
 #' @param api_key A valid OpenAQ API key string, default is `NULL`.
 #'
 #' @return A data frame or a list of the results.
@@ -81,7 +75,6 @@ list_countries <- function(
     page = NULL,
     as_data_frame = TRUE,
     dry_run = FALSE,
-    rate_limit = FALSE,
     api_key = NULL) {
   param_defs <- list(
     providers_id = list(default = NULL, validator = NULL),
@@ -104,7 +97,6 @@ list_countries <- function(
   data <- fetch(path,
     query_params = params_list,
     dry_run = dry_run,
-    rate_limit = rate_limit,
     api_key = api_key
   )
   if (isTRUE(dry_run)) {

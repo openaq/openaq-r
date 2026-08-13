@@ -441,6 +441,14 @@ test_that("validate_datetime throws with invalid inputs", {
   expect_error(validate_datetime(as.Date("2024-07-04"), "datetime_from"), regexp = "must be a POSIXct datetime")
 })
 
+test_that("validate_datetime accepts NA", {
+  expect_invisible(validate_datetime(NA, "datetime_from"))
+})
+
+test_that("validate_datetime accepts NA string", {
+  expect_invisible(validate_datetime("NA", "datetime_from"))
+})
+
 # validate_date
 
 test_that("validate_date accepts NULL", {
@@ -638,8 +646,55 @@ test_that("extract_parameters with validator and transform works correctly", {
   expect_equal(result, list(date = "2019-07-11T00:00:00"))
 })
 
+test_that("extract_parameters treats NA as NULL and uses default", {
+  param_defs <- list(
+    param1 = list(default = 10)
+  )
+  result <- extract_parameters(param_defs, param1 = NA)
+  expect_equal(result, list(param1 = 10))
+})
 
-# parse_openaq_timestamp TODO
+test_that("extract_parameters treats NA string as NULL and uses default", {
+  param_defs <- list(
+    param1 = list(default = 10)
+  )
+  result <- extract_parameters(param_defs, param1 = "NA")
+  expect_equal(result, list(param1 = 10))
+})
+
+test_that("extract_parameters skips validation when NA is passed", {
+  validate_positive <- function(x) {
+    if (x <= 0) stop("Value must be positive")
+  }
+  param_defs <- list(
+    param1 = list(default = 10, validator = validate_positive)
+  )
+  expect_no_error(extract_parameters(param_defs, param1 = NA))
+})
+
+
+# parse_openaq_timestamp
+
+test_that("parse_openaq_timestamp parses character string correctly", {
+  result <- parse_openaq_timestamp("2019-07-11T14:00:00")
+  expect_s3_class(result, "POSIXct")
+  expect_equal(result, as.POSIXct("2019-07-11T14:00:00", format = "%Y-%m-%dT%H:%M:%S", tz = "UTC"))
+})
+
+test_that("parse_openaq_timestamp parses list with utc field correctly", {
+  result <- parse_openaq_timestamp(list(utc = "2019-07-11T14:00:00", local = "2019-07-11T08:00:00"))
+  expect_s3_class(result, "POSIXct")
+  expect_equal(result, as.POSIXct("2019-07-11T14:00:00", format = "%Y-%m-%dT%H:%M:%S", tz = "UTC"))
+})
+
+test_that("parse_openaq_timestamp returns NA for NULL input", {
+  expect_equal(parse_openaq_timestamp(NULL), NA)
+})
+
+test_that("parse_openaq_timestamp returns NA for unsupported input", {
+  expect_equal(parse_openaq_timestamp(list(local = "2019-07-11T14:00:00")), NA)
+  expect_equal(parse_openaq_timestamp(12345), NA)
+})
 
 # or
 

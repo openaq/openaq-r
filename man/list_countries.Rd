@@ -13,7 +13,6 @@ list_countries(
   page = NULL,
   as_data_frame = TRUE,
   dry_run = FALSE,
-  rate_limit = FALSE,
   api_key = NULL
 )
 }
@@ -39,9 +38,6 @@ data frame or list, default is \code{TRUE}.}
 
 \item{dry_run}{A logical for toggling a dry run of the request, default is
 \code{FALSE}.}
-
-\item{rate_limit}{A logical for toggling automatic rate limiting based on
-rate limit headers, default is \code{FALSE}.}
 
 \item{api_key}{A valid OpenAQ API key string, default is \code{NULL}.}
 }

@@ -197,9 +197,7 @@ validate_coordinates <- function(coordinates) {
     lon <- coordinates["longitude"]
     lat <- coordinates["latitude"]
 
-    if (!is.numeric(lon) || !is.numeric(lat)) {
-      error_message <- "Longitude and latitude must be numeric."
-    } else if (abs(lon) > 180 || abs(lat) > 90) {
+    if (abs(lon) > 180 || abs(lat) > 90) {
       error_message <- "Invalid longitude or latitude. Longitude must be between -180 and 180, and latitude between -90 and 90."
     }
   }
@@ -231,9 +229,7 @@ validate_bbox <- function(bbox) { # nolint: cyclocomp_linter
     xmax <- bbox["xmax"]
     ymax <- bbox["ymax"]
 
-    if (!is.numeric(xmin) || !is.numeric(ymin) || !is.numeric(xmax) || !is.numeric(ymax)) {
-      error_message <- "Bounding box coordinates must be numeric."
-    } else if (xmin > xmax) {
+    if (xmin > xmax) {
       error_message <- "Invalid bounding box. xmin must be less than or equal to xmax."
     } else if (ymin > ymax) {
       error_message <- "Invalid bounding box. ymin must be less than or equal to ymax."
@@ -307,6 +303,8 @@ is.POSIXct <- function(x) inherits(x, "POSIXct") # nolint: object_name_linter.
 #' @noRd
 validate_datetime <- function(x, name) {
   if (is.null(x)) return(invisible(NULL))
+  if (is.na(x)) return(invisible(NULL))
+  if (identical(x, "NA")) return(invisible(NULL))
   if (!is.POSIXct(x)) {
     stop(sprintf("`%s` must be a POSIXct datetime.", name), call. = FALSE)
   }
@@ -458,9 +456,11 @@ extract_parameters <- function(param_defs, ...) {
   for (param_name in names(param_defs)) {
     param_def <- param_defs[[param_name]]
     param_value <- params[[param_name]]
-    if (is.null(param_value)) {
-      param_value <- param_def$default
-    } else if (!is.null(param_def$validator)) {
+    if (is.null(param_value) || (length(param_value) == 1 && is.na(param_value)) || identical(param_value, "NA")) {
+      params[[param_name]] <- param_def$default
+      next
+    }
+    if (!is.null(param_def$validator)) {
       param_def$validator(param_value)
     }
     if (!is.null(param_def$transform)) {
@@ -524,6 +524,8 @@ parse_openaq_timestamp <- function(x) {
       utc <- x
     } else if (methods::is(x, "list") && "utc" %in% names(x)) {
       utc <- x$utc
+    } else {
+      return(NA)
     }
     as.POSIXct(utc, format = "%Y-%m-%dT%H:%M:%S", tz = "UTC")
   } else {

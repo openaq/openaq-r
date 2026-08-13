@@ -11,8 +11,6 @@
 #' data frame or list, default is `TRUE`.
 #' @param dry_run A logical for toggling a dry run of the request, default is
 #' `FALSE`.
-#' @param rate_limit A logical for toggling automatic rate limiting based on
-#' rate limit headers, default is `FALSE`.
 #' @param api_key A valid OpenAQ API key string, default is `NULL`.
 #'
 #' @return A data frame or a list of the results.
@@ -29,7 +27,6 @@ list_location_latest <- function(
     page = NULL,
     as_data_frame = TRUE,
     dry_run = FALSE,
-    rate_limit = FALSE,
     api_key = NULL) {
   param_defs <- list(
     datetime_min = list(
@@ -47,7 +44,7 @@ list_location_latest <- function(
     page = page
   )
   path <- paste("locations", locations_id, "latest", sep = "/")
-  data <- fetch(path, params_list, dry_run = dry_run, rate_limit = rate_limit, api_key = api_key)
+  data <- fetch(path, params_list, dry_run = dry_run, api_key = api_key)
   if (isTRUE(dry_run)) {
     return(data)
   }
@@ -77,8 +74,6 @@ list_location_latest <- function(
 #' data frame or list, default is `TRUE`.
 #' @param dry_run A logical for toggling a dry run of the request, default is
 #' `FALSE`.
-#' @param rate_limit A logical for toggling automatic rate limiting based on
-#' rate limit headers, default is `FALSE`.
 #' @param api_key A valid OpenAQ API key string, default is `NULL`.
 #'
 #' @return A data frame or a list of the results.
@@ -95,7 +90,6 @@ list_parameter_latest <- function(
     page = NULL,
     as_data_frame = TRUE,
     dry_run = FALSE,
-    rate_limit = FALSE,
     api_key = NULL) {
   param_defs <- list(
     datetime_min = list(
@@ -112,7 +106,7 @@ list_parameter_latest <- function(
     page = page
   )
   path <- paste("parameters", parameters_id, "latest", sep = "/")
-  data <- fetch(path, params_list, dry_run = dry_run, rate_limit = rate_limit, api_key = api_key)
+  data <- fetch(path, params_list, dry_run = dry_run, api_key = api_key)
   if (isTRUE(dry_run)) {
     return(data)
   }

@@ -4,8 +4,8 @@ Description: Provides an interface to the 'OpenAQ' API <https://openaq.org/>,
     a platform for real-time and historical air quality data from around the
     world. Users can retrieve measurement data, metadata for sensors and
     locations for air quality research and monitoring.
-Version: 1.0.0
-License: MIT + file LICENSE
+Version: 1.1.0
+License: Apache License (== 2.0)
 URL: https://github.com/openaq/openaq-r, https://openaq.github.io/openaq-r/
 BugReports: https://github.com/openaq/openaq-r/issues
 Authors@R: c(
@@ -34,6 +34,7 @@ Suggests:
     spelling,
     jsonlite,
     mockery,
+    webfakes
 Config/testthat/edition: 3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

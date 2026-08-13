@@ -94,30 +94,6 @@ check_api_key <- function(base_url, api_key) {
   }
 }
 
-
-#' Toggles on the RATE_LIMIT environment variable to TRUE.
-#'
-#' @return No return value, called for side effects.
-#'
-#' @export
-#'
-#' @examples
-#' enable_rate_limit()
-#'
-enable_rate_limit <- function() {
-  Sys.setenv("RATE_LIMIT" = TRUE)
-}
-
-#' Gets the RATE_LIMIT value
-#'
-#' @return A logical value.
-#' @noRd
-get_rate_limit <- function() {
-  rate_limit <- Sys.getenv("RATE_LIMIT", FALSE)
-  as.logical(rate_limit)
-}
-
-
 #' Creates httr2 request from path and query parameters.
 #'
 #' @param path A character string.
@@ -172,7 +148,10 @@ req_is_transient <- function(resp) {
 #' seconds until the rate limit period resets.
 #' @noRd
 req_after <- function(resp) {
-  seconds <- as.integer(httr2::resp_header(resp, "X-RateLimit-Reset"))
+  seconds <- suppressWarnings(as.integer(httr2::resp_header(resp, "X-RateLimit-Reset")))
+  if (length(seconds) == 0) {
+    seconds <- NA_integer_
+  }
   seconds
 }
 
@@ -183,18 +162,24 @@ req_after <- function(resp) {
 #'
 #' @return An httr2 response object.
 #' @noRd
-handle_request <- function(req, dry_run, rate_limit) {
+handle_request <- function(req, dry_run) {
   if (dry_run) {
     httr2::req_dry_run(req)
   } else {
-    rate_limit_env <- get_rate_limit()
-    if (rate_limit_env || rate_limit) {
-      req <- httr2::req_retry(req,
-        is_transient = req_is_transient,
-        after = req_after
-      )
-    }
+    req <- httr2::req_retry(req,
+      is_transient = req_is_transient,
+      after = req_after
+    )
     resp <- httr2::req_perform(req)
+
+    remaining <- suppressWarnings(as.integer(httr2::resp_header(resp, "X-RateLimit-Remaining")))
+    reset_seconds <- suppressWarnings(as.integer(httr2::resp_header(resp, "X-RateLimit-Reset")))
+
+    if (isTRUE(length(remaining) == 1 && !is.na(remaining) && remaining <= 0) &&
+      isTRUE(length(reset_seconds) == 1 && !is.na(reset_seconds))) {
+      Sys.sleep(reset_seconds)
+    }
+
     resp
   }
 }
@@ -216,10 +201,9 @@ fetch <- function(
     path,
     query_params = list(),
     dry_run = FALSE,
-    rate_limit = FALSE,
     api_key = NULL) {
   req <- openaq_request(path, query_params, api_key)
-  res <- handle_request(req, dry_run, rate_limit)
+  res <- handle_request(req, dry_run)
   if (!dry_run) {
     x <- httr2::resp_body_json(res, check_type = TRUE)
     results <- x$results

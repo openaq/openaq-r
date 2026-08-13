@@ -1,5 +1,7 @@
 ^\.github$
 LICENSE.md
+NOTICE
+SECURITY.md
 scripts
 CONTRIBUTING.md
 ^_pkgdown\.yml$

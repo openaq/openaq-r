@@ -107,34 +107,6 @@ test_that("check_api_key throws with correct message", {
   )
 })
 
-# enable_rate_limit
-
-test_that("enable_rate_limit toggles environment variable", {
-  withr::with_envvar(
-    new = c("RATE_LIMIT" = NA),
-    {
-      enable_rate_limit()
-      expect_equal(Sys.getenv("RATE_LIMIT"), "TRUE")
-    }
-  )
-})
-
-
-# get_rate_limit
-
-test_that("get_rate_limit gets environment variable", {
-  withr::with_envvar(
-    new = c("RATE_LIMIT" = NA),
-    {
-      expect_equal(get_rate_limit(), FALSE)
-      enable_rate_limit()
-      expect_equal(get_rate_limit(), TRUE)
-    }
-  )
-})
-
-
-
 # req_is_transient
 
 test_that("req_is_transient returns TRUE", {
@@ -164,6 +136,18 @@ test_that("after returns correct rate limit remaining header value", {
   expect_equal(req_after(res), 45)
 })
 
+test_that("req_after returns NA when header missing", {
+  res <- httr2::response(status_code = 429, headers = list(`X-RateLimit-Remaining` = "0"))
+  expect_true(is.na(req_after(res)))
+})
+
+test_that("req_after returns NA when header is non-numeric", {
+  res <- httr2::response(
+    status_code = 429,
+    headers = list(`X-RateLimit-Remaining` = "0", `X-RateLimit-Reset` = "foo-bar")
+  )
+  expect_true(is.na(req_after(res)))
+})
 
 test_that("openaq_request throws error", {
   webmockr::enable()
@@ -198,4 +182,54 @@ test_that("openaq_request headers are correct", {
 
 test_that("request throws with incorrect config", {
   expect_error(webmockr::request("countries"))
+})
+
+
+# handles_request
+
+test_that("handle_request retries after 429 and succeeds", {
+
+  skip_if_not_installed("webfakes")
+  webmockr::disable()
+
+  first_call <- TRUE
+  app <- webfakes::new_app()
+  app$get("/v3/countries", function(req, res) {
+    if (first_call) {
+      first_call <<- FALSE
+      res$set_header("X-RateLimit-Remaining", "0")
+      res$set_header("X-RateLimit-Reset", "0")
+      res$send_json(list(error = "rate limited"), status = 429)
+    } else {
+      res$send_json(list(results = list(), meta = list()), status = 200)
+    }
+  })
+  web <- webfakes::local_app_process(app)
+  withr::local_envvar(c(
+    "OPENAQ_API_KEY" = "test-api-key-0123456789-0123456789-0123456789-0123456789-0123456",
+    "OPENAQR_BASE_URL" = web$url()
+  ))
+  req <- openaq_request("countries", list())
+  resp <- handle_request(req, dry_run = FALSE)
+
+  expect_equal(httr2::resp_status(resp), 200)
+})
+
+test_that("handle_request does not retry on non-transient 429", {
+  webmockr::enable()
+  webmockr::stub_registry_clear()
+  on.exit({
+    webmockr::stub_registry_clear()
+    webmockr::disable()
+  }, add = TRUE)
+
+  withr::local_envvar(c(
+    "OPENAQ_API_KEY" = "test-api-key-0123456789-0123456789-0123456789-0123456789-0123456"
+  ))
+
+  webmockr::stub_request("get", "https://api.openaq.org/v3/countries") |>
+    webmockr::to_return(status = 429, body = '{"error":"blocked"}')
+
+  req <- openaq_request("countries", list())
+  expect_error(handle_request(req, dry_run = FALSE))
 })

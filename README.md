@@ -10,7 +10,7 @@ An R package for interacting with the OpenAQ API.
 
 ### CRAN (The Comprehensive R Archive Network)
 
-[`openaq`](https://cran.r-project.org/web/packages/openaq/) is available on CRAN:
+[`openaq`](https://CRAN.R-project.org/package=openaq) is available on CRAN:
 
 ```r
 install.packages("openaq")
