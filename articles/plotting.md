@@ -1,6 +1,7 @@
 # Plotting
 
 ``` r
+
 library(openaq)
 ```
 
@@ -16,6 +17,7 @@ not installed, only the data points will be plotted. Install it with
 `install.packages("maps")` to include the world boundary overlay.
 
 ``` r
+
 locations <- list_locations(
   bbox = c(xmin = 6.291990, ymin = 32.823129, xmax = 37.932615, ymax = 45.181129),
   parameters_id = 2,
@@ -34,6 +36,7 @@ example coloring the points by provider and customizing the type of
 marker used.
 
 ``` r
+
 plot(locations, col = locations$providers_id, pch = 20)
 ```
 
@@ -47,6 +50,7 @@ The `list_sensor_measurements` provides a
 the measurement values as a time series line chart.
 
 ``` r
+
 measurements <- list_sensor_measurements(
   3920,
   datetime_from = as.POSIXct("2025-01-01 00:00", tz = "America/Denver"),

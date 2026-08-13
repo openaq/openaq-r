@@ -15,6 +15,7 @@ R package locally.
 Clone the repository and install dependencies:
 
 ``` r
+
 install.packages("devtools")
 devtools::install_deps(dependencies = TRUE)
 ```
@@ -30,12 +31,14 @@ R CMD build .
 Or using `devtools`:
 
 ``` r
+
 devtools::build()
 ```
 
 To check the package against CRAN rules:
 
 ``` r
+
 devtools::check(cran = TRUE)
 ```
 
@@ -55,6 +58,7 @@ Guide](https://openaq.github.io/openaq-r/test/README.md).
 Documentation is generated from roxygen2 comments. To build:
 
 ``` r
+
 devtools::document()
 ```
 
@@ -70,5 +74,6 @@ Code style is enforced using [`lintr`](https://lintr.r-lib.org/). To
 check locally:
 
 ``` r
+
 lintr::lint_package()
 ```

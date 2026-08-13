@@ -1,6 +1,7 @@
 # Geospatial queries
 
 ``` r
+
 library(openaq)
 library(sf)
 library(maps)
@@ -31,6 +32,7 @@ as well as the radius within which to search. The radius is specified in
 meters, with a maximum value of 25,000 (25 kilometers).
 
 ``` r
+
 locs <- list_locations(
   coordinates = c(latitude = -36.7724, longitude = -73.0666), # the coordinates in Concepción, Chile.
   radius = 25000 # 10,000 meters or 10 kilometers
@@ -51,12 +53,12 @@ head(locs)
 #> 5        Chile          CL -36.80303 -73.12053 2016-05-10 20:00:00
 #> 6        Chile          CL -36.76980 -73.11371 2016-01-30 01:00:00
 #>         datetime_last                        owner_name providers_id
-#> 1 2026-03-09 18:00:00 Unknown Governmental Organization          164
-#> 2 2026-03-09 18:00:00 Unknown Governmental Organization          164
-#> 3 2026-03-09 18:00:00 Unknown Governmental Organization          164
-#> 4 2026-03-09 18:00:00 Unknown Governmental Organization          164
-#> 5 2026-03-09 18:00:00 Unknown Governmental Organization          164
-#> 6 2026-03-09 18:00:00 Unknown Governmental Organization          164
+#> 1 2026-07-09 14:00:00 Unknown Governmental Organization          164
+#> 2 2026-07-09 14:00:00 Unknown Governmental Organization          164
+#> 3 2026-07-09 13:00:00 Unknown Governmental Organization          164
+#> 4 2026-07-09 13:00:00 Unknown Governmental Organization          164
+#> 5 2026-07-09 14:00:00 Unknown Governmental Organization          164
+#> 6 2026-07-09 14:00:00 Unknown Governmental Organization          164
 #>   provider_name
 #> 1 Chile - SINCA
 #> 2 Chile - SINCA
@@ -79,6 +81,7 @@ maximum longitude (`xmin`, `xmax`) and latitude (`ymin`, `ymax`) values
 that define the corners of your bounding box.
 
 ``` r
+
 locs <- list_locations(
   bbox = c(
     xmin = -8.478184,
@@ -122,6 +125,7 @@ This query will return all locations within the defined rectangular
 region.
 
 ``` r
+
 bbox_coords <- c(-8.478184, 26.640174, 50.803066, 46.534067)
 names(bbox_coords) <- c("xmin", "ymin", "xmax", "ymax")
 bbox <- st_as_sfc(st_bbox(bbox_coords), crs = 4326)
@@ -145,11 +149,13 @@ boundaries are often complex shapes. For instance, consider the boundary
 of the city of Los Angeles, which has a complex, irregular shape.
 
 ``` r
+
 url <- "https://maps.lacity.org/lahub/rest/services/Boundaries/MapServer/7/query?outFields=*&where=1%3D1&f=geojson"
 la <- sf::st_read(url)
 ```
 
 ``` r
+
 plot(la["OBJECTID"])
 ```
 
@@ -169,6 +175,7 @@ encompasses the entire shape. The output is a named numeric vector,
 perfectly formatted for the bbox parameter in the `openaq` function.
 
 ``` r
+
 bbox <- sf::st_bbox(la)
 bbox
 #>       xmin       ymin       xmax       ymax 
@@ -179,6 +186,7 @@ This output gives you the xmin, ymin, xmax, and ymax values needed for
 your `openaq` query.
 
 ``` r
+
 bbox <- sf::st_bbox(la)
 world_sp <- maps::map("county", plot = FALSE, fill = TRUE)
 world_sf <- st_as_sf(world_sp)
@@ -202,12 +210,14 @@ This map shows the Los Angeles city boundary along with the calculated
 bounding box.
 
 ``` r
+
 locations <- list_locations(
   bbox = bbox
 )
 ```
 
 ``` r
+
 plot(
   st_geometry(world_sf),
   col = "lightgray",

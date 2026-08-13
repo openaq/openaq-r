@@ -1,6 +1,7 @@
 # Querying measurements
 
 ``` r
+
 library(openaq)
 ```
 
@@ -24,6 +25,7 @@ frame but we set `as_data_frame = FALSE` to receive the data as a list,
 which we will use for easier inspection in the following steps.
 
 ``` r
+
 locations <- list_locations(
   parameters_id = 2,
   countries_id = 182,
@@ -36,6 +38,7 @@ monitoring location. Let’s examine the first location in the list and
 explore its sensors.
 
 ``` r
+
 location <- locations[[1]]
 sensors <- location$sensors
 sensors
@@ -69,6 +72,7 @@ will be helpful when querying measurements, so we will store this for
 later.
 
 ``` r
+
 tz <- location$timezone
 tz
 #> [1] "Indian/Antananarivo"
@@ -79,6 +83,7 @@ measures PM_(2.5) and in turn only has one sensor so we can extract it
 as follows:
 
 ``` r
+
 sensors_id <- sensors[[1]]$id
 sensors_id
 #> [1] 225221
@@ -99,6 +104,7 @@ single page of results. Because this is hourly data, and we are querying
 page (24 hourly measurements \* 31 days = 744 measurements).
 
 ``` r
+
 measurements <- list_sensor_measurements(
   sensors_id,
   datetime_from = as.POSIXct("2025-01-01", tz = tz),
@@ -114,6 +120,7 @@ Finally, we can visualize the measurements using the
 the `plotting` vignette.
 
 ``` r
+
 plot(measurements)
 ```
 

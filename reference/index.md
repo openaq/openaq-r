@@ -24,8 +24,6 @@
   : Method for converting openaq_providers_list to data frame.
 - [`as.data.frame(`*`<openaq_sensors_list>`*`)`](https://openaq.github.io/openaq-r/reference/as.data.frame.openaq_sensors_list.md)
   : Method for converting openaq_sensors_list to data frame.
-- [`enable_rate_limit()`](https://openaq.github.io/openaq-r/reference/enable_rate_limit.md)
-  : Toggles on the RATE_LIMIT environment variable to TRUE.
 - [`get_country()`](https://openaq.github.io/openaq-r/reference/get_country.md)
   : Get a single country from countries resource.
 - [`get_instrument()`](https://openaq.github.io/openaq-r/reference/get_instrument.md)

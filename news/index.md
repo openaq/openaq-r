@@ -1,5 +1,38 @@
 # Changelog
 
+## openaq v1.1.0 - 2026-08-13
+
+### Removed
+
+- Removed `enable_rate_limit()` and `get_rate_limit()`. Automatic
+  rate-limit handling is now always enabled and is no longer
+  configurable through the `RATE_LIMIT` environment variable.
+- Removed the `rate_limit` argument from all resource functions.
+
+### Changed
+
+- Changed from MIT license to Apache 2.0
+
+### Bug Fixes
+
+- `req_after()` no longer errors when the `X-RateLimit-Reset` response
+  header is missing or non-numeric; it now returns `NA` in these cases.
+- `validate_datetime()` now treats `NA` and the string `"NA"` as
+  equivalent to `NULL`, rather than raising an error.
+- `extract_parameters()` now treats `NA` and `"NA"` values as unset,
+  substituting the parameter default and skipping validation, instead of
+  passing them through to validators.
+- `parse_openaq_timestamp()` now returns `NA` for unsupported input
+  types instead of raising an error.
+- Removed incorrect
+  [`is.numeric()`](https://rdrr.io/r/base/numeric.html) guards in
+  `validate_coordinates()` and `validate_bbox()`.
+
+### Other
+
+- Added `webfakes` to Suggests for testing HTTP retry behavior with a
+  local mock server.
+
 ## openaq v1.0.0 - 2026-03-19
 
 CRAN release: 2026-03-19

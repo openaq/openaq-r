@@ -13,10 +13,11 @@ An R package for interacting with the OpenAQ API.
 
 ### CRAN (The Comprehensive R Archive Network)
 
-[`openaq`](https://cran.r-project.org/web/packages/openaq/) is available
-on CRAN:
+[`openaq`](https://CRAN.R-project.org/package=openaq) is available on
+CRAN:
 
 ``` r
+
 install.packages("openaq")
 ```
 
@@ -27,6 +28,7 @@ You can also install the package from source through Github. Use the
 package.
 
 ``` r
+
 install.packages("pak")
 
 pak::pkg_install("openaq/openaq-r@*release")
@@ -55,6 +57,7 @@ example we will query locations that measure PM_(2.5) near (with 10km)
 Antananarivo, Madagascar (-18.90848, 47.53751)
 
 ``` r
+
 library(openaq)
 
 locations <- list_locations(
@@ -66,9 +69,9 @@ locations <- list_locations(
 
 This returns a data frame that will look something like:
 
-|    id | name         | is_mobile | is_monitor | timezone            | countries_id | country_name | country_iso |  latitude | longitude | datetime_first      | datetime_last       | owner_name                        | providers_id | provider_name |
-|------:|:-------------|:----------|:-----------|:--------------------|-------------:|:-------------|:------------|----------:|----------:|:--------------------|:--------------------|:----------------------------------|-------------:|:--------------|
-| 41726 | Antananarivo | FALSE     | TRUE       | Indian/Antananarivo |          182 | Madagascar   | MG          | -18.90848 |  47.53751 | 2020-12-22 07:00:00 | 2025-01-17 20:00:00 | Unknown Governmental Organization |          119 | AirNow        |
+| id | name | is_mobile | is_monitor | timezone | countries_id | country_name | country_iso | latitude | longitude | datetime_first | datetime_last | owner_name | providers_id | provider_name |
+|---:|:---|:---|:---|:---|---:|:---|:---|---:|---:|:---|:---|:---|---:|:---|
+| 41726 | Antananarivo | FALSE | TRUE | Indian/Antananarivo | 182 | Madagascar | MG | -18.90848 | 47.53751 | 2020-12-22 07:00:00 | 2025-01-17 20:00:00 | Unknown Governmental Organization | 119 | AirNow |
 
 ## Development
 
@@ -104,8 +107,6 @@ general contribution guidelines.
   : Method for converting openaq_providers_list to data frame.
 - [`as.data.frame(`*`<openaq_sensors_list>`*`)`](https://openaq.github.io/openaq-r/reference/as.data.frame.openaq_sensors_list.md)
   : Method for converting openaq_sensors_list to data frame.
-- [`enable_rate_limit()`](https://openaq.github.io/openaq-r/reference/enable_rate_limit.md)
-  : Toggles on the RATE_LIMIT environment variable to TRUE.
 - [`get_country()`](https://openaq.github.io/openaq-r/reference/get_country.md)
   : Get a single country from countries resource.
 - [`get_instrument()`](https://openaq.github.io/openaq-r/reference/get_instrument.md)

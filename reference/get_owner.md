@@ -5,13 +5,7 @@ Get a single owner from owners resource.
 ## Usage
 
 ``` r
-get_owner(
-  owners_id,
-  as_data_frame = TRUE,
-  dry_run = FALSE,
-  rate_limit = FALSE,
-  api_key = NULL
-)
+get_owner(owners_id, as_data_frame = TRUE, dry_run = FALSE, api_key = NULL)
 ```
 
 ## Arguments
@@ -28,11 +22,6 @@ get_owner(
 - dry_run:
 
   A logical for toggling a dry run of the request, default is `FALSE`.
-
-- rate_limit:
-
-  A logical for toggling automatic rate limiting based on rate limit
-  headers, default is `FALSE`.
 
 - api_key:
 

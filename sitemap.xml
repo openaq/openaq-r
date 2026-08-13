@@ -2,8 +2,8 @@
 <url><loc>https://openaq.github.io/openaq-r/404.html</loc></url>
 <url><loc>https://openaq.github.io/openaq-r/CONTRIBUTING.html</loc></url>
 <url><loc>https://openaq.github.io/openaq-r/DEVELOPMENT.html</loc></url>
-<url><loc>https://openaq.github.io/openaq-r/LICENSE-text.html</loc></url>
 <url><loc>https://openaq.github.io/openaq-r/LICENSE.html</loc></url>
+<url><loc>https://openaq.github.io/openaq-r/SECURITY.html</loc></url>
 <url><loc>https://openaq.github.io/openaq-r/articles/geospatial-queries.html</loc></url>
 <url><loc>https://openaq.github.io/openaq-r/articles/ggplot2.html</loc></url>
 <url><loc>https://openaq.github.io/openaq-r/articles/index.html</loc></url>
@@ -25,7 +25,6 @@
 <url><loc>https://openaq.github.io/openaq-r/reference/as.data.frame.openaq_parameters_list.html</loc></url>
 <url><loc>https://openaq.github.io/openaq-r/reference/as.data.frame.openaq_providers_list.html</loc></url>
 <url><loc>https://openaq.github.io/openaq-r/reference/as.data.frame.openaq_sensors_list.html</loc></url>
-<url><loc>https://openaq.github.io/openaq-r/reference/enable_rate_limit.html</loc></url>
 <url><loc>https://openaq.github.io/openaq-r/reference/get_country.html</loc></url>
 <url><loc>https://openaq.github.io/openaq-r/reference/get_instrument.html</loc></url>
 <url><loc>https://openaq.github.io/openaq-r/reference/get_license.html</loc></url>

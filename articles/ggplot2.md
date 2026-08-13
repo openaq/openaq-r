@@ -18,6 +18,7 @@ Delhi, India, for May 2025. We make sure specify the correct timezone
 location.
 
 ``` r
+
 pm25_data <- list_sensor_measurements(
   12235029,
   datetime_from = as.POSIXct("2025-05-01", tz = "Asia/Kolkata"),
@@ -70,6 +71,7 @@ is presented in long format and as a data frame we can directly add the
 data to the `ggplot2::ggplot()` function for charting.
 
 ``` r
+
 ggplot(pm25_data, aes(x = "", y = value)) +
   geom_boxplot() +
   labs(
@@ -91,6 +93,7 @@ Rule](https://en.wikipedia.org/wiki/Scott%27s_rule), which adapts to the
 data spread and size.
 
 ``` r
+
 scott_bw <- function(x) {
   (max(x) - min(x)) / nclass.scott(x)
 }
@@ -101,6 +104,7 @@ skew of the data, highlighting standard value ranges and the presence of
 high-pollution events.
 
 ``` r
+
 ggplot(pm25_data, aes(x = value)) +
   geom_histogram(
     binwidth = scott_bw(pm25_data$value)
@@ -118,6 +122,7 @@ high-pollution events. You can further customize fill color, bins, and
 themes.
 
 ``` r
+
 ggplot(pm25_data, aes(x = value)) +
   geom_histogram(
     binwidth = scott_bw(pm25_data$value),

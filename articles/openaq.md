@@ -1,6 +1,7 @@
 # Introduction to openaq
 
 ``` r
+
 library(openaq)
 ```
 
@@ -31,6 +32,7 @@ a helper function called
 to set this value.
 
 ``` r
+
 set_api_key("my-super-secret-openaq-key-1234")
 ```
 
@@ -38,6 +40,7 @@ Alternatively, the API key can be set on individual resource function
 calls e.g.
 
 ``` r
+
 list_locations(api_key = "my-super-secret-openaq-key-1234")
 ```
 
@@ -45,6 +48,7 @@ Setting the API key at an individual function level will always take
 precedent over an API key set at the environment variable level
 
 ``` r
+
 set_api_key("my-super-secret-openaq-key-1234")
 list_locations(api_key = "this-is-my-alternate-api-key")
 ```
@@ -66,6 +70,7 @@ attributes on the output data frame:
 - `x_ratelimit_reset`
 
 ``` r
+
 locations <- list_locations(
   limit = 1000,
   parameters_id = 2,
@@ -86,77 +91,9 @@ throttle requests when the rate limit has been reached.
 
 #### Automatic rate limit handling
 
-The openaq package provides optional functionality to automatically
-throttle requests when the rate limit has been reached. This feature
-uses httr2’s built-in retry mechanism to intelligently handle rate limit
-errors.
-
-Using the openaq package you can enable automatic rate limiting in two
-ways:
-
-**Option 1: Enable globally for your session**
-
-``` r
-# Enable automatic rate limiting for all subsequent requests
-enable_rate_limit()
-
-# Now all API calls will automatically handle rate limits
-locations <- list_locations(limit = 1000, parameters_id = 2)
-```
-
-    ## Setting `max_tries = 2`.
-
-``` r
-nrow(locations)
-```
-
-    ## [1] 1000
-
-**Option 2: Enable per request**
-
-``` r
-# Enable rate limiting for a single function call
-locations <- list_locations(
-  limit = 1000,
-  parameters_id = 2,
-  rate_limit = TRUE
-)
-```
-
-    ## Setting `max_tries = 2`.
-
-``` r
-head(locations)
-```
-
-    ##   id                name is_mobile is_monitor     timezone countries_id
-    ## 1  3          NMA - Nima     FALSE       TRUE Africa/Accra          152
-    ## 2  4          NMT - Nima     FALSE       TRUE Africa/Accra          152
-    ## 3  5     JTA - Jamestown     FALSE       TRUE Africa/Accra          152
-    ## 4  6   ADT - Asylum Down     FALSE       TRUE Africa/Accra          152
-    ## 5  7 ADEPA - Asylum Down     FALSE       TRUE Africa/Accra          152
-    ## 6  8   ADA - Asylum Down     FALSE       TRUE Africa/Accra          152
-    ##   country_name country_iso latitude  longitude datetime_first datetime_last
-    ## 1        Ghana          GH 5.583890 -0.1996800             NA            NA
-    ## 2        Ghana          GH 5.581650 -0.1989800             NA            NA
-    ## 3        Ghana          GH 5.540114 -0.2103972             NA            NA
-    ## 4        Ghana          GH 5.570722 -0.2120555             NA            NA
-    ## 5        Ghana          GH 5.567833 -0.2040278             NA            NA
-    ## 6        Ghana          GH 5.566722 -0.2077778             NA            NA
-    ##                          owner_name providers_id
-    ## 1 Unknown Governmental Organization          209
-    ## 2 Unknown Governmental Organization          209
-    ## 3 Unknown Governmental Organization          209
-    ## 4 Unknown Governmental Organization          209
-    ## 5 Unknown Governmental Organization          209
-    ## 6 Unknown Governmental Organization          209
-    ##                        provider_name
-    ## 1 Dr. Raphael E. Arku and Colleagues
-    ## 2 Dr. Raphael E. Arku and Colleagues
-    ## 3 Dr. Raphael E. Arku and Colleagues
-    ## 4 Dr. Raphael E. Arku and Colleagues
-    ## 5 Dr. Raphael E. Arku and Colleagues
-    ## 6 Dr. Raphael E. Arku and Colleagues
+The openaq package by default automatically throttles requests when the
+rate limit has been reached. This feature uses httr2’s built-in retry
+mechanism to intelligently handle rate limit errors.
 
 This is particularly useful when making many sequential requests or when
 working with large datasets where you might exceed the rate limit. The
@@ -181,15 +118,11 @@ or
 Examples:
 
 ``` r
+
 locs <- list_locations(
   limit = 1000,
   page = 1
 )
-```
-
-    ## Setting `max_tries = 2`.
-
-``` r
 head(locs)
 ```
 
@@ -223,15 +156,11 @@ head(locs)
     ## 6 Dr. Raphael E. Arku and Colleagues
 
 ``` r
+
 locs <- list_locations(
   limit = 1000,
   page = 2
 )
-```
-
-    ## Setting `max_tries = 2`.
-
-``` r
 head(locs)
 ```
 
@@ -250,12 +179,12 @@ head(locs)
     ## 5 United States          US 41.25732  -95.98383 2016-03-06 20:00:00
     ## 6 United States          US 36.27059 -115.23828 2016-03-06 20:00:00
     ##         datetime_last                        owner_name providers_id
-    ## 1 2026-03-09 20:00:00 Unknown Governmental Organization          119
-    ## 2 2026-03-09 20:00:00 Unknown Governmental Organization          119
-    ## 3 2026-03-09 20:00:00 Unknown Governmental Organization          119
-    ## 4 2026-03-09 20:00:00 Unknown Governmental Organization          119
+    ## 1 2026-07-09 15:00:00 Unknown Governmental Organization          119
+    ## 2 2026-07-09 15:00:00 Unknown Governmental Organization          119
+    ## 3 2026-07-09 15:00:00 Unknown Governmental Organization          119
+    ## 4 2026-07-09 15:00:00 Unknown Governmental Organization          119
     ## 5 2018-04-25 05:00:00 Unknown Governmental Organization          119
-    ## 6 2026-03-09 20:00:00 Unknown Governmental Organization          119
+    ## 6 2026-07-09 15:00:00 Unknown Governmental Organization          119
     ##   provider_name
     ## 1        AirNow
     ## 2        AirNow
@@ -278,114 +207,136 @@ and retrieving data resources.
 #### Countries
 
 ``` r
+
 get_country()
 ```
 
     ## Error in get_country(): argument "countries_id" is missing, with no default
 
 ``` r
+
 list_countries()
 ```
 
 #### Instruments
 
 ``` r
+
 get_instrument()
 ```
 
     ## Error in get_instrument(): argument "instruments_id" is missing, with no default
 
 ``` r
+
 list_instruments()
 ```
 
 ``` r
+
 list_manufacturer_instruments()
 ```
 
 #### Latest
 
 ``` r
+
 list_location_latest()
 ```
 
 ``` r
+
 list_parameter_latest()
 ```
 
 #### Licenses
 
 ``` r
+
 list_licenses()
 ```
 
 ``` r
+
 get_license()
 ```
 
 #### Locations
 
 ``` r
+
 list_locations()
 ```
 
 ``` r
+
 get_location()
 ```
 
 #### Manufacturers
 
 ``` r
+
 list_manufacturers()
 ```
 
 ``` r
+
 get_manufacturer()
 ```
 
 #### Measurements
 
 ``` r
+
 list_sensor_measurements()
 ```
 
 #### Owners
 
 ``` r
+
 list_owners()
 ```
 
 ``` r
+
 get_owner()
 ```
 
 #### Parameters
 
 ``` r
+
 list_parameters()
 ```
 
 ``` r
+
 get_parameter()
 ```
 
 #### Providers
 
 ``` r
+
 list_providers()
 ```
 
 ``` r
+
 get_provider()
 ```
 
 #### Sensors
 
 ``` r
+
 get_sensor()
 ```
 
 ``` r
+
 get_location_sensors()
 ```
 
@@ -396,6 +347,7 @@ prefer to work with JSON parsed as a standard list you can toggle off
 data frame parsing with the `as_data_frame` function parameter.
 
 ``` r
+
 list_locations(
   limit = 1000,
   parameters_id = 2,
@@ -424,12 +376,12 @@ function under-the-hood.
 
 ### Automatic rate limiting
 
-All resource function provide an option to enable automatic rate
-limiting to ensure you do not exceed account rate limits. You can or
-course implement your own rate limiting yourself, but the built-in
-functionality is provided as an easy to use option.
+The openaq package by default automatically throttles requests when the
+rate limit has been reached. This feature uses httr2’s built-in retry
+mechanism to intelligently handle rate limit errors.
 
 ``` r
+
 list_locations(
   limit = 1000,
   parameters_id = 2,
@@ -451,6 +403,7 @@ that prevents a full HTTP request to the API and instead prints out a
 summary of how the request would have been made.
 
 ``` r
+
 list_locations(
   limit = 1000,
   parameters_id = 2,

@@ -1,6 +1,7 @@
 # Querying rolled up measurements
 
 ``` r
+
 library(openaq)
 library(ggplot2)
 ```
@@ -20,6 +21,7 @@ results to compare against public health benchmarks like the WHO daily
 PM_(2.5) standard.
 
 ``` r
+
 set_api_key("replace-me-with-a-valid-openaq-api-key")
 ```
 
@@ -34,6 +36,7 @@ of Cyprus. To compare against the WHO daily guideline, we will request
 data aggregated to the day, using the `days` option:
 
 ``` r
+
 data <- list_sensor_measurements(
   3646869,
   data = "days",
@@ -52,6 +55,7 @@ and hourly measurement, we expect 24 measurements to be the complete
 period.
 
 ``` r
+
 head(data[, c("value", "percent_complete", "expected_count", "observed_count")])
 #>   value percent_complete expected_count observed_count
 #> 1  19.0              100             24             24
@@ -67,6 +71,7 @@ commonly used threshold for data completeness is 75%, in the case of a
 daily average at least 18 out of 24 hours.
 
 ``` r
+
 data <- data[data$percent_complete > 75, ]
 ```
 
@@ -74,6 +79,7 @@ We can now plot the daily average time series and compare it against the
 WHO daily threshold value with `ggplot2`:
 
 ``` r
+
 ggplot(data, aes(x = as.Date(datetime_to), y = value)) +
   geom_point() +
   geom_line() +
