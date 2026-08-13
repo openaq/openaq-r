@@ -11,11 +11,12 @@
 
 ## Summary of changes in this version
 
-* Added `disable_rate_limit()` for setting the `RATE_LIMIT` environment
-  variable to `FALSE`.
-* Updated datetime validation, parameter extraction, and timestamp parsing
-  to gracefully handle `NA`/`"NA"` values.
-* Changed the default for the `RATE_LIMIT` environment variable to `TRUE`.
+* Removed `enable_rate_limit()` and `get_rate_limit()`. Automatic rate-limit
+  handling is now always enabled via httr2's retry mechanism and is no longer
+  configurable through the `RATE_LIMIT` environment variable.
+* Removed the `rate_limit` argument from all resource functions.
+* Updated datetime validation, parameter extraction, and timestamp parsing to
+  gracefully handle `NA`/`"NA"` values.
 * Changed the package license from MIT to Apache License 2.0.
 
 ## Vignettes
