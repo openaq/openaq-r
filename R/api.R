@@ -176,7 +176,7 @@ handle_request <- function(req, dry_run) {
     reset_seconds <- suppressWarnings(as.integer(httr2::resp_header(resp, "X-RateLimit-Reset")))
 
     if (isTRUE(length(remaining) == 1 && !is.na(remaining) && remaining <= 0) &&
-          isTRUE(length(reset_seconds) == 1 && !is.na(reset_seconds))) {
+      isTRUE(length(reset_seconds) == 1 && !is.na(reset_seconds))) {
       Sys.sleep(reset_seconds)
     }
 
@@ -198,10 +198,10 @@ handle_request <- function(req, dry_run) {
 #' @return An httr2 response object.
 #' @noRd
 fetch <- function(
-  path,
-  query_params = list(),
-  dry_run = FALSE,
-  api_key = NULL) {
+    path,
+    query_params = list(),
+    dry_run = FALSE,
+    api_key = NULL) {
   req <- openaq_request(path, query_params, api_key)
   res <- handle_request(req, dry_run)
   if (!dry_run) {

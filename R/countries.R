@@ -15,10 +15,10 @@
 #' country <- get_country(42)
 #'
 get_country <- function(
-  countries_id,
-  as_data_frame = TRUE,
-  dry_run = FALSE,
-  api_key = NULL) {
+    countries_id,
+    as_data_frame = TRUE,
+    dry_run = FALSE,
+    api_key = NULL) {
   path <- paste("countries", countries_id, sep = "/")
   data <- fetch(path,
     dry_run = dry_run,
@@ -67,15 +67,15 @@ get_country <- function(
 #' countries <- list_countries()
 #'
 list_countries <- function(
-  providers_id = NULL,
-  parameters_id = NULL,
-  order_by = NULL,
-  sort_order = NULL,
-  limit = NULL,
-  page = NULL,
-  as_data_frame = TRUE,
-  dry_run = FALSE,
-  api_key = NULL) {
+    providers_id = NULL,
+    parameters_id = NULL,
+    order_by = NULL,
+    sort_order = NULL,
+    limit = NULL,
+    page = NULL,
+    as_data_frame = TRUE,
+    dry_run = FALSE,
+    api_key = NULL) {
   param_defs <- list(
     providers_id = list(default = NULL, validator = NULL),
     parameters_id = list(default = NULL, validator = NULL),
@@ -97,7 +97,6 @@ list_countries <- function(
   data <- fetch(path,
     query_params = params_list,
     dry_run = dry_run,
-
     api_key = api_key
   )
   if (isTRUE(dry_run)) {

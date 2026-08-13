@@ -1,2 +1,4 @@
 linters: linters_with_defaults(
-    line_length_linter(180))
+    line_length_linter(180),
+    indentation_linter = NULL
+)

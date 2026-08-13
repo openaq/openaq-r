@@ -18,12 +18,10 @@ get_instrument <- function(
     instruments_id,
     as_data_frame = TRUE,
     dry_run = FALSE,
-
     api_key = NULL) {
   path <- paste("instruments", instruments_id, sep = "/")
   data <- fetch(path,
     dry_run = dry_run,
-
     api_key = api_key
   )
   if (isTRUE(dry_run)) {
@@ -68,7 +66,6 @@ list_instruments <- function(
     page = NULL,
     as_data_frame = TRUE,
     dry_run = FALSE,
-
     api_key = NULL) {
   param_defs <- list(
     order_by = list(default = NULL, validator = NULL),
@@ -87,7 +84,6 @@ list_instruments <- function(
   data <- fetch(path,
     query_params = params_list,
     dry_run = dry_run,
-
     api_key = api_key
   )
   if (isTRUE(dry_run)) {
