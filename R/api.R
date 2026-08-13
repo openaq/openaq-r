@@ -198,10 +198,10 @@ handle_request <- function(req, dry_run) {
 #' @return An httr2 response object.
 #' @noRd
 fetch <- function(
-    path,
-    query_params = list(),
-    dry_run = FALSE,
-    api_key = NULL) {
+  path,
+  query_params = list(),
+  dry_run = FALSE,
+  api_key = NULL) {
   req <- openaq_request(path, query_params, api_key)
   res <- handle_request(req, dry_run)
   if (!dry_run) {
