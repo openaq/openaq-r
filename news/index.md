@@ -2,6 +2,8 @@
 
 ## openaq v1.1.0 - 2026-08-13
 
+CRAN release: 2026-08-19
+
 ### Removed
 
 - Removed `enable_rate_limit()` and `get_rate_limit()`. Automatic
